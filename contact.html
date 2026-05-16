@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us - Qanoon24/7</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0px 0px;
+      background: linear-gradient(to right, #0d2137, #1a3049);
+      color: #fc0;
+      font-size: large;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: gold;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(to right, #0d2137, #0f3b6d);
+      color: white;
+      padding: 40px 10px;
+      text-align: calc();
+      font-size: x-large;
+    }
+    .auth button {
+      margin-left: 10px;
+      padding: 6px 12px;
+      border: none;
+      cursor: pointer;
+    }
+    .login
+    {
+      background-color: #fc0;
+      border-radius: 10px;
+    }
+    .register
+    {
+      background-color: #fc0;
+      border-radius: 10px;
+    }
+
+    /* CONTACT SECTION */
+    .contact-container {
+      display: flex;
+      gap: 40px;
+      padding: 50px;
+      flex-wrap: wrap;
+      color: #0d2137;
+    }
+
+    .contact-info {
+      flex: 1;
+    }
+
+    .info-box {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .icon {
+      width: 50px;
+      height: 50px;
+      background: #0d2137;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      margin-right: 15px;
+    }
+
+    .office-hours {
+      background: #0d2137;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      color: #ccc;
+    }
+
+    /* FORM */
+    .contact-form {
+      flex: 1;
+      background: #f5f5f5;
+      padding: 20px;
+      border-radius: 10px;
+      color: #0d2137;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 5px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .contact-form button {
+      background: #0d2137;
+      color: white;
+      padding: 10px;
+      border: none;
+      width: 100%;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .contact-form button:hover {
+      background: #0d2137;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #0d2137;
+      color: white;
+    }
+  </style>
+  <script>
+    const form = document.getElementById("contactForm");
+
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const subject = document.getElementById("subject").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  // SIMPLE VALIDATION
+  if (!name || !email || !phone || !subject || !message) {
+    alert("Please fill all fields!");
+    return;
+  }
+
+  if (!email.includes("@")) {
+    alert("Enter a valid email!");
+    return;
+  }
+
+  // SUCCESS MESSAGE
+  alert("Message sent successfully!");
+
+  // RESET FORM
+  form.reset();
+});
+  </script>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h2>⚖️ Qanoon24/7</h2>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="articles.html">Legal Articles</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="auth">
+      <button class="login">Login</button>
+      <button class="register">Register</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Contact Us</h1>
+    <p>We're here to help. Reach out anytime.</p>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-container">
+
+    <!-- LEFT SIDE -->
+    <div class="contact-info">
+      <h2>Get in Touch</h2>
+      <p>Need legal guidance? Our team is ready to assist you.</p>
+
+      <div class="info-box">
+        <div class="icon">📧</div>
+        <div>
+          <h4>Email</h4>
+          <p>support@qanoon247.pk</p>
+          <p>info@qanoon247.pk</p>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <div class="icon">📞</div>
+        <div>
+          <h4>Phone</h4>
+          <p>+92 21 1234 5678</p>
+          <p>+92 300 1234567</p>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <div class="icon">📍</div>
+        <div>
+          <h4>Address</h4>
+          <p>Islamabad, Pakistan</p>
+        </div>
+      </div>
+
+      <div class="office-hours">
+        <h3>Office Hours</h3>
+        <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+        <p>Sat: 10:00 AM - 4:00 PM</p>
+        <p>Sunday: Closed</p>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE FORM -->
+    <div class="contact-form">
+      <h2>Send Message</h2>
+
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Full Name" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="text" id="phone" placeholder="Phone Number" required>
+        <input type="text" id="subject" placeholder="Subject" required>
+
+        <textarea id="message" rows="5" placeholder="How can we help?" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Qanoon24/7 | All Rights Reserved</p>
+  </footer>
+
+  <script src="contact.js"></script>
+
+</body>
+</html>

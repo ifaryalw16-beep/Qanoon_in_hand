@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qanoon24/7 - Legal Articles & Journals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- CSS Reset & Variables --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --navy-blue: #0d1237;
+            --gold: #fbc02d;
+            --gold-hover: #f9a825;
+            --white: #ffffff;
+            --light-bg: #f8f9fa;
+            --text-dark: #333333;
+            --text-muted: #666666;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- Header / Navbar --- */
+        header {
+            background-color: var(--navy-blue);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            background-color: var(--gold);
+            color: var(--navy-blue);
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--gold);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 8px 18px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-login {
+            background-color: var(--white);
+            color: var(--navy-blue);
+            border: 1px solid var(--white);
+        }
+
+        .btn-login:hover {
+            background-color: transparent;
+            color: var(--white);
+        }
+
+        .btn-register {
+            background-color: var(--gold);
+            color: var(--navy-blue);
+            border: 1px solid var(--gold);
+        }
+
+        .btn-register:hover {
+            background-color: var(--gold-hover);
+        }
+
+        /* --- Hero Banner --- */
+        .hero {
+            background-color: var(--navy-blue);
+            color: var(--white);
+            padding: 50px 5%;
+            text-align: left;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #d1d8e0;
+            font-weight: 300;
+        }
+
+        /* --- Main Content Area --- */
+        .container {
+            max-width: 1000px;
+            width: 90%;
+            margin: 40px auto;
+            flex: 1;
+        }
+
+        /* --- Article Cards --- */
+        .article-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s;
+        }
+
+        .article-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .article-title {
+            color: var(--navy-blue);
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        .article-title:hover {
+            text-decoration: underline;
+        }
+
+        .article-meta {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .article-excerpt {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        /* --- Card Footer (Interactions) --- */
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 15px;
+        }
+
+        .interactions {
+            display: flex;
+            gap: 20px;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .action-btn:hover {
+            color: var(--navy-blue);
+        }
+
+        .action-btn.liked {
+            color: #e74c3c;
+        }
+
+        .rating-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .stars {
+            color: #ccc;
+            display: flex;
+            gap: 2px;
+        }
+
+        .stars .fa-star {
+            cursor: pointer;
+        }
+
+        .stars .fa-star.active {
+            color: var(--gold);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--navy-blue);
+            color: #d1d8e0;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            border-top: 3px solid var(--gold);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .hero {
+                text-align: center;
+                padding: 35px 20px;
+            }
+            .card-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo-area">
+            <div class="logo-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+            <div class="logo-text">Qanoon24/7</div>
+        </a>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#" class="active">Legal Articles</a>
+            <a href="#">Contact</a>
+        </nav>
+        <div class="auth-buttons">
+            <a href="#" class="btn btn-login">Login</a>
+            <a href="#" class="btn btn-register">Register</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Legal Articles & Journals</h1>
+            <p>Stay informed with expert insights on Pakistani law and legal developments</p>
+        </div>
+    </section>
+
+    <main class="container">
+
+        <article class="article-card">
+            <h2 class="article-title">Understanding Article 25 - Right to Equality</h2>
+            <div class="article-meta">By Dr. Ahmed Hassan &bull; May 5, 2026</div>
+            <p class="article-excerpt">Article 25 of the Constitution guarantees that all citizens are equal before law and are entitled to equal protection of law...</p>
+            <div class="card-footer">
+                <div class="interactions">
+                    <button class="action-btn" onclick="toggleLike(this)"><i class="fa-regular fa-heart"></i> <span class="count">45</span></button>
+                    <button class="action-btn"><i class="fa-regular fa-comment"></i> <span>12</span></button>
+                </div>
+                <div class="rating-container">
+                    <span>Rate:</span>
+                    <div class="stars" data-rating="4.5">
+                        <i class="fa-solid fa-star active"></i>
+                        <i class="fa-solid fa-star active"></i>
+                        <i class="fa-solid fa-star active"></i>
+                        <i class="fa-solid fa-star active"></i>
+                        <i class="fa-solid fa-star-half-stroke active"></i>
+                    </div>
+                    <span class="rating-value">4.5</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="article-card">
+            <h2 class="article-title">Cyber Crime Laws in Pakistan: A Comprehensive Guide</h2>
+            <div class="article-meta">By Ayesha Khan &bull; May 3, 2026</div>
+            <p class="article-excerpt">With the rise of digital transactions, understanding cyber crime laws has become essential. This article covers PECA 2016 and recent amendments...</p>
+            <div class="card-footer">
+                <div class="interactions">
+                    <button class="action-btn" onclick="toggleLike(this)"><i class="fa-regular fa-heart"></i> <span class="count">67</span></button>
+                    <button class="action-btn"><i class="fa-regular fa-comment"></i> <span>23</span></button>
+                </div>
+                <div class="rating-container">
+                    <span>Rate:</span>
+                    <div class="stars" data-rating="4.8">
+                        <i class="fa-solid fa-star active"></i>
+                        <i class="fa-solid fa-star active"></i>
+                        <i class="fa-solid fa-star active"></i>
+                        <i class="fa-solid fa-star active"></i>
+                        <i class="fa-solid fa-star active"></i>
+                    </div>
+                    <span class="rating-value">4.8</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="article-card">
+            <h2 class="article-title">Women's Rights in Family Law</h2>
+            <div class="article-meta">By Fatima Noor &bull; April 28, 2026</div>
+            <p class="article-excerpt">A detailed analysis of women's rights under Muslim Family Laws Ordinance 1961, including maintenance, divorce, and custody rights...</p>
+            <div class="card-footer">
+                <div class="interactions">
+                    <button class="action-btn" onclick="toggleLike(this)"><i class="fa-regular fa-heart"></i> <span class="count">89</span></button>
+                    <button class="action-btn"><i class="fa-regular fa-comment"></i> <span>34</span></button>
+                </div>
+                <div class="rating-container">
+                    <span>Rate:</span>
+                    <div class="stars" data-rating="4.7">
+                        <i class="fa-solid fa-star active"></i>
+                        <i class="fa-solid fa-star active"></i>
+                        <i class="fa-solid fa-star active"></i>
+                        <i class="fa-solid fa-star active"></i>
+                        <i class="fa-solid fa-star active"></i>
+                    </div>
+                    <span class="rating-value">4.7</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="article-card">
+            <h2 class="article-title">Land Acquisition Act 1894: Recent Amendments</h2>
+            <div class="article-meta">By Bilal Mahmood &bull; April 25, 2026</div>
+            <p class="article-excerpt">Exploring the recent amendments to land acquisition laws and their impact on property owners' rights and compensation mechanisms...</p>
+            <div class="card-footer">
+                <div class="interactions">
+                    <button class="action-btn" onclick="toggleLike(this)"><i class="fa-regular fa-heart"></i> <span class="count">56</span></button>
+                    <button class="action-btn"><i class="fa-regular fa-comment"></i> <span>18</span></button>
+                </div>
+                <div class="rating-container">
+                    <span>Rate:</span>
+                    <div class="stars" data-rating="4.3">
+                        <i class="fa-solid fa-star active"></i>
+                        <i class="fa-solid fa-star active"></i>
+                        <i class="fa-solid fa-star active"></i>
+                        <i class="fa-solid fa-star active"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <span class="rating-value">4.3</span>
+                </div>
+            </div>
+        </article>
+
+    </main>
+    <footer>
+        &copy; 2026 Empowering citizens and legal professionals. All rights reserved.
+    </footer>
+    <script>
+         import { Link } from "react-router-dom";
+
+function Navbar() {
+  return (
+    <nav className="navbar">
+      <h2>Qanoon24/7</h2>
+      <div className="links">
+        <Link to="/about">About Us</Link>
+        <Link to="/about">Legal Articles</Link>
+        <Link to="/about">Contact</Link>
+      </div>
+    </nav>
+  );
+}
+        // Simple Toggle Like Function
+        function toggleLike(element) {
+            const icon = element.querySelector('i');
+            const countSpan = element.querySelector('.count');
+            let currentCount = parseInt(countSpan.innerText);
+
+            if (icon.classList.contains('fa-regular')) {
+                icon.classList.remove('fa-regular');
+                icon.classList.add('fa-solid');
+                element.classList.add('liked');
+                countSpan.innerText = currentCount + 1;
+            } else {
+                icon.classList.remove('fa-solid');
+                icon.classList.add('fa-regular');
+                element.classList.remove('liked');
+                countSpan.innerText = currentCount - 1;
+            }
+        }
+    </script>
+</body>
+</html>
