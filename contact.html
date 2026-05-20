@@ -1,263 +1,454 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Contact Us - Qanoon24/7</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Qanoon24/7</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- CSS Reset & Variables --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Times New Roman', Times, serif;
-    }
+        :root {
+            --navy-blue: #0d1237;
+            --gold: #fbc02d;
+            --gold-hover: #f9a825;
+            --white: #ffffff;
+            --light-bg: #f8f9fa;
+            --text-dark: #333333;
+            --text-muted: #666666;
+            --border-color: #e2e8f0;
+        }
 
-    /* HEADER */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0px 0px;
-      background: linear-gradient(to right, #0d2137, #1a3049);
-      color: #fc0;
-      font-size: large;
-    }
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-    nav a {
-      margin: 0 15px;
-      color: white;
-      text-decoration: none;
-    }
+        /* --- Header / Navbar --- */
+        header {
+            background-color: var(--navy-blue);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--gold);
+        }
 
-    nav a:hover {
-      color: gold;
-    }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--white);
+            text-decoration: none;
+        }
 
-    /* HERO */
-    .hero {
-      background: linear-gradient(to right, #0d2137, #0f3b6d);
-      color: white;
-      padding: 40px 10px;
-      text-align: calc();
-      font-size: x-large;
-    }
-    .auth button {
-      margin-left: 10px;
-      padding: 6px 12px;
-      border: none;
-      cursor: pointer;
-    }
-    .login
-    {
-      background-color: #fc0;
-      border-radius: 10px;
-    }
-    .register
-    {
-      background-color: #fc0;
-      border-radius: 10px;
-    }
+        .logo-icon {
+            background-color: var(--gold);
+            color: var(--navy-blue);
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+        }
 
-    /* CONTACT SECTION */
-    .contact-container {
-      display: flex;
-      gap: 40px;
-      padding: 50px;
-      flex-wrap: wrap;
-      color: #0d2137;
-    }
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
 
-    .contact-info {
-      flex: 1;
-    }
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
 
-    .info-box {
-      display: flex;
-      align-items: center;
-      margin-bottom: 20px;
-    }
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
 
-    .icon {
-      width: 50px;
-      height: 50px;
-      background: #0d2137;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 10px;
-      margin-right: 15px;
-    }
+        nav a:hover, nav a.active {
+            color: var(--gold);
+        }
 
-    .office-hours {
-      background: #0d2137;
-      padding: 20px;
-      border-radius: 10px;
-      margin-top: 20px;
-      color: #ccc;
-    }
+        .auth-buttons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
 
-    /* FORM */
-    .contact-form {
-      flex: 1;
-      background: #f5f5f5;
-      padding: 20px;
-      border-radius: 10px;
-      color: #0d2137;
-    }
+        .btn {
+            padding: 8px 18px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
 
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 5px;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
+        .btn-login {
+            background-color: var(--white);
+            color: var(--navy-blue);
+            border: 1px solid var(--white);
+        }
 
-    .contact-form button {
-      background: #0d2137;
-      color: white;
-      padding: 10px;
-      border: none;
-      width: 100%;
-      cursor: pointer;
-      border-radius: 5px;
-    }
+        .btn-login:hover {
+            background-color: transparent;
+            color: var(--white);
+        }
 
-    .contact-form button:hover {
-      background: #0d2137;
-    }
+        .btn-register {
+            background-color: var(--gold);
+            color: var(--navy-blue);
+            border: 1px solid var(--gold);
+        }
 
-    /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #0d2137;
-      color: white;
-    }
-  </style>
-  <script>
-    const form = document.getElementById("contactForm");
+        .btn-register:hover {
+            background-color: var(--gold-hover);
+        }
 
-form.addEventListener("submit", function(e) {
-  e.preventDefault();
+        /* --- Hero Banner --- */
+        .hero {
+            background-color: var(--navy-blue);
+            color: var(--white);
+            padding: 50px 5%;
+            text-align: left;
+        }
 
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const subject = document.getElementById("subject").value.trim();
-  const message = document.getElementById("message").value.trim();
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+        }
 
-  // SIMPLE VALIDATION
-  if (!name || !email || !phone || !subject || !message) {
-    alert("Please fill all fields!");
-    return;
-  }
+        .hero p {
+            font-size: 1.1rem;
+            color: #d1d8e0;
+            font-weight: 300;
+        }
 
-  if (!email.includes("@")) {
-    alert("Enter a valid email!");
-    return;
-  }
+        /* --- Main Content Section Layout --- */
+        .container {
+            max-width: 1000px;
+            width: 90%;
+            margin: 40px auto;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
 
-  // SUCCESS MESSAGE
-  alert("Message sent successfully!");
+        /* --- Get In Touch Section --- */
+        .get-in-touch h2 {
+            color: var(--navy-blue);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
 
-  // RESET FORM
-  form.reset();
-});
-  </script>
+        .get-in-touch .intro-p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .info-cards-list {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+
+        .info-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .info-icon {
+            background-color: var(--navy-blue);
+            color: var(--white);
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .info-details h4 {
+            color: var(--navy-blue);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .info-details p {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        /* --- Office Hours Accent Box --- */
+        .hours-box {
+            background-color: var(--gold);
+            color: var(--navy-blue);
+            padding: 25px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .hours-box h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        /* --- Contact Form Card Section --- */
+        .contact-form-section {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 35px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-form-section h3 {
+            color: var(--navy-blue);
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cccccc;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+            background-color: #fafafa;
+        }
+
+        .form-control:focus {
+            border-color: var(--navy-blue);
+            background-color: var(--white);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            background-color: var(--navy-blue);
+            color: var(--white);
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: #163d75;
+        }
+
+        /* --- Custom Interactive Alert Banner --- */
+        .alert-success {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            border: 1px solid #c3e6cb;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--navy-blue);
+            color: #d1d8e0;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            border-top: 3px solid var(--gold);
+            margin-top: auto;
+        }
+
+        /* --- Mobile Responsive Rules --- */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .hero {
+                text-align: center;
+                padding: 35px 20px;
+            }
+            .contact-form-section {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <h2>⚖️ Qanoon24/7</h2>
-
-    <nav>
+    <header>
+        <a href="#" class="logo-area">
+            <div class="logo-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+            <div class="logo-text">Qanoon24/7</div>
+        </a>
+        <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About Us</a>
-      <a href="articles.html">Legal Articles</a>
+      <a href="legalarticles.html">Legal Articles</a>
       <a href="contact.html">Contact</a>
     </nav>
-
-    <div class="auth">
-      <button class="login">Login</button>
-      <button class="register">Register</button>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section class="hero">
-    <h1>Contact Us</h1>
-    <p>We're here to help. Reach out anytime.</p>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="contact-container">
-
-    <!-- LEFT SIDE -->
-    <div class="contact-info">
-      <h2>Get in Touch</h2>
-      <p>Need legal guidance? Our team is ready to assist you.</p>
-
-      <div class="info-box">
-        <div class="icon">📧</div>
-        <div>
-          <h4>Email</h4>
-          <p>support@qanoon247.pk</p>
-          <p>info@qanoon247.pk</p>
+        <div class="auth-buttons">
+            <a href="#" class="btn btn-login">Login</a>
+            <a href="#" class="btn btn-register">Register</a>
         </div>
-      </div>
+    </header>
 
-      <div class="info-box">
-        <div class="icon">📞</div>
-        <div>
-          <h4>Phone</h4>
-          <p>+92 21 1234 5678</p>
-          <p>+92 300 1234567</p>
-        </div>
-      </div>
+    <section class="hero">
+        <h1>Contact Us</h1>
+        <p>We're here to help. Reach out to us anytime.</p>
+    </section>
 
-      <div class="info-box">
-        <div class="icon">📍</div>
-        <div>
-          <h4>Address</h4>
-          <p>Islamabad, Pakistan</p>
-        </div>
-      </div>
+    <main class="container">
 
-      <div class="office-hours">
-        <h3>Office Hours</h3>
-        <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
-        <p>Sat: 10:00 AM - 4:00 PM</p>
-        <p>Sunday: Closed</p>
-      </div>
-    </div>
+        <section class="get-in-touch">
+            <h2>Get in Touch</h2>
+            <p class="intro-p">Have questions about our services? Need legal guidance? Our team is ready to assist you.</p>
 
-    <!-- RIGHT SIDE FORM -->
-    <div class="contact-form">
-      <h2>Send Message</h2>
+            <div class="info-cards-list">
+                <div class="info-card">
+                    <div class="info-icon"><i class="fa-regular fa-envelope"></i></div>
+                    <div class="info-details">
+                        <h4>Email</h4>
+                        <p>support@qanoon247.pk<br>info@qanoon247.pk</p>
+                    </div>
+                </div>
 
-      <form id="contactForm">
-        <input type="text" id="name" placeholder="Full Name" required>
-        <input type="email" id="email" placeholder="Email" required>
-        <input type="text" id="phone" placeholder="Phone Number" required>
-        <input type="text" id="subject" placeholder="Subject" required>
+                <div class="info-card">
+                    <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div class="info-details">
+                        <h4>Phone</h4>
+                        <p>+92 21 1234 5678<br>+92 300 1234567</p>
+                    </div>
+                </div>
 
-        <textarea id="message" rows="5" placeholder="How can we help?" required></textarea>
+                <div class="info-card">
+                    <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <div class="info-details">
+                        <h4>Address</h4>
+                        <p>123 Constitution Avenue<br>Islamabad, Pakistan</p>
+                    </div>
+                </div>
+            </div>
 
-        <button type="submit">Send Message</button>
-      </form>
-    </div>
+            <div class="hours-box">
+                <h4>Office Hours</h4>
+                <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                <p>Saturday: 10:00 AM - 4:00 PM</p>
+                <p>Sunday: Closed</p>
+            </div>
+        </section>
 
-  </section>
+        <section class="contact-form-section">
+            <h3>Send us a Message</h3>
+            
+            <div id="successAlert" class="alert-success">
+                <i class="fa-solid fa-circle-check"></i> Thank you! Your message has been sent successfully. We will get back to you shortly.
+            </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 Qanoon24/7 | All Rights Reserved</p>
-  </footer>
+            <form id="contactForm" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" class="form-control" placeholder="Enter your full name" required>
+                </div>
 
-  <script src="contact.js"></script>
+                <div class="form-group">
+                    <label for="emailAddress">Email</label>
+                    <input type="email" id="emailAddress" class="form-control" placeholder="your.email@example.com" required>
+                </div>
 
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="tel" id="phoneNumber" class="form-control" placeholder="+92 300 1234567" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" class="form-control" placeholder="How can we help?" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="messageBody">Message</label>
+                    <textarea id="messageBody" class="form-control" placeholder="Tell us more about your inquiry..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    <i class="fa-regular fa-paper-plane"></i> Send Message
+                </button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        &copy; 2026 Empowering citizens and legal professionals. All rights reserved.
+    </footer>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault(); // Stop page from performing standard document reload
+            
+            // Display dynamic success message banner
+            const alertBox = document.getElementById('successAlert');
+            alertBox.style.display = 'block';
+            
+            // Clear all fields from form inputs
+            document.getElementById('contactForm').reset();
+            
+            // Scroll smoothly to success block notice layout top marker 
+            alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    </script>
 </body>
 </html>
