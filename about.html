@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Qanoon24/7</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- CSS Reset & Variables --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --navy-blue: #0d1237;
+            --gold: #fbc02d;
+            --gold-hover: #f9a825;
+            --white: #ffffff;
+            --light-bg: #f8f9fa;
+            --text-dark: #333333;
+            --text-muted: #666666;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- Header / Navbar --- */
+        header {
+            background-color: var(--navy-blue);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            background-color: var(--gold);
+            color: var(--navy-blue);
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--gold);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 8px 18px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-login {
+            background-color: var(--white);
+            color: var(--navy-blue);
+            border: 1px solid var(--white);
+        }
+
+        .btn-login:hover {
+            background-color: transparent;
+            color: var(--white);
+        }
+
+        .btn-register {
+            background-color: var(--gold);
+            color: var(--navy-blue);
+            border: 1px solid var(--gold);
+        }
+
+        .btn-register:hover {
+            background-color: var(--gold-hover);
+        }
+
+        /* --- Hero Banner --- */
+        .hero {
+            background-color: var(--navy-blue);
+            color: var(--white);
+            padding: 50px 5%;
+            text-align: left;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #d1d8e0;
+            font-weight: 300;
+            max-width: 800px;
+            line-height: 1.5;
+        }
+
+        /* --- Main Content Section --- */
+        .container {
+            max-width: 1100px;
+            width: 90%;
+            margin: 40px auto;
+            flex: 1;
+        }
+
+        /* --- Mission Section Box --- */
+        .mission-box {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 35px;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-color);
+        }
+
+        .mission-box h2 {
+            color: var(--navy-blue);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .mission-lead {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+        }
+
+        .mission-targets {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .target-item {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .target-item strong {
+            color: var(--navy-blue);
+        }
+
+        /* --- Meet Our Team Grid --- */
+        .team-section-title {
+            text-align: center;
+            color: var(--navy-blue);
+            font-size: 2rem;
+            margin-bottom: 35px;
+            position: relative;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 11fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .team-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .image-wrapper {
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+            background-color: #eee;
+        }
+
+        .team-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+
+        .team-info {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex-grow: 1;
+        }
+
+        .team-name {
+            color: var(--navy-blue);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .team-role {
+            color: #d9a71e; /* Styled Gold for text typography markers */
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+
+        .team-bio {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .team-socials {
+            display: flex;
+            gap: 15px;
+            margin-top: auto;
+            padding-top: 10px;
+        }
+
+        .social-link {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .social-link:hover {
+            color: var(--navy-blue);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--navy-blue);
+            color: #d1d8e0;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            border-top: 3px solid var(--gold);
+            margin-top: auto;
+        }
+
+        /* --- Responsive Viewports --- */
+        @media (max-width: 850px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            .image-wrapper {
+                height: 380px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            nav {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .hero {
+                text-align: center;
+                padding: 35px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo-area">
+            <div class="logo-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+            <div class="logo-text">Qanoon24/7</div>
+        </a>
+        <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="legalarticles.html">Legal Articles</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+        <div class="auth-buttons">
+            <a href="#" class="btn btn-login">Login</a>
+            <a href="#" class="btn btn-register">Register</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>About Qanoon24/7</h1>
+        <p>We are on a mission to digitize Pakistan's legal system and make access to justice simple and easy for everyone.</p>
+    </section>
+
+    <main class="container">
+
+        <section class="mission-box">
+            <h2>Our Mission</h2>
+            <p class="mission-lead">Qanoon24/7 is more than just a portal; it is a mission to digitize Pakistan's legal system. By bringing the Public, Students, and Lawyers together, we are creating a complete "Legal Ecosystem."</p>
+            
+            <div class="mission-targets">
+                <p class="target-item"><strong>For the Public:</strong> We explain complex laws in easy Urdu and regional languages so people can protect themselves from fraud and harassment.</p>
+                <p class="target-item"><strong>For Students:</strong> We provide a practical platform for skill development that goes beyond just reading textbooks.</p>
+                <p class="target-item"><strong>For Lawyers:</strong> We help them go paper-free by digitizing daily tasks like case management, hearing dates, and client handling.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="team-section-title">Meet Our Team</h2>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="image-wrapper">
+                        <img src="about-this-image?img=H4sIAAAAAAAA_wEXAOj_ChUIh8OZ7sWnsJzHARCczu_-_Omxpgrm9NIEFwAAAA%3D%3D&q=https:%2F%2Funsplash.com%2Fs%2Fphotos%2Ffemale-lawyer&cs=1&ctx=iv&hl=en-PK&sa=X&ved=0CBAQg4ILahcKEwjA0Jz8-r2UAxUAAAAAHQAAAAAQBQ auto=format&fit=crop&q=80&w=600"" alt="Faryal Waseem">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-name">Faryal Waseem</div>
+                        <div class="team-role">Founder & Chief Legal Officer</div>
+                        <p class="team-bio">20+ years of experience in constitutional law and legal reform advocacy.</p>
+                        <div class="team-socials">
+                            <a href="#" class="social-link"><i class="fa-regular fa-envelope"></i></a>
+                            <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600" alt="Ayesha Khan">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-name">Laiba Aftab</div>
+                        <div class="team-role">Director of Legal Education</div>
+                        <p class="team-bio">Former law professor specializing in legal pedagogy and student development.</p>
+                        <div class="team-socials">
+                            <a href="#" class="social-link"><i class="fa-regular fa-envelope"></i></a>
+                            <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=600" alt="Bilal Mahmood">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-name">Rabiya Ahmad</div>
+                        <div class="team-role">Head of Technology</div>
+                        <p class="team-bio">Leading the digital transformation of Pakistan's legal ecosystem.</p>
+                        <div class="team-socials">
+                            <a href="#" class="social-link"><i class="fa-regular fa-envelope"></i></a>
+                            <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=600" alt="Fatima Noor">
+                    </div>
+                    <div class="team-info">
+                        <div class="team-name">Areeba Zaheer</div>
+                        <div class="team-role">Community Outreach Director</div>
+                        <p class="team-bio">Dedicated to bridging the justice gap and empowering underserved communities.</p>
+                        <div class="team-socials">
+                            <a href="#" class="social-link"><i class="fa-regular fa-envelope"></i></a>
+                            <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        &copy; 2026 Empowering citizens and legal professionals. All rights reserved.
+    </footer>
+
+</body>
+</html>
