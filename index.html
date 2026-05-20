@@ -1,170 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Legal Access Portal | Citizen & Professional Hub</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#f4f7fc;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1e2a3e;line-height:1.4;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1.5rem}
-.app-container{max-width:1300px;width:100%;margin:0 auto}
-.selection-screen{max-width:1100px;margin:0 auto;background:white;border-radius:48px;box-shadow:0 25px 45px -12px rgba(0,0,0,0.2);padding:2.5rem 2rem 0;text-align:center}
-.selection-screen h1{font-size:2.2rem;font-weight:700;background:linear-gradient(135deg,#0a2540 0%,#1e4a76 100%);background-clip:text;-webkit-background-clip:text;color:transparent;margin-bottom:0.5rem}
-.subhead{color:#4a6f8f;font-size:1rem;margin-bottom:2.5rem;font-weight:500}
-.account-options{display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;margin:2rem 0}
-.option-card{background:#fff;border-radius:32px;padding:2rem 1.8rem;flex:1;min-width:220px;max-width:280px;cursor:pointer;transition:all 0.25s ease;border:1px solid #e2e9f0;box-shadow:0 8px 18px rgba(0,0,0,0.02)}
-.option-card:hover{transform:translateY(-8px);border-color:#cbdde9;box-shadow:0 20px 30px -12px rgba(10,37,64,0.15)}
-.card-icon{background:#eef3fc;width:70px;height:70px;border-radius:30px;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;transition:0.2s}
-.option-card:hover .card-icon{background:#0a2540}
-.option-card:hover .card-icon i{color:#fff}
-.card-icon i{font-size:2rem;color:#0a2540}
-.option-card h3{font-size:1.6rem;font-weight:700;color:#0a2540;margin-bottom:0.5rem}
-.option-card p{color:#5f7f9a;font-size:0.9rem}
-.footer-note{margin-top:2.5rem;padding:1rem 1.5rem;background:#0a2540;color:#fff;font-size:0.75rem;font-weight:500;text-align:center;border-radius:0 0 48px 48px;width:calc(100% + 4rem);margin-left:-2rem}
-.main-forms-wrapper{display:none}
-.portal-container{max-width:680px;margin:0 auto}
-.back-to-home{background:0 0;border:none;font-size:0.9rem;color:#0a2540;font-weight:600;cursor:pointer;margin-bottom:1.2rem;display:inline-flex;align-items:center;gap:8px;padding:0.5rem 1rem;border-radius:40px;background:#ffffffcc}
-.login-page{max-width:540px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.login-logo{background:#eef3fc;width:85px;height:85px;border-radius:30px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;box-shadow:0 4px 12px rgba(0,0,0,0.05)}
-.login-logo i{font-size:2.5rem;color:#0a2540}
-.login-title{font-size:1.8rem;font-weight:700;color:#0a2540;text-align:center;margin:0 0 1.5rem}
-.login-card{background:#fff;border-radius:32px;box-shadow:0 20px 35px -12px rgba(0,0,0,0.08);padding:1.8rem 2rem 2rem;border:1px solid #e9edf2;text-align:left;width:100%}
-.change-type-link{text-align:right;margin-bottom:1.2rem}
-.change-type-link span{font-size:0.8rem;background:#f0f4f9;padding:0.3rem 0.9rem;border-radius:30px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;color:#2c4e6e}
-.reg-form-container{display:flex;flex-direction:column;gap:1.2rem}
-.input-field{display:flex;flex-direction:column;gap:6px;width:100%}
-.input-field label{font-size:0.75rem;font-weight:700;text-transform:uppercase;color:#0a2540;letter-spacing:0.5px}
-.input-field input,.input-field select{padding:12px 14px;border:1px solid #dce3ea;border-radius:20px;font-family:inherit;outline:0;font-size:0.9rem;width:100%;background:#fff}
-.input-field input:focus,.input-field select:focus{border-color:#0a2540;box-shadow:0 0 0 2px rgba(10,37,64,0.1)}
-.search-select-wrapper{position:relative;width:100%}
-.search-input{width:100%;padding:12px 14px;border:1px solid #dce3ea;border-radius:20px;font-family:inherit;font-size:0.9rem;outline:0;cursor:pointer;background:#fff}
-.search-input:focus{border-color:#0a2540;box-shadow:0 0 0 2px rgba(10,37,64,0.1)}
-.search-dropdown{position:absolute;top:100%;left:0;right:0;max-height:250px;overflow-y:auto;background:#fff;border:1px solid #dce3ea;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);z-index:100;display:none;margin-top:4px}
-.search-dropdown.show{display:block}
-.search-option{padding:10px 14px;cursor:pointer;font-size:0.9rem}
-.search-option:hover{background:#eef3fc}
-.search-option.selected{background:#0a2540;color:#fff}
-.no-results{padding:10px 14px;color:#999;text-align:center}
-.password-wrapper{position:relative;width:100%}
-.password-wrapper input{width:100%;padding-right:42px}
-.reg-toggle-btn{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:0 0;border:none;cursor:pointer;color:#8ba0b5}
-.error-message{font-size:0.7rem;color:#dc2626;margin-top:2px;display:none}
-.error-message.show{display:block}
-.password-hint{font-size:0.65rem;color:#7c8e9e;margin-top:4px}
-.login-btn{background:#0d2137;width:100%;padding:14px;border:none;border-radius:40px;font-weight:700;font-size:1rem;color:#fff;cursor:pointer;transition:0.2s;margin:0.8rem 0 1rem;display:flex;align-items:center;justify-content:center;gap:10px}
-.login-btn:disabled{opacity:0.5;cursor:not-allowed}
-.login-btn:hover:not(:disabled){background:#123e60;transform:translateY(-2px)}
-.register-link{text-align:center;font-size:0.85rem;color:#4a627a;border-top:1px solid #eef2f6;padding-top:1.2rem}
-.register-link a{color:#0d2137;font-weight:700;text-decoration:none}
-.input-group{margin-bottom:1.2rem;position:relative}
-.input-group label{display:block;font-size:0.8rem;font-weight:700;text-transform:uppercase;color:#0d2137;margin-bottom:6px;letter-spacing:0.5px}
-.input-wrapper{position:relative;display:flex;align-items:center}
-.input-icon{position:absolute;left:16px;color:#8ba0b5;z-index:2}
-.input-group input{width:100%;padding:14px 16px 14px 45px;border:1px solid #dce3ea;border-radius:24px;font-size:0.95rem;font-family:inherit;outline:0;background:#fff}
-.input-group input:focus{border-color:#0a2540;box-shadow:0 0 0 3px rgba(10,37,64,0.1)}
-.password-toggle-btn{position:absolute;right:14px;background:0 0;border:none;cursor:pointer;color:#8ba0b5}
-.login-options-row{display:flex;justify-content:space-between;align-items:center;margin:1rem 0 1.8rem;font-size:0.85rem}
-.checkbox-label{display:flex;align-items:center;gap:8px;cursor:pointer;color:#4a627a}
-.checkbox-label input{width:16px;height:16px;accent-color:#0a2540}
-.forgot-link{color:#0a2540;text-decoration:none;font-weight:600;border-bottom:1px dashed #b9cfeb;cursor:pointer}
-.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center}
-.modal-overlay.show{display:flex}
-.modal-container{background:#fff;border-radius:32px;max-width:400px;width:90%;padding:2rem;text-align:center}
-.modal-container h3{font-size:1.5rem;color:#0a2540;margin-bottom:0.5rem}
-.modal-container p{color:#5f7f9a;margin-bottom:1.5rem}
-.modal-input{width:100%;padding:12px 16px;border:1px solid #dce3ea;border-radius:24px;margin-bottom:1.5rem}
-.modal-buttons{display:flex;gap:1rem;justify-content:center}
-.modal-btn{padding:10px 20px;border-radius:40px;border:none;font-weight:600;cursor:pointer}
-.modal-btn-primary{background:#0a2540;color:#fff}
-.modal-btn-secondary{background:#eef3fc;color:#0a2540}
-.modal-message{margin-top:1rem;font-size:0.85rem;padding:0.75rem;border-radius:16px;display:none}
-.modal-message.success{display:block;background:#d1fae5;color:#065f46}
-.modal-message.error{display:block;background:#fee2e2;color:#991b1b}
-@media (max-width:560px){.login-card{margin:0 1rem;padding:1.5rem}.selection-screen{padding:1.8rem 1rem 0}.footer-note{width:calc(100% + 2rem);margin-left:-1rem}.login-title{font-size:1.5rem}.modal-container{padding:1.5rem}}
-</style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Qanoon 24/7</title>
+<meta name="description" content="Comprehensive legal guidance for citizens, students, and professionals."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-<div class="app-container">
-<div id="selectionScreen" class="selection-screen">
-<h1>Create Your Account</h1>
-<div class="subhead">Select your account type to get started</div>
-<div class="account-options">
-<div class="option-card" data-type="public"><div class="card-icon"><i class="fas fa-users"></i></div><h3>Public</h3><p>For citizens</p></div>
-<div class="option-card" data-type="lawstudent"><div class="card-icon"><i class="fas fa-graduation-cap"></i></div><h3>Law Student</h3><p>For students</p></div>
-<div class="option-card" data-type="lawyer"><div class="card-icon"><i class="fas fa-briefcase"></i></div><h3>Lawyer</h3><p>For legal professionals</p></div>
-</div>
-<div class="footer-note"><i class="far fa-copyright"></i> 2026 Empowering citizens and legal professionals. All rights reserved.</div>
-</div>
 
-<div id="mainFormsWrapper" class="main-forms-wrapper">
-<div class="portal-container">
-<button id="backToHomeBtn" class="back-to-home"><i class="fas fa-arrow-left"></i> Back to account types</button>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="brand">
+        <span class="brand-icon">⚖</span>
+        <span class="brand-text">QANOON 24/7<br/><small>LEGAL GUIDELINES</small></span>
+      </a>
 
-<div id="publicPanel" style="display:block">
-<div id="publicLoginForm" class="login-page"><div class="login-logo"><i class="fas fa-users"></i></div><div class="login-title">Public Login</div><div class="login-card"><div class="change-type-link"><span id="switchPublicToReg">Change account type</span></div><div class="input-group"><label>Email or Username</label><div class="input-wrapper"><i class="fas fa-envelope input-icon"></i><input type="text" id="pubLoginUser" placeholder="Enter your email or username"></div></div><div class="input-group"><label>Password</label><div class="input-wrapper"><i class="fas fa-lock input-icon"></i><input type="password" id="pubLoginPass" placeholder="Enter your password"><button type="button" class="password-toggle-btn" data-target="pubLoginPass"><i class="far fa-eye-slash"></i></button></div></div><div class="login-options-row"><label class="checkbox-label"><input type="checkbox"> Remember me</label><a class="forgot-link" id="forgotPasswordBtn">Forgot password?</a></div><button class="login-btn" id="pubLoginBtn">Login</button><div class="register-link">Don't have an account? <a href="#" id="publicRegSwitchLink">Register here</a></div></div></div>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" class="active">Home</a>
+        <a href="legalarticles.html">Legal Articles</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="forms.html">Login</a>
+        <a href="forms.html">Register</a>
+      </nav>
+      <form class="search" onsubmit="event.preventDefault(); alert('Searching: ' + this.q.value);">
+        <input name="q" type="search" placeholder="Search Bar" aria-label="Search"/>
+        <button type="submit" aria-label="Search">🔍</button>
+      </form>
 
-<div id="publicRegForm" class="login-page" style="display:none"><div class="login-title">Public Registration</div><div class="login-card"><div class="change-type-link"><span id="switchPublicToLogin"><i class="fas fa-arrow-left"></i> Back to Login</span></div><div class="reg-form-container"><div class="input-field"><label>Full Name</label><input type="text" id="pubFullName" placeholder="Full Name"></div><div class="input-field"><label>CNIC</label><input type="text" id="pubCnic" placeholder="00000-0000000-0"><div class="error-message" id="pubCnicError">Only numbers & dashes allowed</div></div><div class="input-field"><label>Phone Number</label><input type="tel" id="pubPhone" placeholder="03xxxxxxxxxx"><div class="error-message" id="pubPhoneError">Only digits 0-9</div></div><div class="input-field"><label>Email</label><input type="email" id="pubEmail" placeholder="example@gmail.com"><div class="error-message" id="pubEmailError">Invalid email (.com)</div></div><div class="input-field"><label>District</label><div class="search-select-wrapper" id="pubDistrictWrapper"><input type="text" class="search-input" placeholder="Search & select district" autocomplete="off"><div class="search-dropdown"></div><input type="hidden" id="pubDistrict" value=""></div><div class="error-message" id="pubDistrictError">Please select a district</div></div><div class="input-field"><label>Occupation</label><input type="text" id="pubOccupation" placeholder="Occupation"></div><div class="input-field"><label>QUALIFICATION</label><input type="text" id="pubQualification" placeholder="e.g., Matric, Intermediate, Bachelor, Master, LLB, etc."></div><div class="input-field"><label>DATE OF BIRTH</label><input type="date" id="pubDob"></div><div class="input-field"><label>GENDER</label><select id="pubGender"><option value="">Select Gender</option><option value="male">Male</option><option value="female">Female</option><option value="other">Other</option></select></div><div class="input-field"><label>MARITAL STATUS</label><select id="pubMaritalStatus"><option value="">Select Status</option><option value="Single">Single</option><option value="Married">Married</option><option value="divorced">Divorced</option><option value="Widow">Widow</option></select></div><div class="input-field"><label>Username</label><input type="text" id="pubUsername" placeholder="Username"></div><div class="input-field"><label>Security Question</label><select id="pubSecQ"><option>Select a question</option><option>In which city you were born?</option><option>What is the name of your first school?</option><option>Which skill do you value most in yourself?</option></select></div><div class="input-field"><label>Security Answer</label><input type="text" id="pubSecA" placeholder="Your answer"></div><div class="input-field"><label>Password</label><div class="password-wrapper"><input type="password" id="pubRegPass" placeholder="Password"><button type="button" class="reg-toggle-btn" data-target="pubRegPass"><i class="far fa-eye-slash"></i></button></div><div class="error-message" id="pubPassError">Password must be 8+ chars, 1 Capital, 1 Number, 1 Special</div><div class="password-hint">Example: Pass@123</div></div><div class="input-field"><label>Confirm Password</label><div class="password-wrapper"><input type="password" id="pubConfirmPass" placeholder="Confirm password"><button type="button" class="reg-toggle-btn" data-target="pubConfirmPass"><i class="far fa-eye-slash"></i></button></div><div class="error-message" id="pubConfirmError">Passwords do not match</div></div></div><button class="login-btn" id="pubRegisterAction" disabled>Create Account</button><div class="register-link"><a href="#" id="publicLoginSwitchLink">Already have account? Login</a></div></div></div></div>
+      <button class="hamburger" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+    </div>
+  </header>
 
-<div id="lawstudentPanel" style="display:none">
-<div id="studentLoginForm" class="login-page"><div class="login-logo"><i class="fas fa-graduation-cap"></i></div><div class="login-title">Law Student Login</div><div class="login-card"><div class="change-type-link"><span id="switchStudentToReg">Change account type</span></div><div class="input-group"><label>Email or Username</label><div class="input-wrapper"><i class="fas fa-envelope input-icon"></i><input type="text" id="studentLoginUser" placeholder="Enter your email or username"></div></div><div class="input-group"><label>Password</label><div class="input-wrapper"><i class="fas fa-lock input-icon"></i><input type="password" id="studentLoginPass" placeholder="Enter your password"><button type="button" class="password-toggle-btn" data-target="studentLoginPass"><i class="far fa-eye-slash"></i></button></div></div><div class="login-options-row"><label class="checkbox-label"><input type="checkbox"> Remember me</label><a class="forgot-link" id="forgotPasswordStudentBtn">Forgot password?</a></div><button class="login-btn" id="studentLoginBtn">Login</button><div class="register-link">Don't have an account? <a href="#" id="studentRegSwitchLink">Register here</a></div></div></div>
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
 
-<div id="studentRegForm" class="login-page" style="display:none"><div class="login-title">Law Student Registration</div><div class="login-card"><div class="change-type-link"><span id="switchStudentToLogin"><i class="fas fa-arrow-left"></i> Back to Login</span></div><div class="reg-form-container"><div class="input-field"><label>Full Name</label><input type="text" id="studentFullName" placeholder="Full Name"></div><div class="input-field"><label>CNIC</label><input type="text" id="studentCnic" placeholder="00000-0000000-0"><div class="error-message" id="studentCnicError">Only numbers & dashes</div></div><div class="input-field"><label>Phone Number</label><input type="tel" id="studentPhone" placeholder="03xxxxxxxxx"><div class="error-message" id="studentPhoneError">Only digits</div></div><div class="input-field"><label>Email</label><input type="email" id="studentEmail" placeholder="student@gmail.com"><div class="error-message" id="studentEmailError">Invalid email (.com)</div></div><div class="input-field"><label>University Name</label><div class="search-select-wrapper" id="studentUniversityWrapper"><input type="text" class="search-input" placeholder="Search & select university" autocomplete="off"><div class="search-dropdown"></div><input type="hidden" id="studentUni" value=""></div><div class="error-message" id="studentUniError">Please select a university</div></div><div class="input-field"><label>University Registration No.</label><input type="text" id="studentRegNo" placeholder="Registration Number"></div><div class="input-field"><label>District / Domicile</label><div class="search-select-wrapper" id="studentDistrictWrapper"><input type="text" class="search-input" placeholder="Search & select district" autocomplete="off"><div class="search-dropdown"></div><input type="hidden" id="studentDistrict" value=""></div><div class="error-message" id="studentDistrictError">Please select a district</div></div><div class="input-field"><label>Username</label><input type="text" id="studentUsername" placeholder="Username"></div><div class="input-field"><label>Security Question</label><select id="studentSecQ"><option>Select a question</option><option>In which city you were born?</option><option>What is the name of your first school?</option><option>What is your favourite book?</option></select></div><div class="input-field"><label>Security Answer</label><input type="text" id="studentSecA" placeholder="Your answer"></div><div class="input-field"><label>Password</label><div class="password-wrapper"><input type="password" id="studentPass" placeholder="Password"><button type="button" class="reg-toggle-btn" data-target="studentPass"><i class="far fa-eye-slash"></i></button></div><div class="error-message" id="studentPassError">Password: 8+ chars, 1 Capital, 1 Number, 1 Special</div><div class="password-hint">Example: Student@123</div></div><div class="input-field"><label>Confirm Password</label><div class="password-wrapper"><input type="password" id="studentConfirmPass" placeholder="Confirm password"><button type="button" class="reg-toggle-btn" data-target="studentConfirmPass"><i class="far fa-eye-slash"></i></button></div><div class="error-message" id="studentConfirmError">Passwords do not match</div></div></div><button class="login-btn" id="studentRegisterAction" disabled>Create Account</button><div class="register-link"><a href="#" id="studentLoginSwitchLink">Already have account? Login</a></div></div></div></div>
+    <div class="container hero-content">
+      <h1>EMPOWERING JUSTICE THROUGH<br/>CLARITY & KNOWLEDGE</h1>
+      <p>
+        Comprehensive Legal Guidance for Citizens, Students, and Professionals.<br/>
+        Start Your Journey Today.
+      </p>
+    </div>
+  </section>
 
-<div id="lawyerPanel" style="display:none">
-<div id="lawyerLoginForm" class="login-page"><div class="login-logo"><i class="fas fa-briefcase"></i></div><div class="login-title">Lawyer Login</div><div class="login-card"><div class="change-type-link"><span id="switchLawyerToReg">Change account type</span></div><div class="input-group"><label>Email or Username</label><div class="input-wrapper"><i class="fas fa-envelope input-icon"></i><input type="text" id="lawyerLoginUser" placeholder="Enter your email or username"></div></div><div class="input-group"><label>Password</label><div class="input-wrapper"><i class="fas fa-lock input-icon"></i><input type="password" id="lawyerLoginPass" placeholder="Enter your password"><button type="button" class="password-toggle-btn" data-target="lawyerLoginPass"><i class="far fa-eye-slash"></i></button></div></div><div class="login-options-row"><label class="checkbox-label"><input type="checkbox"> Remember me</label><a class="forgot-link" id="forgotPasswordLawyerBtn">Forgot password?</a></div><button class="login-btn" id="lawyerLoginBtn">Login</button><div class="register-link">Don't have an account? <a href="#" id="lawyerRegSwitchLink">Register here</a></div></div></div>
+  <section class="cards-section">
+    <div class="container cards">  <article class="card" id="public">
+        <h3>GENERAL PUBLIC</h3>
+        <div class="icon-row">👨‍👩‍👧 🏠 📄</div>
+        <h4>Navigating Your Rights</h4>
 
-<div id="lawyerRegForm" class="login-page" style="display:none"><div class="login-title">Lawyer Registration</div><div class="login-card"><div class="change-type-link"><span id="switchLawyerToLogin"><i class="fas fa-arrow-left"></i> Back to Login</span></div><div class="reg-form-container"><div class="input-field"><label>Full Name</label><input type="text" id="lawyerFullName" placeholder="Full Name"></div><div class="input-field"><label>CNIC</label><input type="text" id="lawyerCnic" placeholder="00000-0000000-0"><div class="error-message" id="lawyerCnicError">Only numbers & dashes</div></div><div class="input-field"><label>Phone Number</label><input type="tel" id="lawyerPhone" placeholder="03xxxxxxxxx"><div class="error-message" id="lawyerPhoneError">Only digits</div></div><div class="input-field"><label>Email</label><input type="email" id="lawyerEmail" placeholder="lawyer@gmail.com"><div class="error-message" id="lawyerEmailError">Invalid email (.com)</div></div><div class="input-field"><label>Bar Council Enrollment No.</label><input type="text" id="lawyerBarNo" placeholder="Enrollment Number"></div><div class="input-field"><label>District</label><div class="search-select-wrapper" id="lawyerDistrictWrapper"><input type="text" class="search-input" placeholder="Search & select district" autocomplete="off"><div class="search-dropdown"></div><input type="hidden" id="lawyerDistrict" value=""></div><div class="error-message" id="lawyerDistrictError">Please select a district</div></div><div class="input-field"><label>Username</label><input type="text" id="lawyerUsername" placeholder="Username"></div><div class="input-field"><label>Security Question</label><select id="lawyerSecQ"><option>Select a question</option><option>In which city you were born?</option><option>What is the name of your first school?</option><option>Which skill do you value most in yourself?</option></select></div><div class="input-field"><label>Security Answer</label><input type="text" id="lawyerSecA" placeholder="Your answer"></div><div class="input-field"><label>Password</label><div class="password-wrapper"><input type="password" id="lawyerPass" placeholder="Password"><button type="button" class="reg-toggle-btn" data-target="lawyerPass"><i class="far fa-eye-slash"></i></button></div><div class="error-message" id="lawyerPassError">Password: 8+ chars, 1 Capital, 1 Number, 1 Special</div><div class="password-hint">Example: Lawyer@123</div></div><div class="input-field"><label>Confirm Password</label><div class="password-wrapper"><input type="password" id="lawyerConfirmPass" placeholder="Confirm password"><button type="button" class="reg-toggle-btn" data-target="lawyerConfirmPass"><i class="far fa-eye-slash"></i></button></div><div class="error-message" id="lawyerConfirmError">Passwords do not match</div></div></div><button class="login-btn" id="lawyerRegisterAction" disabled>Create Account</button><div class="register-link"><a href="#" id="lawyerLoginSwitchLink">Already have account? Login</a></div></div></div></div>
-</div>
-</div>
-</div>
+        <div class="pills">
+          <a href="#">Family Law</a>
+          <a href="#">Property Disputes</a>
+          <a href="#">Know Your Rights</a>
+        </div>
+      </article>
 
-<div id="forgotPasswordModal" class="modal-overlay"><div class="modal-container"><i class="fas fa-key" style="font-size:2rem;color:#0a2540"></i><h3>Reset Password</h3><p>Enter your registered email to receive reset code</p><input type="email" id="resetEmail" class="modal-input" placeholder="Your email address"><div class="modal-buttons"><button class="modal-btn modal-btn-secondary" id="closeModalBtn">Cancel</button><button class="modal-btn modal-btn-primary" id="sendResetCodeBtn">Send</button></div><div id="modalMessage" class="modal-message"></div></div></div>
+      <article class="card" id="students">
+        <h3>LAW STUDENTS</h3>
+        <div class="icon-row">🎓 📚 ⚖</div>
+        <h4>Academic & Practical Excellence</h4>
 
-<script>
-const pakistanDistricts=["Attock","Bahawalnagar","Bahawalpur","Bhakkar","Chakwal","Chiniot","Dera Ghazi Khan","Faisalabad","Gujranwala","Gujrat","Hafizabad","Jhang","Jhelum","Kasur","Khanewal","Khushab","Lahore","Layyah","Lodhran","Mandi Bahauddin","Mianwali","Multan","Muzaffargarh","Narowal","Nankana Sahib","Okara","Pakpattan","Rahim Yar Khan","Rajanpur","Rawalpindi","Sahiwal","Sargodha","Sheikhupura","Sialkot","Toba Tek Singh","Vehari","Talagang","Murree","Karachi Central","Karachi East","Karachi South","Karachi West","Karachi Korangi","Karachi Malir","Karachi Keamari","Hyderabad","Sukkur","Larkana","Mirpur Khas","Nawabshah","Dadu","Ghotki","Jacobabad","Jamshoro","Kashmore","Khairpur","Matiari","Naushahro Feroze","Qambar Shahdadkot","Sanghar","Shikarpur","Tando Allahyar","Tando Muhammad Khan","Tharparkar","Thatta","Umerkot","Sujawal","Badin","Abbottabad","Bannu","Battagram","Buner","Charsadda","Chitral","Dera Ismail Khan","Hangu","Haripur","Karak","Kohat","Kohistan","Lakki Marwat","Lower Dir","Malakand","Mansehra","Mardan","Nowshera","Peshawar","Shangla","Swabi","Swat","Tank","Torghar","Upper Dir","Awaran","Barkhan","Chagai","Dera Bugti","Gwadar","Harnai","Jafarabad","Jhal Magsi","Kalat","Kech (Turbat)","Kharan","Khuzdar","Kohlu","Lasbela","Loralai","Mastung","Musakhel","Nasirabad","Nushki","Panjgur","Pishin","Quetta","Qilla Abdullah","Qilla Saifullah","Sherani","Sibi","Washuk","Zhob","Ziarat","Islamabad","Muzaffarabad","Bagh","Bhimber","Hattian Bala","Haveli","Kotli","Mirpur","Neelum","Poonch","Sudhnoti","Gilgit","Skardu","Diamer","Ghizer","Ghanche","Astore","Hunza","Nagar","Shigar","Kharmang"];
-const lawUniversities=["Quaid-i-Azam University, Islamabad","International Islamic University, Islamabad","National University of Sciences & Technology (NUST), Islamabad","Bahria University, Islamabad","Riphah International University, Islamabad","University of the Punjab (Punjab University Law College), Lahore","Lahore University of Management Sciences (LUMS) - SAHSOL, Lahore","University of Management & Technology (UMT) - School of Law & Policy, Lahore","University of Karachi, Karachi","Shaheed Zulfiqar Ali Bhutto University of Law (SZABUL), Karachi","Bahauddin Zakariya University (BZU), Multan","University of Peshawar (Khyber Law College), Peshawar","University of Balochistan (University Law College), Quetta"];
-function createSearchSelect(w,h,d,e,c){const ww=document.getElementById(w);if(!ww)return;const inp=ww.querySelector('.search-input'),dd=ww.querySelector('.search-dropdown'),hid=document.getElementById(h);if(!inp||!dd)return;function ro(t=''){const f=d.filter(i=>i.toLowerCase().includes(t.toLowerCase()));dd.innerHTML='';if(f.length===0){const nr=document.createElement('div');nr.className='no-results';nr.textContent='No results found';dd.appendChild(nr)}else f.forEach(i=>{const opt=document.createElement('div');opt.className='search-option';opt.textContent=i;opt.onclick=()=>{inp.value=i;if(hid)hid.value=i;dd.classList.remove('show');const ed=document.getElementById(e);if(ed)ed.classList.remove('show');inp.style.borderColor='#dce3ea';if(c)c()};dd.appendChild(opt)})}inp.addEventListener('input',e=>{ro(e.target.value);dd.classList.add('show')});inp.addEventListener('click',()=>{ro(inp.value);dd.classList.add('show')});document.addEventListener('click',e=>{if(!ww.contains(e.target))dd.classList.remove('show')});ro('')}
-function validateEmail(e){return/^[^\s@]+@[^\s@]+\.com$/i.test(e)}
-function validatePassword(p){return/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(p)}
-function checkPublicReg(){const f=!!document.getElementById('pubFullName')?.value.trim()&&!!document.getElementById('pubCnic')?.value.trim()&&!!document.getElementById('pubPhone')?.value.trim()&&!!document.getElementById('pubEmail')?.value.trim()&&!!document.getElementById('pubDistrict')?.value&&!!document.getElementById('pubOccupation')?.value.trim()&&!!document.getElementById('pubQualification')?.value.trim()&&!!document.getElementById('pubDob')?.value&&!!document.getElementById('pubGender')?.value&&!!document.getElementById('pubMaritalStatus')?.value&&!!document.getElementById('pubUsername')?.value.trim()&&!!document.getElementById('pubSecA')?.value.trim()&&!!document.getElementById('pubRegPass')?.value&&!!document.getElementById('pubConfirmPass')?.value;const btn=document.getElementById('pubRegisterAction');if(btn)btn.disabled=!f}
-function checkStudentReg(){const f=!!document.getElementById('studentFullName')?.value.trim()&&!!document.getElementById('studentCnic')?.value.trim()&&!!document.getElementById('studentPhone')?.value.trim()&&!!document.getElementById('studentEmail')?.value.trim()&&!!document.getElementById('studentUni')?.value&&!!document.getElementById('studentRegNo')?.value.trim()&&!!document.getElementById('studentDistrict')?.value&&!!document.getElementById('studentUsername')?.value.trim()&&!!document.getElementById('studentSecA')?.value.trim()&&!!document.getElementById('studentPass')?.value&&!!document.getElementById('studentConfirmPass')?.value;const btn=document.getElementById('studentRegisterAction');if(btn)btn.disabled=!f}
-function checkLawyerReg(){const ids=['lawyerFullName','lawyerCnic','lawyerPhone','lawyerEmail','lawyerBarNo','lawyerDistrict','lawyerUsername','lawyerSecA','lawyerPass','lawyerConfirmPass'];let all=ids.every(id=>!!document.getElementById(id)?.value.trim());const btn=document.getElementById('lawyerRegisterAction');if(btn)btn.disabled=!all}
-function attachVal(){const pP=document.getElementById('pubPhone'),pC=document.getElementById('pubCnic'),pE=document.getElementById('pubEmail'),pPa=document.getElementById('pubRegPass'),pCo=document.getElementById('pubConfirmPass');if(pP)pP.addEventListener('input',()=>{const v=pP.value;const e=document.getElementById('pubPhoneError');if(/^\d*$/.test(v)||v===''){pP.style.borderColor="#dce3ea";e.classList.remove('show')}else{pP.style.borderColor="#dc2626";e.classList.add('show')}});if(pC)pC.addEventListener('input',()=>{const v=pC.value;const e=document.getElementById('pubCnicError');if(/^[\d\-]*$/.test(v)||v===''){pC.style.borderColor="#dce3ea";e.classList.remove('show')}else{pC.style.borderColor="#dc2626";e.classList.add('show')}});if(pE)pE.addEventListener('blur',()=>{const em=pE.value.trim();const e=document.getElementById('pubEmailError');if(em&&!validateEmail(em)){pE.style.borderColor="#dc2626";e.classList.add('show')}else{pE.style.borderColor="#dce3ea";e.classList.remove('show')}});if(pPa)pPa.addEventListener('blur',()=>{const pa=pPa.value;const e=document.getElementById('pubPassError');if(pa&&!validatePassword(pa)){pPa.style.borderColor="#dc2626";e.classList.add('show')}else{pPa.style.borderColor="#dce3ea";e.classList.remove('show')}});if(pPa&&pCo)pCo.addEventListener('blur',()=>{const e=document.getElementById('pubConfirmError');if(pPa.value!==pCo.value&&pCo.value){pCo.style.borderColor="#dc2626";e.classList.add('show')}else{pCo.style.borderColor="#dce3ea";e.classList.remove('show')}});['pubFullName','pubCnic','pubPhone','pubEmail','pubOccupation','pubQualification','pubUsername','pubSecA','pubRegPass','pubConfirmPass','pubDob','pubGender','pubMaritalStatus'].forEach(id=>{const f=document.getElementById(id);if(f){f.addEventListener('input',checkPublicReg);f.addEventListener('blur',checkPublicReg)}});['studentFullName','studentCnic','studentPhone','studentEmail','studentRegNo','studentUsername','studentSecA','studentPass','studentConfirmPass'].forEach(id=>{const f=document.getElementById(id);if(f){f.addEventListener('input',checkStudentReg);f.addEventListener('blur',checkStudentReg)}});['lawyerFullName','lawyerCnic','lawyerPhone','lawyerEmail','lawyerBarNo','lawyerUsername','lawyerSecA','lawyerPass','lawyerConfirmPass'].forEach(id=>{const f=document.getElementById(id);if(f){f.addEventListener('input',checkLawyerReg);f.addEventListener('blur',checkLawyerReg)}});createSearchSelect('pubDistrictWrapper','pubDistrict',pakistanDistricts,'pubDistrictError',checkPublicReg);createSearchSelect('studentDistrictWrapper','studentDistrict',pakistanDistricts,'studentDistrictError',checkStudentReg);createSearchSelect('studentUniversityWrapper','studentUni',lawUniversities,'studentUniError',checkStudentReg);createSearchSelect('lawyerDistrictWrapper','lawyerDistrict',pakistanDistricts,'lawyerDistrictError',checkLawyerReg);document.querySelectorAll('.password-toggle-btn,.reg-toggle-btn').forEach(btn=>{btn.addEventListener('click',function(){const tid=this.getAttribute('data-target'),inp=document.getElementById(tid);if(inp){const t=inp.type==='password'?'text':'password';inp.type=t;const ic=this.querySelector('i');if(ic){if(t==='text'){ic.classList.remove('fa-eye-slash');ic.classList.add('fa-eye')}else{ic.classList.remove('fa-eye');ic.classList.add('fa-eye-slash')}}}})});checkPublicReg();checkStudentReg();checkLawyerReg()}
-const selScr=document.getElementById('selectionScreen'),mainWrap=document.getElementById('mainFormsWrapper'),backBtn=document.getElementById('backToHomeBtn'),optCards=document.querySelectorAll('.option-card');
-function showMainForms(r){selScr.style.display='none';mainWrap.style.display='block';document.getElementById('publicPanel').style.display='none';document.getElementById('lawstudentPanel').style.display='none';document.getElementById('lawyerPanel').style.display='none';if(r==='public'){document.getElementById('publicPanel').style.display='block';document.getElementById('publicLoginForm').style.display='block';document.getElementById('publicRegForm').style.display='none'}else if(r==='lawstudent'){document.getElementById('lawstudentPanel').style.display='block';document.getElementById('studentLoginForm').style.display='block';document.getElementById('studentRegForm').style.display='none'}else if(r==='lawyer'){document.getElementById('lawyerPanel').style.display='block';document.getElementById('lawyerLoginForm').style.display='block';document.getElementById('lawyerRegForm').style.display='none'}attachVal()}
-optCards.forEach(c=>c.addEventListener('click',()=>showMainForms(c.getAttribute('data-type'))));
-backBtn.addEventListener('click',()=>{selScr.style.display='block';mainWrap.style.display='none'});
-document.getElementById('switchPublicToReg')?.addEventListener('click',()=>{document.getElementById('publicLoginForm').style.display='none';document.getElementById('publicRegForm').style.display='block';attachVal()});
-document.getElementById('publicRegSwitchLink')?.addEventListener('click',e=>{e.preventDefault();document.getElementById('publicLoginForm').style.display='none';document.getElementById('publicRegForm').style.display='block';attachVal()});
-document.getElementById('switchPublicToLogin')?.addEventListener('click',()=>{document.getElementById('publicLoginForm').style.display='block';document.getElementById('publicRegForm').style.display='none'});
-document.getElementById('publicLoginSwitchLink')?.addEventListener('click',e=>{e.preventDefault();document.getElementById('publicLoginForm').style.display='block';document.getElementById('publicRegForm').style.display='none'});
-document.getElementById('switchStudentToReg')?.addEventListener('click',()=>{document.getElementById('studentLoginForm').style.display='none';document.getElementById('studentRegForm').style.display='block';attachVal()});
-document.getElementById('studentRegSwitchLink')?.addEventListener('click',e=>{e.preventDefault();document.getElementById('studentLoginForm').style.display='none';document.getElementById('studentRegForm').style.display='block';attachVal()});
-document.getElementById('switchStudentToLogin')?.addEventListener('click',()=>{document.getElementById('studentLoginForm').style.display='block';document.getElementById('studentRegForm').style.display='none'});
-document.getElementById('studentLoginSwitchLink')?.addEventListener('click',e=>{e.preventDefault();document.getElementById('studentLoginForm').style.display='block';document.getElementById('studentRegForm').style.display='none'});
-document.getElementById('switchLawyerToReg')?.addEventListener('click',()=>{document.getElementById('lawyerLoginForm').style.display='none';document.getElementById('lawyerRegForm').style.display='block';attachVal()});
-document.getElementById('lawyerRegSwitchLink')?.addEventListener('click',e=>{e.preventDefault();document.getElementById('lawyerLoginForm').style.display='none';document.getElementById('lawyerRegForm').style.display='block';attachVal()});
-document.getElementById('switchLawyerToLogin')?.addEventListener('click',()=>{document.getElementById('lawyerLoginForm').style.display='block';document.getElementById('lawyerRegForm').style.display='none'});
-document.getElementById('lawyerLoginSwitchLink')?.addEventListener('click',e=>{e.preventDefault();document.getElementById('lawyerLoginForm').style.display='block';document.getElementById('lawyerRegForm').style.display='none'});
-const modal=document.getElementById('forgotPasswordModal'),resetEmail=document.getElementById('resetEmail'),modalMsg=document.getElementById('modalMessage');
-function showModal(){resetEmail.value='';modalMsg.className='modal-message';modalMsg.style.display='none';modal.classList.add('show')}
-function hideModal(){modal.classList.remove('show')}
-function sendCode(){const em=resetEmail.value.trim();if(!em){modalMsg.className='modal-message error';modalMsg.style.display='block';modalMsg.textContent='Please enter email';return}if(!validateEmail(em)){modalMsg.className='modal-message error';modalMsg.style.display='block';modalMsg.textContent='Valid email with .com required';return}modalMsg.className='modal-message success';modalMsg.style.display='block';modalMsg.textContent=`✅ Reset code sent to ${em}`;setTimeout(()=>resetEmail.value='',2000);setTimeout(()=>hideModal(),3000)}
-document.getElementById('forgotPasswordBtn')?.addEventListener('click',e=>{e.preventDefault();showModal()});
-document.getElementById('forgotPasswordStudentBtn')?.addEventListener('click',e=>{e.preventDefault();showModal()});
-document.getElementById('forgotPasswordLawyerBtn')?.addEventListener('click',e=>{e.preventDefault();showModal()});
-document.getElementById('closeModalBtn')?.addEventListener('click',hideModal);
-document.getElementById('sendResetCodeBtn')?.addEventListener('click',sendCode);
-modal?.addEventListener('click',e=>{if(e.target===modal)hideModal()});
-resetEmail?.addEventListener('keypress',e=>{if(e.key==='Enter')sendCode()});
-document.getElementById('pubRegisterAction')?.addEventListener('click',()=>alert("✅ Public registration completed successfully!"));
-document.getElementById('studentRegisterAction')?.addEventListener('click',()=>alert("✅ Law student registration submitted!"));
-document.getElementById('lawyerRegisterAction')?.addEventListener('click',()=>alert("✅ Lawyer registration pending bar verification."));
-document.getElementById('pubLoginBtn')?.addEventListener('click',()=>alert("Public login demo: welcome citizen."));
-document.getElementById('studentLoginBtn')?.addEventListener('click',()=>alert("Law student login simulated."));
-document.getElementById('lawyerLoginBtn')?.addEventListener('click',()=>alert("Lawyer login simulation."));
-attachVal();
-</script>
+        <div class="pills">
+          <a href="#">Legal Resources</a>
+          <a href="#">Law Application</a>
+          <a href="#">Test Your Skills</a>
+        </div>
+      </article>
+        <article class="card" id="pro">
+        <h3>LAWYERS</h3>
+        <div class="icon-row">🏛 💼 📑</div>
+        <h4>Advanced Legal Resources</h4>
+
+        <div class="pills">
+          <a href="#">Statistic Analysis</a>
+          <a href="#">Case Management</a>
+          <a href="#">For Smart Advocates</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <footer id="contact" class="footer">
+    <div class="container footer-inner">
+      <p>© 2026 Qanoon 24/7. All rights reserved.</p>
+
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
