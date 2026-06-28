@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qanoon in Hand - Law Student's Portal</title>
+</head>
+ <link rel="icon" type="image/svg+xml" href="qih-favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css"/>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            background: #faf6ee;
+        }
+</style>
+<body>
+    <header class="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="brand">
+      <span class="brand-text brand-text--simple">
+        <span class="brand-name">QANOON</span>
+        <span class="brand-subtitle">IN HAND</span>
+      </span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="legalarticles.html">Legal Articles</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </nav>
+
+    <form class="search" onsubmit="event.preventDefault(); alert('Searching: ' + this.q.value);">
+      <input name="q" type="search" placeholder="Search Bar" aria-label="Search"/>
+      <button type="submit" aria-label="Search">🔍</button>
+    </form>
+
+    <button class="hamburger" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </div>
+</header>
+<div style="
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    text-align: center;
+    font-family: 'Georgia', serif;
+">
+    <h1 style="
+        font-size: 3rem;
+        color: #1a2a4a;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    ">Coming Soon</h1>
+    
+    <div style="width: 80px; height: 3px; background: #c9a84c; margin: 10px auto;"></div>
+    
+    <p style="
+        font-size: 1.2rem;
+        color: #555;
+        margin-top: 20px;
+        letter-spacing: 2px;
+    ">Stay Tuned — Something Great Is On Its Way</p>
+</div>
+</body>
+</html>

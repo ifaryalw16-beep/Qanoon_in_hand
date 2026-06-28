@@ -24,3 +24,31 @@ window.addEventListener('load',()=>{
     requestAnimationFrame(()=>{c.style.opacity=1;c.style.transform='translateY(0)';});
   });
 });
+function loadNavbar() {
+  const navbarContainer = document.getElementById('navbar-placeholder');
+  if (!navbarContainer) return;
+
+  fetch('navbar.html')
+    .then(response => response.text())
+    .then(data => {
+      navbarContainer.innerHTML = data;
+      highlightActiveLink();
+    });
+}
+
+function highlightActiveLink() {
+  // Finds the current page name (e.g., "about.html")
+  const currentPath = window.location.pathname.split("/").pop() || "index.html";
+  const navLinks = document.querySelectorAll('.nav-links a');
+  
+  navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+}
+
+// Runs the loader automatically when a page finishes loading
+document.addEventListener('DOMContentLoaded', loadNavbar);
