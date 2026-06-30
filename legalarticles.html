@@ -1147,6 +1147,129 @@
     stars.forEach((s, i) => { if (s.classList.contains('active')) val = i + 1; });
     cont.querySelector('.rating-value').innerText = val.toFixed(1);
   });
+  // --- LIVE BACKEND SUBMIT CONNECTION (WITHOUT CHANGING HTML) ---
+async function handleFormSubmit(e) { 
+  e.preventDefault(); 
+
+  // UI ko bina badle, form ke andar se elements ko select karna
+  const formElement = e.target;
+  const authorInput = formElement.querySelector('input[placeholder*="Barrister"]');
+  const titleInput = formElement.querySelector('input[placeholder*="Corporate"]');
+  const abstractTextarea = formElement.querySelector('textarea');
+
+  // Input values uthana
+  const authorName = authorInput ? authorInput.value : "Anonymous";
+  const title = titleInput ? titleInput.value : "";
+  const abstractText = abstractTextarea ? abstractTextarea.value : "";
+
+  // Agar title khali ho to rok do
+  if (!title) {
+      alert("⚠️ Article Title is required!");
+      return;
+  }
+
+  // Data object jo Postman/Backend ke mutabiq hai
+  const requestData = {
+      title: title,
+      description: abstractText,   
+      content: abstractText,       
+      authorName: authorName,
+      category: "Constitutional Law", // Placeholder for presentation
+      readTime: "5 min"
+  };
+
+  try {
+      // Live fetch request to your server
+      const response = await fetch('http://localhost:5000/api/articles/publish', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(requestData)
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+          alert('🎉 Success: Article submitted and saved to MongoDB!');
+          formElement.reset(); // Form khali karne ke liye
+      } else {
+          alert('⚠️ Backend Error: ' + result.message);
+      }
+  } catch (error) {
+      console.error('Connection Error:', error);
+      alert('Could not connect to backend server. Make sure your Node server is running on port 5000!');
+  }
+}
+// --- LIVE FEATURED ARTICLES FETCH (FINAL PRESENTATION FIX) ---
+async function loadFeaturedArticles() {
+    try {
+        const response = await fetch('http://localhost:5000/api/articles/featured');
+        const featuredArticles = await response.json();
+        
+        const feed = document.getElementById('articlesFeed');
+        if (!feed) return;
+
+        featuredArticles.forEach(art => {
+            if (document.getElementById(`featured-${art._id}`)) return;
+
+            // Mapping variables with absolute safety to handle your exact database schema keys
+            const title = art.title || art['Article title'] || "Legal Insight & Commentary";
+            const description = art.description || art.content || art['Abstract/description'] || "In-depth research and critical analysis of law.";
+            const category = art.category || "Constitutional Law";
+            const author = art.authorName || "Legal Expert";
+
+            const articleHTML = `
+                <article class="article-card" id="featured-${art._id}">
+                    <span class="article-tag">${category}</span>
+                    <h2 class="article-title">${title}</h2>
+                    <div class="article-meta">
+                        <span><i class="fa-regular fa-user"></i> ${author}</span>
+                        <span class="dot">●</span>
+                        <span><i class="fa-regular fa-calendar"></i> Just Now</span>
+                        <span class="dot">●</span>
+                        <span>5 min read</span>
+                    </div>
+                    <p class="article-excerpt">${description}</p>
+                    <div class="card-footer">
+                        <div class="interactions">
+                            <button class="action-btn" onclick="toggleLike(this)"><i class="fa-regular fa-heart"></i><span class="count">0</span></button>
+                            <button class="action-btn" onclick="toggleCommentPanel(this)"><i class="fa-regular fa-comment"></i><span class="comment-count">0</span></button>
+                            <button class="btn-extra" onclick="toggleSave(this)"><i class="fa-regular fa-bookmark"></i> Save</button>
+                            <button class="btn-extra" onclick="reportArticle(this)"><i class="fa-regular fa-flag"></i> Report</button>
+                        </div>
+                        <div class="extra-actions">
+                            <a href="#" class="read-more-link" onclick="readMore(event, this)">Read More →</a>
+                        </div>
+                        <div class="rating-container">
+                            <span>Rate:</span>
+                            <div class="stars">
+                                <i class="fa-solid fa-star active" onclick="setRating(this,1)"></i>
+                                <i class="fa-solid fa-star active" onclick="setRating(this,2)"></i>
+                                <i class="fa-solid fa-star active" onclick="setRating(this,3)"></i>
+                                <i class="fa-solid fa-star active" onclick="setRating(this,4)"></i>
+                                <i class="fa-solid fa-star" onclick="setRating(this,5)"></i>
+                            </div>
+                            <span class="rating-value">4.0</span>
+                        </div>
+                    </div>
+                    <div class="comment-panel hidden">
+                        <input type="text" class="comment-name" placeholder="Your Name (Optional)" />
+                        <textarea placeholder="Share your thoughts…"></textarea>
+                        <button class="btn-comment" onclick="submitComment(this)">Post Comment</button>
+                        <div class="comment-list"></div>
+                    </div>
+                </article>
+            `;
+            
+            feed.insertAdjacentHTML('afterbegin', articleHTML);
+        });
+    } catch (error) {
+        console.error('Error loading featured articles:', error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', loadFeaturedArticles);
 </script>
 </body>
 </html>
