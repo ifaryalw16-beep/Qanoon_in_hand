@@ -626,7 +626,7 @@
                 <a href="about.html">About Us</a>
                 <a href="contact.html">Contact</a>
                 <a href="login.html">Login</a>
-                <a href="forms.html">Register</a>
+                <a href="register.html" class="active">Register</a>
             </nav>
             <form class="search" onsubmit="event.preventDefault(); alert('Searching: ' + this.q.value);">
                 <input name="q" type="search" placeholder="Search Bar" aria-label="Search" />
@@ -900,138 +900,523 @@
         </div>
     </div>
 
+    <!-- ============================================ -->
+    <!-- SCRIPTS -->
+    <!-- ============================================ -->
+    <script src="script.js"></script>
+
     <script>
+        // ============================================
+        // DATA - Districts & Universities
+        // ============================================
         const pakistanDistricts = ["Attock", "Bahawalnagar", "Bahawalpur", "Bhakkar", "Chakwal", "Chiniot", "Dera Ghazi Khan", "Faisalabad", "Gujranwala", "Gujrat", "Hafizabad", "Jhang", "Jhelum", "Kasur", "Khanewal", "Khushab", "Lahore", "Layyah", "Lodhran", "Mandi Bahauddin", "Mianwali", "Multan", "Muzaffargarh", "Narowal", "Nankana Sahib", "Okara", "Pakpattan", "Rahim Yar Khan", "Rajanpur", "Rawalpindi", "Sahiwal", "Sargodha", "Sheikhupura", "Sialkot", "Toba Tek Singh", "Vehari", "Talagang", "Murree", "Karachi Central", "Karachi East", "Karachi South", "Karachi West", "Karachi Korangi", "Karachi Malir", "Karachi Keamari", "Hyderabad", "Sukkur", "Larkana", "Mirpur Khas", "Nawabshah", "Dadu", "Ghotki", "Jacobabad", "Jamshoro", "Kashmore", "Khairpur", "Matiari", "Naushahro Feroze", "Qambar Shahdadkot", "Sanghar", "Shikarpur", "Tando Allahyar", "Tando Muhammad Khan", "Tharparkar", "Thatta", "Umerkot", "Sujawal", "Badin", "Abbottabad", "Bannu", "Battagram", "Buner", "Charsadda", "Chitral", "Dera Ismail Khan", "Hangu", "Haripur", "Karak", "Kohat", "Kohistan", "Lakki Marwat", "Lower Dir", "Malakand", "Mansehra", "Mardan", "Nowshera", "Peshawar", "Shangla", "Swabi", "Swat", "Tank", "Torghar", "Upper Dir", "Awaran", "Barkhan", "Chagai", "Dera Bugti", "Gwadar", "Harnai", "Jafarabad", "Jhal Magsi", "Kalat", "Kech (Turbat)", "Kharan", "Khuzdar", "Kohlu", "Lasbela", "Loralai", "Mastung", "Musakhel", "Nasirabad", "Nushki", "Panjgur", "Pishin", "Quetta", "Qilla Abdullah", "Qilla Saifullah", "Sherani", "Sibi", "Washuk", "Zhob", "Ziarat", "Islamabad", "Muzaffarabad", "Bagh", "Bhimber", "Hattian Bala", "Haveli", "Kotli", "Mirpur", "Neelum", "Poonch", "Sudhnoti", "Gilgit", "Skardu", "Diamer", "Ghizer", "Ghanche", "Astore", "Hunza", "Nagar", "Shigar", "Kharmang"];
+        
         const lawUniversities = ["Quaid-i-Azam University, Islamabad", "International Islamic University, Islamabad", "National University of Sciences & Technology (NUST), Islamabad", "Bahria University, Islamabad", "Riphah International University, Islamabad", "University of the Punjab (Punjab University Law College), Lahore", "Lahore University of Management Sciences (LUMS) - SAHSOL, Lahore", "University of Management & Technology (UMT) - School of Law & Policy, Lahore", "University of Karachi, Karachi", "Shaheed Zulfiqar Ali Bhutto University of Law (SZABUL), Karachi", "Bahauddin Zakariya University (BZU), Multan", "University of Peshawar (Khyber Law College), Peshawar", "University of Balochistan (University Law College), Quetta"];
-        function createSearchSelect(w, h, d, e, c) { const ww = document.getElementById(w); if (!ww) return; const inp = ww.querySelector('.search-input'), dd = ww.querySelector('.search-dropdown'), hid = document.getElementById(h); if (!inp || !dd) return; function ro(t = '') { const f = d.filter(i => i.toLowerCase().includes(t.toLowerCase())); dd.innerHTML = ''; if (f.length === 0) { const nr = document.createElement('div'); nr.className = 'no-results'; nr.textContent = 'No results found'; dd.appendChild(nr) } else f.forEach(i => { const opt = document.createElement('div'); opt.className = 'search-option'; opt.textContent = i; opt.onclick = () => { inp.value = i; if (hid) hid.value = i; dd.classList.remove('show'); const ed = document.getElementById(e); if (ed) ed.classList.remove('show'); inp.style.borderColor = '#dce3ea'; if (c) c() }; dd.appendChild(opt) }) } inp.addEventListener('input', e => { ro(e.target.value); dd.classList.add('show') }); inp.addEventListener('click', () => { ro(inp.value); dd.classList.add('show') }); document.addEventListener('click', e => { if (!ww.contains(e.target)) dd.classList.remove('show') }); ro('') }
-        function validateEmail(e) { return /^[^\s@]+@[^\s@]+\.com$/i.test(e) }
-        function validatePassword(p) { return /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(p) }
-        function checkPublicReg() { const f = !!document.getElementById('pubFullName')?.value.trim() && !!document.getElementById('pubCnic')?.value.trim() && !!document.getElementById('pubPhone')?.value.trim() && !!document.getElementById('pubEmail')?.value.trim() && !!document.getElementById('pubDistrict')?.value && !!document.getElementById('pubOccupation')?.value.trim() && !!document.getElementById('pubQualification')?.value.trim() && !!document.getElementById('pubDob')?.value && !!document.getElementById('pubGender')?.value && !!document.getElementById('pubMaritalStatus')?.value && !!document.getElementById('pubUsername')?.value.trim() && !!document.getElementById('pubSecA')?.value.trim() && !!document.getElementById('pubRegPass')?.value && !!document.getElementById('pubConfirmPass')?.value; const btn = document.getElementById('pubRegisterAction'); if (btn) btn.disabled = !f }
-        function checkStudentReg() { const f = !!document.getElementById('studentFullName')?.value.trim() && !!document.getElementById('studentCnic')?.value.trim() && !!document.getElementById('studentPhone')?.value.trim() && !!document.getElementById('studentEmail')?.value.trim() && !!document.getElementById('studentUni')?.value && !!document.getElementById('studentRegNo')?.value.trim() && !!document.getElementById('studentDistrict')?.value && !!document.getElementById('studentUsername')?.value.trim() && !!document.getElementById('studentSecA')?.value.trim() && !!document.getElementById('studentPass')?.value && !!document.getElementById('studentConfirmPass')?.value; const btn = document.getElementById('studentRegisterAction'); if (btn) btn.disabled = !f }
-        function checkLawyerReg() { const ids = ['lawyerFullName', 'lawyerCnic', 'lawyerPhone', 'lawyerEmail', 'lawyerBarNo', 'lawyerDistrict', 'lawyerUsername', 'lawyerSecA', 'lawyerPass', 'lawyerConfirmPass']; let all = ids.every(id => !!document.getElementById(id)?.value.trim()); const btn = document.getElementById('lawyerRegisterAction'); if (btn) btn.disabled = !all }
-        function attachVal() { const pP = document.getElementById('pubPhone'), pC = document.getElementById('pubCnic'), pE = document.getElementById('pubEmail'), pPa = document.getElementById('pubRegPass'), pCo = document.getElementById('pubConfirmPass'); if (pP) pP.addEventListener('input', () => { const v = pP.value; const e = document.getElementById('pubPhoneError'); if (/^\d*$/.test(v) || v === '') { pP.style.borderColor = "#dce3ea"; e.classList.remove('show') } else { pP.style.borderColor = "#dc2626"; e.classList.add('show') } }); if (pC) pC.addEventListener('input', () => { const v = pC.value; const e = document.getElementById('pubCnicError'); if (/^[\d\-]*$/.test(v) || v === '') { pC.style.borderColor = "#dce3ea"; e.classList.remove('show') } else { pC.style.borderColor = "#dc2626"; e.classList.add('show') } }); if (pE) pE.addEventListener('blur', () => { const em = pE.value.trim(); const e = document.getElementById('pubEmailError'); if (em && !validateEmail(em)) { pE.style.borderColor = "#dc2626"; e.classList.add('show') } else { pE.style.borderColor = "#dce3ea"; e.classList.remove('show') } }); if (pPa) pPa.addEventListener('blur', () => { const pa = pPa.value; const e = document.getElementById('pubPassError'); if (pa && !validatePassword(pa)) { pPa.style.borderColor = "#dc2626"; e.classList.add('show') } else { pPa.style.borderColor = "#dce3ea"; e.classList.remove('show') } }); if (pPa && pCo) pCo.addEventListener('blur', () => { const e = document.getElementById('pubConfirmError'); if (pPa.value !== pCo.value && pCo.value) { pCo.style.borderColor = "#dc2626"; e.classList.add('show') } else { pCo.style.borderColor = "#dce3ea"; e.classList.remove('show') } });['pubFullName', 'pubCnic', 'pubPhone', 'pubEmail', 'pubOccupation', 'pubQualification', 'pubUsername', 'pubSecA', 'pubRegPass', 'pubConfirmPass', 'pubDob', 'pubGender', 'pubMaritalStatus'].forEach(id => { const f = document.getElementById(id); if (f) { f.addEventListener('input', checkPublicReg); f.addEventListener('blur', checkPublicReg) } });['studentFullName', 'studentCnic', 'studentPhone', 'studentEmail', 'studentRegNo', 'studentUsername', 'studentSecA', 'studentPass', 'studentConfirmPass'].forEach(id => { const f = document.getElementById(id); if (f) { f.addEventListener('input', checkStudentReg); f.addEventListener('blur', checkStudentReg) } });['lawyerFullName', 'lawyerCnic', 'lawyerPhone', 'lawyerEmail', 'lawyerBarNo', 'lawyerUsername', 'lawyerSecA', 'lawyerPass', 'lawyerConfirmPass'].forEach(id => { const f = document.getElementById(id); if (f) { f.addEventListener('input', checkLawyerReg); f.addEventListener('blur', checkLawyerReg) } }); createSearchSelect('pubDistrictWrapper', 'pubDistrict', pakistanDistricts, 'pubDistrictError', checkPublicReg); createSearchSelect('studentDistrictWrapper', 'studentDistrict', pakistanDistricts, 'studentDistrictError', checkStudentReg); createSearchSelect('studentUniversityWrapper', 'studentUni', lawUniversities, 'studentUniError', checkStudentReg); createSearchSelect('lawyerDistrictWrapper', 'lawyerDistrict', pakistanDistricts, 'lawyerDistrictError', checkLawyerReg); document.querySelectorAll('.password-toggle-btn,.reg-toggle-btn').forEach(btn => { btn.addEventListener('click', function () { const tid = this.getAttribute('data-target'), inp = document.getElementById(tid); if (inp) { const t = inp.type === 'password' ? 'text' : 'password'; inp.type = t; const ic = this.querySelector('i'); if (ic) { if (t === 'text') { ic.classList.remove('fa-eye-slash'); ic.classList.add('fa-eye') } else { ic.classList.remove('fa-eye'); ic.classList.add('fa-eye-slash') } } } }) }); checkPublicReg(); checkStudentReg(); checkLawyerReg() }
-        const selScr = document.getElementById('selectionScreen'), mainWrap = document.getElementById('mainFormsWrapper'), backBtn = document.getElementById('backToHomeBtn'), optCards = document.querySelectorAll('.option-card');
-        function showMainForms(r) { selScr.style.display = 'none'; mainWrap.style.display = 'block'; document.getElementById('publicPanel').style.display = 'none'; document.getElementById('lawstudentPanel').style.display = 'none'; document.getElementById('lawyerPanel').style.display = 'none'; if (r === 'public') { document.getElementById('publicPanel').style.display = 'block' } else if (r === 'lawstudent') { document.getElementById('lawstudentPanel').style.display = 'block' } else if (r === 'lawyer') { document.getElementById('lawyerPanel').style.display = 'block' } attachVal() }
-        optCards.forEach(c => c.addEventListener('click', () => showMainForms(c.getAttribute('data-type'))));
-        backBtn.addEventListener('click', () => { selScr.style.display = 'block'; mainWrap.style.display = 'none' });
-        const modal = document.getElementById('forgotPasswordModal'), resetEmail = document.getElementById('resetEmail'), modalMsg = document.getElementById('modalMessage');
-        function showModal() { resetEmail.value = ''; modalMsg.className = 'modal-message'; modalMsg.style.display = 'none'; modal.classList.add('show') }
-        function hideModal() { modal.classList.remove('show') }
-        function sendCode() { const em = resetEmail.value.trim(); if (!em) { modalMsg.className = 'modal-message error'; modalMsg.style.display = 'block'; modalMsg.textContent = 'Please enter email'; return } if (!validateEmail(em)) { modalMsg.className = 'modal-message error'; modalMsg.style.display = 'block'; modalMsg.textContent = 'Valid email with .com required'; return } modalMsg.className = 'modal-message success'; modalMsg.style.display = 'block'; modalMsg.textContent = `✅ Reset code sent to ${em}`; setTimeout(() => resetEmail.value = '', 2000); setTimeout(() => hideModal(), 3000) }
-        document.getElementById('forgotPasswordBtn')?.addEventListener('click', e => { e.preventDefault(); showModal() });
-        document.getElementById('forgotPasswordStudentBtn')?.addEventListener('click', e => { e.preventDefault(); showModal() });
-        document.getElementById('forgotPasswordLawyerBtn')?.addEventListener('click', e => { e.preventDefault(); showModal() });
+
+        // ============================================
+        // SEARCH SELECT FUNCTION
+        // ============================================
+        function createSearchSelect(wrapperId, hiddenId, data, errorId, callback) {
+            const wrapper = document.getElementById(wrapperId);
+            if (!wrapper) return;
+            
+            const input = wrapper.querySelector('.search-input');
+            const dropdown = wrapper.querySelector('.search-dropdown');
+            const hidden = document.getElementById(hiddenId);
+            
+            if (!input || !dropdown) return;
+            
+            function renderOptions(filter = '') {
+                const filtered = data.filter(item => 
+                    item.toLowerCase().includes(filter.toLowerCase())
+                );
+                
+                dropdown.innerHTML = '';
+                
+                if (filtered.length === 0) {
+                    const noResult = document.createElement('div');
+                    noResult.className = 'no-results';
+                    noResult.textContent = 'No results found';
+                    dropdown.appendChild(noResult);
+                    return;
+                }
+                
+                filtered.forEach(item => {
+                    const option = document.createElement('div');
+                    option.className = 'search-option';
+                    option.textContent = item;
+                    option.onclick = () => {
+                        input.value = item;
+                        if (hidden) hidden.value = item;
+                        dropdown.classList.remove('show');
+                        const errorEl = document.getElementById(errorId);
+                        if (errorEl) errorEl.classList.remove('show');
+                        input.style.borderColor = '#dce3ea';
+                        if (callback) callback();
+                    };
+                    dropdown.appendChild(option);
+                });
+            }
+            
+            input.addEventListener('input', (e) => {
+                renderOptions(e.target.value);
+                dropdown.classList.add('show');
+            });
+            
+            input.addEventListener('click', () => {
+                renderOptions(input.value);
+                dropdown.classList.add('show');
+            });
+            
+            document.addEventListener('click', (e) => {
+                if (!wrapper.contains(e.target)) {
+                    dropdown.classList.remove('show');
+                }
+            });
+            
+            renderOptions('');
+        }
+
+        // ============================================
+        // VALIDATION FUNCTIONS
+        // ============================================
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.com$/i.test(email);
+        }
+        
+        function validatePassword(password) {
+            return /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password);
+        }
+        
+        function validateCNIC(cnic) {
+            return /^[\d\-]+$/.test(cnic);
+        }
+        
+        function validatePhone(phone) {
+            return /^\d+$/.test(phone);
+        }
+
+        // ============================================
+        // CHECK REGISTRATION FORM COMPLETION
+        // ============================================
+        function checkPublicReg() {
+            const fields = ['pubFullName', 'pubCnic', 'pubPhone', 'pubEmail', 'pubOccupation', 
+                           'pubQualification', 'pubDob', 'pubGender', 'pubMaritalStatus', 
+                           'pubUsername', 'pubSecA', 'pubRegPass', 'pubConfirmPass'];
+            
+            let allFilled = fields.every(id => {
+                const el = document.getElementById(id);
+                return el && el.value.trim() !== '';
+            });
+            
+            const district = document.getElementById('pubDistrict');
+            if (district && !district.value) allFilled = false;
+            
+            const btn = document.getElementById('pubRegisterAction');
+            if (btn) btn.disabled = !allFilled;
+        }
+        
+        function checkStudentReg() {
+            const fields = ['studentFullName', 'studentCnic', 'studentPhone', 'studentEmail', 
+                           'studentRegNo', 'studentUsername', 'studentSecA', 'studentPass', 
+                           'studentConfirmPass'];
+            
+            let allFilled = fields.every(id => {
+                const el = document.getElementById(id);
+                return el && el.value.trim() !== '';
+            });
+            
+            const uni = document.getElementById('studentUni');
+            const district = document.getElementById('studentDistrict');
+            if (uni && !uni.value) allFilled = false;
+            if (district && !district.value) allFilled = false;
+            
+            const btn = document.getElementById('studentRegisterAction');
+            if (btn) btn.disabled = !allFilled;
+        }
+        
+        function checkLawyerReg() {
+            const fields = ['lawyerFullName', 'lawyerCnic', 'lawyerPhone', 'lawyerEmail', 
+                           'lawyerBarNo', 'lawyerUsername', 'lawyerSecA', 'lawyerPass', 
+                           'lawyerConfirmPass'];
+            
+            let allFilled = fields.every(id => {
+                const el = document.getElementById(id);
+                return el && el.value.trim() !== '';
+            });
+            
+            const district = document.getElementById('lawyerDistrict');
+            if (district && !district.value) allFilled = false;
+            
+            const btn = document.getElementById('lawyerRegisterAction');
+            if (btn) btn.disabled = !allFilled;
+        }
+
+        // ============================================
+        // ATTACH VALIDATION EVENTS
+        // ============================================
+        function attachValidation() {
+            // Public fields
+            ['pubFullName', 'pubCnic', 'pubPhone', 'pubEmail', 'pubOccupation', 
+             'pubQualification', 'pubUsername', 'pubSecA', 'pubRegPass', 
+             'pubConfirmPass', 'pubDob', 'pubGender', 'pubMaritalStatus'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.addEventListener('input', checkPublicReg);
+                    el.addEventListener('change', checkPublicReg);
+                }
+            });
+            
+            // Student fields
+            ['studentFullName', 'studentCnic', 'studentPhone', 'studentEmail', 
+             'studentRegNo', 'studentUsername', 'studentSecA', 'studentPass', 
+             'studentConfirmPass'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.addEventListener('input', checkStudentReg);
+                    el.addEventListener('change', checkStudentReg);
+                }
+            });
+            
+            // Lawyer fields
+            ['lawyerFullName', 'lawyerCnic', 'lawyerPhone', 'lawyerEmail', 
+             'lawyerBarNo', 'lawyerUsername', 'lawyerSecA', 'lawyerPass', 
+             'lawyerConfirmPass'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.addEventListener('input', checkLawyerReg);
+                    el.addEventListener('change', checkLawyerReg);
+                }
+            });
+            
+            // Search selects
+            createSearchSelect('pubDistrictWrapper', 'pubDistrict', pakistanDistricts, 'pubDistrictError', checkPublicReg);
+            createSearchSelect('studentDistrictWrapper', 'studentDistrict', pakistanDistricts, 'studentDistrictError', checkStudentReg);
+            createSearchSelect('studentUniversityWrapper', 'studentUni', lawUniversities, 'studentUniError', checkStudentReg);
+            createSearchSelect('lawyerDistrictWrapper', 'lawyerDistrict', pakistanDistricts, 'lawyerDistrictError', checkLawyerReg);
+            
+            // Password toggle
+            document.querySelectorAll('.reg-toggle-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const input = document.getElementById(targetId);
+                    if (input) {
+                        const type = input.type === 'password' ? 'text' : 'password';
+                        input.type = type;
+                        const icon = this.querySelector('i');
+                        if (icon) {
+                            if (type === 'text') {
+                                icon.classList.remove('fa-eye-slash');
+                                icon.classList.add('fa-eye');
+                            } else {
+                                icon.classList.remove('fa-eye');
+                                icon.classList.add('fa-eye-slash');
+                            }
+                        }
+                    }
+                });
+            });
+            
+            // Initial check
+            checkPublicReg();
+            checkStudentReg();
+            checkLawyerReg();
+        }
+
+        // ============================================
+        // SHOW/HIDE FORM PANELS
+        // ============================================
+        const selectionScreen = document.getElementById('selectionScreen');
+        const mainFormsWrapper = document.getElementById('mainFormsWrapper');
+        const backBtn = document.getElementById('backToHomeBtn');
+        const optionCards = document.querySelectorAll('.option-card');
+        
+        function showMainForms(role) {
+            selectionScreen.style.display = 'none';
+            mainFormsWrapper.style.display = 'block';
+            
+            document.getElementById('publicPanel').style.display = 'none';
+            document.getElementById('lawstudentPanel').style.display = 'none';
+            document.getElementById('lawyerPanel').style.display = 'none';
+            
+            if (role === 'public') {
+                document.getElementById('publicPanel').style.display = 'block';
+            } else if (role === 'lawstudent') {
+                document.getElementById('lawstudentPanel').style.display = 'block';
+            } else if (role === 'lawyer') {
+                document.getElementById('lawyerPanel').style.display = 'block';
+            }
+            
+            attachValidation();
+        }
+        
+        optionCards.forEach(card => {
+            card.addEventListener('click', () => {
+                showMainForms(card.getAttribute('data-type'));
+            });
+        });
+        
+        backBtn.addEventListener('click', () => {
+            selectionScreen.style.display = 'block';
+            mainFormsWrapper.style.display = 'none';
+        });
+
+        // ============================================
+        // MODAL FUNCTIONS
+        // ============================================
+        const modal = document.getElementById('forgotPasswordModal');
+        const resetEmail = document.getElementById('resetEmail');
+        const modalMsg = document.getElementById('modalMessage');
+        
+        function showModal() {
+            resetEmail.value = '';
+            modalMsg.className = 'modal-message';
+            modalMsg.style.display = 'none';
+            modal.classList.add('show');
+        }
+        
+        function hideModal() {
+            modal.classList.remove('show');
+        }
+        
+        function sendCode() {
+            const email = resetEmail.value.trim();
+            if (!email) {
+                modalMsg.className = 'modal-message error';
+                modalMsg.style.display = 'block';
+                modalMsg.textContent = 'Please enter email';
+                return;
+            }
+            if (!validateEmail(email)) {
+                modalMsg.className = 'modal-message error';
+                modalMsg.style.display = 'block';
+                modalMsg.textContent = 'Valid email with .com required';
+                return;
+            }
+            modalMsg.className = 'modal-message success';
+            modalMsg.style.display = 'block';
+            modalMsg.textContent = `✅ Reset code sent to ${email}`;
+            setTimeout(() => {
+                resetEmail.value = '';
+                hideModal();
+            }, 3000);
+        }
+        
         document.getElementById('closeModalBtn')?.addEventListener('click', hideModal);
         document.getElementById('sendResetCodeBtn')?.addEventListener('click', sendCode);
-        modal?.addEventListener('click', e => { if (e.target === modal) hideModal() });
-        resetEmail?.addEventListener('keypress', e => { if (e.key === 'Enter') sendCode() });
-      
-        document.getElementById('pubRegisterAction')?.addEventListener('click', () => alert("✅ Public registration completed successfully!"));
-        document.getElementById('studentRegisterAction')?.addEventListener('click', () => alert("✅ Law student registration submitted!"));
-        document.getElementById('lawyerRegisterAction')?.addEventListener('click', () => alert("✅ Lawyer registration pending bar verification."));
-        attachVal();
+        modal?.addEventListener('click', (e) => {
+            if (e.target === modal) hideModal();
+        });
 
-// 1. PUBLIC REGISTRATION HANDLER
-document.getElementById('pubRegisterAction').addEventListener('click', (e) => {
-    e.preventDefault();
-    
-    // Moved querySelector INSIDE the block to prevent application crashes
-    const qualInput = document.querySelector('input[placeholder*="Matric, Intermediate"]');
-    
-    const payload = {
-        role: 'public',
-        name: document.getElementById('pubFullName').value,
-        email: document.getElementById('pubEmail').value,
-        password: document.getElementById('pubRegPass').value,
-        cnic: document.getElementById('pubCnic').value,
-        phone: document.getElementById('pubPhone').value,
-        district: document.getElementById('pubDistrict').value,
-        occupation: document.getElementById('pubOccupation').value,
-        dob: document.getElementById('pubDob').value,
-        gender: document.getElementById('pubGender').value,
-        maritalStatus: document.getElementById('pubMaritalStatus').value,
-        securityQuestion: document.getElementById('pubSecQ').value,
-        securityAnswer: document.getElementById('pubSecA').value,
-        qualification: qualInput ? qualInput.value : ''
-    };
+        // ============================================
+        // 🆕 REGISTRATION HANDLERS - API INTEGRATION
+        // ============================================
+        
+        // PUBLIC REGISTRATION
+        document.getElementById('pubRegisterAction').addEventListener('click', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('pubEmail').value.trim();
+            const password = document.getElementById('pubRegPass').value;
+            
+            // Validate
+            if (!validateEmail(email)) {
+                alert('⚠️ Please enter a valid email address (.com)');
+                return;
+            }
+            
+            if (!validatePassword(password)) {
+                alert('⚠️ Password must be 8+ chars, with 1 Capital, 1 Number, and 1 Special character');
+                return;
+            }
+            
+            if (password !== document.getElementById('pubConfirmPass').value) {
+                alert('⚠️ Passwords do not match');
+                return;
+            }
+            
+            const userData = {
+                fullName: document.getElementById('pubFullName').value.trim(),
+                cnic: document.getElementById('pubCnic').value.trim(),
+                phoneNumber: document.getElementById('pubPhone').value.trim(),
+                email: email,
+                district: document.getElementById('pubDistrict').value,
+                occupation: document.getElementById('pubOccupation').value.trim(),
+                username: document.getElementById('pubUsername').value.trim(),
+                securityQuestion: document.getElementById('pubSecQ').value,
+                securityAnswer: document.getElementById('pubSecA').value.trim(),
+                password: password,
+                role: 'public',
+                // Optional fields
+                qualification: document.getElementById('pubQualification').value.trim(),
+                dateOfBirth: document.getElementById('pubDob').value,
+                gender: document.getElementById('pubGender').value,
+                maritalStatus: document.getElementById('pubMaritalStatus').value
+            };
+            
+            const btn = this;
+            const originalText = btn.textContent;
+            btn.textContent = 'Creating Account...';
+            btn.disabled = true;
+            
+            try {
+                const result = await signupUser(userData);
+                if (result && result.success) {
+                    alert('✅ Registration successful! Please login.');
+                    window.location.href = 'login.html';
+                } else {
+                    alert('❌ ' + (result?.error || 'Registration failed. Please try again.'));
+                }
+            } catch (error) {
+                console.error('Registration Error:', error);
+                alert('❌ Error connecting to server. Please try again.');
+            } finally {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
+        });
+        
+        // STUDENT REGISTRATION
+        document.getElementById('studentRegisterAction').addEventListener('click', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('studentEmail').value.trim();
+            const password = document.getElementById('studentPass').value;
+            
+            if (!validateEmail(email)) {
+                alert('⚠️ Please enter a valid email address (.com)');
+                return;
+            }
+            
+            if (!validatePassword(password)) {
+                alert('⚠️ Password must be 8+ chars, with 1 Capital, 1 Number, and 1 Special character');
+                return;
+            }
+            
+            if (password !== document.getElementById('studentConfirmPass').value) {
+                alert('⚠️ Passwords do not match');
+                return;
+            }
+            
+            const userData = {
+                fullName: document.getElementById('studentFullName').value.trim(),
+                cnic: document.getElementById('studentCnic').value.trim(),
+                phoneNumber: document.getElementById('studentPhone').value.trim(),
+                email: email,
+                district: document.getElementById('studentDistrict').value,
+                username: document.getElementById('studentUsername').value.trim(),
+                securityQuestion: document.getElementById('studentSecQ').value,
+                securityAnswer: document.getElementById('studentSecA').value.trim(),
+                password: password,
+                role: 'law_student',
+                universityName: document.getElementById('studentUni').value,
+                universityRegNo: document.getElementById('studentRegNo').value.trim()
+            };
+            
+            const btn = this;
+            const originalText = btn.textContent;
+            btn.textContent = 'Creating Account...';
+            btn.disabled = true;
+            
+            try {
+                const result = await signupUser(userData);
+                if (result && result.success) {
+                    alert('✅ Registration successful! Please login.');
+                    window.location.href = 'login.html';
+                } else {
+                    alert('❌ ' + (result?.error || 'Registration failed. Please try again.'));
+                }
+            } catch (error) {
+                console.error('Registration Error:', error);
+                alert('❌ Error connecting to server. Please try again.');
+            } finally {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
+        });
+        
+        // LAWYER REGISTRATION
+        document.getElementById('lawyerRegisterAction').addEventListener('click', async function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('lawyerEmail').value.trim();
+            const password = document.getElementById('lawyerPass').value;
+            
+            if (!validateEmail(email)) {
+                alert('⚠️ Please enter a valid email address (.com)');
+                return;
+            }
+            
+            if (!validatePassword(password)) {
+                alert('⚠️ Password must be 8+ chars, with 1 Capital, 1 Number, and 1 Special character');
+                return;
+            }
+            
+            if (password !== document.getElementById('lawyerConfirmPass').value) {
+                alert('⚠️ Passwords do not match');
+                return;
+            }
+            
+            const userData = {
+                fullName: document.getElementById('lawyerFullName').value.trim(),
+                cnic: document.getElementById('lawyerCnic').value.trim(),
+                phoneNumber: document.getElementById('lawyerPhone').value.trim(),
+                email: email,
+                district: document.getElementById('lawyerDistrict').value,
+                username: document.getElementById('lawyerUsername').value.trim(),
+                securityQuestion: document.getElementById('lawyerSecQ').value,
+                securityAnswer: document.getElementById('lawyerSecA').value.trim(),
+                password: password,
+                role: 'lawyer',
+                barCouncilEnrollmentNo: document.getElementById('lawyerBarNo').value.trim()
+            };
+            
+            const btn = this;
+            const originalText = btn.textContent;
+            btn.textContent = 'Creating Account...';
+            btn.disabled = true;
+            
+            try {
+                const result = await signupUser(userData);
+                if (result && result.success) {
+                    alert('✅ Registration successful! Please login.');
+                    window.location.href = 'login.html';
+                } else {
+                    alert('❌ ' + (result?.error || 'Registration failed. Please try again.'));
+                }
+            } catch (error) {
+                console.error('Registration Error:', error);
+                alert('❌ Error connecting to server. Please try again.');
+            } finally {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
+        });
 
-    sendDataToBackend(payload);
-});
+        // ============================================
+        // SWITCH ACCOUNT TYPE (Back buttons)
+        // ============================================
+        document.getElementById('switchPublicType')?.addEventListener('click', () => {
+            selectionScreen.style.display = 'block';
+            mainFormsWrapper.style.display = 'none';
+        });
+        
+        document.getElementById('switchStudentType')?.addEventListener('click', () => {
+            selectionScreen.style.display = 'block';
+            mainFormsWrapper.style.display = 'none';
+        });
+        
+        document.getElementById('switchLawyerType')?.addEventListener('click', () => {
+            selectionScreen.style.display = 'block';
+            mainFormsWrapper.style.display = 'none';
+        });
 
-// 2. STUDENT REGISTRATION HANDLER
-document.getElementById('studentRegisterAction').addEventListener('click', (e) => {
-    e.preventDefault();
-
-    // These need to be inside the listener so they are only queried upon clicking
-    const regNoInput = document.querySelector('input[placeholder="Registration Number"]');
-    const answerInput = document.querySelector('input[placeholder="Your answer"]');
-
-    const payload = {
-        role: 'student',
-        name: document.getElementById('studentFullName').value,
-        email: document.getElementById('studentEmail').value,
-        password: document.getElementById('studentPass').value,
-        cnic: document.getElementById('studentCnic').value,
-        phone: document.getElementById('studentPhone').value,
-        universityName: document.getElementById('studentUni').value,
-        district: document.getElementById('studentDistrict').value,
-        securityQuestion: document.getElementById('studentSecQ').value,
-        universityRegNo: regNoInput ? regNoInput.value : '',
-        securityAnswer: answerInput ? answerInput.value : ''
-    };
-
-    sendDataToBackend(payload);
-});
-
-// 3. LAWYER REGISTRATION HANDLER
-document.getElementById('lawyerRegisterAction').addEventListener('click', (e) => {
-    e.preventDefault();
-
-    // Shifted this inside as well
-    const barNoInput = document.querySelector('input[placeholder="Enrollment Number"]');
-
-    const payload = {
-        role: 'lawyer',
-        name: document.getElementById('lawyerFullName').value,
-        email: document.getElementById('lawyerEmail').value,
-        password: document.getElementById('lawyerPass').value,
-        cnic: document.getElementById('lawyerCnic').value,
-        phone: document.getElementById('lawyerPhone').value,
-        district: document.getElementById('lawyerDistrict').value,
-        securityQuestion: document.getElementById('lawyerSecQ').value,
-        securityAnswer: document.getElementById('lawyerSecA').value,
-        barCouncilEnrollmentNo: barNoInput ? barNoInput.value : ''
-    };
-
-    sendDataToBackend(payload);
-});
-
-// UNIVERSAL FETCH FUNCTION (Sends data to the backend)
-function sendDataToBackend(payload) {
-    console.log("Data being sent to the backend:", payload);
-
-    fetch('http://localhost:5000/api/auth/signup', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert('Signup Successful! Welcome aboard.');
-            window.location.href = 'login.html';
-        } else {
-            alert('Signup Error: ' + (data.error || 'Server rejected request'));
-        }
-    })
-    .catch(err => {
-        console.error('Fetch Error:', err);
-        alert('Could not connect to server. Check if node server.js is running.');
-    });
-}
+        // ============================================
+        // INITIALIZE
+        // ============================================
+        attachValidation();
+        console.log('✅ register.html Loaded Successfully!');
+        console.log('🔑 API Base URL:', 'http://localhost:5000/api');
     </script>
 </body>
-
 </html>

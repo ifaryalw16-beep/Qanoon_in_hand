@@ -617,7 +617,97 @@
         function validateEmail(e) { return /^[^\s@]+@[^\s@]+\.com$/i.test(e) }
         function showModal() { const resetEmail = document.getElementById('resetEmail'); const modal = document.getElementById('forgotPasswordModal'); const modalMsg = document.getElementById('modalMessage'); resetEmail.value = ''; modalMsg.className = 'modal-message'; modalMsg.style.display = 'none'; modal.classList.add('show') }
         function hideModal() { document.getElementById('forgotPasswordModal').classList.remove('show') }
-        function sendCode() { const em = document.getElementById('resetEmail').value.trim(); const modalMsg = document.getElementById('modalMessage'); if (!em) { modalMsg.className = 'modal-message error'; modalMsg.style.display = 'block'; modalMsg.textContent = 'Please enter email'; return } if (!validateEmail(em)) { modalMsg.className = 'modal-message error'; modalMsg.style.display = 'block'; modalMsg.textContent = 'Valid email with .com required'; return } modalMsg.className = 'modal-message success'; modalMsg.style.display = 'block'; modalMsg.textContent = `✅ Reset code sent to ${em}`; setTimeout(() => document.getElementById('resetEmail').value = '', 2000); setTimeout(() => hideModal(), 3000) }
+        // ============================================
+// HELPER FUNCTION - Get Current User
+// ============================================
+function getCurrentUser() {
+    try {
+        const user = localStorage.getItem('user');
+        return user ? JSON.parse(user) : null;
+    } catch (error) {
+        console.error('Error getting user:', error);
+        return null;
+    }
+}
+// ============================================
+// 🆕 FORGOT PASSWORD - API INTEGRATION
+// ============================================
+
+// Forgot Password API Call Function
+async function forgotUserPassword(email) {
+    try {
+        const result = await apiCall('/auth/forgot-password', 'POST', { email });
+        return result;
+    } catch (error) {
+        console.error('Forgot password error:', error);
+        return { success: false, error: error.message };
+    }
+}
+
+// Send Reset Code Button Handler
+document.getElementById('sendResetCodeBtn').addEventListener('click', async function() {
+    const email = document.getElementById('resetEmail').value.trim();
+    const modalMsg = document.getElementById('modalMessage');
+    
+    // Validation
+    if (!email) {
+        modalMsg.className = 'modal-message error';
+        modalMsg.style.display = 'block';
+        modalMsg.textContent = '⚠️ Please enter your email';
+        return;
+    }
+    
+    if (!email.includes('@') || !email.includes('.')) {
+        modalMsg.className = 'modal-message error';
+        modalMsg.style.display = 'block';
+        modalMsg.textContent = '⚠️ Please enter a valid email address';
+        return;
+    }
+    
+    // Disable button and show loading
+    const btn = this;
+    const originalText = btn.textContent;
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    
+    // API Call
+    const result = await forgotUserPassword(email);
+    
+    // Enable button
+    btn.textContent = originalText;
+    btn.disabled = false;
+    
+    // Show result
+    if (result.success) {
+        modalMsg.className = 'modal-message success';
+        modalMsg.style.display = 'block';
+        modalMsg.textContent = '✅ Password reset link sent to your email!';
+        
+        // Auto close modal after 3 seconds
+        setTimeout(() => {
+            document.getElementById('forgotPasswordModal').classList.remove('show');
+            modalMsg.style.display = 'none';
+        }, 3000);
+    } else {
+        modalMsg.className = 'modal-message error';
+        modalMsg.style.display = 'block';
+        modalMsg.textContent = '❌ ' + (result.error || 'Failed to send reset link. Please try again.');
+    }
+});
+
+// Close Modal Button
+document.getElementById('closeModalBtn').addEventListener('click', function() {
+    document.getElementById('forgotPasswordModal').classList.remove('show');
+    document.getElementById('modalMessage').style.display = 'none';
+});
+
+// Close modal when clicking outside
+document.getElementById('forgotPasswordModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        this.classList.remove('show');
+        document.getElementById('modalMessage').style.display = 'none';
+    }
+});
         function showMainForms(r) { document.getElementById('selectionScreen').style.display = 'none'; document.getElementById('mainFormsWrapper').style.display = 'block'; ['publicPanel','lawstudentPanel','lawyerPanel'].forEach(id => document.getElementById(id).style.display = 'none'); document.getElementById(r + 'Panel').style.display = 'block'; }
         document.querySelectorAll('.option-card').forEach(c => c.addEventListener('click', () => showMainForms(c.getAttribute('data-type'))));
         document.getElementById('backToHomeBtn').addEventListener('click', () => { document.getElementById('selectionScreen').style.display = 'block'; document.getElementById('mainFormsWrapper').style.display = 'none'; });
@@ -625,12 +715,8 @@
         document.getElementById('forgotPasswordStudentBtn').addEventListener('click', e => { e.preventDefault(); showModal() });
         document.getElementById('forgotPasswordLawyerBtn').addEventListener('click', e => { e.preventDefault(); showModal() });
         document.getElementById('closeModalBtn').addEventListener('click', hideModal);
-        document.getElementById('sendResetCodeBtn').addEventListener('click', sendCode);
-        document.getElementById('pubLoginBtn').addEventListener('click', () => { window.location.href = 'pb.html'; });
-        document.getElementById('studentLoginBtn').addEventListener('click', () => { window.location.href = 'lsp.html';});
-        document.getElementById('lawyerLoginBtn').addEventListener('click', () => { window.location.href = 'lp.html';});
-        document.querySelectorAll('.password-toggle-btn').forEach(btn => { btn.addEventListener('click', function () { const tid = this.getAttribute('data-target'); const inp = document.getElementById(tid); if (inp) { const t = inp.type === 'password' ? 'text' : 'password'; inp.type = t; const ic = this.querySelector('i'); if (ic) { if (t === 'text') { ic.classList.remove('fa-eye-slash'); ic.classList.add('fa-eye') } else { ic.classList.remove('fa-eye'); ic.classList.add('fa-eye-slash') } } } }) });
-    </script>
+        
+</script>
 </body>
 
 </html>
