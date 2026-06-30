@@ -1,797 +1,522 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qanoon in Hand | Legal Access Portal</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Qanoon in Hand</title>
+<meta name="description" content="Comprehensive legal guidance for citizens, students, and professionals."/>
+<link rel="icon" type="image/svg+xml" href="qih-favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"/>
+<style>
+  /* ==========================================================================
+   SETTINGS MENU & MODALS PREMIUM STYLING
+   ========================================================================== */
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #F0F4F9;
-        }
+/* Align Search Bar and Menu Icon together */
+.search-menu-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
 
-        /* NAVY BLUE | WHITE | GOLD Color Scheme */
-        :root {
-            --navy-deep: #0A1C2F;
-            --navy-soft: #132B41;
-            --gold: #D4AF37;
-            --gold-dark: #B38F2F;
-            --white: #FFFFFF;
-            --light-gray: #E9EDF2;
-            --error: #DC2626;
-            --success: #10B981;
-        }
+/* Settings Menu Icon Trigger Button */
+.settings-menu-wrapper {
+  position: relative;
+}
 
-        /* Layout */
-        .app-container {
-            display: flex;
-            min-height: 100vh;
-        }
+.settings-trigger {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.4); /* Subtle Gold border */
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
 
-        /* ========= SIDEBAR ========= */
-        .sidebar {
-            width: 280px;
-            background: var(--navy-deep);
-            color: #E6EDF6;
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 4px 0 20px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            height: 100vh;
-        }
+.settings-trigger:hover {
+  background: rgba(212, 175, 55, 0.1);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+}
 
-        .logo-area {
-            padding: 32px 24px;
-            border-bottom: 1px solid rgba(212,175,55,0.25);
-        }
+/* Dropdown styling identical to screenshot */
+.settings-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 45px;
+  background: linear-gradient(135deg, #0f1e36, #07101e);
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  border-radius: 8px;
+  min-width: 180px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.2);
+  z-index: 1000;
+  overflow: hidden;
+}
 
-        .logo-icon {
-            background: var(--gold);
-            width: 50px;
-            height: 50px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--navy-deep);
-            margin-bottom: 16px;
-        }
+.settings-dropdown.show {
+  display: block;
+}
 
-        .logo-area h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-        }
+.settings-dropdown a {
+  display: block;
+  color: #e0e0e0;
+  padding: 12px 16px;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+}
 
-        .logo-area p {
-            font-size: 0.7rem;
-            color: var(--gold);
-            margin-top: 6px;
-            letter-spacing: 0.5px;
-        }
+.settings-dropdown a:last-child {
+  border-bottom: none;
+}
 
-        .sidebar-nav {
-            flex: 1;
-            padding: 32px 0;
-        }
+.settings-dropdown a:hover {
+  background: rgba(212, 175, 55, 0.15);
+  color: #fff;
+  padding-left: 20px;
+}
 
-        .nav-item {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 12px 24px;
-            margin: 4px 16px;
-            border-radius: 12px;
-            font-weight: 500;
-            color: #CDDCE9;
-            transition: all 0.2s;
-        }
+/* --- Modals General Overlay Architecture --- */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(5, 12, 24, 0.85); /* Premium dark blur look */
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+}
 
-        .nav-item i {
-            width: 24px;
-            font-size: 1.1rem;
-        }
+.modal-overlay.active {
+  display: flex;
+}
 
-        .nav-item.active {
-            background: rgba(212,175,55,0.15);
-            color: white;
-            border-left: 3px solid var(--gold);
-        }
+/* Beautiful Golden Glow Box Styling matching your UI */
+.modal-box {
+  background: linear-gradient(145deg, #112240, #0a1128);
+  border: 2px solid rgba(212, 175, 55, 0.6);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.25), inset 0 0 15px rgba(212, 175, 55, 0.05);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 450px;
+  padding: 30px;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+}
 
-        .nav-item:not(.active):hover {
-            background: rgba(255,255,255,0.08);
-            color: white;
-            cursor: pointer;
-        }
+.modal-box h2 {
+  font-family: 'Playfair Display', serif;
+  color: #fff;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-size: 26px;
+  letter-spacing: 0.5px;
+}
 
-        .public-badge {
-            margin: 20px 16px 24px;
-            padding: 14px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            font-size: 0.75rem;
-            text-align: center;
-            border: 1px solid rgba(212,175,55,0.2);
-        }
+.text-center { text-align: center; }
 
-        .public-badge i {
-            color: var(--gold);
-            margin-right: 6px;
-        }
+/* Input fields inside Modals */
+.form-group {
+  margin-bottom: 18px;
+  text-align: left;
+}
 
-        /* ========= MAIN CONTENT ========= */
-        .main-content {
-            flex: 1;
-            padding: 2rem 2.5rem;
-            background: #F8FAFE;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+.form-group label {
+  display: block;
+  font-size: 13px;
+  color: #b4c6ef;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
 
-        /* Form Card */
-        .form-card {
-            background: var(--white);
-            border-radius: 32px;
-            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
-            padding: 2.2rem;
-            max-width: 500px;
-            width: 100%;
-            transition: all 0.3s;
-        }
+.form-group input, 
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
 
-        .form-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--navy-deep);
-            margin-bottom: 0.5rem;
-        }
+.form-group input:focus, 
+.form-group select:focus {
+  outline: none;
+  border-color: rgba(212, 175, 55, 1);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+  background: rgba(255, 255, 255, 0.07);
+}
 
-        .form-subtitle {
-            color: #6B7280;
-            margin-bottom: 1.8rem;
-            font-size: 0.9rem;
-            border-left: 3px solid var(--gold);
-            padding-left: 12px;
-        }
+/* Dropdown arrow fix */
+.form-group select option {
+  background: #0f1e36;
+  color: #fff;
+}
 
-        .input-group {
-            margin-bottom: 1.2rem;
-        }
+/* Warning Description Text */
+.modal-warning-text {
+  font-size: 14px;
+  color: #ccd6f6;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
 
-        .input-group label {
-            display: block;
-            font-weight: 600;
-            font-size: 0.8rem;
-            color: var(--navy-soft);
-            margin-bottom: 6px;
-        }
+/* Modal Buttons Styling */
+.modal-buttons {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
-        .input-group label i {
-            color: var(--gold);
-            margin-right: 6px;
-        }
+.modal-buttons.row-buttons {
+  flex-direction: row;
+}
 
-        .input-group input {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1.5px solid var(--light-gray);
-            border-radius: 14px;
-            font-size: 0.95rem;
-            font-family: inherit;
-            transition: 0.2s;
-        }
+.justify-center {
+  justify-content: center;
+}
 
-        .input-group input:focus {
-            outline: none;
-            border-color: var(--gold);
-            box-shadow: 0 0 0 3px rgba(212,175,55,0.2);
-        }
+.flex-align {
+  flex-direction: row !important;
+  align-items: center;
+  justify-content: space-between;
+}
 
-        .password-wrapper {
-            position: relative;
-        }
+/* Golden buttons from screens */
+.btn-primary {
+  background: #d4af37;
+  color: #050c18;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
 
-        .toggle-password {
-            position: absolute;
-            right: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: #9CA3AF;
-        }
+.btn-primary:hover {
+  background: #f1c40f;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+}
 
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 1rem 0;
-            font-size: 0.8rem;
-        }
+/* Cancel / Border Buttons */
+.btn-secondary {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
 
-        .checkbox-group label {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            cursor: pointer;
-        }
+.btn-secondary:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
 
-        .forgot-link {
-            color: var(--gold);
-            text-decoration: none;
-            font-weight: 500;
-            cursor: pointer;
-        }
+/* Delete / Warning Button */
+.btn-danger {
+  background: #d4af37; /* As per picture it's also golden styled but triggers deletion */
+  color: #050c18;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
 
-        .btn-gold {
-            background: var(--gold);
-            border: none;
-            padding: 14px;
-            width: 100%;
-            border-radius: 40px;
-            font-weight: 700;
-            font-size: 1rem;
-            color: var(--navy-deep);
-            cursor: pointer;
-            transition: 0.2s;
-            margin-top: 0.5rem;
-        }
+.btn-danger:hover {
+  background: #f1c40f;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+}
 
-        .btn-gold:hover {
-            background: var(--gold-dark);
-            transform: translateY(-2px);
-        }
+/* Inline lowercase/link tags inside modal */
+.modal-link {
+  color: #fff;
+  text-decoration: underline;
+  font-size: 14px;
+  transition: color 0.2s;
+}
 
-        .toggle-auth {
-            margin-top: 1.5rem;
-            text-align: center;
-            font-size: 0.85rem;
-            color: #6B7280;
-        }
-
-        .toggle-link {
-            color: var(--gold);
-            font-weight: 700;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .error-msg {
-            color: var(--error);
-            font-size: 0.7rem;
-            margin-top: 4px;
-            display: block;
-        }
-
-        .success-msg {
-            background: #D1FAE5;
-            color: var(--success);
-            padding: 12px;
-            border-radius: 14px;
-            margin-bottom: 1rem;
-            text-align: center;
-            font-size: 0.85rem;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .toast-notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--navy-deep);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 40px;
-            font-size: 0.85rem;
-            z-index: 1000;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        /* Dashboard after login */
-        .dashboard-welcome {
-            background: white;
-            border-radius: 28px;
-            padding: 2rem;
-            text-align: center;
-            max-width: 600px;
-        }
-
-        .dashboard-welcome h2 {
-            color: var(--navy-deep);
-            margin-bottom: 1rem;
-        }
-
-        .dashboard-welcome p {
-            color: #6B7280;
-            margin-bottom: 1.5rem;
-        }
-
-        .quick-links {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .app-container {
-                flex-direction: column;
-            }
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-            }
-            .main-content {
-                padding: 1.5rem;
-            }
-            .form-card {
-                padding: 1.5rem;
-            }
-        }
-    </style>
+.modal-link:hover {
+  color: #d4af37;
+}
+</style>
 </head>
 <body>
-<div class="app-container">
-    <!-- SIDEBAR for Public Account -->
-    <aside class="sidebar">
-        <div class="logo-area">
-            <div class="logo-icon">
-                <i class="fas fa-gavel"></i>
-            </div>
-            <h1>Qanoon in Hand</h1>
-            <p>نظیرِ قانون · Justice at Fingertips</p>
-        </div>
-        <div class="sidebar-nav">
-            <div class="nav-item active" id="navHome">
-                <i class="fas fa-home"></i> <span>Public Account</span>
-            </div>
-            <div class="nav-item" id="navLaws">
-                <i class="fas fa-balance-scale"></i> <span>Legal Guidelines</span>
-            </div>
-            <div class="nav-item" id="navHelpline">
-                <i class="fas fa-phone-alt"></i> <span>Helplines</span>
-            </div>
-            <div class="nav-item" id="navResources">
-                <i class="fas fa-book"></i> <span>Legal Resources</span>
-            </div>
-        </div>
-        <div class="public-badge">
-            <i class="fas fa-globe"></i> Public Account Access<br>
-            <span style="font-size: 0.65rem;">Free legal information & tools</span>
-        </div>
-    </aside>
 
-    <!-- MAIN CONTENT -->
-    <main class="main-content" id="mainContent">
-        <!-- Login/Register Forms Container -->
-        <div id="authContainer">
-            <div class="form-card" id="loginCard">
-                <div class="form-title">Welcome Back</div>
-                <div class="form-subtitle">Login to your Qanoon in Hand account</div>
-                <div id="loginSuccessMsg" class="success-msg hidden"></div>
-                <form id="loginForm">
-                    <div class="input-group">
-                        <label><i class="fas fa-envelope"></i> Email Address</label>
-                        <input type="email" id="loginEmail" placeholder="example@email.com">
-                        <div class="error-msg" id="loginEmailError"></div>
-                    </div>
-                    <div class="input-group">
-                        <label><i class="fas fa-lock"></i> Password</label>
-                        <div class="password-wrapper">
-                            <input type="password" id="loginPassword" placeholder="Enter your password">
-                            <i class="fas fa-eye toggle-password" data-target="loginPassword"></i>
-                        </div>
-                        <div class="error-msg" id="loginPasswordError"></div>
-                    </div>
-                    <div class="checkbox-group">
-                        <label>
-                            <input type="checkbox" id="rememberMe"> Remember Me
-                        </label>
-                        <span class="forgot-link" id="forgotPasswordBtn">Forgot Password?</span>
-                    </div>
-                    <button type="submit" class="btn-gold"><i class="fas fa-sign-in-alt"></i> Sign In</button>
-                </form>
-                <div class="toggle-auth">
-                    Don't have an account? <span class="toggle-link" id="showRegisterBtn">Create Account</span>
-                </div>
-            </div>
+  
+<header class="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="brand">
+      <span class="brand-text">
+        <span class="brand-name">QANOON</span>
+        <span class="brand-subtitle">IN HAND</span>
+      </span>
+    </a>
 
-            <div class="form-card hidden" id="registerCard">
-                <div class="form-title">Join Us</div>
-                <div class="form-subtitle">Create your free public account</div>
-                <div id="registerSuccessMsg" class="success-msg hidden"></div>
-                <form id="registerForm">
-                    <div class="input-group">
-                        <label><i class="fas fa-user"></i> Full Name</label>
-                        <input type="text" id="regFullName" placeholder="e.g., Laiba Ahmed">
-                        <div class="error-msg" id="regNameError"></div>
-                    </div>
-                    <div class="input-group">
-                        <label><i class="fas fa-id-card"></i> CNIC (without dashes)</label>
-                        <input type="text" id="regCNIC" placeholder="1234567890123" maxlength="13">
-                        <div class="error-msg" id="regCNICError"></div>
-                    </div>
-                    <div class="input-group">
-                        <label><i class="fas fa-phone"></i> Phone Number</label>
-                        <input type="tel" id="regPhone" placeholder="03xxxxxxxxx">
-                        <div class="error-msg" id="regPhoneError"></div>
-                    </div>
-                    <div class="input-group">
-                        <label><i class="fas fa-envelope"></i> Email Address</label>
-                        <input type="email" id="regEmail" placeholder="example@email.com">
-                        <div class="error-msg" id="regEmailError"></div>
-                    </div>
-                    <div class="input-group">
-                        <label><i class="fas fa-user-circle"></i> Username</label>
-                        <input type="text" id="regUsername" placeholder="Choose a username">
-                        <div class="error-msg" id="regUsernameError"></div>
-                    </div>
-                    <div class="input-group">
-                        <label><i class="fas fa-lock"></i> Password</label>
-                        <div class="password-wrapper">
-                            <input type="password" id="regPassword" placeholder="Min. 6 characters">
-                            <i class="fas fa-eye toggle-password" data-target="regPassword"></i>
-                        </div>
-                        <div class="error-msg" id="regPasswordError"></div>
-                    </div>
-                    <div class="input-group">
-                        <label><i class="fas fa-check-circle"></i> Confirm Password</label>
-                        <div class="password-wrapper">
-                            <input type="password" id="regConfirmPassword" placeholder="Re-enter password">
-                            <i class="fas fa-eye toggle-password" data-target="regConfirmPassword"></i>
-                        </div>
-                        <div class="error-msg" id="regConfirmError"></div>
-                    </div>
-                    <div class="input-group">
-                        <label><i class="fas fa-question-circle"></i> Security Question</label>
-                        <input type="text" id="regSecurityQ" placeholder="e.g., Your first teacher's name?">
-                        <div class="error-msg" id="regSecurityError"></div>
-                    </div>
-                    <div class="input-group">
-                        <label><i class="fas fa-city"></i> District</label>
-                        <input type="text" id="regDistrict" placeholder="e.g., Lahore, Karachi">
-                        <div class="error-msg" id="regDistrictError"></div>
-                    </div>
-                    <div class="input-group">
-                        <label><i class="fas fa-briefcase"></i> Occupation</label>
-                        <input type="text" id="regOccupation" placeholder="e.g., Student, Teacher, Business">
-                        <div class="error-msg" id="regOccupationError"></div>
-                    </div>
-                    <button type="submit" class="btn-gold"><i class="fas fa-user-plus"></i> Register</button>
-                </form>
-                <div class="toggle-auth">
-                    Already have an account? <span class="toggle-link" id="showLoginBtn">Login Here</span>
-                </div>
-            </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html" class="active">Home</a>
+      <a href="legalarticles.html">Legal Articles</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </nav>
 
-            <!-- Forgot Password Modal (Inline) -->
-            <div class="form-card hidden" id="forgotCard">
-                <div class="form-title">Reset Password</div>
-                <div class="form-subtitle">Answer your security question</div>
-                <div id="forgotMsg" class="success-msg hidden"></div>
-                <form id="forgotForm">
-                    <div class="input-group">
-                        <label>Email Address</label>
-                        <input type="email" id="forgotEmail" placeholder="Registered email">
-                        <div class="error-msg" id="forgotEmailError"></div>
-                    </div>
-                    <div class="input-group">
-                        <label>Security Question Answer</label>
-                        <input type="text" id="forgotAnswer" placeholder="Your security answer">
-                        <div class="error-msg" id="forgotAnswerError"></div>
-                    </div>
-                    <div class="input-group">
-                        <label>New Password</label>
-                        <input type="password" id="newPassword" placeholder="New password (min 6 chars)">
-                        <div class="error-msg" id="newPasswordError"></div>
-                    </div>
-                    <button type="submit" class="btn-gold">Reset Password</button>
-                </form>
-                <div class="toggle-auth">
-                    <span class="toggle-link" id="backToLoginBtn">← Back to Login</span>
-                </div>
-            </div>
+    <div class="search-menu-container">
+      <form class="search" onsubmit="event.preventDefault(); alert('Searching: ' + this.q.value);">
+        <input name="q" type="search" placeholder="Search..." aria-label="Search"/>
+        <button type="submit" aria-label="Search">🔍</button>
+      </form>
+
+      <div class="settings-menu-wrapper">
+        <button class="settings-trigger" id="settingsTriggerBtn" onclick="toggleSettingsMenu(event)">☰</button>
+        <div class="settings-dropdown" id="settingsDropdown">
+          <a href="#" onclick="openModal('profileModal')">Profile Settings</a>
+          <a href="#" onclick="openModal('addAccountModal')">Add Account</a>
+          <a href="#" onclick="openModal('deleteAccountModal')">Delete Account</a>
+          <a href="#" onclick="openModal('logoutModal')">Log Out</a>
         </div>
+      </div>
+    </div>
 
-        <!-- Dashboard After Login (Public Account) -->
-        <div id="publicDashboard" class="hidden">
-            <div class="dashboard-welcome">
-                <i class="fas fa-hand-peace" style="font-size: 3rem; color: var(--gold); margin-bottom: 1rem;"></i>
-                <h2>Welcome, <span id="dashboardUserName">User</span>!</h2>
-                <p>You are now logged into your <strong>Public Account</strong> on Qanoon in Hand.</p>
-                <div class="quick-links">
-                    <button class="btn-gold" id="viewLawsBtn" style="width: auto; padding: 10px 24px;"><i class="fas fa-balance-scale"></i> View Laws</button>
-                    <button class="btn-gold" id="logoutBtn" style="width: auto; padding: 10px 24px; background: #E5E7EB; color: #374151;"><i class="fas fa-sign-out-alt"></i> Logout</button>
-                </div>
-                <hr style="margin: 1.5rem 0; border-color: #E5E7EB;">
-                <p style="font-size: 0.85rem; text-align: left;"><i class="fas fa-check-circle" style="color: var(--gold);"></i> <strong>Quick Access:</strong> Pakistani Laws, FIR Procedure, Bail, Family Law, Property Rights, Consumer Protection & more.</p>
-            </div>
-        </div>
-    </main>
+    <button class="hamburger" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+
+<div id="profileModal" class="modal-overlay">
+  <div class="modal-box">
+    <h2>Edit Profile</h2>
+    <form onsubmit="event.preventDefault(); alert('Profile Saved!'); closeModal('profileModal');">
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" value="Aisha Khan" required />
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" value="aishakhan@email.com" required />
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="text" value="+92 3XX XXXXXXX" required />
+      </div>
+      <div class="form-group">
+        <label>User Type Dropdown</label>
+        <select>
+          <option value="citizen">Citizen</option>
+          <option value="student">Student</option>
+          <option value="advocate">Advocate</option>
+        </select>
+      </div>
+      <div class="modal-buttons">
+        <button type="submit" class="btn-primary">Save Changes</button>
+        <button type="button" class="btn-secondary" onclick="closeModal('profileModal')">Cancel</button>
+      </div>
+    </form>
+  </div>
 </div>
 
+<div id="addAccountModal" class="modal-overlay">
+  <div class="modal-box">
+    <h2>Add Account</h2>
+    <form onsubmit="event.preventDefault(); alert('Account Added!'); closeModal('addAccountModal');">
+      <div class="form-group">
+        <label>Enter Email or Username</label>
+        <input type="text" placeholder="new_user@email.com" required />
+      </div>
+      <div class="form-group">
+        <label>Create Password</label>
+        <input type="password" placeholder="••••••••" required />
+      </div>
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input type="password" placeholder="••••••••" required />
+      </div>
+      <div class="form-group">
+        <label>User Type</label>
+        <select required>
+          <option value="" disabled selected>Select Type...</option>
+          <option value="citizen">Citizen</option>
+          <option value="student">Student</option>
+          <option value="advocate">Advocate</option>
+        </select>
+      </div>
+      <div class="modal-buttons flex-align">
+        <button type="submit" class="btn-primary">Add account</button>
+        <a href="#" class="modal-link">create account</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="deleteAccountModal" class="modal-overlay">
+  <div class="modal-box text-center">
+    <h2>Confirm Account Deletion</h2>
+    <p class="modal-warning-text">This action is irreversible. All your data, saved guides, and account information will be permanently removed. To confirm, please type your email below:</p>
+    <form onsubmit="event.preventDefault(); alert('Account Deleted.'); closeModal('deleteAccountModal');">
+      <div class="form-group">
+        <input type="email" placeholder="Enter your email here..." required />
+      </div>
+      <div class="modal-buttons row-buttons">
+        <button type="submit" class="btn-danger">PERMANENTLY DELETE ACCOUNT</button>
+        <button type="button" class="btn-secondary" onclick="closeModal('deleteAccountModal')">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="logoutModal" class="modal-overlay">
+  <div class="modal-box text-center">
+    <h2>Confirm Log Out</h2>
+    <p class="modal-warning-text">Are you sure you want to log out of QANOON IN HAND?</p>
+    <div class="modal-buttons row-buttons justify-center">
+      <button class="btn-primary" onclick="alert('Logged Out'); closeModal('logoutModal');">Yes, Log Out</button>
+      <button class="btn-secondary" onclick="closeModal('logoutModal')">Cancel</button>
+    </div>
+  </div>
+</div>
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-content">
+      <h1>EMPOWERING CITIZENS THROUGH<br/>CLARITY & KNOWLEDGE</h1>
+      <p>
+        Comprehensive Legal Guidance for Citizens, Students, and Professionals.<br/>
+        Start Your Journey Today.
+      </p>
+    </div>
+  </section>
+<div class="cards-grid">
+
+  <!-- Card 1: General Public -->
+  <div class="card">
+    <div class="card-tag"><span class="dot"></span> Citizens</div>
+
+    <div class="card-title">Practical Guidlines</div>
+    <div class="card-subtitle">Navigating Your Rights</div>
+    <p class="card-desc">Understand your legal rights in plain language. From family disputes to property matters — know where you stand.</p>
+    <div class="tags">
+      <span class="tag">Family Law</span>
+      <span class="tag">Property Disputes</span>
+      <span class="tag">Know Your Rights</span>
+    </div>
+    <div class="card-line"></div>
+    <a href="#" class="cta">Explore Resources <span class="cta-arrow">→</span></a>
+  </div>
+
+  <!-- Card 2: Law Students (featured) -->
+  <div class="card featured">
+    <div class="card-tag"><span class="dot"></span> Students</div>
+    <div class="card-title">Refining Skills</div>
+    <div class="card-subtitle">Academic &amp; Practical Excellence</div>
+    <p class="card-desc">Case briefs, statute analysis, moot prep, and skills quizzes — everything you need to excel in your LLB journey.</p>
+    <div class="tags">
+      <span class="tag">Legal Resources</span>
+      <span class="tag">Law Application</span>
+      <span class="tag">Test Your Skills</span>
+    </div>
+    <div class="card-line"></div>
+    <a href="#" class="cta">Start Learning <span class="cta-arrow">→</span></a>
+  </div>
+
+  <!-- Card 3: Lawyers -->
+  <div class="card">
+    <div class="card-tag"><span class="dot"></span> Advocates</div>
+    <div class="card-title">Management and Analysis</div>
+    <div class="card-subtitle">Advanced Legal Resources</div>
+    <p class="card-desc">Statistical analysis, case management tools, and curated precedents for smart, data-driven advocacy.</p>
+    <div class="tags">
+      <span class="tag">Statistic Analysis</span>
+      <span class="tag">Case Management</span>
+      <span class="tag">For Smart Advocates</span>
+    </div>
+    <div class="card-line"></div>
+    <a href="#" class="cta">Access Tools <span class="cta-arrow">→</span></a>
+  </div>
+
+</div>
 <script>
-    // ========== USER STORAGE (LocalStorage) ==========
-    let users = JSON.parse(localStorage.getItem('qanoon_public_users')) || [];
-    let currentUser = null;
+  // Dropdown menu ko open aur close karne ka function
+function toggleSettingsMenu(event) {
+  event.stopPropagation(); // Click event ko bubble hone se rokta hai
+  const dropdown = document.getElementById('settingsDropdown');
+  dropdown.classList.toggle('show');
+}
 
-    // DOM Elements
-    const loginCard = document.getElementById('loginCard');
-    const registerCard = document.getElementById('registerCard');
-    const forgotCard = document.getElementById('forgotCard');
-    const authContainer = document.getElementById('authContainer');
-    const publicDashboard = document.getElementById('publicDashboard');
-    const dashboardUserName = document.getElementById('dashboardUserName');
+// Modals open karne ke liye
+function openModal(modalId) {
+  // Dropdown ko automatic close karne ke liye jab modal khule
+  document.getElementById('settingsDropdown').classList.remove('show');
+  
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.add('active');
+  }
+}
 
-    // Toggle between forms
-    document.getElementById('showRegisterBtn')?.addEventListener('click', () => {
-        loginCard.classList.add('hidden');
-        registerCard.classList.remove('hidden');
-        forgotCard.classList.add('hidden');
-        clearAllErrors();
-    });
-    document.getElementById('showLoginBtn')?.addEventListener('click', () => {
-        registerCard.classList.add('hidden');
-        loginCard.classList.remove('hidden');
-        forgotCard.classList.add('hidden');
-        clearAllErrors();
-    });
-    document.getElementById('forgotPasswordBtn')?.addEventListener('click', () => {
-        loginCard.classList.add('hidden');
-        forgotCard.classList.remove('hidden');
-        clearAllErrors();
-    });
-    document.getElementById('backToLoginBtn')?.addEventListener('click', () => {
-        forgotCard.classList.add('hidden');
-        loginCard.classList.remove('hidden');
-        clearAllErrors();
-    });
+// Modals close karne ke liye
+function closeModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.remove('active');
+  }
+}
 
-    // Toggle Password Visibility
-    document.querySelectorAll('.toggle-password').forEach(icon => {
-        icon.addEventListener('click', function() {
-            const targetId = this.getAttribute('data-target');
-            const input = document.getElementById(targetId);
-            if (input.type === 'password') {
-                input.type = 'text';
-                this.classList.remove('fa-eye');
-                this.classList.add('fa-eye-slash');
-            } else {
-                input.type = 'password';
-                this.classList.remove('fa-eye-slash');
-                this.classList.add('fa-eye');
-            }
-        });
-    });
-
-    function clearAllErrors() {
-        document.querySelectorAll('.error-msg').forEach(el => el.innerText = '');
-        document.querySelectorAll('.success-msg').forEach(el => el.classList.add('hidden'));
+// Agar user window screen par kahin bhi bahar click kare to elements automatically close ho jayen
+window.onclick = function(event) {
+  // Close dropdown if clicked outside
+  if (!event.target.matches('.settings-trigger')) {
+    const dropdowns = document.getElementsByClassName("settings-dropdown");
+    for (let i = 0; i < dropdowns.length; i++) {
+      let openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
     }
+  }
 
-    function showToast(message, isError = false) {
-        const toast = document.createElement('div');
-        toast.className = 'toast-notification';
-        toast.style.background = isError ? '#DC2626' : '#10B981';
-        toast.innerHTML = `<i class="fas ${isError ? 'fa-exclamation-triangle' : 'fa-check-circle'}"></i> ${message}`;
-        document.body.appendChild(toast);
-        setTimeout(() => toast.remove(), 3000);
-    }
-
-    // ========== VALIDATIONS ==========
-    function isValidEmail(email) {
-        return /^[^\s@]+@([^\s@.,]+\.)+[^\s@]{2,}$/i.test(email);
-    }
-    function isValidCNIC(cnic) { return /^[0-9]{13}$/.test(cnic); }
-    function isValidPhone(phone) { return /^03[0-9]{9}$/.test(phone); }
-
-    // Login Validation
-    function validateLogin() {
-        let isValid = true;
-        const email = document.getElementById('loginEmail').value.trim();
-        const pwd = document.getElementById('loginPassword').value.trim();
-        if (!email) { document.getElementById('loginEmailError').innerText = 'Email required'; isValid = false; }
-        else if (!isValidEmail(email)) { document.getElementById('loginEmailError').innerText = 'Invalid email'; isValid = false; }
-        else { document.getElementById('loginEmailError').innerText = ''; }
-        if (!pwd) { document.getElementById('loginPasswordError').innerText = 'Password required'; isValid = false; }
-        else if (pwd.length < 3) { document.getElementById('loginPasswordError').innerText = 'Invalid password'; isValid = false; }
-        else { document.getElementById('loginPasswordError').innerText = ''; }
-        return isValid;
-    }
-
-    // Register Validation
-    function validateRegister() {
-        let valid = true;
-        const name = document.getElementById('regFullName').value.trim();
-        const cnic = document.getElementById('regCNIC').value.trim();
-        const phone = document.getElementById('regPhone').value.trim();
-        const email = document.getElementById('regEmail').value.trim();
-        const username = document.getElementById('regUsername').value.trim();
-        const pwd = document.getElementById('regPassword').value.trim();
-        const confirm = document.getElementById('regConfirmPassword').value.trim();
-        const security = document.getElementById('regSecurityQ').value.trim();
-        const district = document.getElementById('regDistrict').value.trim();
-        const occupation = document.getElementById('regOccupation').value.trim();
-
-        if (!name) { document.getElementById('regNameError').innerText = 'Full name required'; valid = false; }
-        else { document.getElementById('regNameError').innerText = ''; }
-        if (!cnic) { document.getElementById('regCNICError').innerText = 'CNIC required'; valid = false; }
-        else if (!isValidCNIC(cnic)) { document.getElementById('regCNICError').innerText = '13-digit CNIC required'; valid = false; }
-        else { document.getElementById('regCNICError').innerText = ''; }
-        if (!phone) { document.getElementById('regPhoneError').innerText = 'Phone required'; valid = false; }
-        else if (!isValidPhone(phone)) { document.getElementById('regPhoneError').innerText = 'Valid 03xxxxxxxxx required'; valid = false; }
-        else { document.getElementById('regPhoneError').innerText = ''; }
-        if (!email) { document.getElementById('regEmailError').innerText = 'Email required'; valid = false; }
-        else if (!isValidEmail(email)) { document.getElementById('regEmailError').innerText = 'Invalid email'; valid = false; }
-        else if (users.some(u => u.email === email)) { document.getElementById('regEmailError').innerText = 'Email already registered'; valid = false; }
-        else { document.getElementById('regEmailError').innerText = ''; }
-        if (!username) { document.getElementById('regUsernameError').innerText = 'Username required'; valid = false; }
-        else { document.getElementById('regUsernameError').innerText = ''; }
-        if (!pwd) { document.getElementById('regPasswordError').innerText = 'Password required'; valid = false; }
-        else if (pwd.length < 6) { document.getElementById('regPasswordError').innerText = 'Min 6 characters'; valid = false; }
-        else { document.getElementById('regPasswordError').innerText = ''; }
-        if (pwd !== confirm) { document.getElementById('regConfirmError').innerText = 'Passwords do not match'; valid = false; }
-        else { document.getElementById('regConfirmError').innerText = ''; }
-        if (!security) { document.getElementById('regSecurityError').innerText = 'Security question required'; valid = false; }
-        else { document.getElementById('regSecurityError').innerText = ''; }
-        if (!district) { document.getElementById('regDistrictError').innerText = 'District required'; valid = false; }
-        else { document.getElementById('regDistrictError').innerText = ''; }
-        if (!occupation) { document.getElementById('regOccupationError').innerText = 'Occupation required'; valid = false; }
-        else { document.getElementById('regOccupationError').innerText = ''; }
-        return valid;
-    }
-
-    // ========== LOGIN SUBMIT ==========
-    document.getElementById('loginForm')?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        if (!validateLogin()) return;
-        const email = document.getElementById('loginEmail').value.trim();
-        const pwd = document.getElementById('loginPassword').value.trim();
-        const user = users.find(u => u.email === email && u.password === pwd);
-        if (user) {
-            currentUser = user;
-            if (document.getElementById('rememberMe').checked) {
-                localStorage.setItem('rememberedUser', JSON.stringify({ email: user.email, name: user.fullName }));
-            } else {
-                localStorage.removeItem('rememberedUser');
-            }
-            document.getElementById('loginSuccessMsg').innerText = 'Login successful!';
-            document.getElementById('loginSuccessMsg').classList.remove('hidden');
-            setTimeout(() => {
-                authContainer.classList.add('hidden');
-                publicDashboard.classList.remove('hidden');
-                dashboardUserName.innerText = user.fullName.split(' ')[0];
-                showToast('Welcome to Qanoon in Hand!', false);
-            }, 500);
-        } else {
-            document.getElementById('loginPasswordError').innerText = 'Invalid email or password';
-        }
-    });
-
-    // ========== REGISTER SUBMIT ==========
-    document.getElementById('registerForm')?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        if (!validateRegister()) return;
-        const newUser = {
-            fullName: document.getElementById('regFullName').value.trim(),
-            cnic: document.getElementById('regCNIC').value.trim(),
-            phone: document.getElementById('regPhone').value.trim(),
-            email: document.getElementById('regEmail').value.trim(),
-            username: document.getElementById('regUsername').value.trim(),
-            password: document.getElementById('regPassword').value.trim(),
-            securityAnswer: document.getElementById('regSecurityQ').value.trim().toLowerCase(),
-            district: document.getElementById('regDistrict').value.trim(),
-            occupation: document.getElementById('regOccupation').value.trim()
-        };
-        users.push(newUser);
-        localStorage.setItem('qanoon_public_users', JSON.stringify(users));
-        document.getElementById('registerSuccessMsg').innerText = 'Account created! Please login.';
-        document.getElementById('registerSuccessMsg').classList.remove('hidden');
-        setTimeout(() => {
-            registerCard.classList.add('hidden');
-            loginCard.classList.remove('hidden');
-            document.getElementById('registerForm').reset();
-            clearAllErrors();
-        }, 1500);
-    });
-
-    // ========== FORGOT PASSWORD ==========
-    document.getElementById('forgotForm')?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const email = document.getElementById('forgotEmail').value.trim();
-        const answer = document.getElementById('forgotAnswer').value.trim().toLowerCase();
-        const newPwd = document.getElementById('newPassword').value.trim();
-        const user = users.find(u => u.email === email);
-        if (!user) {
-            document.getElementById('forgotEmailError').innerText = 'Email not found';
-            return;
-        }
-        if (user.securityAnswer !== answer) {
-            document.getElementById('forgotAnswerError').innerText = 'Incorrect security answer';
-            return;
-        }
-        if (newPwd.length < 6) {
-            document.getElementById('newPasswordError').innerText = 'Password must be at least 6 characters';
-            return;
-        }
-        user.password = newPwd;
-        localStorage.setItem('qanoon_public_users', JSON.stringify(users));
-        document.getElementById('forgotMsg').innerText = 'Password reset successful! Please login.';
-        document.getElementById('forgotMsg').classList.remove('hidden');
-        setTimeout(() => {
-            forgotCard.classList.add('hidden');
-            loginCard.classList.remove('hidden');
-            document.getElementById('forgotForm').reset();
-        }, 1500);
-    });
-
-    // ========== LOGOUT ==========
-    document.getElementById('logoutBtn')?.addEventListener('click', () => {
-        currentUser = null;
-        localStorage.removeItem('rememberedUser');
-        authContainer.classList.remove('hidden');
-        publicDashboard.classList.add('hidden');
-        loginCard.classList.remove('hidden');
-        registerCard.classList.add('hidden');
-        forgotCard.classList.add('hidden');
-        document.getElementById('loginForm').reset();
-        showToast('Logged out successfully', false);
-    });
-
-    document.getElementById('viewLawsBtn')?.addEventListener('click', () => {
-        showToast('Legal Guidelines: Civil, Criminal, FIR, Bail, Family, Property & more available in Public Corner.', false);
-    });
-
-    // Sidebar Navigation (for public account - information only)
-    document.getElementById('navHome')?.addEventListener('click', () => {
-        if (currentUser) showToast('You are on your Public Account dashboard', false);
-        else showToast('Please login to access your account', true);
-    });
-    document.getElementById('navLaws')?.addEventListener('click', () => {
-        showToast('📚 Pakistani Laws: Civil, Criminal, FIR Procedure, Bail, Family Law, Property Rights, Consumer Protection, Harassment Laws & more.', false);
-    });
-    document.getElementById('navHelpline')?.addEventListener('click', () => {
-        showToast('🚨 Emergency Helplines: Police 15 | Women Helpline 1099 | FIA Cyber Crime 9911 | Rescue 1122', false);
-    });
-    document.getElementById('navResources')?.addEventListener('click', () => {
-        showToast('📖 Legal Resources: Constitution of Pakistan, PPC, CPC, Qanoon-e-Shahadat Orders.', false);
-    });
-
-    // Auto-login if remembered
-    const remembered = localStorage.getItem('rememberedUser');
-    if (remembered) {
-        const { email } = JSON.parse(remembered);
-        const user = users.find(u => u.email === email);
-        if (user) {
-            currentUser = user;
-            authContainer.classList.add('hidden');
-            publicDashboard.classList.remove('hidden');
-            dashboardUserName.innerText = user.fullName.split(' ')[0];
-        }
-    }
+  // Close modals if background/overlay is clicked
+  if (event.target.classList.contains('modal-overlay')) {
+    event.target.classList.remove('active');
+  }
+}
 </script>
+</body>
+  
+
+  <footer id="contact" class="footer">
+    <div class="container footer-inner">
+      <p>© 2026 Qanoon in Hand. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

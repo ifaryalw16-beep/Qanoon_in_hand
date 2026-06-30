@@ -30,7 +30,7 @@
             --display-font: 'Cormorant Garamond', Georgia, serif;
         }
 
-       
+
         .sidebar .nav-links {
             display: block;
             margin: 0;
@@ -42,7 +42,7 @@
             width: 100%;
         }
 
-        .sidebar .nav-links li + li {
+        .sidebar .nav-links li+li {
             margin-top: 6px;
         }
 
@@ -151,7 +151,7 @@
         }
 
         .category-group.open .category-header {
-            color:#c5a880 ;
+            color: #c5a880;
         }
 
         .category-group.open span.arrow {
@@ -217,78 +217,88 @@
         }
 
         .lang-toggle {
-  background: transparent;
-  color: #C9A84C;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 9px 20px;
-  border: 1.5px solid #C9A84C;
-  border-radius: 25px;
-  cursor: pointer;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  font-family: inherit;
-  position: relative;
-  overflow: hidden;
-  transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 0 0 rgba(201, 168, 76, 0);
-  isolation: isolate;
+            background: transparent;
+            color: #C9A84C;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 9px 20px;
+            border: 1.5px solid #C9A84C;
+            border-radius: 25px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: inherit;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 0 0 rgba(201, 168, 76, 0);
+            isolation: isolate;
         }
 
         .lang-toggle::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: #eec556;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-  z-index: -1;
-}
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: #eec556;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+
         .lang-toggle:hover::before {
             transform: scaleX(1);
         }
 
         .lang-toggle:hover {
             color: #fff;
-  box-shadow: 0 4px 15px rgba(201, 168, 76, 0.35);
-  transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(201, 168, 76, 0.35);
+            transform: translateY(-1px);
         }
-.lang-toggle span {
-  position: relative;
-  z-index: 1;
-}
+
+        .lang-toggle span {
+            position: relative;
+            z-index: 1;
+        }
+
         .info-card {
-          background-color: white; /* Wahi premium skin/parchment tone */
-    padding: 48px 52px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    border: 2px solid #c5a880; /* Poore card par elegant gold border */
-    min-height: 80vh;
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-    
-    /* Elegant soft legal vector graphics in background (gavel and scales) */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 240'%3E%3Cg fill='none' stroke='%23c5a880' stroke-linecap='round' stroke-linejoin='round' opacity='0.18'%3E%3C!-- Base platform --%3E%3Crect x='75' y='210' width='50' height='8' rx='4' stroke-width='2' fill='%23c5a880' fill-opacity='0.1'/%3E%3C!-- Pole --%3E%3Cline x1='100' y1='15' x2='100' y2='210' stroke-width='2.5'/%3E%3C!-- Decorative top circle --%3E%3Ccircle cx='100' cy='15' r='5' stroke-width='2' fill='%23c5a880' fill-opacity='0.2'/%3E%3C!-- Main beam --%3E%3Cline x1='30' y1='45' x2='170' y2='45' stroke-width='2.5'/%3E%3C!-- Beam decorative notch --%3E%3Ccircle cx='100' cy='45' r='4' stroke-width='1.5' fill='%23c5a880' fill-opacity='0.15'/%3E%3C!-- Left chains --%3E%3Cline x1='45' y1='45' x2='35' y2='85' stroke-width='1.2'/%3E%3Cline x1='65' y1='45' x2='75' y2='85' stroke-width='1.2'/%3E%3Cline x1='45' y1='55' x2='65' y2='55' stroke-width='0.8' stroke-dasharray='3,3'/%3E%3Cline x1='42' y1='65' x2='68' y2='65' stroke-width='0.8' stroke-dasharray='3,3'/%3E%3Cline x1='39' y1='75' x2='71' y2='75' stroke-width='0.8' stroke-dasharray='3,3'/%3E%3C!-- Left pan --%3E%3Cpath d='M28 85 Q55 105 82 85' stroke-width='2'/%3E%3Cpath d='M28 85 Q55 88 82 85' stroke-width='1' stroke-dasharray='2,2' opacity='0.5'/%3E%3C!-- Right chains --%3E%3Cline x1='135' y1='45' x2='125' y2='85' stroke-width='1.2'/%3E%3Cline x1='155' y1='45' x2='165' y2='85' stroke-width='1.2'/%3E%3Cline x1='135' y1='55' x2='155' y2='55' stroke-width='0.8' stroke-dasharray='3,3'/%3E%3Cline x1='132' y1='65' x2='158' y2='65' stroke-width='0.8' stroke-dasharray='3,3'/%3E%3Cline x1='129' y1='75' x2='161' y2='75' stroke-width='0.8' stroke-dasharray='3,3'/%3E%3C!-- Right pan --%3E%3Cpath d='M118 85 Q145 105 172 85' stroke-width='2'/%3E%3Cpath d='M118 85 Q145 88 172 85' stroke-width='1' stroke-dasharray='2,2' opacity='0.5'/%3E%3C!-- Base stem detail --%3E%3Cpath d='M88 190 Q100 195 112 190' stroke-width='1.5'/%3E%3Cline x1='85' y1='210' x2='115' y2='210' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E");
-background-repeat: no-repeat;
-    background-repeat: no-repeat;
-    background-position: right 5% bottom 5%;
-    background-size: 300px;
-    background-blend-mode: multiply;
-    opacity-for-bg: 0.03;
-    background-position: right 8% bottom 8%;
+            background-color: white;
+            /* Wahi premium skin/parchment tone */
+            padding: 48px 52px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 2px solid #c5a880;
+            /* Poore card par elegant gold border */
+            min-height: 80vh;
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+
+            /* Elegant soft legal vector graphics in background (gavel and scales) */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 240'%3E%3Cg fill='none' stroke='%23c5a880' stroke-linecap='round' stroke-linejoin='round' opacity='0.18'%3E%3C!-- Base platform --%3E%3Crect x='75' y='210' width='50' height='8' rx='4' stroke-width='2' fill='%23c5a880' fill-opacity='0.1'/%3E%3C!-- Pole --%3E%3Cline x1='100' y1='15' x2='100' y2='210' stroke-width='2.5'/%3E%3C!-- Decorative top circle --%3E%3Ccircle cx='100' cy='15' r='5' stroke-width='2' fill='%23c5a880' fill-opacity='0.2'/%3E%3C!-- Main beam --%3E%3Cline x1='30' y1='45' x2='170' y2='45' stroke-width='2.5'/%3E%3C!-- Beam decorative notch --%3E%3Ccircle cx='100' cy='45' r='4' stroke-width='1.5' fill='%23c5a880' fill-opacity='0.15'/%3E%3C!-- Left chains --%3E%3Cline x1='45' y1='45' x2='35' y2='85' stroke-width='1.2'/%3E%3Cline x1='65' y1='45' x2='75' y2='85' stroke-width='1.2'/%3E%3Cline x1='45' y1='55' x2='65' y2='55' stroke-width='0.8' stroke-dasharray='3,3'/%3E%3Cline x1='42' y1='65' x2='68' y2='65' stroke-width='0.8' stroke-dasharray='3,3'/%3E%3Cline x1='39' y1='75' x2='71' y2='75' stroke-width='0.8' stroke-dasharray='3,3'/%3E%3C!-- Left pan --%3E%3Cpath d='M28 85 Q55 105 82 85' stroke-width='2'/%3E%3Cpath d='M28 85 Q55 88 82 85' stroke-width='1' stroke-dasharray='2,2' opacity='0.5'/%3E%3C!-- Right chains --%3E%3Cline x1='135' y1='45' x2='125' y2='85' stroke-width='1.2'/%3E%3Cline x1='155' y1='45' x2='165' y2='85' stroke-width='1.2'/%3E%3Cline x1='135' y1='55' x2='155' y2='55' stroke-width='0.8' stroke-dasharray='3,3'/%3E%3Cline x1='132' y1='65' x2='158' y2='65' stroke-width='0.8' stroke-dasharray='3,3'/%3E%3Cline x1='129' y1='75' x2='161' y2='75' stroke-width='0.8' stroke-dasharray='3,3'/%3E%3C!-- Right pan --%3E%3Cpath d='M118 85 Q145 105 172 85' stroke-width='2'/%3E%3Cpath d='M118 85 Q145 88 172 85' stroke-width='1' stroke-dasharray='2,2' opacity='0.5'/%3E%3C!-- Base stem detail --%3E%3Cpath d='M88 190 Q100 195 112 190' stroke-width='1.5'/%3E%3Cline x1='85' y1='210' x2='115' y2='210' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-repeat: no-repeat;
+            background-position: right 5% bottom 5%;
+            background-size: 300px;
+            background-blend-mode: multiply;
+            opacity-for-bg: 0.03;
+            background-position: right 8% bottom 8%;
         }
+
         .info-card::before {
-    content: '';
-    position: absolute;
-    top: 8px; left: 8px; right: 8px; bottom: 8px;
-    border: 1px solid rgba(197, 168, 128, 0.25);
-    border-radius: 10px;
-    pointer-events: none;
-}
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border: 1px solid rgba(197, 168, 128, 0.25);
+            border-radius: 10px;
+            pointer-events: none;
+        }
+
         /* ── Content area (topic pages) ── */
         #content-title {
             color: var(--primary-dark);
@@ -307,75 +317,88 @@ background-repeat: no-repeat;
 
         /* ── Welcome screen ── */
         .welcome-eyebrow {
-display: inline-block;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    color: #ffffff;
-    background-color: var(--primary-dark);
-    padding: 6px 16px;
-    border-radius: 4px;
-    margin-bottom: 28px;
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: #ffffff;
+            background-color: var(--primary-dark);
+            padding: 6px 16px;
+            border-radius: 4px;
+            margin-bottom: 28px;
         }
-.welcome-screen-ur {
-    display: none; /* hidden by default */
-    direction: rtl;
-    text-align: right;
-}
+
+        .welcome-screen-ur {
+            display: none;
+            /* hidden by default */
+            direction: rtl;
+            text-align: right;
+        }
+
         .welcome-title {
-font-family: var(--display-font);
-    font-size: 2.4rem;
-    font-weight: 700;
-    color: #1e2d4a;
-    line-height: 1.25;
-    margin-bottom: 16px;
-    max-width: 680px;
+            font-family: var(--display-font);
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #1e2d4a;
+            line-height: 1.25;
+            margin-bottom: 16px;
+            max-width: 680px;
         }
 
         .welcome-title em {
             font-style: italic;
-    color: #8a6e00; /* Aapka original shade jo variable color ke close hai */
-    font-weight: 700;
+            color: #8a6e00;
+            /* Aapka original shade jo variable color ke close hai */
+            font-weight: 700;
         }
 
         .welcome-divider {
-          width: 120px; /* Thodi bari aur premium divider line */
-    height: 1px;
-    background: linear-gradient(to right, #c5a880, transparent);
-    margin-bottom: 24px;
+            width: 120px;
+            /* Thodi bari aur premium divider line */
+            height: 1px;
+            background: linear-gradient(to right, #c5a880, transparent);
+            margin-bottom: 24px;
         }
 
         .welcome-desc {
-font-size: 1.05rem;
-    font-weight: 300;
-    line-height: 1.65;
-    color: #4a5568;
-    max-width: 620px; /* Taake text background watermark ke upar messy na lage */
-    margin-bottom: 35px;
-    text-align: justify;
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.65;
+            color: #4a5568;
+            max-width: 620px;
+            /* Taake text background watermark ke upar messy na lage */
+            margin-bottom: 35px;
+            text-align: justify;
         }
-.features {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .6rem;
-    margin-bottom: 2.4rem;
-  }
-  .pill {
-    display: inline-flex;
-    align-items: center;
-    gap: .4rem;
-    background: var(--parchment);
-    border: 1px solid rgba(184,151,42,.3);
-    color: var(--navy-mid);
-    font-family: 'DM Sans', sans-serif;
-    font-size: .72rem;
-    font-weight: 400;
-    letter-spacing: .04em;
-    padding: .3rem .85rem;
-    border-radius: 20px;
-  }
-  .pill-icon { color: var(--gold); font-size: .8rem; }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .6rem;
+            margin-bottom: 2.4rem;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            background: var(--parchment);
+            border: 1px solid rgba(184, 151, 42, .3);
+            color: var(--navy-mid);
+            font-family: 'DM Sans', sans-serif;
+            font-size: .72rem;
+            font-weight: 400;
+            letter-spacing: .04em;
+            padding: .3rem .85rem;
+            border-radius: 20px;
+        }
+
+        .pill-icon {
+            color: var(--gold);
+            font-size: .8rem;
+        }
+
         /* Legal Guides visibility controller */
         .legal-guide-wrapper {
             display: none;
@@ -384,124 +407,138 @@ font-size: 1.05rem;
         .legal-guide-wrapper.active {
             display: block;
         }
-.disclaimer {
-  max-width: 760px;
-  width: 100%;
-  background: var(--amber-bg);
-  border: 1px solid var(--amber-bdr);
-  border-top: none;
-  border-radius: 3px;
-  overflow: hidden;
-  box-shadow:
-    0 2px 8px rgba(184,145,42,.12),
-    0 12px 40px rgba(14,29,56,.08);
-  animation: fadeUp .55s ease both;
-}
 
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(16px); }
-  to   { opacity:1; transform:translateY(0); }
-}
+        .disclaimer {
+            max-width: 760px;
+            width: 100%;
+            background: var(--amber-bg);
+            border: 1px solid var(--amber-bdr);
+            border-top: none;
+            border-radius: 3px;
+            overflow: hidden;
+            box-shadow:
+                0 2px 8px rgba(184, 145, 42, .12),
+                0 12px 40px rgba(14, 29, 56, .08);
+            animation: fadeUp .55s ease both;
+        }
 
-/* ── Top accent bar ── */
-.disclaimer-bar {
-  height: 4px;
-  background: linear-gradient(90deg,
-    var(--navy) 0%,
-    var(--gold) 35%,
-    var(--gold-lt) 60%,
-    var(--gold) 80%,
-    var(--navy) 100%);
-}
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
 
-/* ── Header row ── */
-.disclaimer-header {
-  background: var(--navy);
-  padding: .85rem 2rem;
-  display: flex;
-  align-items: center;
-  gap: .85rem;
-}
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-.disclaimer-icon-wrap {
-  width: 36px; height: 36px;
-  border: 1.5px solid rgba(212,170,72,.5);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
+        /* ── Top accent bar ── */
+        .disclaimer-bar {
+            height: 4px;
+            background: linear-gradient(90deg,
+                    var(--navy) 0%,
+                    var(--gold) 35%,
+                    var(--gold-lt) 60%,
+                    var(--gold) 80%,
+                    var(--navy) 100%);
+        }
 
-.disclaimer-icon {
-  font-size: 1rem;
-  line-height: 1;
-}
+        /* ── Header row ── */
+        .disclaimer-header {
+            background: var(--navy);
+            padding: .85rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: .85rem;
+        }
 
-.disclaimer-heading {
-  font-family: 'DM Sans', sans-serif;
-  font-size: .7rem;
-  font-weight: 600;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: var(--gold-lt);
-}
+        .disclaimer-icon-wrap {
+            width: 36px;
+            height: 36px;
+            border: 1.5px solid rgba(212, 170, 72, .5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
 
-/* ── Body ── */
-.disclaimer-body {
-  padding: 1.8rem 2rem 1.6rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
-}
+        .disclaimer-icon {
+            font-size: 1rem;
+            line-height: 1;
+        }
 
-/* Main statement */
-.disclaimer-main-en {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.13rem;
-  font-weight: 500;
-  line-height: 1.7;
-  color: var(--text);
-  padding-left: 1rem;
-  border-left: 2.5px solid var(--gold);
-}
+        .disclaimer-heading {
+            font-family: 'DM Sans', sans-serif;
+            font-size: .7rem;
+            font-weight: 600;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: var(--gold-lt);
+        }
 
-.disclaimer-main em {
-  font-style: italic;
-  color: var(--navy-mid);
-}
-.disclaimer-main-ur {
-    direction: rtl;
-    text-align: right;
-    font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
-    font-size: 15px;
-    line-height: 2.2;
-    color: #4a3f35;
-    border-left: none;
-    border-right: 4px solid #c5a880;
-    padding: 12px 18px 12px 0;
-    margin-top: 20px;
-}
-/* Sub text */
-.disclaimer-sub {
-  font-family: 'DM Sans', sans-serif;
-  font-size: .83rem;
-  font-weight: 300;
-  line-height: 1.75;
-  color: var(--text-mid);
-}
+        /* ── Body ── */
+        .disclaimer-body {
+            padding: 1.8rem 2rem 1.6rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+        }
 
-.disclaimer-sub strong {
-  font-weight: 600;
-  color: var(--navy);
-}
+        /* Main statement */
+        .disclaimer-main-en {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.13rem;
+            font-weight: 500;
+            line-height: 1.7;
+            color: var(--text);
+            padding-left: 1rem;
+            border-left: 2.5px solid var(--gold);
+        }
 
-/* ── Divider ── */
-.disclaimer-divider {
-  height: 1px;
-  background: linear-gradient(90deg,
-    var(--amber-bdr) 0%,
-    transparent 100%);
-  margin: .2rem 0;
-}
+        .disclaimer-main em {
+            font-style: italic;
+            color: var(--navy-mid);
+        }
+
+        .disclaimer-main-ur {
+            direction: rtl;
+            text-align: right;
+            font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
+            font-size: 15px;
+            line-height: 2.2;
+            color: #4a3f35;
+            border-left: none;
+            border-right: 4px solid #c5a880;
+            padding: 12px 18px 12px 0;
+            margin-top: 20px;
+        }
+
+        /* Sub text */
+        .disclaimer-sub {
+            font-family: 'DM Sans', sans-serif;
+            font-size: .83rem;
+            font-weight: 300;
+            line-height: 1.75;
+            color: var(--text-mid);
+        }
+
+        .disclaimer-sub strong {
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        /* ── Divider ── */
+        .disclaimer-divider {
+            height: 1px;
+            background: linear-gradient(90deg,
+                    var(--amber-bdr) 0%,
+                    transparent 100%);
+            margin: .2rem 0;
+        }
+
         /* Animations */
         @keyframes fadeUp {
             from {
@@ -558,16 +595,119 @@ font-size: 1.05rem;
 
             <button class="hamburger" aria-label="Menu"
                 onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+            <div class="settings-menu-wrapper">
+                <button class="settings-trigger" id="settingsTriggerBtn" onclick="toggleSettingsMenu(event)">☰</button>
+                <div class="settings-dropdown" id="settingsDropdown">
+                    <a href="#" onclick="openModal('profileModal')">Profile Settings</a>
+                    <a href="#" onclick="openModal('addAccountModal')">Add Account</a>
+                    <a href="#" onclick="openModal('deleteAccountModal')">Delete Account</a>
+                    <a href="#" onclick="openModal('logoutModal')">Log Out</a>
+                </div>
+            </div>
         </div>
-    </header>
+    <div id="profileModal" class="modal-overlay">
+        <div class="modal-box">
+            <h2>Edit Profile</h2>
+            <form onsubmit="event.preventDefault(); alert('Profile Saved!'); closeModal('profileModal');">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" value="Aisha Khan" required />
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" value="aishakhan@email.com" required />
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="text" value="+92 3XX XXXXXXX" required />
+                </div>
+                <div class="form-group">
+                    <label>User Type Dropdown</label>
+                    <select>
+                        <option value="citizen">Citizen</option>
+                        <option value="student">Student</option>
+                        <option value="advocate">Advocate</option>
+                    </select>
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn-primary">Save Changes</button>
+                    <button type="button" class="btn-secondary" onclick="closeModal('profileModal')">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="addAccountModal" class="modal-overlay">
+        <div class="modal-box">
+            <h2>Add Account</h2>
+            <form onsubmit="event.preventDefault(); alert('Account Added!'); closeModal('addAccountModal');">
+                <div class="form-group">
+                    <label>Enter Email or Username</label>
+                    <input type="text" placeholder="new_user@email.com" required />
+                </div>
+                <div class="form-group">
+                    <label>Create Password</label>
+                    <input type="password" placeholder="••••••••" required />
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" placeholder="••••••••" required />
+                </div>
+                <div class="form-group">
+                    <label>User Type</label>
+                    <select required>
+                        <option value="" disabled selected>Select Type...</option>
+                        <option value="citizen">Citizen</option>
+                        <option value="student">Student</option>
+                        <option value="advocate">Advocate</option>
+                    </select>
+                </div>
+                <div class="modal-buttons flex-align">
+                    <button type="submit" class="btn-primary">Add account</button>
+                    <a href="#" class="modal-link">create account</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="deleteAccountModal" class="modal-overlay">
+        <div class="modal-box text-center">
+            <h2>Confirm Account Deletion</h2>
+            <p class="modal-warning-text">This action is irreversible. All your data, saved guides, and account
+                information will be permanently removed. To confirm, please type your email below:</p>
+            <form onsubmit="event.preventDefault(); alert('Account Deleted.'); closeModal('deleteAccountModal');">
+                <div class="form-group">
+                    <input type="email" placeholder="Enter your email here..." required />
+                </div>
+                <div class="modal-buttons row-buttons">
+                    <button type="submit" class="btn-danger">PERMANENTLY DELETE ACCOUNT</button>
+                    <button type="button" class="btn-secondary"
+                        onclick="closeModal('deleteAccountModal')">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="logoutModal" class="modal-overlay">
+        <div class="modal-box text-center">
+            <h2>Confirm Log Out</h2>
+            <p class="modal-warning-text">Are you sure you want to log out of QANOON IN HAND?</p>
+            <div class="modal-buttons row-buttons justify-center">
+                <button class="btn-primary" onclick="alert('Logged Out'); closeModal('logoutModal');">Yes, Log
+                    Out</button>
+                <button class="btn-secondary" onclick="closeModal('logoutModal')">Cancel</button>
+            </div>
+        </div>
+    </div>
+        </header>
+
     <div class="container">
 
         <aside class="sidebar">
-          
-            <div class="part-header" id="part1-label"
-data-en="Part 1: Fundamental Rights" 
-     data-ur="حصہ اول: بنیادی حقوق">
-     Part 1: Fundamental Rights
+
+            <div class="part-header" id="part1-label" data-en="Part 1: Fundamental Rights"
+                data-ur="حصہ اول: بنیادی حقوق">
+                Part 1: Fundamental Rights
             </div>
             <ul class="nav-links" id="fundamental-nav">
                 <li class="category-group">
@@ -602,9 +742,7 @@ data-en="Part 1: Fundamental Rights"
                 </li>
             </ul>
 
-            <div class="part-header" id="part2-label"
-                data-en="Part 2: Criminal Law"
-                data-ur="حصہ دوم: جنایتی قانون">
+            <div class="part-header" id="part2-label" data-en="Part 2: Criminal Law" data-ur="حصہ دوم: جنایتی قانون">
                 Part 2: Criminal Law
             </div>
             <ul class="nav-links" id="criminal-nav">
@@ -752,10 +890,8 @@ data-en="Part 1: Fundamental Rights"
                 </li>
             </ul>
 
-            <div class="part-header" id="part3-label"
-            data-en="Part 3: Civil Law"
-            data-ur="حصہ سوم: سول قانون"
-            >Part 3: Civil Law</div>
+            <div class="part-header" id="part3-label" data-en="Part 3: Civil Law" data-ur="حصہ سوم: سول قانون">Part 3:
+                Civil Law</div>
             <ul class="nav-links" id="civil-nav">
                 <li class="category-group">
                     <div class="category-header" onclick="toggleSubMenu(this)">
@@ -791,74 +927,75 @@ data-en="Part 1: Fundamental Rights"
                         </li>
                     </ul>
                 </li>
-            <li class="category-group">
-                <div class="category-header" onclick="toggleSubMenu(this)">
-                    <span class="nav-item-text" data-en="Property & Land Laws"
-                        data-ur="جائیداد اور اراضی کے قوانین">Property & Land Laws</span>
-                    <span class="arrow">▶</span>
-                </div>
-                <ul class="sub-menu">
-                    <li class="sub-item" onclick="showTopic('Stay Orders')">
-                        <span class="nav-item-text" data-en="Stay Orders" data-ur="سٹے آرڈرز">Stay Orders</span>
-                    </li>
-                    <li class="sub-item" onclick="showTopic('Illegal Dispossession')">
-                        <span class="nav-item-text" data-en="Illegal Dispossession" data-ur="غیر قانونی قبضہ">Illegal
-                            Dispossession</span>
-                    </li>
-                    <li class="sub-item" onclick="showTopic('Land Records')">
-                        <span class="nav-item-text" data-en="Land Records" data-ur="اراضی ریکارڈ">Land
-                            Records</span>
-                    </li>
-                </ul>
-            </li>
-            <li class="category-group">
-                <div class="category-header" onclick="toggleSubMenu(this)">
-                    <span class="nav-item-text" data-en="Succession & Inheritance"
-                        data-ur="وراثت اور جانشینی">Succession & Inheritance</span>
-                    <span class="arrow">▶</span>
-                </div>
-                <ul class="sub-menu">
-                    <li class="sub-item" onclick="showTopic('Succession Certificate')">
-                        <span class="nav-item-text" data-en="Succession Certificate"
-                            data-ur="سکسیشن سرٹیفکیٹ">Succession Certificate</span>
-                    </li>
-                    <li class="sub-item" onclick="showTopic('Inheritance Distribution')">
-                        <span class="nav-item-text" data-en="Inheritance Distribution"
-                            data-ur="وراثت کی تقسیم">Inheritance Distribution</span>
-                    </li>
-                </ul>
-            </li>
-            <li class="category-group">
-                <div class="category-header" onclick="toggleSubMenu(this)">
-                    <span class="nav-item-text" data-en=" Public Interest Topics" data-ur="عوامی مفاد کے موضوعات">
-                        Public Interest Topics</span>
-                    <span class="arrow">▶</span>
-                </div>
-                <ul class="sub-menu">
-                    <li class="sub-item" onclick="showTopic('Women’s Rights')">
-                        <span class="nav-item-text" data-en="Women’s Rights" data-ur="خواتین کے حقوق">Women’s
-                            Rights</span>
-                    </li>
-                    <li class="sub-item" onclick="showTopic('Domestic Violence')">
-                        <span class="nav-item-text" data-en="Domestic Violence" data-ur="گھریلو تشدد">Domestic
-                            Violence</span>
-                    </li>
-                    <li class="sub-item" onclick="showTopic('Tax Law & FBR Compliance')">
-                        <span class="nav-item-text" data-en="Tax Law & FBR Compliance"
-                            data-ur="ٹیکس قوانین اور ایف بی آر">Tax Law & FBR Compliance</span>
-                    </li>
-                    <li class="sub-item" onclick="showTopic('Consumer Rights & Protection')">
-                        <span class="nav-item-text" data-en="Consumer Rights & Protection"
-                            data-ur="صارفین کے حقوق اور تحفظ">Consumer Rights & Protection</span>
-                    </li>
-                    <li class="sub-item" onclick="showTopic('Traffic Laws')">
-                        <span class="nav-item-text" data-en="Traffic Laws" data-ur="ٹریفک قوانین">Traffic
-                            Laws</span>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </aside>
+                <li class="category-group">
+                    <div class="category-header" onclick="toggleSubMenu(this)">
+                        <span class="nav-item-text" data-en="Property & Land Laws"
+                            data-ur="جائیداد اور اراضی کے قوانین">Property & Land Laws</span>
+                        <span class="arrow">▶</span>
+                    </div>
+                    <ul class="sub-menu">
+                        <li class="sub-item" onclick="showTopic('Stay Orders')">
+                            <span class="nav-item-text" data-en="Stay Orders" data-ur="سٹے آرڈرز">Stay Orders</span>
+                        </li>
+                        <li class="sub-item" onclick="showTopic('Illegal Dispossession')">
+                            <span class="nav-item-text" data-en="Illegal Dispossession"
+                                data-ur="غیر قانونی قبضہ">Illegal
+                                Dispossession</span>
+                        </li>
+                        <li class="sub-item" onclick="showTopic('Land Records')">
+                            <span class="nav-item-text" data-en="Land Records" data-ur="اراضی ریکارڈ">Land
+                                Records</span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="category-group">
+                    <div class="category-header" onclick="toggleSubMenu(this)">
+                        <span class="nav-item-text" data-en="Succession & Inheritance"
+                            data-ur="وراثت اور جانشینی">Succession & Inheritance</span>
+                        <span class="arrow">▶</span>
+                    </div>
+                    <ul class="sub-menu">
+                        <li class="sub-item" onclick="showTopic('Succession Certificate')">
+                            <span class="nav-item-text" data-en="Succession Certificate"
+                                data-ur="سکسیشن سرٹیفکیٹ">Succession Certificate</span>
+                        </li>
+                        <li class="sub-item" onclick="showTopic('Inheritance Distribution')">
+                            <span class="nav-item-text" data-en="Inheritance Distribution"
+                                data-ur="وراثت کی تقسیم">Inheritance Distribution</span>
+                        </li>
+                    </ul>
+                </li>
+                <li class="category-group">
+                    <div class="category-header" onclick="toggleSubMenu(this)">
+                        <span class="nav-item-text" data-en=" Public Interest Topics" data-ur="عوامی مفاد کے موضوعات">
+                            Public Interest Topics</span>
+                        <span class="arrow">▶</span>
+                    </div>
+                    <ul class="sub-menu">
+                        <li class="sub-item" onclick="showTopic('Women’s Rights')">
+                            <span class="nav-item-text" data-en="Women’s Rights" data-ur="خواتین کے حقوق">Women’s
+                                Rights</span>
+                        </li>
+                        <li class="sub-item" onclick="showTopic('Domestic Violence')">
+                            <span class="nav-item-text" data-en="Domestic Violence" data-ur="گھریلو تشدد">Domestic
+                                Violence</span>
+                        </li>
+                        <li class="sub-item" onclick="showTopic('Tax Law & FBR Compliance')">
+                            <span class="nav-item-text" data-en="Tax Law & FBR Compliance"
+                                data-ur="ٹیکس قوانین اور ایف بی آر">Tax Law & FBR Compliance</span>
+                        </li>
+                        <li class="sub-item" onclick="showTopic('Consumer Rights & Protection')">
+                            <span class="nav-item-text" data-en="Consumer Rights & Protection"
+                                data-ur="صارفین کے حقوق اور تحفظ">Consumer Rights & Protection</span>
+                        </li>
+                        <li class="sub-item" onclick="showTopic('Traffic Laws')">
+                            <span class="nav-item-text" data-en="Traffic Laws" data-ur="ٹریفک قوانین">Traffic
+                                Laws</span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
 
         <main class="main-content">
             <header class="top-header">
@@ -870,258 +1007,366 @@ data-en="Part 1: Fundamental Rights"
                     <span class="welcome-eyebrow anim-1">Welcome to Qanoon in Hand.</span>
                     <h2 class="welcome-title anim-2">Your Digital Guide to <em>Justice &amp; Law</em></h2>
                     <div class="welcome-divider anim-3"></div>
-                    <p class="welcome-desc anim-4"><strong></strong><b></b> Select a legal topic from the sidebar menu to view
+                    <p class="welcome-desc anim-4"><strong></strong><b></b> Select a legal topic from the sidebar menu
+                        to view
                         comprehensive constitutional guides, practical workflows, and legal fact-checks in your
                         preferred language.<b></b></strong></p>
-                        <div class="features">
-      <span class="pill"><span class="pill-icon">§</span> Fundamental Rights</span>
-      <span class="pill"><span class="pill-icon">⚖</span> Criminal Law</span>
-      <span class="pill"><span class="pill-icon">📋</span> Civil Procedure</span> <br>
-      <span class="pill"><span class="pill-icon">🏛</span> Family Law</span>
-      <span class="pill"><span class="pill-icon">🌐</span> Bilingual</span>
-    </div>
-         <p id="disclaimer-main-en" class="disclaimer-main-en">
-      The information provided on this platform is intended
-      <em>for general public awareness only</em> and does
-      <em>not</em> constitute legal advice, legal opinion,
-      or a substitute for professional legal counsel.
-    </p>
+                    <div class="features">
+                        <span class="pill"><span class="pill-icon">§</span> Fundamental Rights</span>
+                        <span class="pill"><span class="pill-icon">⚖</span> Criminal Law</span>
+                        <span class="pill"><span class="pill-icon">📋</span> Civil Procedure</span> <br>
+                        <span class="pill"><span class="pill-icon">🏛</span> Family Law</span>
+                        <span class="pill"><span class="pill-icon">🌐</span> Bilingual</span>
+                    </div>
+                    <p id="disclaimer-main-en" class="disclaimer-main-en">
+                        The information provided on this platform is intended
+                        <em>for general public awareness only</em> and does
+                        <em>not</em> constitute legal advice, legal opinion,
+                        or a substitute for professional legal counsel.
+                    </p>
                 </div>
                 <!-- URDU WELCOME SCREEN -->
-<div id="welcome-screen-ur" style="display:none; direction:rtl; text-align:right;">
-    <span class="welcome-eyebrow anim-1">قانون ان ہینڈ میں خوش آمدید۔</span>
-    <h2 class="welcome-title anim-2">انصاف اور <em>قانون</em> کی طرف آپ کی ڈیجیٹل رہنمائی</h2>
-    <div class="welcome-divider anim-3"></div>
-    <p class="welcome-desc anim-4">سائیڈبار مینو سے کوئی قانونی موضوع منتخب کریں تاکہ آپ اپنی پسندیدہ زبان میں جامع آئینی رہنمائی، عملی طریقہ کار، اور قانونی حقائق دیکھ سکیں۔</p>
-    <div class="features">
-        <span class="pill"><span class="pill-icon">§</span> بنیادی حقوق</span>
-        <span class="pill"><span class="pill-icon">⚖</span> فوجداری قانون</span>
-        <span class="pill"><span class="pill-icon">📄</span> دیوانی طریقہ کار</span>
-        <span class="pill"><span class="pill-icon">👨‍👩‍👧</span> خاندانی قانون</span>
-        <span class="pill"><span class="pill-icon">🌐</span> دو لسانی</span>
-    </div>
-</div>
+                <div id="welcome-screen-ur" style="display:none; direction:rtl; text-align:right;">
+                    <span class="welcome-eyebrow anim-1">قانون ان ہینڈ میں خوش آمدید۔</span>
+                    <h2 class="welcome-title anim-2">انصاف اور <em>قانون</em> کی طرف آپ کی ڈیجیٹل رہنمائی</h2>
+                    <div class="welcome-divider anim-3"></div>
+                    <p class="welcome-desc anim-4">سائیڈبار مینو سے کوئی قانونی موضوع منتخب کریں تاکہ آپ اپنی پسندیدہ
+                        زبان میں جامع آئینی رہنمائی، عملی طریقہ کار، اور قانونی حقائق دیکھ سکیں۔</p>
+                    <div class="features">
+                        <span class="pill"><span class="pill-icon">§</span> بنیادی حقوق</span>
+                        <span class="pill"><span class="pill-icon">⚖</span> فوجداری قانون</span>
+                        <span class="pill"><span class="pill-icon">📄</span> دیوانی طریقہ کار</span>
+                        <span class="pill"><span class="pill-icon">👨‍👩‍👧</span> خاندانی قانون</span>
+                        <span class="pill"><span class="pill-icon">🌐</span> دو لسانی</span>
+                    </div>
+                </div>
 
-<p id="disclaimer-main-ur" class="disclaimer-main-ur" style="display:none; direction:rtl; text-align:right;">
-    اس پلیٹ فارم پر فراہم کردہ معلومات صرف
-    <em>عوامی آگاہی کے عمومی مقصد کے لیے ہے</em>
-    اور یہ قانونی مشورہ، قانونی رائے،
-    <em>یا پیشہ ور قانونی مشیر کا متبادل نہیں ہے۔</em>
-</p>
-              
-<div id="guide-right-to-life-en" class="legal-guide-wrapper">
-    <article class="life-liberty-legal-guide"
-        style="font-family: Segoe UI, Roboto, Helvetica, Arial, sans-serif; border: 2px solid #002147; border-radius: 15px; max-width: 900px; margin: 20px auto; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); background-color: #ffffff;">
-        <header
-            style="background-color: #002147; color: #ffffff; padding: 30px; text-align: center; border-bottom: 5px solid #c5a880;">
-            <h1 style="margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 1.5rem;">
-                Right to Life & Liberty: Citizen's Guide</h1>
-            <p style="margin: 10px 0 0; color: #c5a880; font-weight: bold; font-size: 1.1rem;">Your
-                Constitutional Protections Against Arbitrary Arrest &amp; Detention</p>
-        </header>
-        <div style="padding: 30px; line-height: 1.8; color: #333;background-color: white;">
-            
-            <div style="background-color: #fff3cd; border-left: 5px solid #ffc107; padding: 15px; margin-bottom: 25px; border-radius: 4px;">
-                <strong>Important Note:</strong> While the Constitution gives you basic rights, the <strong>Code of Criminal Procedure (CrPC)</strong> and the <strong>Police Order</strong> are the specific laws that the police must follow on the ground.
-            </div>
+                <p id="disclaimer-main-ur" class="disclaimer-main-ur"
+                    style="display:none; direction:rtl; text-align:right;">
+                    اس پلیٹ فارم پر فراہم کردہ معلومات صرف
+                    <em>عوامی آگاہی کے عمومی مقصد کے لیے ہے</em>
+                    اور یہ قانونی مشورہ، قانونی رائے،
+                    <em>یا پیشہ ور قانونی مشیر کا متبادل نہیں ہے۔</em>
+                </p>
 
-            <section style="margin-bottom: 25px;">
-                <h3
-                    style="color: #002147; border-bottom: 2px solid #c5a880 ; padding-bottom: 5px; margin-top: 0; ">
-                    1. The Core Constitutional Shields</h3>
-                <p><strong>Article 9: Security of Person (The Right to Life)</strong><br><span
-                        style="font-style: italic; color: #555;">"No person shall be deprived of life or
-                        liberty save in accordance with law."</span><br><strong>What it means:</strong> The police or state authorities cannot arrest you, lock you up, or harm you just because they want to. They must have a legal reason.<br><strong>Modern Expansion:</strong>
-                    The Supreme Court of Pakistan has ruled that "Life" does not just mean breathing. It also includes your right to clean drinking water, a clean environment, basic healthcare, and safety from public dangers.</p>
-                <p><strong>Article 10: Safeguards as to Arrest and Detention</strong><br>This is your
-                    primary armor if you ever face law enforcement:</p>
-                <ul style="padding-left: 20px;">
-                    <li><strong>Right to Know:</strong> You must be told exactly why you are being
-                        arrested immediately <em>(This is also required under CrPC Section 50)</em>.</li>
-                    <li><strong>Right to Legal Counsel:</strong> You have the legal right to
-                        consult and be defended by a lawyer of your own choice from the exact moment you are
-                        arrested.</li>
-                    <li><strong>The 24-Hour Rule:</strong> The police must present you before a Judicial
-                        Magistrate (Judge) within 24 hours of your arrest (excluding travel time). Any detention beyond 24 hours without
-                        a judge's explicit permission (<strong>Physical Remand under CrPC Section 167</strong>) is completely illegal.</li>
-                </ul>
-                <p><strong>Article 10-A: Right to Fair Trial</strong><br>Whether facing a civil property dispute
-                    or a criminal accusation, you are guaranteed due process. This means you are
-                    presumed innocent until proven guilty. You have the right to an independent judge,
-                    the right to see the evidence against you, and the right to cross-examine
-                    witnesses.</p>
-            </section>
+                <div id="guide-right-to-life-en" class="legal-guide-wrapper">
+                    <article class="life-liberty-legal-guide"
+                        style="font-family: Segoe UI, Roboto, Helvetica, Arial, sans-serif; border: 2px solid #002147; border-radius: 15px; max-width: 900px; margin: 20px auto; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); background-color: #ffffff;">
+                        <header
+                            style="background-color: #002147; color: #ffffff; padding: 30px; text-align: center; border-bottom: 5px solid #c5a880;">
+                            <h1 style="margin: 0; text-transform: uppercase; letter-spacing: 2px; font-size: 1.5rem;">
+                                Right to Life & Liberty: Citizen's Guide</h1>
+                            <p style="margin: 10px 0 0; color: #c5a880; font-weight: bold; font-size: 1.1rem;">Your
+                                Constitutional Protections Against Arbitrary Arrest &amp; Detention</p>
+                        </header>
+                        <div style="padding: 30px; line-height: 1.8; color: #333;background-color: white;">
 
-            <section style="margin-bottom: 25px;">
-                <h3 style="color: #002147; border-bottom: 2px solid #c5a880; padding-bottom: 5px;">2.
-                    Practical Guidelines: What to Do on the Ground?</h3>
-                <p><strong>Scenario A: If You are Stopped or Detained by Police</strong></p>
-                <ul style="padding-left: 20px;">
-                    <li><strong>Ask for Identification:</strong> Politely (without being aggressive) ask the officer for their
-                        name, rank, and the Police Station (Thana) they belong to.</li>
-                    <li><strong>Check the Offence Type:</strong> Police cannot arrest you without a warrant for minor issues. They can only arrest you without a warrant for <strong>"Cognizable Offences"</strong> (serious crimes like theft, assault, or murder).</li>
-                    <li><strong>Inform Your Family:</strong> You have the right to make a phone call to
-                        inform your family or a lawyer of your location.</li>
-                    <li><strong>Do Not Sign Blank Papers:</strong> Never sign blank papers or write statements under pressure. Under Article 14 (Dignity of Man), forced confessions or statements taken through torture have zero legal value in court.</li>
-                    <li><strong>Protections for Women:</strong> Generally, a woman cannot be arrested after sunset or before sunrise. A <strong>Lady Police Officer must be present</strong> during the arrest, and women must be kept in separate women's cells, never in male lockups.</li>
-                </ul>
-                <p><strong>Scenario B: If Someone is Illegally Detained (The 24-Hour Rule Broken)</strong><br>If a relative or friend is taken by authorities and not
-                    produced before a judge within 24 hours, they are victims of illegal
-                    confinement.</p>
-                <ul style="padding-left: 20px;">
-                    <li><strong>Action 1: Session Court Raid (Section 491 CrPC):</strong> You can hire a lawyer to file a petition in the local Sessions Court. The judge can send a court official (Bailiff) to raid the police station immediately and recover the person.</li>
-                    <li><strong>Action 2: Habeas Corpus (Article 199):</strong> You can file a Habeas Corpus petition in your provincial High Court (e.g., Lahore High Court, Sindh High Court). The High Court will order the police or agency to "produce the body" in court and explain why they are holding them.</li>
-                </ul>
-            </section>
+                            <div
+                                style="background-color: #fff3cd; border-left: 5px solid #ffc107; padding: 15px; margin-bottom: 25px; border-radius: 4px;">
+                                <strong>Important Note:</strong> While the Constitution gives you basic rights, the
+                                <strong>Code of Criminal Procedure (CrPC)</strong> and the <strong>Police Order</strong>
+                                are the specific laws that the police must follow on the ground.
+                            </div>
 
-            <section
-                style="margin-bottom: 25px; background-color: #f8f9fa; border-radius: 10px; padding: 25px; border-left: 5px solid #c5a880;">
-                <h3 style="color: #002147; margin-top: 0;">3. Common Public Myths vs. Constitutional
-                    Facts</h3>
-                <table
-                    style="width: 100%; border-collapse: collapse; margin-top: 15px; background-color: white;">
-                    <thead style="background-color: #002147; color: white;">
-                        <tr>
-                            <th
-                                style="padding: 12px; border: 1px solid #ddd; text-align: left; width: 40%;">
-                                Public Myth</th>
-                            <th
-                                style="padding: 12px; border: 1px solid #ddd; text-align: left; width: 60%;">
-                                Constitutional & Legal Fact</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"The
-                                police can keep you in the lockup for days for questioning without a
-                                judge's permission."</td>
-                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>False.</strong>
-                                Keeping anyone past 24 hours without a Magistrate's formal remand order
-                                is a severe constitutional violation and constitutes illegal detention.</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"If I
-                                can't afford a lawyer, I cannot defend myself properly."</td>
-                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>False.</strong>
-                                Under Article 10-A, if you face serious criminal charges and cannot
-                                afford legal representation, the state is legally bound to provide you
-                                with a defense counsel at public expense.</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"The
-                                state can punish me using a newly passed law for an action I did last
-                                year."</td>
-                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>False (Article
-                                    12).</strong> No law can be applied retrospectively. An action that was perfectly legal when you performed it cannot be criminalized by a law passed later.</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"The police cannot detain me unless an FIR is filed first."</td>
-                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>False.</strong> Under <strong>CrPC Section 54</strong>, the police have the power to arrest someone without a warrant or FIR if they have credible suspicion of a serious crime. However, the 24-hour rule still applies.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-        </div>
-        <footer
-            style="background-color: #002147; color: #ffffff; padding: 15px; text-align: center; font-size: 0.9rem; border-top: 5px solid #c5a880;">
-            <strong>Human Rights Helpline: 1099</strong> | <strong>Police Emergency: 15</strong> |
-            <strong>Legal Aid Society / Digital Rights Foundation: 0800-39393</strong> | <strong>Zainab Alert: 1099</strong>
-        </footer>
-    </article>
-</div>
+                            <section style="margin-bottom: 25px;">
+                                <h3
+                                    style="color: #002147; border-bottom: 2px solid #c5a880 ; padding-bottom: 5px; margin-top: 0; ">
+                                    1. The Core Constitutional Shields</h3>
+                                <p><strong>Article 9: Security of Person (The Right to Life)</strong><br><span
+                                        style="font-style: italic; color: #555;">"No person shall be deprived of life or
+                                        liberty save in accordance with law."</span><br><strong>What it means:</strong>
+                                    The police or state authorities cannot arrest you, lock you up, or harm you just
+                                    because they want to. They must have a legal reason.<br><strong>Modern
+                                        Expansion:</strong>
+                                    The Supreme Court of Pakistan has ruled that "Life" does not just mean breathing. It
+                                    also includes your right to clean drinking water, a clean environment, basic
+                                    healthcare, and safety from public dangers.</p>
+                                <p><strong>Article 10: Safeguards as to Arrest and Detention</strong><br>This is your
+                                    primary armor if you ever face law enforcement:</p>
+                                <ul style="padding-left: 20px;">
+                                    <li><strong>Right to Know:</strong> You must be told exactly why you are being
+                                        arrested immediately <em>(This is also required under CrPC Section 50)</em>.
+                                    </li>
+                                    <li><strong>Right to Legal Counsel:</strong> You have the legal right to
+                                        consult and be defended by a lawyer of your own choice from the exact moment you
+                                        are
+                                        arrested.</li>
+                                    <li><strong>The 24-Hour Rule:</strong> The police must present you before a Judicial
+                                        Magistrate (Judge) within 24 hours of your arrest (excluding travel time). Any
+                                        detention beyond 24 hours without
+                                        a judge's explicit permission (<strong>Physical Remand under CrPC Section
+                                            167</strong>) is completely illegal.</li>
+                                </ul>
+                                <p><strong>Article 10-A: Right to Fair Trial</strong><br>Whether facing a civil property
+                                    dispute
+                                    or a criminal accusation, you are guaranteed due process. This means you are
+                                    presumed innocent until proven guilty. You have the right to an independent judge,
+                                    the right to see the evidence against you, and the right to cross-examine
+                                    witnesses.</p>
+                            </section>
 
-             <div id="guide-right-to-life-ur" class="legal-guide-wrapper">
-    <article class="life-liberty-legal-guide"
-        style="font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', Segoe UI, Tahoma, sans-serif; direction: rtl; text-align: right; border: 2px solid #002147; border-radius: 15px; max-width: 900px; margin: 20px auto; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); background-color: #ffffff;">
-        <header
-            style="background-color: #002147; color: #ffffff; padding: 30px; text-align: center; border-bottom: 5px solid #c5a880;">
-            <h1 style="margin: 0; font-size: 1.8rem; font-weight: normal;">حقِ زندگی اور آزادی: شہریوں کے لیے رہنمائی</h1>
-            <p style="margin: 10px 0 0; color: #c5a880; font-weight: bold; font-size: 1.2rem;">بلاوجہ گرفتاری اور نظربندی کے خلاف آپ کے آئینی تحفظات</p>
-        </header>
-        <div style="padding: 30px; line-height: 2; color: #333; background-color: white;">
-            
-            <div style="background-color: #fff3cd; border-right: 5px solid #ffc107; border-left: none; padding: 15px; margin-bottom: 25px; border-radius: 4px;">
-                <strong>ضروری نوٹ:</strong> اگرچہ آئین آپ کو بنیادی حقوق دیتا ہے، لیکن <strong>مجموعہ ضابطہ فوجداری (CrPC)</strong> اور <strong>پولیس آرڈر</strong> وہ مخصوص قوانین ہیں جن پر پولیس کے لیے زمین پر عمل کرنا لازمی ہے۔
-            </div>
+                            <section style="margin-bottom: 25px;">
+                                <h3 style="color: #002147; border-bottom: 2px solid #c5a880; padding-bottom: 5px;">2.
+                                    Practical Guidelines: What to Do on the Ground?</h3>
+                                <p><strong>Scenario A: If You are Stopped or Detained by Police</strong></p>
+                                <ul style="padding-left: 20px;">
+                                    <li><strong>Ask for Identification:</strong> Politely (without being aggressive) ask
+                                        the officer for their
+                                        name, rank, and the Police Station (Thana) they belong to.</li>
+                                    <li><strong>Check the Offence Type:</strong> Police cannot arrest you without a
+                                        warrant for minor issues. They can only arrest you without a warrant for
+                                        <strong>"Cognizable Offences"</strong> (serious crimes like theft, assault, or
+                                        murder).</li>
+                                    <li><strong>Inform Your Family:</strong> You have the right to make a phone call to
+                                        inform your family or a lawyer of your location.</li>
+                                    <li><strong>Do Not Sign Blank Papers:</strong> Never sign blank papers or write
+                                        statements under pressure. Under Article 14 (Dignity of Man), forced confessions
+                                        or statements taken through torture have zero legal value in court.</li>
+                                    <li><strong>Protections for Women:</strong> Generally, a woman cannot be arrested
+                                        after sunset or before sunrise. A <strong>Lady Police Officer must be
+                                            present</strong> during the arrest, and women must be kept in separate
+                                        women's cells, never in male lockups.</li>
+                                </ul>
+                                <p><strong>Scenario B: If Someone is Illegally Detained (The 24-Hour Rule
+                                        Broken)</strong><br>If a relative or friend is taken by authorities and not
+                                    produced before a judge within 24 hours, they are victims of illegal
+                                    confinement.</p>
+                                <ul style="padding-left: 20px;">
+                                    <li><strong>Action 1: Session Court Raid (Section 491 CrPC):</strong> You can hire a
+                                        lawyer to file a petition in the local Sessions Court. The judge can send a
+                                        court official (Bailiff) to raid the police station immediately and recover the
+                                        person.</li>
+                                    <li><strong>Action 2: Habeas Corpus (Article 199):</strong> You can file a Habeas
+                                        Corpus petition in your provincial High Court (e.g., Lahore High Court, Sindh
+                                        High Court). The High Court will order the police or agency to "produce the
+                                        body" in court and explain why they are holding them.</li>
+                                </ul>
+                            </section>
 
-            <section style="margin-bottom: 25px;">
-                <h3
-                    style="color: #002147; border-bottom: 2px solid #c5a880 ; padding-bottom: 5px; margin-top: 0; font-weight: normal; font-size: 1.4rem;">
-                    ۱۔ بنیادی آئینی تحفظات (ڈھال)</h3>
-                <p><strong>آرٹیکل 9: تحفظِ جان (زندگی کا حق)</strong><br><span
-                        style="font-style: italic; color: #555;">"کسی شخص کو زندگی یا آزادی سے محروم نہیں کیا جائے گا سوائے قانون کے مطابق۔"</span><br><strong>اصل مطلب کیا ہے:</strong> پولیس یا ریاستی حکام آپ کو بلاوجہ گرفتار نہیں کر سکتے، آپ کو نقصان نہیں پہنچا سکتے، اور نہ ہی آپ کی زندگی کو خطرے میں ڈال سکتے ہیں۔ ان کے پاس کوئی قانونی وجہ ہونی چاہیے۔<br><strong>جدید قانونی دائرہ کار:</strong> سپریم کورٹ آف پاکستان نے یہ فیصلہ دیا ہے کہ "زندگی" میں صرف سانس لینا شامل نہیں ہے، بلکہ پائیدار ماحول، پینے کے صاف پانی تک رسائی، بنیادی صحت کی دیکھ بھال، اور شہری خطرات سے تحفظ کا حق بھی شامل ہے۔</p>
-                <p><strong>آرٹیکل 10: گرفتاری اور نظربندی کے خلاف تحفظات</strong><br>اگر آپ کو کبھی قانون نافذ کرنے والے اداروں کا सामना کرنا پڑے تو یہ آپ کا سب سے بڑا دفاع ہے:</p>
-                <ul style="padding-right: 20px; padding-left: 0;">
-                    <li><strong>جاننے کا حق:</strong> آپ کو فوراً اور بالکل واضح طور پر بتایا جانا چاہیے کہ آپ کو کیوں گرفتار کیا جا رہا ہے <em>(یہ CrPC کے سیکشن 50 کے تحت بھی لازمی ہے)</em>۔</li>
-                    <li><strong>قانونی مشورے کا حق:</strong> آپ کو گرفتاری کے پہلے لمحے ہی سے اپنی پسند کے وکیل سے مشورہ کرنے اور ان کے ذریعے اپنا دفاع کرنے کا آئینی حق حاصل ہے۔</li>
-                    <li><strong>24 گھنٹے کا قانون:</strong> پولیس کے لیے لازم ہے کہ وہ آپ کو گرفتاری کے 24 گھنٹوں کے اندر (سفر کا وقت نکال کر) علاقہ مجسٹریٹ (جج) کے سامنے پیش کرے۔ جج کے واضح حکم (<strong>جسمانی ریمانڈ تحت CrPC سیکشن 167</strong>) کے بغیر 24 گھنٹے سے زیادہ کی کوئی بھی حراست مکمل طور پر غیر قانونی ہے۔</li>
-                </ul>
-                <p><strong>آرٹیکل 10-اے: منصفانہ ٹرائل کا حق</strong><br>چاہے آپ کو کسی سول تنازع کا سامنا ہو یا مجرمانہ الزام کا، آپ کو قانونی طریقہ کار (Due Process) کی ضمانت دی گئی ہے۔ اس کا مطلب ہے کہ جب تک آپ کا جرم ثابت نہ ہو جائے، آپ کو بے گناہ تصور کیا جائے گا، آپ کو ایک آزاد جج کا حق حاصل ہے، اور آپ کو اپنے خلاف پیش کیے گئے ثبوتوں کو سننے اور گواہوں پر جرح کرنے کا پورا حق ہے (<em>Audi Alteram Partem</em> — یعنی دوسرے فریق کو بھی سنا جائے)۔</p>
-            </section>
+                            <section
+                                style="margin-bottom: 25px; background-color: #f8f9fa; border-radius: 10px; padding: 25px; border-left: 5px solid #c5a880;">
+                                <h3 style="color: #002147; margin-top: 0;">3. Common Public Myths vs. Constitutional
+                                    Facts</h3>
+                                <table
+                                    style="width: 100%; border-collapse: collapse; margin-top: 15px; background-color: white;">
+                                    <thead style="background-color: #002147; color: white;">
+                                        <tr>
+                                            <th
+                                                style="padding: 12px; border: 1px solid #ddd; text-align: left; width: 40%;">
+                                                Public Myth</th>
+                                            <th
+                                                style="padding: 12px; border: 1px solid #ddd; text-align: left; width: 60%;">
+                                                Constitutional & Legal Fact</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"The
+                                                police can keep you in the lockup for days for questioning without a
+                                                judge's permission."</td>
+                                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>False.</strong>
+                                                Keeping anyone past 24 hours without a Magistrate's formal remand order
+                                                is a severe constitutional violation and constitutes illegal detention.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"If I
+                                                can't afford a lawyer, I cannot defend myself properly."</td>
+                                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>False.</strong>
+                                                Under Article 10-A, if you face serious criminal charges and cannot
+                                                afford legal representation, the state is legally bound to provide you
+                                                with a defense counsel at public expense.</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"The
+                                                state can punish me using a newly passed law for an action I did last
+                                                year."</td>
+                                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>False (Article
+                                                    12).</strong> No law can be applied retrospectively. An action that
+                                                was perfectly legal when you performed it cannot be criminalized by a
+                                                law passed later.</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"The
+                                                police cannot detain me unless an FIR is filed first."</td>
+                                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>False.</strong>
+                                                Under <strong>CrPC Section 54</strong>, the police have the power to
+                                                arrest someone without a warrant or FIR if they have credible suspicion
+                                                of a serious crime. However, the 24-hour rule still applies.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </section>
+                        </div>
+                        <footer
+                            style="background-color: #002147; color: #ffffff; padding: 15px; text-align: center; font-size: 0.9rem; border-top: 5px solid #c5a880;">
+                            <strong>Human Rights Helpline: 1099</strong> | <strong>Police Emergency: 15</strong> |
+                            <strong>Legal Aid Society / Digital Rights Foundation: 0800-39393</strong> | <strong>Zainab
+                                Alert: 1099</strong>
+                        </footer>
+                    </article>
+                </div>
 
-            <section style="margin-bottom: 25px;">
-                <h3
-                    style="color: #002147; border-bottom: 2px solid #c5a880; padding-bottom: 5px; font-weight: normal; font-size: 1.4rem;">
-                    ۲۔ عملی ہدایات: اگر روکا یا گرفتار کیا جائے تو کیا کریں؟</h3>
-                <p><strong>صورتحال الف: اگر آپ کو قانون نافذ کرنے والے ادارے روکیں یا حراست میں لیں</strong></p>
-                <ul style="padding-right: 20px; padding-left: 0;">
-                    <li><strong>شناخت مانگیں:</strong> شائستگی سے (بغیر کسی جارحیت کے) اہلکار کا نام، عہدہ اور وہ کس تھانے سے وابستہ ہیں، دریافت کریں۔</li>
-                    <li><strong>جرم کی نوعیت چیک کریں:</strong> پولیس چھوٹے معاملات میں بغیر وارنٹ کے آپ کو گرفتار نہیں کر سکتی۔ وہ صرف <strong>قابلِ دست اندازی پولیس جرائم (Cognizable Offences)</strong> جیسے کہ چوری، حملہ، یا قتل کے سنگین معاملات میں بغیر وارنٹ گرفتار کر سکتی ہے۔</li>
-                    <li><strong>اہلِ خانہ کو اطلاع دیں:</strong> آپ کو اپنے مقام کے بارے میں گھر والوں یا وکیل کو بتانے کے لیے فون کال کرنے کا پورا حق ہے۔</li>
-                    <li><strong>سادے کاغذات پر دستخط نہ کریں:</strong> کبھی بھی خالی کاغذات پر دستخط نہ کریں اور نہ ہی دباؤ میں آ کر کوئی بیان لکھیں — آرٹیکل 14 (عصمتِ انسانی کا تحفظ) کے تحت زبردستی یا تشدد کے ذریعے لیا گیا اعترافِ جرم عدالت میں صفر قانونی حیثیت رکھتا ہے۔</li>
-                    <li><strong>خواتین کا تحفظ:</strong> عام طور پر، کسی بھی خاتون کو غروبِ آفتاب کے بعد اور طلوعِ آفتاب سے پہلے گرفتار نہیں کیا جا سکتا۔ گرفتاری کے وقت <strong>لیڈی پولیس اہلکار کا ہونا لازمی ہے</strong>، اور خواتین کو ہمیشہ خواتین کے الگ لاک اپ میں رکھا جائے گا، مردانہ لاک اپ میں کبھی نہیں۔</li>
-                </ul>
-                <p><strong>صورتحال ب: اگر کسی کو غیر قانونی طور پر حراست میں رکھا جائے (24 گھنٹے کا قانون ٹوٹ جائے)</strong><br>اگر کسی رشتہ دار یا دوست کو حکام اٹھا لیں اور 24 گھنٹے کے اندر مجسٹریٹ کے سامنے پیش نہ کریں، تو وہ غیر قانونی حراست کے شکار ہیں۔</p>
-                <ul style="padding-right: 20px; padding-left: 0;">
-                    <li><strong>اقدام ۱: سیشن کورٹ کا چھاپہ (سیکشن 491 CrPC):</strong> آپ اپنے مقامی سیشن کورٹ میں پٹیشن دائر کرنے کے لیے وکیل کی خدمات حاصل کر سکتے ہیں۔ جج فوراً ایک عدالتی اہلکار (بیلف) کو پولیس اسٹیشن پر چھاپہ مارنے اور اس شخص کو بازیاب کرانے کے لیے بھیج سکتا ہے۔</li>
-                    <li><strong>اقدام ۲: حبسِ بے جا کی پٹیشن (آرٹیکل 199):</strong> آپ اپنی صوبائی ہائی کورٹ (مثلاً لاہور ہائی کورٹ، سندھ ہائی کورٹ وغیرہ) میں آرٹیکل 199 کے تحت حبسِ بے جا (Habeas Corpus) کی پٹیشن دائر کر سکتے ہیں۔ ہائی کورٹ پولیس یا متعلقہ ادارے کو حکم دے گی کہ وہ بندے کو عدالت میں پیش کرے اور واضح کرے کہ کس قانونی اختیار کے تحت اسے حراست میں رکھا گیا ہے۔</li>
-                </ul>
-            </section>
+                <div id="guide-right-to-life-ur" class="legal-guide-wrapper">
+                    <article class="life-liberty-legal-guide"
+                        style="font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', Segoe UI, Tahoma, sans-serif; direction: rtl; text-align: right; border: 2px solid #002147; border-radius: 15px; max-width: 900px; margin: 20px auto; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); background-color: #ffffff;">
+                        <header
+                            style="background-color: #002147; color: #ffffff; padding: 30px; text-align: center; border-bottom: 5px solid #c5a880;">
+                            <h1 style="margin: 0; font-size: 1.8rem; font-weight: normal;">حقِ زندگی اور آزادی: شہریوں
+                                کے لیے رہنمائی</h1>
+                            <p style="margin: 10px 0 0; color: #c5a880; font-weight: bold; font-size: 1.2rem;">بلاوجہ
+                                گرفتاری اور نظربندی کے خلاف آپ کے آئینی تحفظات</p>
+                        </header>
+                        <div style="padding: 30px; line-height: 2; color: #333; background-color: white;">
 
-            <section
-                style="margin-bottom: 25px; background-color: #f8f9fa; border-radius: 10px; padding: 25px; border-right: 5px solid #c5a880; border-left: none;">
-                <h3 style="color: #002147; margin-top: 0; font-weight: normal; font-size: 1.4rem;">۳۔ عام عوامی مفروضے بنام آئینی حقائق</h3>
-                <table
-                    style="width: 100%; border-collapse: collapse; margin-top: 15px; background-color: white;">
-                    <thead style="background-color: #002147; color: white;">
-                        <tr>
-                            <th
-                                style="padding: 12px; border: 1px solid #ddd; text-align: right; width: 40%;">
-                                عوامی مفروضہ</th>
-                            <th
-                                style="padding: 12px; border: 1px solid #ddd; text-align: right; width: 60%;">
-                                آئینی حقیقت</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"پولیس جج کی اجازت کے بغیر پوچھ گچھ کے لیے آپ کو کئی دنوں تک حوالات میں رکھ سکتی ہے۔"</td>
-                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>غلط۔</strong> مجسٹریٹ کے باقاعدہ ریمانڈ آرڈر کے بغیر کسی کو بھی 24 گھنٹے سے زیادہ رکھنا آئین کی سنگین خلاف ورزی ہے اور یہ غیر قانونی حراست کے زمرے میں آتا ہے۔</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"اگر میں وکیل کا خرچہ برداشت نہیں کر سکتا، تو میں اپنا دفاع ٹھیک سے نہیں کر پاؤں گا۔"</td>
-                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>غلط۔</strong> آرٹیکل 10-اے کے تحت، اگر آپ پر سنگین مجرمانہ الزامات ہیں اور آپ وکیل کی فیس ادا نہیں کر سکتے، تو ریاست قانونی طور پر پابند ہے کہ وہ سرکاری خرچے پر آپ کو دفاعی وکیل فراہم کرے۔</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"ریاست نئے پاس ہونے والے قانون کے ذریعے مجھے کسی ایسے کام پر سزا دے سکتی ہے جو میں نے پچھلے سال کیا تھا۔"</td>
-                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>غلط (آرٹیکل 12)۔</strong> کوئی بھی قانون ماضی پر لاگو ہو کر کسی ایسے عمل کو جرم قرار نہیں دے سکتا جو اس وقت مکمل طور پر قانونی تھا جب آپ نے اسے انجام دیا تھا۔</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"جب تک ایف آئی آر (FIR) درج نہ ہو جائے، پولیس مجھے حراست میں نہیں لے سکتی۔"</td>
-                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>غلط۔</strong> <strong>CrPC کے سیکشن 54</strong> کے تحت، اگر پولیس کے پاس کسی سنگین جرم کا معتبر شبہ ہو، تو وہ ایف آئی آر یا وارنٹ کے بغیر بھی کسی شخص کو گرفتار کرنے کا اختیار رکھتی ہے۔ تاہم، اس صورت میں بھی 24 گھنٹے کا قانون لاگو رہے گا۔</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-        </div>
-        <footer
-            style="background-color: #002147; color: #ffffff; padding: 15px; text-align: center; font-size: 1rem; border-top: 5px solid #c5a880;">
-            <strong>انسانی حقوق ہیلپ لائن: 1099</strong> | <strong>پولیس ایمرجنسی: 15</strong> |
-            <strong>لیگل ایڈ سوسائٹی / ڈیجیٹل رائٹس فاؤنڈیشن: 39393-0800</strong> | <strong>زینب الرٹ: 1099</strong>
-        </footer>
-    </article>
-</div>
-               <div id="guide-protection-abuse-en" class="legal-guide-wrapper">
+                            <div
+                                style="background-color: #fff3cd; border-right: 5px solid #ffc107; border-left: none; padding: 15px; margin-bottom: 25px; border-radius: 4px;">
+                                <strong>ضروری نوٹ:</strong> اگرچہ آئین آپ کو بنیادی حقوق دیتا ہے، لیکن <strong>مجموعہ
+                                    ضابطہ فوجداری (CrPC)</strong> اور <strong>پولیس آرڈر</strong> وہ مخصوص قوانین ہیں جن
+                                پر پولیس کے لیے زمین پر عمل کرنا لازمی ہے۔
+                            </div>
+
+                            <section style="margin-bottom: 25px;">
+                                <h3
+                                    style="color: #002147; border-bottom: 2px solid #c5a880 ; padding-bottom: 5px; margin-top: 0; font-weight: normal; font-size: 1.4rem;">
+                                    ۱۔ بنیادی آئینی تحفظات (ڈھال)</h3>
+                                <p><strong>آرٹیکل 9: تحفظِ جان (زندگی کا حق)</strong><br><span
+                                        style="font-style: italic; color: #555;">"کسی شخص کو زندگی یا آزادی سے محروم
+                                        نہیں کیا جائے گا سوائے قانون کے مطابق۔"</span><br><strong>اصل مطلب کیا
+                                        ہے:</strong> پولیس یا ریاستی حکام آپ کو بلاوجہ گرفتار نہیں کر سکتے، آپ کو نقصان
+                                    نہیں پہنچا سکتے، اور نہ ہی آپ کی زندگی کو خطرے میں ڈال سکتے ہیں۔ ان کے پاس کوئی
+                                    قانونی وجہ ہونی چاہیے۔<br><strong>جدید قانونی دائرہ کار:</strong> سپریم کورٹ آف
+                                    پاکستان نے یہ فیصلہ دیا ہے کہ "زندگی" میں صرف سانس لینا شامل نہیں ہے، بلکہ پائیدار
+                                    ماحول، پینے کے صاف پانی تک رسائی، بنیادی صحت کی دیکھ بھال، اور شہری خطرات سے تحفظ کا
+                                    حق بھی شامل ہے۔</p>
+                                <p><strong>آرٹیکل 10: گرفتاری اور نظربندی کے خلاف تحفظات</strong><br>اگر آپ کو کبھی
+                                    قانون نافذ کرنے والے اداروں کا सामना کرنا پڑے تو یہ آپ کا سب سے بڑا دفاع ہے:</p>
+                                <ul style="padding-right: 20px; padding-left: 0;">
+                                    <li><strong>جاننے کا حق:</strong> آپ کو فوراً اور بالکل واضح طور پر بتایا جانا چاہیے
+                                        کہ آپ کو کیوں گرفتار کیا جا رہا ہے <em>(یہ CrPC کے سیکشن 50 کے تحت بھی لازمی
+                                            ہے)</em>۔</li>
+                                    <li><strong>قانونی مشورے کا حق:</strong> آپ کو گرفتاری کے پہلے لمحے ہی سے اپنی پسند
+                                        کے وکیل سے مشورہ کرنے اور ان کے ذریعے اپنا دفاع کرنے کا آئینی حق حاصل ہے۔</li>
+                                    <li><strong>24 گھنٹے کا قانون:</strong> پولیس کے لیے لازم ہے کہ وہ آپ کو گرفتاری کے
+                                        24 گھنٹوں کے اندر (سفر کا وقت نکال کر) علاقہ مجسٹریٹ (جج) کے سامنے پیش کرے۔ جج
+                                        کے واضح حکم (<strong>جسمانی ریمانڈ تحت CrPC سیکشن 167</strong>) کے بغیر 24 گھنٹے
+                                        سے زیادہ کی کوئی بھی حراست مکمل طور پر غیر قانونی ہے۔</li>
+                                </ul>
+                                <p><strong>آرٹیکل 10-اے: منصفانہ ٹرائل کا حق</strong><br>چاہے آپ کو کسی سول تنازع کا
+                                    سامنا ہو یا مجرمانہ الزام کا، آپ کو قانونی طریقہ کار (Due Process) کی ضمانت دی گئی
+                                    ہے۔ اس کا مطلب ہے کہ جب تک آپ کا جرم ثابت نہ ہو جائے، آپ کو بے گناہ تصور کیا جائے
+                                    گا، آپ کو ایک آزاد جج کا حق حاصل ہے، اور آپ کو اپنے خلاف پیش کیے گئے ثبوتوں کو سننے
+                                    اور گواہوں پر جرح کرنے کا پورا حق ہے (<em>Audi Alteram Partem</em> — یعنی دوسرے فریق
+                                    کو بھی سنا جائے)۔</p>
+                            </section>
+
+                            <section style="margin-bottom: 25px;">
+                                <h3
+                                    style="color: #002147; border-bottom: 2px solid #c5a880; padding-bottom: 5px; font-weight: normal; font-size: 1.4rem;">
+                                    ۲۔ عملی ہدایات: اگر روکا یا گرفتار کیا جائے تو کیا کریں؟</h3>
+                                <p><strong>صورتحال الف: اگر آپ کو قانون نافذ کرنے والے ادارے روکیں یا حراست میں
+                                        لیں</strong></p>
+                                <ul style="padding-right: 20px; padding-left: 0;">
+                                    <li><strong>شناخت مانگیں:</strong> شائستگی سے (بغیر کسی جارحیت کے) اہلکار کا نام،
+                                        عہدہ اور وہ کس تھانے سے وابستہ ہیں، دریافت کریں۔</li>
+                                    <li><strong>جرم کی نوعیت چیک کریں:</strong> پولیس چھوٹے معاملات میں بغیر وارنٹ کے آپ
+                                        کو گرفتار نہیں کر سکتی۔ وہ صرف <strong>قابلِ دست اندازی پولیس جرائم (Cognizable
+                                            Offences)</strong> جیسے کہ چوری، حملہ، یا قتل کے سنگین معاملات میں بغیر
+                                        وارنٹ گرفتار کر سکتی ہے۔</li>
+                                    <li><strong>اہلِ خانہ کو اطلاع دیں:</strong> آپ کو اپنے مقام کے بارے میں گھر والوں
+                                        یا وکیل کو بتانے کے لیے فون کال کرنے کا پورا حق ہے۔</li>
+                                    <li><strong>سادے کاغذات پر دستخط نہ کریں:</strong> کبھی بھی خالی کاغذات پر دستخط نہ
+                                        کریں اور نہ ہی دباؤ میں آ کر کوئی بیان لکھیں — آرٹیکل 14 (عصمتِ انسانی کا تحفظ)
+                                        کے تحت زبردستی یا تشدد کے ذریعے لیا گیا اعترافِ جرم عدالت میں صفر قانونی حیثیت
+                                        رکھتا ہے۔</li>
+                                    <li><strong>خواتین کا تحفظ:</strong> عام طور پر، کسی بھی خاتون کو غروبِ آفتاب کے بعد
+                                        اور طلوعِ آفتاب سے پہلے گرفتار نہیں کیا جا سکتا۔ گرفتاری کے وقت <strong>لیڈی
+                                            پولیس اہلکار کا ہونا لازمی ہے</strong>، اور خواتین کو ہمیشہ خواتین کے الگ
+                                        لاک اپ میں رکھا جائے گا، مردانہ لاک اپ میں کبھی نہیں۔</li>
+                                </ul>
+                                <p><strong>صورتحال ب: اگر کسی کو غیر قانونی طور پر حراست میں رکھا جائے (24 گھنٹے کا
+                                        قانون ٹوٹ جائے)</strong><br>اگر کسی رشتہ دار یا دوست کو حکام اٹھا لیں اور 24
+                                    گھنٹے کے اندر مجسٹریٹ کے سامنے پیش نہ کریں، تو وہ غیر قانونی حراست کے شکار ہیں۔</p>
+                                <ul style="padding-right: 20px; padding-left: 0;">
+                                    <li><strong>اقدام ۱: سیشن کورٹ کا چھاپہ (سیکشن 491 CrPC):</strong> آپ اپنے مقامی
+                                        سیشن کورٹ میں پٹیشن دائر کرنے کے لیے وکیل کی خدمات حاصل کر سکتے ہیں۔ جج فوراً
+                                        ایک عدالتی اہلکار (بیلف) کو پولیس اسٹیشن پر چھاپہ مارنے اور اس شخص کو بازیاب
+                                        کرانے کے لیے بھیج سکتا ہے۔</li>
+                                    <li><strong>اقدام ۲: حبسِ بے جا کی پٹیشن (آرٹیکل 199):</strong> آپ اپنی صوبائی ہائی
+                                        کورٹ (مثلاً لاہور ہائی کورٹ، سندھ ہائی کورٹ وغیرہ) میں آرٹیکل 199 کے تحت حبسِ بے
+                                        جا (Habeas Corpus) کی پٹیشن دائر کر سکتے ہیں۔ ہائی کورٹ پولیس یا متعلقہ ادارے کو
+                                        حکم دے گی کہ وہ بندے کو عدالت میں پیش کرے اور واضح کرے کہ کس قانونی اختیار کے
+                                        تحت اسے حراست میں رکھا گیا ہے۔</li>
+                                </ul>
+                            </section>
+
+                            <section
+                                style="margin-bottom: 25px; background-color: #f8f9fa; border-radius: 10px; padding: 25px; border-right: 5px solid #c5a880; border-left: none;">
+                                <h3 style="color: #002147; margin-top: 0; font-weight: normal; font-size: 1.4rem;">۳۔
+                                    عام عوامی مفروضے بنام آئینی حقائق</h3>
+                                <table
+                                    style="width: 100%; border-collapse: collapse; margin-top: 15px; background-color: white;">
+                                    <thead style="background-color: #002147; color: white;">
+                                        <tr>
+                                            <th
+                                                style="padding: 12px; border: 1px solid #ddd; text-align: right; width: 40%;">
+                                                عوامی مفروضہ</th>
+                                            <th
+                                                style="padding: 12px; border: 1px solid #ddd; text-align: right; width: 60%;">
+                                                آئینی حقیقت</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"پولیس
+                                                جج کی اجازت کے بغیر پوچھ گچھ کے لیے آپ کو کئی دنوں تک حوالات میں رکھ
+                                                سکتی ہے۔"</td>
+                                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>غلط۔</strong>
+                                                مجسٹریٹ کے باقاعدہ ریمانڈ آرڈر کے بغیر کسی کو بھی 24 گھنٹے سے زیادہ
+                                                رکھنا آئین کی سنگین خلاف ورزی ہے اور یہ غیر قانونی حراست کے زمرے میں آتا
+                                                ہے۔</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"اگر
+                                                میں وکیل کا خرچہ برداشت نہیں کر سکتا، تو میں اپنا دفاع ٹھیک سے نہیں کر
+                                                پاؤں گا۔"</td>
+                                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>غلط۔</strong>
+                                                آرٹیکل 10-اے کے تحت، اگر آپ پر سنگین مجرمانہ الزامات ہیں اور آپ وکیل کی
+                                                فیس ادا نہیں کر سکتے، تو ریاست قانونی طور پر پابند ہے کہ وہ سرکاری خرچے
+                                                پر آپ کو دفاعی وکیل فراہم کرے۔</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"ریاست
+                                                نئے پاس ہونے والے قانون کے ذریعے مجھے کسی ایسے کام پر سزا دے سکتی ہے جو
+                                                میں نے پچھلے سال کیا تھا۔"</td>
+                                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>غلط (آرٹیکل
+                                                    12)۔</strong> کوئی بھی قانون ماضی پر لاگو ہو کر کسی ایسے عمل کو جرم
+                                                قرار نہیں دے سکتا جو اس وقت مکمل طور پر قانونی تھا جب آپ نے اسے انجام
+                                                دیا تھا۔</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"جب تک
+                                                ایف آئی آر (FIR) درج نہ ہو جائے، پولیس مجھے حراست میں نہیں لے سکتی۔"
+                                            </td>
+                                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>غلط۔</strong>
+                                                <strong>CrPC کے سیکشن 54</strong> کے تحت، اگر پولیس کے پاس کسی سنگین جرم
+                                                کا معتبر شبہ ہو، تو وہ ایف آئی آر یا وارنٹ کے بغیر بھی کسی شخص کو گرفتار
+                                                کرنے کا اختیار رکھتی ہے۔ تاہم، اس صورت میں بھی 24 گھنٹے کا قانون لاگو
+                                                رہے گا۔</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </section>
+                        </div>
+                        <footer
+                            style="background-color: #002147; color: #ffffff; padding: 15px; text-align: center; font-size: 1rem; border-top: 5px solid #c5a880;">
+                            <strong>انسانی حقوق ہیلپ لائن: 1099</strong> | <strong>پولیس ایمرجنسی: 15</strong> |
+                            <strong>لیگل ایڈ سوسائٹی / ڈیجیٹل رائٹس فاؤنڈیشن: 39393-0800</strong> | <strong>زینب الرٹ:
+                                1099</strong>
+                        </footer>
+                    </article>
+                </div>
+                <div id="guide-protection-abuse-en" class="legal-guide-wrapper">
                     <article class="protection-abuse-guide"
                         style="font-family: Segoe UI, Roboto, Helvetica, Arial, sans-serif; border: 2px solid #002147; border-radius: 15px; max-width: 900px; margin: 20px auto; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); background-color: #ffffff;">
                         <header
@@ -1133,58 +1378,107 @@ data-en="Part 1: Fundamental Rights"
                                 Constitutional Shields Against Torture, Forced Labor, &amp; Unlawful Exploitation</p>
                         </header>
                         <div style="padding: 30px; line-height: 1.8; color: #333;">
-                            
+
                             <!-- Disclaimer Box Included for Legal Completeness -->
-                            <div style="background-color: #f8f9fa; border-left: 5px solid #6c757d; padding: 15px; margin-bottom: 25px; border-radius: 4px; font-size: 0.95rem; color: #555;">
-                                <strong>Important Note:</strong> This guide is based on the Constitution of Pakistan and other applicable Pakistani laws. Every legal case depends on its own facts and circumstances. This information is for public awareness only and is not a substitute for legal advice.
+                            <div
+                                style="background-color: #f8f9fa; border-left: 5px solid #6c757d; padding: 15px; margin-bottom: 25px; border-radius: 4px; font-size: 0.95rem; color: #555;">
+                                <strong>Important Note:</strong> This guide is based on the Constitution of Pakistan and
+                                other applicable Pakistani laws. Every legal case depends on its own facts and
+                                circumstances. This information is for public awareness only and is not a substitute for
+                                legal advice.
                             </div>
 
                             <section style="margin-bottom: 25px;">
                                 <h3
                                     style="color: #002147; border-bottom: 2px solid #c5a880; padding-bottom: 5px; margin-top: 0;">
                                     1. The Four Constitutional Protections Explained</h3>
-                                
-                                <p><strong>📖 Article 11 — Protection Against Slavery, Forced Labour &amp; Child Labour</strong><br>
-                                <strong>What it means:</strong> Human trafficking, slavery, forced labour (Begar), and bonded labour are completely outlawed. Furthermore, no child under the age of 14 years can be employed in any factory, mine, or other hazardous occupations.<br>
-                                <strong>Practical Reality:</strong> If an employer keeps your CNIC, uses force, threats, or debt to make you continue working, prevents you from leaving your job, or forces your family to work against their will; this amounts to a severe constitutional offense under Article 11 as well as other applicable labour and criminal laws.</p>
-                                
+
+                                <p><strong>📖 Article 11 — Protection Against Slavery, Forced Labour &amp; Child
+                                        Labour</strong><br>
+                                    <strong>What it means:</strong> Human trafficking, slavery, forced labour (Begar),
+                                    and bonded labour are completely outlawed. Furthermore, no child under the age of 14
+                                    years can be employed in any factory, mine, or other hazardous occupations.<br>
+                                    <strong>Practical Reality:</strong> If an employer keeps your CNIC, uses force,
+                                    threats, or debt to make you continue working, prevents you from leaving your job,
+                                    or forces your family to work against their will; this amounts to a severe
+                                    constitutional offense under Article 11 as well as other applicable labour and
+                                    criminal laws.
+                                </p>
+
                                 <p><strong>📖 Article 12 — Protection Against Retrospective Punishment</strong><br>
-                                <strong>What it means:</strong> The government cannot punish you under a law that did not exist when the alleged act was committed.<br>
-                                <strong>Practical Reality:</strong> If something was legal when you did it, a later law generally cannot make you criminally liable for that past act. You can only be penalized based on the exact law that was active at the exact moment the act took place. Likewise, a heavier punishment introduced later generally cannot be imposed for an offence committed before that law came into force.</p>
-                                
-                                <p><strong>📖 Article 13 — Protection Against Double Jeopardy &amp; Self-Incrimination</strong><br>
-                                This article contains two massive constitutional safeguards for anyone facing a legal dispute:</p>
+                                    <strong>What it means:</strong> The government cannot punish you under a law that
+                                    did not exist when the alleged act was committed.<br>
+                                    <strong>Practical Reality:</strong> If something was legal when you did it, a later
+                                    law generally cannot make you criminally liable for that past act. You can only be
+                                    penalized based on the exact law that was active at the exact moment the act took
+                                    place. Likewise, a heavier punishment introduced later generally cannot be imposed
+                                    for an offence committed before that law came into force.
+                                </p>
+
+                                <p><strong>📖 Article 13 — Protection Against Double Jeopardy &amp;
+                                        Self-Incrimination</strong><br>
+                                    This article contains two massive constitutional safeguards for anyone facing a
+                                    legal dispute:</p>
                                 <ul style="padding-left: 20px;">
-                                    <li><strong>Double Jeopardy:</strong> As a general rule, a person cannot be tried or punished twice for the same offence after a competent court has finally decided the matter, except where the law provides otherwise.</li>
-                                    <li><strong>Protection Against Self-Incrimination:</strong> A person accused of an offence cannot be compelled to be a witness against themselves. You have the absolute right to remain silent.</li>
+                                    <li><strong>Double Jeopardy:</strong> As a general rule, a person cannot be tried or
+                                        punished twice for the same offence after a competent court has finally decided
+                                        the matter, except where the law provides otherwise.</li>
+                                    <li><strong>Protection Against Self-Incrimination:</strong> A person accused of an
+                                        offence cannot be compelled to be a witness against themselves. You have the
+                                        absolute right to remain silent.</li>
                                 </ul>
-                                
+
                                 <p><strong>📖 Article 14 — Dignity of Man &amp; Privacy of Home</strong><br>
-                                <span style="font-style: italic; color: #555;">"The dignity of man and, subject to law, the privacy of home, shall be inviolable."</span><br>
-                                <strong>What it means:</strong> This declares your human dignity untouchable. Every person has the constitutional right to be treated with dignity and respect, and the privacy of your home is fully protected by law.<br>
-                                <strong>The Ban on Torture:</strong> Article 14 further provides that no person shall be subjected to torture for the purpose of extracting evidence or confessions. Any confession beaten out of a suspect in a police station holds zero legal weight in a court of law.</p>
+                                    <span style="font-style: italic; color: #555;">"The dignity of man and, subject to
+                                        law, the privacy of home, shall be inviolable."</span><br>
+                                    <strong>What it means:</strong> This declares your human dignity untouchable. Every
+                                    person has the constitutional right to be treated with dignity and respect, and the
+                                    privacy of your home is fully protected by law.<br>
+                                    <strong>The Ban on Torture:</strong> Article 14 further provides that no person
+                                    shall be subjected to torture for the purpose of extracting evidence or confessions.
+                                    Any confession beaten out of a suspect in a police station holds zero legal weight
+                                    in a court of law.
+                                </p>
                             </section>
 
                             <section style="margin-bottom: 25px;">
                                 <h3 style="color: #002147; border-bottom: 2px solid #c5a880; padding-bottom: 5px;">2.
                                     Practical Guidelines: How to Protect Yourself Against Abuse</h3>
-                                
+
                                 <p><strong>Scenario A: If Police Pressure You to Confess / Physical Abuse</strong></p>
                                 <ul style="padding-left: 20px;">
-                                    <li><strong>Stay Calm &amp; Silent:</strong> If you are detained, remember that under Article 13 and Article 14, you do not have to confess. Do not sign any document you do not understand. Politely inform the police that you wish to consult your lawyer before making any statement.</li>
-                                    <li><strong>Document Injuries Immediately:</strong> If subjected to physical abuse, demand an immediate medical examination the moment you are produced before a Magistrate. Inform the Magistrate directly about the injuries or mistreatment and ask that your complaint be made part of the court record.</li>
+                                    <li><strong>Stay Calm &amp; Silent:</strong> If you are detained, remember that
+                                        under Article 13 and Article 14, you do not have to confess. Do not sign any
+                                        document you do not understand. Politely inform the police that you wish to
+                                        consult your lawyer before making any statement.</li>
+                                    <li><strong>Document Injuries Immediately:</strong> If subjected to physical abuse,
+                                        demand an immediate medical examination the moment you are produced before a
+                                        Magistrate. Inform the Magistrate directly about the injuries or mistreatment
+                                        and ask that your complaint be made part of the court record.</li>
                                 </ul>
 
                                 <p><strong>Scenario B: If Police Want to Search Your Home</strong></p>
                                 <ul style="padding-left: 20px;">
-                                    <li><strong>Demand a Search Warrant:</strong> Under Article 14, your home privacy is protected. In many situations, police require legal authority, such as a formal search warrant issued under the relevant provisions of the Code of Criminal Procedure (CrPC) (e.g., Section 96 or 98). However, Pakistani law also permits warrantless entry in certain emergency or legally authorized circumstances.</li>
-                                    <li><strong>Identify the Officers:</strong> Ask the officers to identify themselves and note their names, ranks, and police station. If women are present inside the house, legal procedures regarding their dignity and privacy must be observed.</li>
+                                    <li><strong>Demand a Search Warrant:</strong> Under Article 14, your home privacy is
+                                        protected. In many situations, police require legal authority, such as a formal
+                                        search warrant issued under the relevant provisions of the Code of Criminal
+                                        Procedure (CrPC) (e.g., Section 96 or 98). However, Pakistani law also permits
+                                        warrantless entry in certain emergency or legally authorized circumstances.</li>
+                                    <li><strong>Identify the Officers:</strong> Ask the officers to identify themselves
+                                        and note their names, ranks, and police station. If women are present inside the
+                                        house, legal procedures regarding their dignity and privacy must be observed.
+                                    </li>
                                 </ul>
 
                                 <p><strong>Scenario C: Reporting Forced or Bonded Labor</strong></p>
                                 <ul style="padding-left: 20px;">
-                                    <li><strong>Do Not Accept Forced Work:</strong> If an employer keeps your CNIC, refuses to pay your wages, uses threats or debt to force you to work, or prevents you from leaving your employment, seek legal assistance immediately. Such conduct directly violates Article 11.</li>
-                                    <li><strong>Immediate Remedy:</strong> You can approach the District Vigilance Committee, seek immediate legal assistance, or file a constitutional writ petition in the High Court to secure immediate release and recovery.</li>
+                                    <li><strong>Do Not Accept Forced Work:</strong> If an employer keeps your CNIC,
+                                        refuses to pay your wages, uses threats or debt to force you to work, or
+                                        prevents you from leaving your employment, seek legal assistance immediately.
+                                        Such conduct directly violates Article 11.</li>
+                                    <li><strong>Immediate Remedy:</strong> You can approach the District Vigilance
+                                        Committee, seek immediate legal assistance, or file a constitutional writ
+                                        petition in the High Court to secure immediate release and recovery.</li>
                                 </ul>
                             </section>
 
@@ -1208,101 +1502,172 @@ data-en="Part 1: Fundamental Rights"
                                         <tr>
                                             <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"A
                                                 confession signed inside a police station is enough to convict me."</td>
-                                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>Not necessarily.</strong>
-                                                Under Article 14 and the Qanun-e-Shahadat Order, 1984, confessions made while in police custody are generally not admissible as evidence unless recorded according to law before a competent Magistrate.</td>
+                                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>Not
+                                                    necessarily.</strong>
+                                                Under Article 14 and the Qanun-e-Shahadat Order, 1984, confessions made
+                                                while in police custody are generally not admissible as evidence unless
+                                                recorded according to law before a competent Magistrate.</td>
                                         </tr>
                                         <tr>
                                             <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"If
                                                 the police suspect a crime, they have the right to enter and search any
                                                 home at any time."</td>
                                             <td style="padding: 12px; border: 1px solid #ddd;"><strong>False.</strong>
-                                                Article 14 protects the privacy of your home. In many situations police require a legal search warrant. While Pakistani law permits warrantless entry in certain legally recognized emergency circumstances, unauthorized entry constitutes illegal trespassing.</td>
+                                                Article 14 protects the privacy of your home. In many situations police
+                                                require a legal search warrant. While Pakistani law permits warrantless
+                                                entry in certain legally recognized emergency circumstances,
+                                                unauthorized entry constitutes illegal trespassing.</td>
                                         </tr>
                                         <tr>
                                             <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">
                                                 "Children can work anywhere as long as their parents give permission."
                                             </td>
                                             <td style="padding: 12px; border: 1px solid #ddd;"><strong>False.</strong>
-                                                Article 11 strictly prohibits employing children under 14 in factories, mines, and hazardous occupations. Parental consent cannot override a child's fundamental constitutional rights.</td>
+                                                Article 11 strictly prohibits employing children under 14 in factories,
+                                                mines, and hazardous occupations. Parental consent cannot override a
+                                                child's fundamental constitutional rights.</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </section>
 
                             <!-- Added Inline Legal References Section for Completeness -->
-                            <div style="margin-top: 25px; font-size: 0.85rem; color: #666; border-top: 1px dashed #ddd; padding-top: 15px;">
-                                <strong>⚖️ Constitutional &amp; Legal References:</strong> Article 11, 12, 13, 14 of the Constitution of Pakistan | Qanun-e-Shahadat Order, 1984 (Confessions &amp; Evidence) | Code of Criminal Procedure (CrPC) (Relevant provisions relating to search, investigation, and criminal procedure).
+                            <div
+                                style="margin-top: 25px; font-size: 0.85rem; color: #666; border-top: 1px dashed #ddd; padding-top: 15px;">
+                                <strong>⚖️ Constitutional &amp; Legal References:</strong> Article 11, 12, 13, 14 of the
+                                Constitution of Pakistan | Qanun-e-Shahadat Order, 1984 (Confessions &amp; Evidence) |
+                                Code of Criminal Procedure (CrPC) (Relevant provisions relating to search,
+                                investigation, and criminal procedure).
                             </div>
 
                         </div>
                         <footer
                             style="background-color: #002147; color: #ffffff; padding: 15px; text-align: center; font-size: 0.9rem; border-top: 5px solid #c5a880;">
-                            <strong>Human Rights Helpline: 1099</strong> | <strong>Police Emergency: 15</strong> | <strong>Federal Ombudsman: 1055</strong>
+                            <strong>Human Rights Helpline: 1099</strong> | <strong>Police Emergency: 15</strong> |
+                            <strong>Federal Ombudsman: 1055</strong>
                         </footer>
                     </article>
                 </div>
-              <div id="guide-protection-abuse-ur" class="legal-guide-wrapper">
+                <div id="guide-protection-abuse-ur" class="legal-guide-wrapper">
                     <article class="protection-abuse-guide"
                         style="font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', Segoe UI, Tahoma, sans-serif; direction: rtl; text-align: right; border: 2px solid #002147; border-radius: 15px; max-width: 900px; margin: 20px auto; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); background-color: #ffffff;">
                         <header
                             style="background-color: #002147; color: #ffffff; padding: 30px; text-align: center; border-bottom: 5px solid #c5a880;">
                             <div style="font-size: 2rem; margin-bottom: 10px;"></div>
-                            <h1 style="margin: 0; font-size: 1.8rem; font-weight: normal;">عزتِ نفس کا تحفظ اور استحصال کے خلاف تحفظ: عوامی گائیڈ</h1>
-                            <p style="margin: 10px 0 0; color: #c5a880; font-weight: bold; font-size: 1.2rem;">تشدد، جبری مشقت، اور غیر قانونی استحصال کے خلاف آپ کے آئینی تحفظات</p>
+                            <h1 style="margin: 0; font-size: 1.8rem; font-weight: normal;">عزتِ نفس کا تحفظ اور استحصال
+                                کے خلاف تحفظ: عوامی گائیڈ</h1>
+                            <p style="margin: 10px 0 0; color: #c5a880; font-weight: bold; font-size: 1.2rem;">تشدد،
+                                جبری مشقت، اور غیر قانونی استحصال کے خلاف آپ کے آئینی تحفظات</p>
                         </header>
                         <div style="padding: 30px; line-height: 2; color: #333;">
-                            
+
                             <!-- قانونی وضاحتی باکس (Disclaimer Box for Legal Completeness) -->
-                            <div style="background-color: #f8f9fa; border-right: 5px solid #6c757d; border-left: none; padding: 15px; margin-bottom: 25px; border-radius: 4px; font-size: 0.95rem; color: #555;">
-                                <strong>اہم نوٹ:</strong> یہ گائیڈ آئینِ پاکستان اور دیگر متعلقہ پاکستانی قوانین پر مبنی ہے۔ ہر قانونی معاملہ اپنے حقائق اور حالات کے لحاظ سے مختلف ہوتا ہے۔ یہ معلومات صرف عوامی آگاہی کے لیے ہیں اور اسے پیشہ ورانہ قانونی مشورے کا نعم البدل نہ سمجھا جائے۔
+                            <div
+                                style="background-color: #f8f9fa; border-right: 5px solid #6c757d; border-left: none; padding: 15px; margin-bottom: 25px; border-radius: 4px; font-size: 0.95rem; color: #555;">
+                                <strong>اہم نوٹ:</strong> یہ گائیڈ آئینِ پاکستان اور دیگر متعلقہ پاکستانی قوانین پر مبنی
+                                ہے۔ ہر قانونی معاملہ اپنے حقائق اور حالات کے لحاظ سے مختلف ہوتا ہے۔ یہ معلومات صرف عوامی
+                                آگاہی کے لیے ہیں اور اسے پیشہ ورانہ قانونی مشورے کا نعم البدل نہ سمجھا جائے۔
                             </div>
 
                             <section style="margin-bottom: 25px;">
                                 <h3
                                     style="color: #002147; border-bottom: 2px solid #c5a880; padding-bottom: 5px; margin-top: 0; font-weight: normal; font-size: 1.4rem;">
                                     ۱۔ چار بنیادی آئینی تحفظات کی وضاحت</h3>
-                                
+
                                 <p><strong>📖 آرٹیکل ۱۱ — غلامی، جبری مشقت اور چائلڈ لیبر پر مکمل پابندی</strong><br>
-                                <strong>اصل مطلب کیا ہے:</strong> انسانی اسمگلنگ، غلامی، جبری مشقت (بیگار) اور بندھوا مزدوری کو آئین کے تحت مکمل طور پر غیر قانونی قرار دیا گیا ہے۔ مزید برآں، ۱۴ سال سے کم عمر کے کسی بھی بچے کو کسی فیکٹری، کان (مائن) یا کسی دوسرے پرخطر پیشے میں ملازمت پر نہیں رکھا جا سکتا۔<br>
-                                <strong>عملی حقیقت:</strong> اگر کوئی آجر یا مالک آپ کا شناختی کارڈ (CNIC) اپنے پاس ضبط کر لیتا ہے، آپ کو کام جاری رکھنے پر مجبور کرنے کے لیے طاقت، دھمکی یا مبینہ قرض کا استعمال کرتا ہے، آپ کو نوکری چھوڑنے سے روکتا ہے، یا آپ کے خاندان کو ان کی مرضی کے خلاف کام کرنے پر مجبور کرتا ہے؛ تو یہ آرٹیکل ۱۱ کے ساتھ ساتھ دیگر متعلقہ لیبر اور تعزیراتی قوانین کے تحت ایک سنگین آئینی جرم ہے۔</p>
-                                
-                                <p><strong>📖 آرٹیکل ۱۲ — ماضی کے قوانین سے تحفظ (ریٹرو ایکٹو پنشمنٹ کے خلاف تحفظ)</strong><br>
-                                <strong>اصل مطلب کیا ہے:</strong> ریاست یا حکومت آپ کو کسی ایسے عمل پر سزا نہیں دے سکتی جو اس وقت جرم نہیں تھا جب وہ عمل سرزد ہوا تھا۔<br>
-                                <strong>عملی حقیقت:</strong> اگر کوئی کام اس وقت قانونی تھا جب آپ نے اسے انجام دیا، تو بعد میں بننے والا کوئی قانون عام طور پر آپ کو اس ماضی کے عمل کے لیے مجرم قرار نہیں دے سکتا۔ آپ کو صرف اسی قانون کے تحت سزا دی جا سکتی ہے جو جرم کے مبینہ وقت پر فعال اور نافذ العمل تھا۔ اسی طرح، اگر کسی جرم کی سزا بعد میں قانون سازی کے ذریعے سخت کر دی جائے، تو وہ سخت سزا ماضی میں کیے گئے جرم پر لاگو نہیں کی جا سکتی۔</p>
-                                
+                                    <strong>اصل مطلب کیا ہے:</strong> انسانی اسمگلنگ، غلامی، جبری مشقت (بیگار) اور
+                                    بندھوا مزدوری کو آئین کے تحت مکمل طور پر غیر قانونی قرار دیا گیا ہے۔ مزید برآں، ۱۴
+                                    سال سے کم عمر کے کسی بھی بچے کو کسی فیکٹری، کان (مائن) یا کسی دوسرے پرخطر پیشے میں
+                                    ملازمت پر نہیں رکھا جا سکتا۔<br>
+                                    <strong>عملی حقیقت:</strong> اگر کوئی آجر یا مالک آپ کا شناختی کارڈ (CNIC) اپنے پاس
+                                    ضبط کر لیتا ہے، آپ کو کام جاری رکھنے پر مجبور کرنے کے لیے طاقت، دھمکی یا مبینہ قرض
+                                    کا استعمال کرتا ہے، آپ کو نوکری چھوڑنے سے روکتا ہے، یا آپ کے خاندان کو ان کی مرضی کے
+                                    خلاف کام کرنے پر مجبور کرتا ہے؛ تو یہ آرٹیکل ۱۱ کے ساتھ ساتھ دیگر متعلقہ لیبر اور
+                                    تعزیراتی قوانین کے تحت ایک سنگین آئینی جرم ہے۔
+                                </p>
+
+                                <p><strong>📖 آرٹیکل ۱۲ — ماضی کے قوانین سے تحفظ (ریٹرو ایکٹو پنشمنٹ کے خلاف
+                                        تحفظ)</strong><br>
+                                    <strong>اصل مطلب کیا ہے:</strong> ریاست یا حکومت آپ کو کسی ایسے عمل پر سزا نہیں دے
+                                    سکتی جو اس وقت جرم نہیں تھا جب وہ عمل سرزد ہوا تھا۔<br>
+                                    <strong>عملی حقیقت:</strong> اگر کوئی کام اس وقت قانونی تھا جب آپ نے اسے انجام دیا،
+                                    تو بعد میں بننے والا کوئی قانون عام طور پر آپ کو اس ماضی کے عمل کے لیے مجرم قرار
+                                    نہیں دے سکتا۔ آپ کو صرف اسی قانون کے تحت سزا دی جا سکتی ہے جو جرم کے مبینہ وقت پر
+                                    فعال اور نافذ العمل تھا۔ اسی طرح، اگر کسی جرم کی سزا بعد میں قانون سازی کے ذریعے سخت
+                                    کر دی جائے، تو وہ سخت سزا ماضی میں کیے گئے جرم پر لاگو نہیں کی جا سکتی۔
+                                </p>
+
                                 <p><strong>📖 آرٹیکل ۱۳ — دوہری سزا اور اپنے خلاف گواہی دینے سے تحفظ</strong><br>
-                                یہ آرٹیکل قانونی تنازع یا مقدمے کا سامنا کرنے والے کسی بھی شخص کو دو انتہائی اہم آئینی تحفظات فراہم کرتا ہے:</p>
+                                    یہ آرٹیکل قانونی تنازع یا مقدمے کا سامنا کرنے والے کسی بھی شخص کو دو انتہائی اہم
+                                    آئینی تحفظات فراہم کرتا ہے:</p>
                                 <ul style="padding-right: 20px; padding-left: 0;">
-                                    <li><strong>دوہری سزا پر پابندی (Double Jeopardy):</strong> ایک عمومی اصول کے طور پر، جب ایک مجاز عدالت کسی معاملے کا حتمی فیصلہ کر دیتی ہے، تو کسی بھی شخص پر ایک ہی جرم کے لیے نہ تو دوبارہ مقدمہ چلایا جا سکتا ہے اور نہ ہی سزا دی جا سکتی ہے (سواۓ ان حالات کے جہاں قانون میں واضح استثنا ہو)۔</li>
-                                    <li><strong>اپنے خلاف گواہی دینے سے تحفظ (Self-Incrimination):</strong> کسی جرم کے ملزم کو اپنے ہی خلاف گواہی دینے یا اعتراف کرنے پر مجبور نہیں کیا جا سکتا۔ آپ کو خاموش رہنے کا مکمل قانونی حق حاصل ہے۔</li>
+                                    <li><strong>دوہری سزا پر پابندی (Double Jeopardy):</strong> ایک عمومی اصول کے طور
+                                        پر، جب ایک مجاز عدالت کسی معاملے کا حتمی فیصلہ کر دیتی ہے، تو کسی بھی شخص پر ایک
+                                        ہی جرم کے لیے نہ تو دوبارہ مقدمہ چلایا جا سکتا ہے اور نہ ہی سزا دی جا سکتی ہے
+                                        (سواۓ ان حالات کے جہاں قانون میں واضح استثنا ہو)۔</li>
+                                    <li><strong>اپنے خلاف گواہی دینے سے تحفظ (Self-Incrimination):</strong> کسی جرم کے
+                                        ملزم کو اپنے ہی خلاف گواہی دینے یا اعتراف کرنے پر مجبور نہیں کیا جا سکتا۔ آپ کو
+                                        خاموش رہنے کا مکمل قانونی حق حاصل ہے۔</li>
                                 </ul>
-                                
-                                <p><strong>📖 آرٹیکل ۱۴ — حرمتِ انسانی اور چادر و چار دیواری (گھر کی پرائیویسی) کا تحفظ</strong><br>
-                                <span style="font-style: italic; color: #555;">"انسان کی عزتِ نفس اور (قانون کے تابع) گھر کی پرائیویسی قابلِ احترام اور محفوظ ہوگی۔"</span><br>
-                                <strong>اصل مطلب کیا ہے:</strong> یہ شق ہر شہری کی انسانی गरिमा اور عزتِ نفس کو ناقابلِ تسخیر قرار دیتی ہے۔ ہر شخص کا یہ آئینی حق ہے کہ اس کے ساتھ احترام سے سلوک کیا جائے، اور آپ کے گھر کی پرائیویسی قانون کے تحت مکمل طور پر محفوظ ہے۔<br>
-                                <strong>تشدد پر پابندی:</strong> آرٹیکل ۱۴ واضح طور پر یہ فراہم کرتا ہے کہ کسی بھی شخص کو ثبوت یا اعترافِ جرم حاصل کرنے کی غرض سے تشدد کا نشانہ نہیں بنایا جائے گا۔ پولیس اسٹیشن میں مار پیٹ یا تشدد کے ذریعے زبردستی لیا گیا کوئی بھی اعترافِ جرم عدالت کی نظر میں کوئی قانونی حیثیت نہیں رکھتا۔</p>
+
+                                <p><strong>📖 آرٹیکل ۱۴ — حرمتِ انسانی اور چادر و چار دیواری (گھر کی پرائیویسی) کا
+                                        تحفظ</strong><br>
+                                    <span style="font-style: italic; color: #555;">"انسان کی عزتِ نفس اور (قانون کے
+                                        تابع) گھر کی پرائیویسی قابلِ احترام اور محفوظ ہوگی۔"</span><br>
+                                    <strong>اصل مطلب کیا ہے:</strong> یہ شق ہر شہری کی انسانی गरिमा اور عزتِ نفس کو
+                                    ناقابلِ تسخیر قرار دیتی ہے۔ ہر شخص کا یہ آئینی حق ہے کہ اس کے ساتھ احترام سے سلوک
+                                    کیا جائے، اور آپ کے گھر کی پرائیویسی قانون کے تحت مکمل طور پر محفوظ ہے۔<br>
+                                    <strong>تشدد پر پابندی:</strong> آرٹیکل ۱۴ واضح طور پر یہ فراہم کرتا ہے کہ کسی بھی
+                                    شخص کو ثبوت یا اعترافِ جرم حاصل کرنے کی غرض سے تشدد کا نشانہ نہیں بنایا جائے گا۔
+                                    پولیس اسٹیشن میں مار پیٹ یا تشدد کے ذریعے زبردستی لیا گیا کوئی بھی اعترافِ جرم عدالت
+                                    کی نظر میں کوئی قانونی حیثیت نہیں رکھتا۔
+                                </p>
                             </section>
 
                             <section style="margin-bottom: 25px;">
-                                <h3 style="color: #002147; border-bottom: 2px solid #c5a880; padding-bottom: 5px; font-weight: normal; font-size: 1.4rem;">۲۔
+                                <h3
+                                    style="color: #002147; border-bottom: 2px solid #c5a880; padding-bottom: 5px; font-weight: normal; font-size: 1.4rem;">
+                                    ۲۔
                                     عملی ہدایات: استحصال اور بدسلوکی کے خلاف خود کو کیسے محفوظ رکھیں؟</h3>
-                                
-                                <p><strong>صورتحال الف: اگر پولیس آپ پر اعترافِ جرم کے لیے دباؤ ڈالے یا جسمانی بدسلوکی کرے</strong></p>
+
+                                <p><strong>صورتحال الف: اگر پولیس آپ پر اعترافِ جرم کے لیے دباؤ ڈالے یا جسمانی بدسلوکی
+                                        کرے</strong></p>
                                 <ul style="padding-right: 20px; padding-left: 0;">
-                                    <li><strong>پرسکون اور خاموش رہیں:</strong> اگر آپ کو حراست میں لیا جائے تو یاد رکھیں کہ آرٹیکل ۱۳ اور ۱۴ کے تحت آپ اعترافِ جرم کرنے کے پابند نہیں ہیں۔ کسی بھی ایسے دستاویز پر دستخط نہ کریں جسے آپ نہ سمجھتے ہوں۔ پولیس کو شائستگی سے مطلع کریں کہ آپ کوئی بھی بیان دینے سے پہلے اپنے وکیل سے مشورہ کرنا چاہتے ہیں۔</li>
-                                    <li><strong>زخموں کی فوری دستاویزی تصدیق کروائیں:</strong> اگر آپ پر جسمانی تشدد کیا گیا ہو، تو جیسے ہی آپ کو مجسٹریٹ کے سامنے پیش کیا جائے، فوری طور پر طبی معائنے (میڈیکل ایگزامینیشن) کا مطالبہ کریں۔ مجسٹریٹ کو بدسلوکی یا تشدد کے بارے میں براہِ راست بتائیں اور درخواست کریں کہ آپ کی شکایت کو عدالتی ریکارڈ کا حصہ بنایا جائے۔</li>
+                                    <li><strong>پرسکون اور خاموش رہیں:</strong> اگر آپ کو حراست میں لیا جائے تو یاد
+                                        رکھیں کہ آرٹیکل ۱۳ اور ۱۴ کے تحت آپ اعترافِ جرم کرنے کے پابند نہیں ہیں۔ کسی بھی
+                                        ایسے دستاویز پر دستخط نہ کریں جسے آپ نہ سمجھتے ہوں۔ پولیس کو شائستگی سے مطلع
+                                        کریں کہ آپ کوئی بھی بیان دینے سے پہلے اپنے وکیل سے مشورہ کرنا چاہتے ہیں۔</li>
+                                    <li><strong>زخموں کی فوری دستاویزی تصدیق کروائیں:</strong> اگر آپ پر جسمانی تشدد کیا
+                                        گیا ہو، تو جیسے ہی آپ کو مجسٹریٹ کے سامنے پیش کیا جائے، فوری طور پر طبی معائنے
+                                        (میڈیکل ایگزامینیشن) کا مطالبہ کریں۔ مجسٹریٹ کو بدسلوکی یا تشدد کے بارے میں
+                                        براہِ راست بتائیں اور درخواست کریں کہ آپ کی شکایت کو عدالتی ریکارڈ کا حصہ بنایا
+                                        جائے۔</li>
                                 </ul>
 
                                 <p><strong>صورتحال ب: اگر پولیس آپ کے گھر کی تلاشی لینا چاہے</strong></p>
                                 <ul style="padding-right: 20px; padding-left: 0;">
-                                    <li><strong>سرچ وارنٹ کا مطالبہ کریں:</strong> آرٹیکل ۱۴ کے تحت آپ کے گھر کی پرائیویسی محفوظ ہے۔ بہت سی صورتوں میں، پولیس کو تلاشی کے لیے قانونی اختیار کی ضرورت ہوتی ہے، جیسے کوڈ آف کرمنل پروسیجر (CrPC) کی متعلقہ دفعات (مثلاً دفعہ ۹۶ یا ۹۸) کے تحت جاری کردہ باقاعدہ سرچ وارنٹ۔ تاہم، پاکستانی قانون مخصوص ہنگامی یا قانون کی طرف سے مجاز کردہ حالات میں بغیر وارنٹ کے بھی داخلے کی اجازت دیتا ہے۔</li>
-                                    <li><strong>اہلکاروں کی شناخت کریں:</strong> تلاشی کے لیے آنے والے افسران سے ان کی شناخت پوچھیں اور ان کے نام، رینک اور پولیس اسٹیشن نوٹ کریں۔ اگر گھر کے اندر خواتین موجود ہوں، تو ان کی عزتِ نفس اور پرائیویسی کے حوالے سے قانونی طریقہ کار پر عمل کرنا لازمی ہے۔</li>
+                                    <li><strong>سرچ وارنٹ کا مطالبہ کریں:</strong> آرٹیکل ۱۴ کے تحت آپ کے گھر کی
+                                        پرائیویسی محفوظ ہے۔ بہت سی صورتوں میں، پولیس کو تلاشی کے لیے قانونی اختیار کی
+                                        ضرورت ہوتی ہے، جیسے کوڈ آف کرمنل پروسیجر (CrPC) کی متعلقہ دفعات (مثلاً دفعہ ۹۶
+                                        یا ۹۸) کے تحت جاری کردہ باقاعدہ سرچ وارنٹ۔ تاہم، پاکستانی قانون مخصوص ہنگامی یا
+                                        قانون کی طرف سے مجاز کردہ حالات میں بغیر وارنٹ کے بھی داخلے کی اجازت دیتا ہے۔
+                                    </li>
+                                    <li><strong>اہلکاروں کی شناخت کریں:</strong> تلاشی کے لیے آنے والے افسران سے ان کی
+                                        شناخت پوچھیں اور ان کے نام، رینک اور پولیس اسٹیشن نوٹ کریں۔ اگر گھر کے اندر
+                                        خواتین موجود ہوں، تو ان کی عزتِ نفس اور پرائیویسی کے حوالے سے قانونی طریقہ کار
+                                        پر عمل کرنا لازمی ہے۔</li>
                                 </ul>
 
                                 <p><strong>صورتحال ج: جبری یا بندھوا مزدوری کی رپورٹ کرنا</strong></p>
                                 <ul style="padding-right: 20px; padding-left: 0;">
-                                    <li><strong>جبری کام ہرگز قبول نہ کریں۔</strong> اگر کوئی آجر آپ کا شناختی کارڈ رکھ لیتا ہے، اجرت دینے سے انکار کرتا ہے، دھمکیوں یا مبینہ قرض کا سہارا لے کر آپ کو کام کرنے پر مجبور کرتا ہے، یا آپ کو ملازمت چھوڑنے سے روکتا ہے، تو فوری طور پر قانونی مدد حاصل کریں۔ یہ عمل براہِ راست آرٹیکل ۱۱ کی خلاف ورزی ہے۔</li>
-                                    <li><strong>فوری قانونی حل:</strong> آپ اس سلسلے میں ڈسٹرکٹ ویجیلنس کمیٹی (District Vigilance Committee) سے رجوع کر سکتے ہیں، فوری قانونی امداد حاصل کر سکتے ہیں، یا اپنی فوری رہائی اور بازیابی کے لیے ہائی کورٹ میں آئینی رٹ پٹیشن دائر کر سکتے ہیں۔</li>
+                                    <li><strong>جبری کام ہرگز قبول نہ کریں۔</strong> اگر کوئی آجر آپ کا شناختی کارڈ رکھ
+                                        لیتا ہے، اجرت دینے سے انکار کرتا ہے، دھمکیوں یا مبینہ قرض کا سہارا لے کر آپ کو
+                                        کام کرنے پر مجبور کرتا ہے، یا آپ کو ملازمت چھوڑنے سے روکتا ہے، تو فوری طور پر
+                                        قانونی مدد حاصل کریں۔ یہ عمل براہِ راست آرٹیکل ۱۱ کی خلاف ورزی ہے۔</li>
+                                    <li><strong>فوری قانونی حل:</strong> آپ اس سلسلے میں ڈسٹرکٹ ویجیلنس کمیٹی (District
+                                        Vigilance Committee) سے رجوع کر سکتے ہیں، فوری قانونی امداد حاصل کر سکتے ہیں، یا
+                                        اپنی فوری رہائی اور بازیابی کے لیے ہائی کورٹ میں آئینی رٹ پٹیشن دائر کر سکتے
+                                        ہیں۔</li>
                                 </ul>
                             </section>
 
@@ -1324,34 +1689,53 @@ data-en="Part 1: Fundamental Rights"
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"تھانے کے اندر دستخط شدہ اعترافِ جرم مجھے مجرم ثابت کرنے کے لیے کافی ہے۔"</td>
-                                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>ضروری نہیں ہے۔</strong> آرٹیکل ۱۴ اور قانونِ شہادت آرڈر، ۱۹۸۴ کے تحت، پولیس کی حراست کے دوران کیا گیا اعترافِ جرم عام طور پر ثبوت کے طور پر قابلِ قبول نہیں ہوتا جب تک کہ اسے قانون کے مطابق کسی مجاز مجسٹریٹ کے سامنے ریکارڈ نہ کیا گیا ہو۔</td>
+                                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"تھانے
+                                                کے اندر دستخط شدہ اعترافِ جرم مجھے مجرم ثابت کرنے کے لیے کافی ہے۔"</td>
+                                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>ضروری نہیں
+                                                    ہے۔</strong> آرٹیکل ۱۴ اور قانونِ شہادت آرڈر، ۱۹۸۴ کے تحت، پولیس کی
+                                                حراست کے دوران کیا گیا اعترافِ جرم عام طور پر ثبوت کے طور پر قابلِ قبول
+                                                نہیں ہوتا جب تک کہ اسے قانون کے مطابق کسی مجاز مجسٹریٹ کے سامنے ریکارڈ
+                                                نہ کیا گیا ہو۔</td>
                                         </tr>
                                         <tr>
-                                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"اگر پولیس کو کسی جرم کا شبہ ہو، تو انہیں کسی بھی وقت کسی بھی گھر میں داخل ہونے اور تلاشی لینے کا پورا حق ہے۔"</td>
-                                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>غلط ہے۔</strong> آرٹیکل ۱۴ آپ کے گھر کی پرائیویسی کا تحفظ کرتا ہے۔ کئی حالات میں پولیس کے پاس سرچ وارنٹ ہونا ضروری ہے۔ اگرچہ پاکستانی قانون مخصوص قانونی ہنگامی حالات میں بغیر وارنٹ داخلے کی اجازت دیتا ہے، لیکن بلا جواز اور غیر قانونی داخلہ قانوناً جرم (Illegal Trespassing) تصور کیا جاتا ہے۔</td>
+                                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"اگر
+                                                پولیس کو کسی جرم کا شبہ ہو، تو انہیں کسی بھی وقت کسی بھی گھر میں داخل
+                                                ہونے اور تلاشی لینے کا پورا حق ہے۔"</td>
+                                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>غلط ہے۔</strong>
+                                                آرٹیکل ۱۴ آپ کے گھر کی پرائیویسی کا تحفظ کرتا ہے۔ کئی حالات میں پولیس کے
+                                                پاس سرچ وارنٹ ہونا ضروری ہے۔ اگرچہ پاکستانی قانون مخصوص قانونی ہنگامی
+                                                حالات میں بغیر وارنٹ داخلے کی اجازت دیتا ہے، لیکن بلا جواز اور غیر
+                                                قانونی داخلہ قانوناً جرم (Illegal Trespassing) تصور کیا جاتا ہے۔</td>
                                         </tr>
                                         <tr>
-                                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"جب تک والدین کی اجازت ہو، بچے کسی بھی جگہ مزدوری یا کام کر سکتے ہیں۔"</td>
-                                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>غلط ہے۔</strong> آرٹیکل ۱۱ چودہ (۱۴) سال سے کم عمر کے بچوں کو فیکٹریوں، کانوں اور دیگر پرخطر ملازمتوں میں رکھنے پر سختی سے پابندی عائد کرتا ہے۔ والدین کی رضامندی بھی بچے کے بنیادی آئینی حقوق کو ختم یا تبدیل نہیں کر سکتی۔</td>
+                                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"جب تک
+                                                والدین کی اجازت ہو، بچے کسی بھی جگہ مزدوری یا کام کر سکتے ہیں۔"</td>
+                                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>غلط ہے۔</strong>
+                                                آرٹیکل ۱۱ چودہ (۱۴) سال سے کم عمر کے بچوں کو فیکٹریوں، کانوں اور دیگر
+                                                پرخطر ملازمتوں میں رکھنے پر سختی سے پابندی عائد کرتا ہے۔ والدین کی
+                                                رضامندی بھی بچے کے بنیادی آئینی حقوق کو ختم یا تبدیل نہیں کر سکتی۔</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </section>
 
                             <!-- قانونی حوالہ جات کا سیکشن (Added Inline Legal References Section for Completeness) -->
-                            <div style="margin-top: 25px; font-size: 0.85rem; color: #666; border-top: 1px dashed #ddd; padding-top: 15px; direction: rtl; text-align: right;">
-                                <strong>⚖️ آئینی و قانونی حوالہ جات:</strong> دستورِ پاکستان کے آرٹیکل ۱۱، ۱۲، ۱۳، ۱۴ | قانونِ شہادت آرڈر، ۱۹۸۴ (اعترافِ جرم اور شہادت کی قبولیت) | کوڈ آف کرمنل پروسیجر (CrPC) (تلاشی، تفتیش اور فوجداری طریقہ کار سے متعلقہ دفعات)۔
+                            <div
+                                style="margin-top: 25px; font-size: 0.85rem; color: #666; border-top: 1px dashed #ddd; padding-top: 15px; direction: rtl; text-align: right;">
+                                <strong>⚖️ آئینی و قانونی حوالہ جات:</strong> دستورِ پاکستان کے آرٹیکل ۱۱، ۱۲، ۱۳، ۱۴ |
+                                قانونِ شہادت آرڈر، ۱۹۸۴ (اعترافِ جرم اور شہادت کی قبولیت) | کوڈ آف کرمنل پروسیجر (CrPC)
+                                (تلاشی، تفتیش اور فوجداری طریقہ کار سے متعلقہ دفعات)۔
                             </div>
 
                         </div>
                         <footer
                             style="background-color: #002147; color: #ffffff; padding: 15px; text-align: center; font-size: 1rem; border-top: 5px solid #c5a880;">
-                            <strong>انسانی حقوق ہیلپ لائن: 1099</strong> | <strong>پولیس ایمرجنسی: 15</strong> | <strong>وفاقی محتسب: 1055</strong>
+                            <strong>انسانی حقوق ہیلپ لائن: 1099</strong> | <strong>پولیس ایمرجنسی: 15</strong> |
+                            <strong>وفاقی محتسب: 1055</strong>
                         </footer>
                     </article>
                 </div>
-              
+
                 <div id="guide-civil-freedoms-en" class="legal-guide-wrapper">
                     <article class="civil-freedoms-guide"
                         style="font-family: Segoe UI, Roboto, Helvetica, Arial, sans-serif; border: 2px solid #002147; border-radius: 15px; max-width: 900px; margin: 20px auto; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); background-color: #ffffff;">
@@ -1363,74 +1747,137 @@ data-en="Part 1: Fundamental Rights"
                                 Constitutional Rights to Movement, Assembly, Free Speech &amp; Information</p>
                         </header>
                         <div style="padding: 30px; line-height: 1.8; color: #333;">
-                            
+
                             <!-- Easy Public Warning Disclaimer -->
-                            <div style="background-color: #f8f9fa; border-left: 5px solid #6c757d; padding: 15px; margin-bottom: 25px; border-radius: 4px; font-size: 0.95rem; color: #555;">
-                                <strong>Public Awareness Note:</strong> This guide explains your basic constitutional rights in everyday English. It is meant to help citizens understand the law easily and does not count as formal legal advice.
+                            <div
+                                style="background-color: #f8f9fa; border-left: 5px solid #6c757d; padding: 15px; margin-bottom: 25px; border-radius: 4px; font-size: 0.95rem; color: #555;">
+                                <strong>Public Awareness Note:</strong> This guide explains your basic constitutional
+                                rights in everyday English. It is meant to help citizens understand the law easily and
+                                does not count as formal legal advice.
                             </div>
 
                             <section style="margin-bottom: 25px;">
                                 <h3
                                     style="color: #002147; border-bottom: 2px solid #c5a880; padding-bottom: 5px; margin-top: 0;">
                                     1. The Core Constitutional Freedoms Explained</h3>
-                                
+
                                 <p><strong>Article 15: Freedom of Movement (Right to Travel)</strong><br>
-                                <strong>What it means:</strong> Every Pakistani citizen has the complete right to travel freely across the country, enter or leave its borders, and choose any city or town to live or settle down.<br>
-                                <strong>The Legal Boundary:</strong> The government can only limit your movement using fair, temporary laws made for the public interest (like blocking off an area during a medical quarantine or a critical security threat).</p>
-                                
+                                    <strong>What it means:</strong> Every Pakistani citizen has the complete right to
+                                    travel freely across the country, enter or leave its borders, and choose any city or
+                                    town to live or settle down.<br>
+                                    <strong>The Legal Boundary:</strong> The government can only limit your movement
+                                    using fair, temporary laws made for the public interest (like blocking off an area
+                                    during a medical quarantine or a critical security threat).
+                                </p>
+
                                 <p><strong>Article 16: Freedom of Assembly (Right to Gather)</strong><br>
-                                <strong>What it means:</strong> You have the legal right to meet up peacefully, hold rallies, or join sit-ins for public, social, or political reasons.<br>
-                                <strong>The Legal Boundary:</strong> All gatherings must remain completely peaceful and **without any weapons**. Local authorities can temporarily stop gatherings under public peace laws (like Section 144) if there is an immediate danger of violence or fighting.</p>
-                                
+                                    <strong>What it means:</strong> You have the legal right to meet up peacefully, hold
+                                    rallies, or join sit-ins for public, social, or political reasons.<br>
+                                    <strong>The Legal Boundary:</strong> All gatherings must remain completely peaceful
+                                    and **without any weapons**. Local authorities can temporarily stop gatherings under
+                                    public peace laws (like Section 144) if there is an immediate danger of violence or
+                                    fighting.
+                                </p>
+
                                 <p><strong>Article 17: Freedom of Association (Right to Form Groups)</strong><br>
-                                <strong>What it means:</strong> This guarantees your right to create or join labor unions, business groups, welfare societies, or actively take part in running political parties.<br>
-                                <strong>The Legal Boundary:</strong> No group or party is allowed to work against the security, independence (sovereignty) of Pakistan, or public decency.</p>
-                                
+                                    <strong>What it means:</strong> This guarantees your right to create or join labor
+                                    unions, business groups, welfare societies, or actively take part in running
+                                    political parties.<br>
+                                    <strong>The Legal Boundary:</strong> No group or party is allowed to work against
+                                    the security, independence (sovereignty) of Pakistan, or public decency.
+                                </p>
+
                                 <p><strong>Article 18: Freedom of Trade, Business, or Profession</strong><br>
-                                <strong>What it means:</strong> Every citizen has the right to choose any legal job, shop, trade, or business. The government cannot unfairly or randomly lock you out of a career path.<br>
-                                <strong>The Legal Boundary:</strong> The state has the right to set professional standards and ask for valid licenses (such as passing the Bar exam for lawyers or getting registration for doctors to practice safely).</p>
-                                
-                                <p><strong>Article 19 &amp; 19-A: Freedom of Speech &amp; Right to Information</strong><br>
-                                <strong>What it means:</strong> You have the right to express your thoughts, write your opinions, and share information safely on public platforms or online. Furthermore, Article 19-A gives you a clear right to ask for and get official data from government departments regarding matters of public importance.<br>
-                                <strong>The Legal Boundary:</strong> Free speech does **not** allow hate speech, damaging someone's reputation with lies (defamation), or saying things that hurt national security or disrespect the courts.</p>
+                                    <strong>What it means:</strong> Every citizen has the right to choose any legal job,
+                                    shop, trade, or business. The government cannot unfairly or randomly lock you out of
+                                    a career path.<br>
+                                    <strong>The Legal Boundary:</strong> The state has the right to set professional
+                                    standards and ask for valid licenses (such as passing the Bar exam for lawyers or
+                                    getting registration for doctors to practice safely).
+                                </p>
+
+                                <p><strong>Article 19 &amp; 19-A: Freedom of Speech &amp; Right to
+                                        Information</strong><br>
+                                    <strong>What it means:</strong> You have the right to express your thoughts, write
+                                    your opinions, and share information safely on public platforms or online.
+                                    Furthermore, Article 19-A gives you a clear right to ask for and get official data
+                                    from government departments regarding matters of public importance.<br>
+                                    <strong>The Legal Boundary:</strong> Free speech does **not** allow hate speech,
+                                    damaging someone's reputation with lies (defamation), or saying things that hurt
+                                    national security or disrespect the courts.
+                                </p>
                             </section>
 
                             <section style="margin-bottom: 25px;">
                                 <h3 style="color: #002147; border-bottom: 2px solid #c5a880; padding-bottom: 5px;">2.
                                     Practical Guidelines: How to Exercise Your Freedoms Safely</h3>
-                                
-                                <p><strong>Scenario A: Encountering Local Traffic Interceptions or Blockades</strong></p>
+
+                                <p><strong>Scenario A: Encountering Local Traffic Interceptions or Blockades</strong>
+                                </p>
                                 <ul style="padding-left: 20px;">
-                                    <li><strong>Know the Scope:</strong> Public roads cannot be permanently blocked by local police or security forces without a solid, legal reason.</li>
-                                    <li><strong>Action Step:</strong> If you are stopped at an internal city or provincial border checkpoint, you are legally required to show your identity card (CNIC) to verify who you are. However, authorities cannot stop you from entering a specific city unless there is an official written court order or a declared emergency ban.</li>
+                                    <li><strong>Know the Scope:</strong> Public roads cannot be permanently blocked by
+                                        local police or security forces without a solid, legal reason.</li>
+                                    <li><strong>Action Step:</strong> If you are stopped at an internal city or
+                                        provincial border checkpoint, you are legally required to show your identity
+                                        card (CNIC) to verify who you are. However, authorities cannot stop you from
+                                        entering a specific city unless there is an official written court order or a
+                                        declared emergency ban.</li>
                                 </ul>
 
                                 <p><strong>Scenario B: Organizing a Peaceful Public Assembly or Protests</strong></p>
                                 <ul style="padding-left: 20px;">
-                                    <li><strong>Get Permission Early:</strong> If you are planning a protest or public rally, always file a written notice with your local District Administration (Deputy Commissioner's office) to get a "No Objection Certificate" (NOC). This protects your rights while following local rules.</li>
-                                    <li><strong>Handle Section 144 Correctly:</strong> If local officials put Section 144 in place, gathering in a group of more than four people becomes temporarily unlawful. Disobeying this rule can lead to immediate arrest by the police. If you believe the ban is completely illegal, your lawyer must challenge it in the High Court using a formal legal petition.</li>
+                                    <li><strong>Get Permission Early:</strong> If you are planning a protest or public
+                                        rally, always file a written notice with your local District Administration
+                                        (Deputy Commissioner's office) to get a "No Objection Certificate" (NOC). This
+                                        protects your rights while following local rules.</li>
+                                    <li><strong>Handle Section 144 Correctly:</strong> If local officials put Section
+                                        144 in place, gathering in a group of more than four people becomes temporarily
+                                        unlawful. Disobeying this rule can lead to immediate arrest by the police. If
+                                        you believe the ban is completely illegal, your lawyer must challenge it in the
+                                        High Court using a formal legal petition.</li>
                                 </ul>
 
                                 <p><strong>Scenario C: Dealing with Forced Confessions or Police Abuse</strong></p>
                                 <ul style="padding-left: 20px;">
-                                    <li><strong>Do Not Stay Completely Silent:</strong> If official investigative agencies like FIA or NAB are questioning you, staying completely silent can be counted as non-cooperation.</li>
-                                    <li><strong>The Correct Statement:</strong> To protect yourself from pressure, clearly and calmly tell the officers: <em>"I am ready to give my formal statement, but only when my lawyer is present with me."</em> Say this firmly without being rude or insulting.</li>
+                                    <li><strong>Do Not Stay Completely Silent:</strong> If official investigative
+                                        agencies like FIA or NAB are questioning you, staying completely silent can be
+                                        counted as non-cooperation.</li>
+                                    <li><strong>The Correct Statement:</strong> To protect yourself from pressure,
+                                        clearly and calmly tell the officers: <em>"I am ready to give my formal
+                                            statement, but only when my lawyer is present with me."</em> Say this firmly
+                                        without being rude or insulting.</li>
                                 </ul>
 
-                                <p><strong>Scenario D: Accessing Public Records &amp; The RTI Appeal Process (Article 19-A)</strong></p>
+                                <p><strong>Scenario D: Accessing Public Records &amp; The RTI Appeal Process (Article
+                                        19-A)</strong></p>
                                 <ul style="padding-left: 20px;">
-                                    <li><strong>File Formal Applications:</strong> If you want to check how public funds are spent or verify official department hiring rules, write a simple Right to Information (RTI) application to the Public Information Officer (PIO) of that department. By law, they must give you the records within a fixed time (usually 14 to 28 days).</li>
-                                    <li><strong>What to Do If They Ignore or Deny Your Request:</strong> If the department fails to answer or wrongly hides the files, follow these clear steps:</li>
+                                    <li><strong>File Formal Applications:</strong> If you want to check how public funds
+                                        are spent or verify official department hiring rules, write a simple Right to
+                                        Information (RTI) application to the Public Information Officer (PIO) of that
+                                        department. By law, they must give you the records within a fixed time (usually
+                                        14 to 28 days).</li>
+                                    <li><strong>What to Do If They Ignore or Deny Your Request:</strong> If the
+                                        department fails to answer or wrongly hides the files, follow these clear steps:
+                                    </li>
                                 </ul>
-                                
+
                                 <!-- Process Box for Clarity -->
-                                <div style="background-color: #fcfcfc; border: 1px dashed #c5a880; padding: 15px; margin: 10px 20px; border-radius: 6px;">
+                                <div
+                                    style="background-color: #fcfcfc; border: 1px dashed #c5a880; padding: 15px; margin: 10px 20px; border-radius: 6px;">
                                     <ol style="margin: 0; padding-left: 20px;">
-                                        <li><strong>Step 1 (Internal Appeal):</strong> Send a complaint to the senior head (Appellate Authority) of that same government department.</li>
-                                        <li><strong>Step 2 (Information Commission):</strong> If they still do not share the data, file a second appeal with your province's Chief Information Commission (CIC). This step is entirely free, and you do **not** need a lawyer.</li>
-                                        <li><strong>Step 3 (High Court):</strong> As a last option, your lawyer can file a writ petition in the High Court to force the office to give up the data.</li>
+                                        <li><strong>Step 1 (Internal Appeal):</strong> Send a complaint to the senior
+                                            head (Appellate Authority) of that same government department.</li>
+                                        <li><strong>Step 2 (Information Commission):</strong> If they still do not share
+                                            the data, file a second appeal with your province's Chief Information
+                                            Commission (CIC). This step is entirely free, and you do **not** need a
+                                            lawyer.</li>
+                                        <li><strong>Step 3 (High Court):</strong> As a last option, your lawyer can file
+                                            a writ petition in the High Court to force the office to give up the data.
+                                        </li>
                                     </ol>
-                                    <p style="margin: 10px 0 0 0; font-size: 0.9rem; color: #555;">💡 <strong>Important Tip:</strong> Always keep a signed copy of your application or the courier receipt as proof that you submitted it.</p>
+                                    <p style="margin: 10px 0 0 0; font-size: 0.9rem; color: #555;">💡 <strong>Important
+                                            Tip:</strong> Always keep a signed copy of your application or the courier
+                                        receipt as proof that you submitted it.</p>
                                 </div>
                             </section>
 
@@ -1456,29 +1903,39 @@ data-en="Part 1: Fundamental Rights"
                                                 "Freedom of speech means I can post or say anything online without any
                                                 legal consequences."</td>
                                             <td style="padding: 12px; border: 1px solid #ddd;"><strong>False.</strong>
-                                                Your online talk is strictly bound by internet safety laws (like PECA). You cannot use free speech for online harassment, bullying, fake news, or statements against national safety.</td>
+                                                Your online talk is strictly bound by internet safety laws (like PECA).
+                                                You cannot use free speech for online harassment, bullying, fake news,
+                                                or statements against national safety.</td>
                                         </tr>
                                         <tr>
                                             <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"The
                                                 district management can ban all public rallies permanently whenever they
                                                 want."</td>
                                             <td style="padding: 12px; border: 1px solid #ddd;"><strong>False.</strong>
-                                                Stopping public protests forever completely violates Article 16. Short-term bans (like Section 144) can only be used as emergency tools to fix immediate, visible law and order issues.</td>
+                                                Stopping public protests forever completely violates Article 16.
+                                                Short-term bans (like Section 144) can only be used as emergency tools
+                                                to fix immediate, visible law and order issues.</td>
                                         </tr>
                                         <tr>
                                             <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">
                                                 "Government departments have the right to keep all internal data secret
                                                 from citizens."</td>
                                             <td style="padding: 12px; border: 1px solid #ddd;"><strong>False (Article
-                                                    19-A).</strong> Leaving out highly classified military or defense secrets, general files like development budgets, standard hiring data, and local municipal plans must be shared with citizens whenever requested.</td>
+                                                    19-A).</strong> Leaving out highly classified military or defense
+                                                secrets, general files like development budgets, standard hiring data,
+                                                and local municipal plans must be shared with citizens whenever
+                                                requested.</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </section>
-                            
+
                             <!-- Educational Reference Line -->
-                            <div style="margin-top: 25px; font-size: 0.85rem; color: #777; border-top: 1px dashed #ddd; padding-top: 15px;">
-                                <strong>Legal Foundations:</strong> Constitution of Pakistan (Articles 15-19A) | Criminal Procedure Code (Section 144) | Prevention of Electronic Crimes Act (PECA) | Right to Information Laws.
+                            <div
+                                style="margin-top: 25px; font-size: 0.85rem; color: #777; border-top: 1px dashed #ddd; padding-top: 15px;">
+                                <strong>Legal Foundations:</strong> Constitution of Pakistan (Articles 15-19A) |
+                                Criminal Procedure Code (Section 144) | Prevention of Electronic Crimes Act (PECA) |
+                                Right to Information Laws.
                             </div>
                         </div>
                         <footer
@@ -1488,88 +1945,150 @@ data-en="Part 1: Fundamental Rights"
                         </footer>
                     </article>
                 </div>
-             <div id="guide-civil-freedoms-ur" class="legal-guide-wrapper">
+                <div id="guide-civil-freedoms-ur" class="legal-guide-wrapper">
                     <article class="civil-freedoms-guide"
                         style="font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', Segoe UI, Tahoma, sans-serif; direction: rtl; text-align: right; border: 2px solid #002147; border-radius: 15px; max-width: 900px; margin: 20px auto; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); background-color: #ffffff;">
                         <header
                             style="background-color: #002147; color: #ffffff; padding: 30px; text-align: center; border-bottom: 5px solid#c5a880 ;">
-                            <h1 style="margin: 0; font-size: 1.8rem; font-weight: normal;">بنیادی شہری آزادیاں: عوامی گائیڈ</h1>
-                            <p style="margin: 10px 0 0; color: #c5a880; font-weight: bold; font-size: 1.2rem;">نقل و حرکت، اجتماع، آزادیِ اظہار رائے اور معلومات تک رسائی کے آئینی حقوق</p>
+                            <h1 style="margin: 0; font-size: 1.8rem; font-weight: normal;">بنیادی شہری آزادیاں: عوامی
+                                گائیڈ</h1>
+                            <p style="margin: 10px 0 0; color: #c5a880; font-weight: bold; font-size: 1.2rem;">نقل و
+                                حرکت، اجتماع، آزادیِ اظہار رائے اور معلومات تک رسائی کے آئینی حقوق</p>
                         </header>
                         <div style="padding: 30px; line-height: 2; color: #333;">
-                            
-                            <div style="background-color: #f8f9fa; border-right: 5px solid #6c757d; border-left: none; padding: 15px; margin-bottom: 25px; border-radius: 4px; font-size: 1rem; color: #555;">
-                                <strong>ضروری معلوماتی نوٹ:</strong> یہ گائیڈ آئینِ پاکستان کے تحت آپ کے بنیادی حقوق کو آسان اور عام فہم زبان میں سمجھانے کے لیے تیار کی گئی ہے۔ چونکہ ہر معاملہ الگ نوعیت کا ہو سکتا ہے، اس لیے یہ معلومات صرف عوامی آگاہی کے لیے ہیں اور اسے کسی پیشہ ور وکیل کی قانونی مشاورت کا متبادل نہ سمجھا جائے۔
+
+                            <div
+                                style="background-color: #f8f9fa; border-right: 5px solid #6c757d; border-left: none; padding: 15px; margin-bottom: 25px; border-radius: 4px; font-size: 1rem; color: #555;">
+                                <strong>ضروری معلوماتی نوٹ:</strong> یہ گائیڈ آئینِ پاکستان کے تحت آپ کے بنیادی حقوق کو
+                                آسان اور عام فہم زبان میں سمجھانے کے لیے تیار کی گئی ہے۔ چونکہ ہر معاملہ الگ نوعیت کا ہو
+                                سکتا ہے، اس لیے یہ معلومات صرف عوامی آگاہی کے لیے ہیں اور اسے کسی پیشہ ور وکیل کی قانونی
+                                مشاورت کا متبادل نہ سمجھا جائے۔
                             </div>
 
                             <section style="margin-bottom: 25px;">
                                 <h3
                                     style="color: #002147; border-bottom: 2px solid #c5a880; padding-bottom: 5px; margin-top: 0; font-weight: normal; font-size: 1.4rem;">
                                     ۱۔ بنیادی آئینی آزادیوں کی آسان وضاحت</h3>
-                                
+
                                 <p><strong>آرٹیکل ۱۵: نقل و حرکت کی آزادی (Freedom of Movement)</strong><br>
-                                <strong>آسان مطلب:</strong> بطور پاکستانی شہری، آپ کو پورے ملک میں جہاں دل چاہے آزادانہ سفر کرنے، پاکستان کی حدود میں داخل ہونے یا باہر جانے، اور اپنی مرضی کے کسی بھی شہر یا علاقے میں رہنے یا گھر بنانے کا پورا حق ہے۔<br>
-                                <strong>قانون کی حد:</strong> حکومت آپ کی نقل و حرکت پر صرف ایسے عارضی اور مناسب قوانین کے تحت ہی پابندی لگا سکتی ہے جو عوام کے فائدے کے لیے ہوں (مثال کے طور پر کسی وبائی بیماری کے دوران قرنطینہ یا کسی شدید سیکیورٹی خطرے کی وجہ سے علاقے کو عارضی سیل کرنا)۔</p>
-                                
+                                    <strong>آسان مطلب:</strong> بطور پاکستانی شہری، آپ کو پورے ملک میں جہاں دل چاہے
+                                    آزادانہ سفر کرنے، پاکستان کی حدود میں داخل ہونے یا باہر جانے، اور اپنی مرضی کے کسی
+                                    بھی شہر یا علاقے میں رہنے یا گھر بنانے کا پورا حق ہے۔<br>
+                                    <strong>قانون کی حد:</strong> حکومت آپ کی نقل و حرکت پر صرف ایسے عارضی اور مناسب
+                                    قوانین کے تحت ہی پابندی لگا سکتی ہے جو عوام کے فائدے کے لیے ہوں (مثال کے طور پر کسی
+                                    وبائی بیماری کے دوران قرنطینہ یا کسی شدید سیکیورٹی خطرے کی وجہ سے علاقے کو عارضی سیل
+                                    کرنا)۔
+                                </p>
+
                                 <p><strong>آرٹیکل ۱۶: اجتماع کی آزادی (Freedom of Assembly)</strong><br>
-                                <strong>آسان مطلب:</strong> آپ کو کسی بھی عوامی، سماجی یا سیاسی مقصد کے لیے پرامن طریقے سے اکٹھے ہونے، ریلیاں نکالنے، یا دھرنے دینے کا قانونی حق حاصل ہے۔<br>
-                                <strong>قانون کی حد:</strong> تمام اجتماعات کا مکمل طور پر پرامن ہونا اور **ہر قسم کے اسلحے سے پاک ہونا** لازمی ہے۔ اگر لڑائی جھگڑے یا تشدد کا فوری خطرہ ہو، تو مقامی انتظامیہ امن قائم رکھنے کے لیے عارضی طور پر اکٹھے ہونے پر پابندی لگا سکتی ہے (جسے عام طور پر دفعہ 144 کہا جاتا ہے)۔</p>
-                                
+                                    <strong>آسان مطلب:</strong> آپ کو کسی بھی عوامی، سماجی یا سیاسی مقصد کے لیے پرامن
+                                    طریقے سے اکٹھے ہونے، ریلیاں نکالنے، یا دھرنے دینے کا قانونی حق حاصل ہے۔<br>
+                                    <strong>قانون کی حد:</strong> تمام اجتماعات کا مکمل طور پر پرامن ہونا اور **ہر قسم
+                                    کے اسلحے سے پاک ہونا** لازمی ہے۔ اگر لڑائی جھگڑے یا تشدد کا فوری خطرہ ہو، تو مقامی
+                                    انتظامیہ امن قائم رکھنے کے لیے عارضی طور پر اکٹھے ہونے پر پابندی لگا سکتی ہے (جسے
+                                    عام طور پر دفعہ 144 کہا جاتا ہے)۔
+                                </p>
+
                                 <p><strong>آرٹیکل ۱۷: تنظیم سازی کی آزادی (Freedom of Association)</strong><br>
-                                <strong>آسان مطلب:</strong> یہ قانون آپ کو لیبر یونینز، تاجروں کی انجمنیں، فلاحی ادارے بنانے، یا سیاسی جماعتوں میں شامل ہونے اور انہیں چلانے کا حق دیتا ہے۔<br>
-                                <strong>قانون کی حد:</strong> کسی بھی تنظیم یا سیاسی جماعت کو پاکستان کی سلامتی، آزادی (خودمختاری) یا عوامی اخلاقیات کے خلاف کام کرنے کی بالکل اجازت نہیں ہے۔</p>
-                                
+                                    <strong>آسان مطلب:</strong> یہ قانون آپ کو لیبر یونینز، تاجروں کی انجمنیں، فلاحی
+                                    ادارے بنانے، یا سیاسی جماعتوں میں شامل ہونے اور انہیں چلانے کا حق دیتا ہے۔<br>
+                                    <strong>قانون کی حد:</strong> کسی بھی تنظیم یا سیاسی جماعت کو پاکستان کی سلامتی،
+                                    آزادی (خودمختاری) یا عوامی اخلاقیات کے خلاف کام کرنے کی بالکل اجازت نہیں ہے۔
+                                </p>
+
                                 <p><strong>آرٹیکل ۱۸: تجارت، کاروبار یا پیشے کی آزادی</strong><br>
-                                <strong>آسان مطلب:</strong> ہر شہری کو اپنی پسند کا کوئی بھی قانونی پیشہ، دکان، کاروبار یا تجارت شروع کرنے کا حق ہے۔ حکومت کسی بھی شخص کو بغیر کسی ٹھوس وجہ کے زبردستی یا من مانے طریقے سے کام کرنے سے نہیں روک سکتی۔<br>
-                                <strong>قانون کی حد:</strong> ریاست کو یہ حق حاصل ہے کہ وہ پیشوں کے لیے ضروری اصول اور لائسنس کی شرط طے کرے (جیسے وکالت کے لیے بار کونسل کا امتحان پاس کرنا یا ڈاکٹری کے لیے پی ایم ڈی سی سے رجسٹریشن کروانا)۔</p>
-                                
+                                    <strong>آسان مطلب:</strong> ہر شہری کو اپنی پسند کا کوئی بھی قانونی پیشہ، دکان،
+                                    کاروبار یا تجارت شروع کرنے کا حق ہے۔ حکومت کسی بھی شخص کو بغیر کسی ٹھوس وجہ کے
+                                    زبردستی یا من مانے طریقے سے کام کرنے سے نہیں روک سکتی۔<br>
+                                    <strong>قانون کی حد:</strong> ریاست کو یہ حق حاصل ہے کہ وہ پیشوں کے لیے ضروری اصول
+                                    اور لائسنس کی شرط طے کرے (جیسے وکالت کے لیے بار کونسل کا امتحان پاس کرنا یا ڈاکٹری
+                                    کے لیے پی ایم ڈی سی سے رجسٹریشن کروانا)۔
+                                </p>
+
                                 <p><strong>آرٹیکل ۱۹ اور ۱۹-اے: آزادیِ اظہار رائے اور معلومات کا حق</strong><br>
-                                <strong>آسان مطلب:</strong> آپ کو اپنے خیالات کا اظہار کرنے، اپنی رائے لکھنے، اور میڈیا یا انٹرنیٹ کے ذریعے معلومات دوسروں تک پہنچانے کا پورا حق ہے۔ اس کے ساتھ ہی، آرٹیکل 19-A کے تحت آپ کو یہ قانونی حق بھی حاصل ہے کہ آپ سرکاری اداروں سے عوامی اہمیت کے کسی بھی معاملے پر آفیشل ریکارڈ یا ڈیٹا مانگ سکیں۔<br>
-                                <strong>قانون کی حد:</strong> اظہارِ رائے کی آزادی کا مطلب یہ **ہرگز نہیں** کہ آپ نفرت انگیز تقریر (hate speech) کریں، جھوٹ بول کر کسی کی عزت اچھالیں (ہتکِ عزت)، یا ایسی باتیں کریں جس سے ملکی سلامتی کو نقصان پہنچے یا عدالت کی توہین ہو۔</p>
+                                    <strong>آسان مطلب:</strong> آپ کو اپنے خیالات کا اظہار کرنے، اپنی رائے لکھنے، اور
+                                    میڈیا یا انٹرنیٹ کے ذریعے معلومات دوسروں تک پہنچانے کا پورا حق ہے۔ اس کے ساتھ ہی،
+                                    آرٹیکل 19-A کے تحت آپ کو یہ قانونی حق بھی حاصل ہے کہ آپ سرکاری اداروں سے عوامی اہمیت
+                                    کے کسی بھی معاملے پر آفیشل ریکارڈ یا ڈیٹا مانگ سکیں۔<br>
+                                    <strong>قانون کی حد:</strong> اظہارِ رائے کی آزادی کا مطلب یہ **ہرگز نہیں** کہ آپ
+                                    نفرت انگیز تقریر (hate speech) کریں، جھوٹ بول کر کسی کی عزت اچھالیں (ہتکِ عزت)، یا
+                                    ایسی باتیں کریں جس سے ملکی سلامتی کو نقصان پہنچے یا عدالت کی توہین ہو۔
+                                </p>
                             </section>
 
                             <section style="margin-bottom: 25px;">
                                 <h3
                                     style="color: #002147; border-bottom: 2px solid #c5a880; padding-bottom: 5px; font-weight: normal; font-size: 1.4rem;">
                                     ۲۔ عملی ہدایات: اپنے حقوق کا محفوظ استعمال کیسے کریں؟</h3>
-                                
+
                                 <p><strong>صورتحال الف: راستوں کی بندش یا پولیس ناکہ بندی کا سامنا کرنا</strong></p>
                                 <ul style="padding-right: 20px; padding-left: 0;">
-                                    <li><strong>اپنا دائرہ کار سمجھیں:</strong> آرٹیکل 15 کے تحت، مقامی پولیس یا انتظامیہ بغیر کسی ہنگامی قانونی وجہ کے عوامی شاہراہوں اور سڑکوں کو مستقل طور پر بلاک نہیں کر سکتی۔</li>
-                                    <li><strong>کیا کریں:</strong> اگر آپ کو کسی شہر یا صوبے کی سرحد پر چیک پوسٹ پر روکا جائے، تو قانون کے مطابق آپ اپنی شناخت (CNIC) دکھانے کے پابند ہیں۔ تاہم، انتظامیہ آپ کو کسی شہر میں داخل ہونے سے زبردستی نہیں روک سکتی، جب تک کہ ان کے پاس عدالت کا تحریری حکم یا حکومت کا باقاعدہ ہنگامی اعلامیہ موجود نہ ہو۔</li>
+                                    <li><strong>اپنا دائرہ کار سمجھیں:</strong> آرٹیکل 15 کے تحت، مقامی پولیس یا
+                                        انتظامیہ بغیر کسی ہنگامی قانونی وجہ کے عوامی شاہراہوں اور سڑکوں کو مستقل طور پر
+                                        بلاک نہیں کر سکتی۔</li>
+                                    <li><strong>کیا کریں:</strong> اگر آپ کو کسی شہر یا صوبے کی سرحد پر چیک پوسٹ پر روکا
+                                        جائے، تو قانون کے مطابق آپ اپنی شناخت (CNIC) دکھانے کے پابند ہیں۔ تاہم، انتظامیہ
+                                        آپ کو کسی شہر میں داخل ہونے سے زبردستی نہیں روک سکتی، جب تک کہ ان کے پاس عدالت
+                                        کا تحریری حکم یا حکومت کا باقاعدہ ہنگامی اعلامیہ موجود نہ ہو۔</li>
                                 </ul>
 
                                 <p><strong>صورتحال ب: پرامن احتجاج یا عوامی اجتماع کا انعقاد کرنا</strong></p>
                                 <ul style="padding-right: 20px; padding-left: 0;">
-                                    <li><strong>پہلے سے مطلع کریں:</strong> اگر آپ کوئی پرامن احتجاج یا ریلی کرنا چاہتے ہیں، تو ہمیشہ مقامی ضلعی انتظامیہ (ڈپٹی کمشنر آفس) کو پہلے سے تحریری نوٹس دے کر این او سی (NOC) حاصل کریں۔ یہ آپ کے اجتماع کو محفوظ اور قانون کے مطابق رکھنے میں مدد دیتا ہے۔</li>
-                                    <li><strong>دفعہ 144 کو سمجھیں:</strong> اگر مقامی انتظامیہ نے شہر میں دفعہ 144 نافذ کر رکھی ہو، تو 4 سے زیادہ لوگوں کا ایک جگہ جمع ہونا عارضی طور پر غیر قانونی بن جاتا ہے۔ اس قانون کو توڑنے پر پولیس فوری گرفتار کر سکتی ہے۔ اگر آپ سمجھتے ہیں کہ یہ پابندی بالکل ناجائز ہے، تو آپ کا وکیل اسے ہائی کورٹ میں آئینی رٹ پٹیشن کے ذریعے ہی چیلنج کر سکتا ہے۔</li>
+                                    <li><strong>پہلے سے مطلع کریں:</strong> اگر آپ کوئی پرامن احتجاج یا ریلی کرنا چاہتے
+                                        ہیں، تو ہمیشہ مقامی ضلعی انتظامیہ (ڈپٹی کمشنر آفس) کو پہلے سے تحریری نوٹس دے کر
+                                        این او سی (NOC) حاصل کریں۔ یہ آپ کے اجتماع کو محفوظ اور قانون کے مطابق رکھنے میں
+                                        مدد دیتا ہے۔</li>
+                                    <li><strong>دفعہ 144 کو سمجھیں:</strong> اگر مقامی انتظامیہ نے شہر میں دفعہ 144 نافذ
+                                        کر رکھی ہو، تو 4 سے زیادہ لوگوں کا ایک جگہ جمع ہونا عارضی طور پر غیر قانونی بن
+                                        جاتا ہے۔ اس قانون کو توڑنے پر پولیس فوری گرفتار کر سکتی ہے۔ اگر آپ سمجھتے ہیں کہ
+                                        یہ پابندی بالکل ناجائز ہے، تو آپ کا وکیل اسے ہائی کورٹ میں آئینی رٹ پٹیشن کے
+                                        ذریعے ہی چیلنج کر سکتا ہے۔</li>
                                 </ul>
 
                                 <p><strong>صورتحال ج: سرکاری تفتیشی اداروں (FIA، NAB وغیرہ) سے نمٹنا</strong></p>
                                 <ul style="padding-right: 20px; padding-left: 0;">
-                                    <li><strong>گھبرائیں نہیں:</strong> اگر کوئی سرکاری ادارہ آپ سے تفتیش کر رہا ہے، تو بنیادی شناخت بتانے سے بالکل خاموش ہو جانا عدم تعاون سمجھا جا سکتا ہے۔</li>
-                                    <li><strong>درست موقف اپنائیں:</strong> کسی بھی قسم کے دباؤ سے بچنے کے لیے تفتیشی افسران سے نرمی لیکن پختگی سے کہیں: <em>"میں اپنا باقاعدہ اور تفصیلی بیان دینے کے لیے تیار ہوں، لیکن صرف اپنے وکیل کی موجودگی میں۔"</em> بغیر بدتمیزی کیے پرسکون آواز میں اپنا یہ حق جتائیں۔</li>
+                                    <li><strong>گھبرائیں نہیں:</strong> اگر کوئی سرکاری ادارہ آپ سے تفتیش کر رہا ہے، تو
+                                        بنیادی شناخت بتانے سے بالکل خاموش ہو جانا عدم تعاون سمجھا جا سکتا ہے۔</li>
+                                    <li><strong>درست موقف اپنائیں:</strong> کسی بھی قسم کے دباؤ سے بچنے کے لیے تفتیشی
+                                        افسران سے نرمی لیکن پختگی سے کہیں: <em>"میں اپنا باقاعدہ اور تفصیلی بیان دینے کے
+                                            لیے تیار ہوں، لیکن صرف اپنے وکیل کی موجودگی میں۔"</em> بغیر بدتمیزی کیے
+                                        پرسکون آواز میں اپنا یہ حق جتائیں۔</li>
                                 </ul>
 
-                                <p><strong>صورتحال د: معلومات تک رسائی (RTI) کے ذریعے سرکاری ریکارڈ حاصل کرنا</strong></p>
+                                <p><strong>صورتحال د: معلومات تک رسائی (RTI) کے ذریعے سرکاری ریکارڈ حاصل کرنا</strong>
+                                </p>
                                 <ul style="padding-right: 20px; padding-left: 0;">
-                                    <li><strong>سادہ درخواست جمع کرائیں:</strong> اگر آپ یہ دیکھنا چاہتے ہیں کہ سرکاری فنڈز کہاں خرچ ہوئے یا نوکریوں کی بھرتی کا کیا طریقہ کار تھا، تو اس محکمے کے پبلک انفارمیشن آفیسر (PIO) کو ایک سادہ آر ٹی آئی (RTI) درخواست لکھ کر دیں۔ قانون کے مطابق وہ آپ کو مقررہ دنوں (عام طور پر 14 سے 28 دن) کے اندر ریکارڈ دینے کے پابند ہیں۔</li>
-                                    <li><strong>اگر محکمہ جواب نہ دے یا انکار کرے تو کیا کریں؟</strong> معلومات نہ ملنے پر آپ بغیر کسی بڑے خرچے کے ان 3 مراحل کے ذریعے اپیل کر سکتے ہیں:</li>
+                                    <li><strong>سادہ درخواست جمع کرائیں:</strong> اگر آپ یہ دیکھنا چاہتے ہیں کہ سرکاری
+                                        فنڈز کہاں خرچ ہوئے یا نوکریوں کی بھرتی کا کیا طریقہ کار تھا، تو اس محکمے کے پبلک
+                                        انفارمیشن آفیسر (PIO) کو ایک سادہ آر ٹی آئی (RTI) درخواست لکھ کر دیں۔ قانون کے
+                                        مطابق وہ آپ کو مقررہ دنوں (عام طور پر 14 سے 28 دن) کے اندر ریکارڈ دینے کے پابند
+                                        ہیں۔</li>
+                                    <li><strong>اگر محکمہ جواب نہ دے یا انکار کرے تو کیا کریں؟</strong> معلومات نہ ملنے
+                                        پر آپ بغیر کسی بڑے خرچے کے ان 3 مراحل کے ذریعے اپیل کر سکتے ہیں:</li>
                                 </ul>
-                                
-                                <div style="background-color: #fcfcfc; border: 1px dashed #c5a880; padding: 15px; margin: 10px 20px; border-radius: 6px;">
+
+                                <div
+                                    style="background-color: #fcfcfc; border: 1px dashed #c5a880; padding: 15px; margin: 10px 20px; border-radius: 6px;">
                                     <ol style="margin: 0; padding-right: 20px;">
-                                        <li><strong>مرحلہ ۱ (اندرونی اپیل):</strong> اسی محکمے کے سب سے بڑے افسر (اپیلٹ اتھارٹی) کو تحریری شکایت بھیجیں۔</li>
-                                        <li><strong>مرحلہ ۲ (انفارمیشن کمیشن):</strong> اگر وہاں سے بھی جواب نہ ملے، تو اپنے صوبے کے چیف انفارمیشن کمیشن (CIC) کو دوسری اپیل بھیجیں۔ یہ عمل بالکل مفت ہے اور اس کے لیے کسی وکیل کی ضرورت نہیں ہوتی۔</li>
-                                        <li><strong>مرحلہ ۳ (ہائی کورٹ):</strong> آخری حل کے طور پر، آپ کا وکیل ہائی کورٹ میں رٹ پٹیشن دائر کر کے عدالت کے ذریعے اس محکمے کو ڈیٹا فراہم کرنے پر مجبور کر سکتا ہے۔</li>
+                                        <li><strong>مرحلہ ۱ (اندرونی اپیل):</strong> اسی محکمے کے سب سے بڑے افسر (اپیلٹ
+                                            اتھارٹی) کو تحریری شکایت بھیجیں۔</li>
+                                        <li><strong>مرحلہ ۲ (انفارمیشن کمیشن):</strong> اگر وہاں سے بھی جواب نہ ملے، تو
+                                            اپنے صوبے کے چیف انفارمیشن کمیشن (CIC) کو دوسری اپیل بھیجیں۔ یہ عمل بالکل
+                                            مفت ہے اور اس کے لیے کسی وکیل کی ضرورت نہیں ہوتی۔</li>
+                                        <li><strong>مرحلہ ۳ (ہائی کورٹ):</strong> آخری حل کے طور پر، آپ کا وکیل ہائی
+                                            کورٹ میں رٹ پٹیشن دائر کر کے عدالت کے ذریعے اس محکمے کو ڈیٹا فراہم کرنے پر
+                                            مجبور کر سکتا ہے۔</li>
                                     </ol>
-                                    <p style="margin: 10px 0 0 0; font-size: 0.95rem; color: #555;">💡 <strong>اہم مشورہ:</strong> درخواست جمع کرواتے وقت ہمیشہ اس کی ایک فوٹو کاپی پر وصولی کے دستخط (یا کورئیر کی پرچی) اپنے پاس ثبوت کے طور پر محفوظ رکھیں۔</p>
+                                    <p style="margin: 10px 0 0 0; font-size: 0.95rem; color: #555;">💡 <strong>اہم
+                                            مشورہ:</strong> درخواست جمع کرواتے وقت ہمیشہ اس کی ایک فوٹو کاپی پر وصولی کے
+                                        دستخط (یا کورئیر کی پرچی) اپنے پاس ثبوت کے طور پر محفوظ رکھیں۔</p>
                                 </div>
                             </section>
 
                             <section
                                 style="margin-bottom: 25px; background-color: #f8f9fa; border-radius: 10px; padding: 25px; border-right: 5px solid #c5a880; border-left: none;">
-                                <h3 style="color: #002147; margin-top: 0; font-weight: normal; font-size: 1.4rem;">۳۔ عام عوامی مفروضے بنام آئینی حقائق</h3>
+                                <h3 style="color: #002147; margin-top: 0; font-weight: normal; font-size: 1.4rem;">۳۔
+                                    عام عوامی مفروضے بنام آئینی حقائق</h3>
                                 <table
                                     style="width: 100%; border-collapse: collapse; margin-top: 15px; background-color: white;">
                                     <thead style="background-color: #002147; color: white;">
@@ -1584,23 +2103,41 @@ data-en="Part 1: Fundamental Rights"
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"آزادیِ اظہار رائے کا مطلب ہے کہ میں انٹرنیٹ پر کسی کے خلاف کچھ بھی پوسٹ کر دوں، مجھے کوئی نہیں پکڑ سکتا۔"</td>
-                                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>غلط۔</strong> آپ کی آن لائن گفتگو انٹرنیٹ کے قوانین (جیسے پیکا - PECA) کے تابع ہے۔ آپ کسی کو آن لائن ہراساں کرنے، جھوٹی خبریں پھیلانے یا ملکی سلامتی کو نقصان پہنچانے کے لیے اس حق کا استعمال نہیں کر سکتے۔</td>
+                                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">
+                                                "آزادیِ اظہار رائے کا مطلب ہے کہ میں انٹرنیٹ پر کسی کے خلاف کچھ بھی پوسٹ
+                                                کر دوں، مجھے کوئی نہیں پکڑ سکتا۔"</td>
+                                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>غلط۔</strong> آپ
+                                                کی آن لائن گفتگو انٹرنیٹ کے قوانین (جیسے پیکا - PECA) کے تابع ہے۔ آپ کسی
+                                                کو آن لائن ہراساں کرنے، جھوٹی خبریں پھیلانے یا ملکی سلامتی کو نقصان
+                                                پہنچانے کے لیے اس حق کا استعمال نہیں کر سکتے۔</td>
                                         </tr>
                                         <tr>
-                                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"ضلعی انتظامیہ جب چاہے ملکی حالات کا بہانہ بنا کر تمام پرامن ریلیوں پر ہمیشہ کے لیے پابندی لگا سکتی ہے۔"</td>
-                                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>غلط۔</strong> پرامن احتجاج پر مستقل پابندی لگانا آرٹیکل 16 کی کھلی خلاف ورزی ہے۔ عارضی پابندیاں (جیسے دفعہ 144) صرف کسی ناگزیر ایمرجنسی یا فوری لاء اینڈ آرڈر کے مسئلے کو حل کرنے کے لیے لگائی جا سکتی ہیں۔</td>
+                                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"ضلعی
+                                                انتظامیہ جب چاہے ملکی حالات کا بہانہ بنا کر تمام پرامن ریلیوں پر ہمیشہ
+                                                کے لیے پابندی لگا سکتی ہے۔"</td>
+                                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>غلط۔</strong>
+                                                پرامن احتجاج پر مستقل پابندی لگانا آرٹیکل 16 کی کھلی خلاف ورزی ہے۔ عارضی
+                                                پابندیاں (جیسے دفعہ 144) صرف کسی ناگزیر ایمرجنسی یا فوری لاء اینڈ آرڈر
+                                                کے مسئلے کو حل کرنے کے لیے لگائی جا سکتی ہیں۔</td>
                                         </tr>
                                         <tr>
-                                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">"سرکاری محکموں کو پورا حق ہے کہ وہ اپنے تمام اندرونی فیصلے اور دفتری فائلیں شہریوں سے چھپا کر رکھیں۔"</td>
-                                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>غلط (آرٹیکل ۱۹-اے)۔</strong> انتہائی خفیہ دفاعی یا فوجی معلومات کے علاوہ، تمام محکموں کے ترقیاتی بجٹ، نوکریوں کی تفصیلات اور بلدیاتی منصوبوں کا ریکارڈ مانگے جانے پر شہریوں کو دکھانا لازمی ہے۔</td>
+                                            <td style="padding: 12px; border: 1px solid #ddd; font-weight: bold;">
+                                                "سرکاری محکموں کو پورا حق ہے کہ وہ اپنے تمام اندرونی فیصلے اور دفتری
+                                                فائلیں شہریوں سے چھپا کر رکھیں۔"</td>
+                                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>غلط (آرٹیکل
+                                                    ۱۹-اے)۔</strong> انتہائی خفیہ دفاعی یا فوجی معلومات کے علاوہ، تمام
+                                                محکموں کے ترقیاتی بجٹ، نوکریوں کی تفصیلات اور بلدیاتی منصوبوں کا ریکارڈ
+                                                مانگے جانے پر شہریوں کو دکھانا لازمی ہے۔</td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </section>
-                            
-                            <div style="margin-top: 25px; font-size: 0.9rem; color: #777; border-top: 1px dashed #ddd; padding-top: 15px;">
-                                <strong>بنیادی قانونی ماخذ:</strong> آئینِ پاکستان (آرٹیکلز 15 تا 19-اے) | ضابطہ فوجداری (دفعہ 144) | الیکٹرانک کرائمز کی روک تھام کا ایکٹ (PECA) | رائٹ ٹو انفارمیشن (RTI) قوانین۔
+
+                            <div
+                                style="margin-top: 25px; font-size: 0.9rem; color: #777; border-top: 1px dashed #ddd; padding-top: 15px;">
+                                <strong>بنیادی قانونی ماخذ:</strong> آئینِ پاکستان (آرٹیکلز 15 تا 19-اے) | ضابطہ فوجداری
+                                (دفعہ 144) | الیکٹرانک کرائمز کی روک تھام کا ایکٹ (PECA) | رائٹ ٹو انفارمیشن (RTI)
+                                قوانین۔
                             </div>
                         </div>
                         <footer
@@ -12453,7 +12990,7 @@ data-en="Part 1: Fundamental Rights"
             </div>
         </main>
     </div>
-       
+
     <script>
         // Global variable to keep track of the currently selected legal topic
         let currentActiveTopic = '';
@@ -12473,12 +13010,12 @@ data-en="Part 1: Fundamental Rights"
             const welcomeScreen = document.getElementById('welcome-screen');
             if (welcomeScreen) welcomeScreen.style.display = 'none';
             const welcomeScreenUr = document.getElementById('welcome-screen-ur');
-if (welcomeScreenUr) welcomeScreenUr.style.display = 'none';
-const disclaimerEn = document.getElementById('disclaimer-main-en');
-if (disclaimerEn) disclaimerEn.style.display = 'none';
+            if (welcomeScreenUr) welcomeScreenUr.style.display = 'none';
+            const disclaimerEn = document.getElementById('disclaimer-main-en');
+            if (disclaimerEn) disclaimerEn.style.display = 'none';
 
-const disclaimerUr = document.getElementById('disclaimer-main-ur');
-if (disclaimerUr) disclaimerUr.style.display = 'none';
+            const disclaimerUr = document.getElementById('disclaimer-main-ur');
+            if (disclaimerUr) disclaimerUr.style.display = 'none';
             // Deactivate all active data wrappers
             const wrappers = document.querySelectorAll('.legal-guide-wrapper');
             wrappers.forEach(w => w.classList.remove('active'));
@@ -12505,39 +13042,39 @@ if (disclaimerUr) disclaimerUr.style.display = 'none';
             const toggleBtn = document.querySelector('.lang-toggle');
 
             if (currentDir === 'ltr') {
-    htmlTag.setAttribute('dir', 'rtl');
-    toggleBtn.innerText = 'English Layout';
+                htmlTag.setAttribute('dir', 'rtl');
+                toggleBtn.innerText = 'English Layout';
 
-    document.getElementById('welcome-screen').style.display = 'none';
-    if (!currentActiveTopic) {
-    document.getElementById('welcome-screen-ur').style.display = 'block';
-}
-    document.getElementById('disclaimer-main-en').style.display = 'none';
-    document.getElementById('disclaimer-main-ur').style.display = 'block';
+                document.getElementById('welcome-screen').style.display = 'none';
+                if (!currentActiveTopic) {
+                    document.getElementById('welcome-screen-ur').style.display = 'block';
+                }
+                document.getElementById('disclaimer-main-en').style.display = 'none';
+                document.getElementById('disclaimer-main-ur').style.display = 'block';
 
-    document.querySelectorAll('.nav-item-text').forEach(item => {
-        if (item.dataset.ur) item.innerText = item.dataset.ur;
-    });
-document.querySelectorAll('.part-header').forEach(item => {
-    if (item.dataset.ur) item.innerText = item.dataset.ur;
-});
-} else {
-    htmlTag.setAttribute('dir', 'ltr');
-    toggleBtn.innerText = 'اردو میں دیکھیں';
-if (!currentActiveTopic) {
-    document.getElementById('welcome-screen').style.display = 'block';
-}
-    document.getElementById('welcome-screen-ur').style.display = 'none';
-    document.getElementById('disclaimer-main-en').style.display = 'block';
-    document.getElementById('disclaimer-main-ur').style.display = 'none';
+                document.querySelectorAll('.nav-item-text').forEach(item => {
+                    if (item.dataset.ur) item.innerText = item.dataset.ur;
+                });
+                document.querySelectorAll('.part-header').forEach(item => {
+                    if (item.dataset.ur) item.innerText = item.dataset.ur;
+                });
+            } else {
+                htmlTag.setAttribute('dir', 'ltr');
+                toggleBtn.innerText = 'اردو میں دیکھیں';
+                if (!currentActiveTopic) {
+                    document.getElementById('welcome-screen').style.display = 'block';
+                }
+                document.getElementById('welcome-screen-ur').style.display = 'none';
+                document.getElementById('disclaimer-main-en').style.display = 'block';
+                document.getElementById('disclaimer-main-ur').style.display = 'none';
 
-    document.querySelectorAll('.nav-item-text').forEach(item => {
-        if (item.dataset.en) item.innerText = item.dataset.en;
-    });
-    document.querySelectorAll('.part-header').forEach(item => {
-        if (item.dataset.en) item.innerText = item.dataset.en;
-    });
-}
+                document.querySelectorAll('.nav-item-text').forEach(item => {
+                    if (item.dataset.en) item.innerText = item.dataset.en;
+                });
+                document.querySelectorAll('.part-header').forEach(item => {
+                    if (item.dataset.en) item.innerText = item.dataset.en;
+                });
+            }
             // CRITICAL FIX: If a legal guide is currently on screen, re-render it with the new language suffix immediately
             if (currentActiveTopic) {
                 showTopic(currentActiveTopic);
