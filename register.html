@@ -1107,14 +1107,28 @@
             
             let allFilled = fields.every(id => {
                 const el = document.getElementById(id);
-                return el && el.value.trim() !== '';
+                if (!el) {
+                    console.warn(`Field not found: ${id}`);
+                    return false;
+                }
+                return el.value.trim() !== '';
             });
             
-            const district = document.getElementById('pubDistrict');
-            if (district && !district.value) allFilled = false;
+            // Check district - look for value in wrapper input or hidden field
+            const districtWrapper = document.getElementById('pubDistrictWrapper');
+            if (districtWrapper) {
+                const districtInput = districtWrapper.querySelector('.search-input');
+                if (!districtInput || !districtInput.value.trim()) {
+                    allFilled = false;
+                }
+            }
             
             const btn = document.getElementById('pubRegisterAction');
-            if (btn) btn.disabled = !allFilled;
+            if (btn) {
+                btn.disabled = !allFilled;
+                console.log('Public button state:', allFilled ? 'ENABLED' : 'DISABLED');
+            }
+            return allFilled;
         }
         
         function checkStudentReg() {
@@ -1124,16 +1138,37 @@
             
             let allFilled = fields.every(id => {
                 const el = document.getElementById(id);
-                return el && el.value.trim() !== '';
+                if (!el) {
+                    console.warn(`Field not found: ${id}`);
+                    return false;
+                }
+                return el.value.trim() !== '';
             });
             
-            const uni = document.getElementById('studentUni');
-            const district = document.getElementById('studentDistrict');
-            if (uni && !uni.value) allFilled = false;
-            if (district && !district.value) allFilled = false;
+            // Check district
+            const districtWrapper = document.getElementById('studentDistrictWrapper');
+            if (districtWrapper) {
+                const districtInput = districtWrapper.querySelector('.search-input');
+                if (!districtInput || !districtInput.value.trim()) {
+                    allFilled = false;
+                }
+            }
+            
+            // Check university
+            const uniWrapper = document.getElementById('studentUniversityWrapper');
+            if (uniWrapper) {
+                const uniInput = uniWrapper.querySelector('.search-input');
+                if (!uniInput || !uniInput.value.trim()) {
+                    allFilled = false;
+                }
+            }
             
             const btn = document.getElementById('studentRegisterAction');
-            if (btn) btn.disabled = !allFilled;
+            if (btn) {
+                btn.disabled = !allFilled;
+                console.log('Student button state:', allFilled ? 'ENABLED' : 'DISABLED');
+            }
+            return allFilled;
         }
         
         function checkLawyerReg() {
@@ -1143,21 +1178,35 @@
             
             let allFilled = fields.every(id => {
                 const el = document.getElementById(id);
-                return el && el.value.trim() !== '';
+                if (!el) {
+                    console.warn(`Field not found: ${id}`);
+                    return false;
+                }
+                return el.value.trim() !== '';
             });
             
-            const district = document.getElementById('lawyerDistrict');
-            if (district && !district.value) allFilled = false;
+            // Check district
+            const districtWrapper = document.getElementById('lawyerDistrictWrapper');
+            if (districtWrapper) {
+                const districtInput = districtWrapper.querySelector('.search-input');
+                if (!districtInput || !districtInput.value.trim()) {
+                    allFilled = false;
+                }
+            }
             
             const btn = document.getElementById('lawyerRegisterAction');
-            if (btn) btn.disabled = !allFilled;
+            if (btn) {
+                btn.disabled = !allFilled;
+                console.log('Lawyer button state:', allFilled ? 'ENABLED' : 'DISABLED');
+            }
+            return allFilled;
         }
 
         // ============================================
         // ATTACH VALIDATION EVENTS
         // ============================================
         function attachValidation() {
-            // Public fields
+            // Public fields - attach to all required fields
             ['pubFullName', 'pubCnic', 'pubPhone', 'pubEmail', 'pubOccupation', 
              'pubQualification', 'pubUsername', 'pubSecA', 'pubRegPass', 
              'pubConfirmPass', 'pubDob', 'pubGender', 'pubMaritalStatus'].forEach(id => {
@@ -1168,7 +1217,14 @@
                 }
             });
             
-            // Student fields
+            // Public search select input
+            const pubDistrictInput = document.querySelector('#pubDistrictWrapper .search-input');
+            if (pubDistrictInput) {
+                pubDistrictInput.addEventListener('input', checkPublicReg);
+                pubDistrictInput.addEventListener('change', checkPublicReg);
+            }
+            
+            // Student fields - attach to all required fields
             ['studentFullName', 'studentCnic', 'studentPhone', 'studentEmail', 
              'studentRegNo', 'studentUsername', 'studentSecA', 'studentPass', 
              'studentConfirmPass'].forEach(id => {
@@ -1179,7 +1235,20 @@
                 }
             });
             
-            // Lawyer fields
+            // Student search select inputs
+            const studentDistrictInput = document.querySelector('#studentDistrictWrapper .search-input');
+            if (studentDistrictInput) {
+                studentDistrictInput.addEventListener('input', checkStudentReg);
+                studentDistrictInput.addEventListener('change', checkStudentReg);
+            }
+            
+            const studentUniInput = document.querySelector('#studentUniversityWrapper .search-input');
+            if (studentUniInput) {
+                studentUniInput.addEventListener('input', checkStudentReg);
+                studentUniInput.addEventListener('change', checkStudentReg);
+            }
+            
+            // Lawyer fields - attach to all required fields
             ['lawyerFullName', 'lawyerCnic', 'lawyerPhone', 'lawyerEmail', 
              'lawyerBarNo', 'lawyerUsername', 'lawyerSecA', 'lawyerPass', 
              'lawyerConfirmPass'].forEach(id => {
@@ -1190,7 +1259,14 @@
                 }
             });
             
-            // Search selects
+            // Lawyer search select input
+            const lawyerDistrictInput = document.querySelector('#lawyerDistrictWrapper .search-input');
+            if (lawyerDistrictInput) {
+                lawyerDistrictInput.addEventListener('input', checkLawyerReg);
+                lawyerDistrictInput.addEventListener('change', checkLawyerReg);
+            }
+            
+            // Search selects with callbacks to trigger validation
             createSearchSelect('pubDistrictWrapper', 'pubDistrict', pakistanDistricts, 'pubDistrictError', checkPublicReg);
             createSearchSelect('studentDistrictWrapper', 'studentDistrict', pakistanDistricts, 'studentDistrictError', checkStudentReg);
             createSearchSelect('studentUniversityWrapper', 'studentUni', lawUniversities, 'studentUniError', checkStudentReg);
@@ -1218,10 +1294,17 @@
                 });
             });
             
-            // Initial check
+            // Initial check to set button states
             checkPublicReg();
             checkStudentReg();
             checkLawyerReg();
+            
+            // Periodic check (every 500ms) to catch any changes
+            setInterval(() => {
+                checkPublicReg();
+                checkStudentReg();
+                checkLawyerReg();
+            }, 500);
         }
 
         // ============================================
@@ -1309,217 +1392,158 @@
             if (e.target === modal) hideModal();
         });
 
-        // ============================================
-        // 🆕 REGISTRATION HANDLERS - API INTEGRATION
-        // ============================================
-        
-        // PUBLIC REGISTRATION
-        document.getElementById('pubRegisterAction').addEventListener('click', async function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('pubEmail').value.trim();
-            const password = document.getElementById('pubRegPass').value;
-            
-            // Validate
-            if (!validateEmail(email)) {
-                alert('⚠️ Please enter a valid email address (.com)');
-                return;
-            }
-            
-            if (!validatePassword(password)) {
-                alert('⚠️ Password must be 8+ chars, with 1 Capital, 1 Number, and 1 Special character');
-                return;
-            }
-            
-            if (password !== document.getElementById('pubConfirmPass').value) {
-                alert('⚠️ Passwords do not match');
-                return;
-            }
-            
-            const userData = {
-                fullName: document.getElementById('pubFullName').value.trim(),
-                cnic: document.getElementById('pubCnic').value.trim(),
-                phoneNumber: document.getElementById('pubPhone').value.trim(),
-                email: email,
-                district: document.getElementById('pubDistrict').value,
-                occupation: document.getElementById('pubOccupation').value.trim(),
-                username: document.getElementById('pubUsername').value.trim(),
-                securityQuestion: document.getElementById('pubSecQ').value,
-                securityAnswer: document.getElementById('pubSecA').value.trim(),
-                password: password,
-                role: 'public',
-                // Optional fields
-                qualification: document.getElementById('pubQualification').value.trim(),
-                dateOfBirth: document.getElementById('pubDob').value,
-                gender: document.getElementById('pubGender').value,
-                maritalStatus: document.getElementById('pubMaritalStatus').value
-            };
-            
-            const btn = this;
-            const originalText = btn.textContent;
-            btn.textContent = 'Creating Account...';
-            btn.disabled = true;
-            
-            try {
-                const result = await signupUser(userData);
-                if (result && result.success) {
-                    alert('✅ Registration successful! Please login.');
-                    window.location.href = 'login.html';
-                } else {
-                    alert('❌ ' + (result?.error || 'Registration failed. Please try again.'));
-                }
-            } catch (error) {
-                console.error('Registration Error:', error);
-                alert('❌ Error connecting to server. Please try again.');
-            } finally {
-                btn.textContent = originalText;
-                btn.disabled = false;
-            }
-        });
-        
-        // STUDENT REGISTRATION
-        document.getElementById('studentRegisterAction').addEventListener('click', async function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('studentEmail').value.trim();
-            const password = document.getElementById('studentPass').value;
-            
-            if (!validateEmail(email)) {
-                alert('⚠️ Please enter a valid email address (.com)');
-                return;
-            }
-            
-            if (!validatePassword(password)) {
-                alert('⚠️ Password must be 8+ chars, with 1 Capital, 1 Number, and 1 Special character');
-                return;
-            }
-            
-            if (password !== document.getElementById('studentConfirmPass').value) {
-                alert('⚠️ Passwords do not match');
-                return;
-            }
-            
-            const userData = {
-                fullName: document.getElementById('studentFullName').value.trim(),
-                cnic: document.getElementById('studentCnic').value.trim(),
-                phoneNumber: document.getElementById('studentPhone').value.trim(),
-                email: email,
-                district: document.getElementById('studentDistrict').value,
-                username: document.getElementById('studentUsername').value.trim(),
-                securityQuestion: document.getElementById('studentSecQ').value,
-                securityAnswer: document.getElementById('studentSecA').value.trim(),
-                password: password,
-                role: 'law_student',
-                universityName: document.getElementById('studentUni').value,
-                universityRegNo: document.getElementById('studentRegNo').value.trim()
-            };
-            
-            const btn = this;
-            const originalText = btn.textContent;
-            btn.textContent = 'Creating Account...';
-            btn.disabled = true;
-            
-            try {
-                const result = await signupUser(userData);
-                if (result && result.success) {
-                    alert('✅ Registration successful! Please login.');
-                    window.location.href = 'login.html';
-                } else {
-                    alert('❌ ' + (result?.error || 'Registration failed. Please try again.'));
-                }
-            } catch (error) {
-                console.error('Registration Error:', error);
-                alert('❌ Error connecting to server. Please try again.');
-            } finally {
-                btn.textContent = originalText;
-                btn.disabled = false;
-            }
-        });
-        
-        // LAWYER REGISTRATION
-        document.getElementById('lawyerRegisterAction').addEventListener('click', async function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('lawyerEmail').value.trim();
-            const password = document.getElementById('lawyerPass').value;
-            
-            if (!validateEmail(email)) {
-                alert('⚠️ Please enter a valid email address (.com)');
-                return;
-            }
-            
-            if (!validatePassword(password)) {
-                alert('⚠️ Password must be 8+ chars, with 1 Capital, 1 Number, and 1 Special character');
-                return;
-            }
-            
-            if (password !== document.getElementById('lawyerConfirmPass').value) {
-                alert('⚠️ Passwords do not match');
-                return;
-            }
-            
-            const userData = {
-                fullName: document.getElementById('lawyerFullName').value.trim(),
-                cnic: document.getElementById('lawyerCnic').value.trim(),
-                phoneNumber: document.getElementById('lawyerPhone').value.trim(),
-                email: email,
-                district: document.getElementById('lawyerDistrict').value,
-                username: document.getElementById('lawyerUsername').value.trim(),
-                securityQuestion: document.getElementById('lawyerSecQ').value,
-                securityAnswer: document.getElementById('lawyerSecA').value.trim(),
-                password: password,
-                role: 'lawyer',
-                barCouncilEnrollmentNo: document.getElementById('lawyerBarNo').value.trim()
-            };
-            
-            const btn = this;
-            const originalText = btn.textContent;
-            btn.textContent = 'Creating Account...';
-            btn.disabled = true;
-            
-            try {
-                const result = await signupUser(userData);
-                if (result && result.success) {
-                    alert('✅ Registration successful! Please login.');
-                    window.location.href = 'login.html';
-                } else {
-                    alert('❌ ' + (result?.error || 'Registration failed. Please try again.'));
-                }
-            } catch (error) {
-                console.error('Registration Error:', error);
-                alert('❌ Error connecting to server. Please try again.');
-            } finally {
-                btn.textContent = originalText;
-                btn.disabled = false;
-            }
-        });
+        // ==========================================
+        // BUTTON CLICK EVENT HANDLERS
+        // ==========================================
 
-        // ============================================
-        // SWITCH ACCOUNT TYPE (Back buttons)
-        // ============================================
-        document.getElementById('switchPublicType')?.addEventListener('click', () => {
-            selectionScreen.style.display = 'block';
-            mainFormsWrapper.style.display = 'none';
-        });
-        
-        document.getElementById('switchStudentType')?.addEventListener('click', () => {
-            selectionScreen.style.display = 'block';
-            mainFormsWrapper.style.display = 'none';
-        });
-        
-        document.getElementById('switchLawyerType')?.addEventListener('click', () => {
-            selectionScreen.style.display = 'block';
-            mainFormsWrapper.style.display = 'none';
-        });
+        // 1. When a Public user signs up:
+        const pubRegisterBtn = document.getElementById('pubRegisterAction');
+        if (pubRegisterBtn) {
+            pubRegisterBtn.addEventListener('click', async function(e) {
+                e.preventDefault();
+                
+                // Final validation check before submitting
+                if (!checkPublicReg()) {
+                    alert('Please fill all required fields');
+                    return;
+                }
 
-        // ============================================
-        // INITIALIZE
-        // ============================================
-        attachValidation();
-        console.log('✅ register.html Loaded Successfully!');
-        console.log('🔑 API Base URL:', 'http://localhost:5000/api');
+                // Collect form data
+                const signupData = {
+                    name: document.getElementById('pubFullName').value.trim(),
+                    email: document.getElementById('pubEmail').value.trim(),
+                    password: document.getElementById('pubRegPass').value,
+                    role: 'public',
+                    cnic: document.getElementById('pubCnic').value.trim(),
+                    phone: document.getElementById('pubPhone').value.trim(),
+                    district: document.querySelector('#pubDistrictWrapper .search-input').value.trim(),
+                    occupation: document.getElementById('pubOccupation').value.trim(),
+                    qualification: document.getElementById('pubQualification').value.trim(),
+                    dob: document.getElementById('pubDob').value,
+                    gender: document.getElementById('pubGender').value,
+                    maritalStatus: document.getElementById('pubMaritalStatus').value,
+                    username: document.getElementById('pubUsername').value.trim(),
+                    securityQuestion: 'Security Question',
+                    securityAnswer: document.getElementById('pubSecA').value.trim()
+                };
 
-  // Dropdown menu ko open aur close karne ka function
+                try {
+                    // Call API
+                    const result = await apiCall('/auth/signup', 'POST', signupData);
+                    
+                    if (result.success) {
+                        // Save token
+                        if (result.token) {
+                            setAuthToken(result.token);
+                        }
+                        alert('✅ Account created successfully!');
+                        window.location.href = 'login.html';
+                    } else {
+                        alert('❌ Registration failed: ' + (result.error || result.message));
+                    }
+                } catch (error) {
+                    console.error('Registration error:', error);
+                    alert('❌ Error: ' + error.message);
+                }
+            });
+        }
+
+        // 2. When a Law Student signs up:
+        const studentRegisterBtn = document.getElementById('studentRegisterAction');
+        if (studentRegisterBtn) {
+            studentRegisterBtn.addEventListener('click', async function(e) {
+                e.preventDefault();
+                
+                // Final validation check before submitting
+                if (!checkStudentReg()) {
+                    alert('Please fill all required fields');
+                    return;
+                }
+
+                // Collect form data
+                const signupData = {
+                    name: document.getElementById('studentFullName').value.trim(),
+                    email: document.getElementById('studentEmail').value.trim(),
+                    password: document.getElementById('studentPass').value,
+                    role: 'student',
+                    cnic: document.getElementById('studentCnic').value.trim(),
+                    phone: document.getElementById('studentPhone').value.trim(),
+                    district: document.querySelector('#studentDistrictWrapper .search-input').value.trim(),
+                    universityName: document.querySelector('#studentUniversityWrapper .search-input').value.trim(),
+                    universityRegNo: document.getElementById('studentRegNo').value.trim(),
+                    username: document.getElementById('studentUsername').value.trim(),
+                    securityQuestion: 'Security Question',
+                    securityAnswer: document.getElementById('studentSecA').value.trim()
+                };
+
+                try {
+                    // Call API
+                    const result = await apiCall('/auth/signup', 'POST', signupData);
+                    
+                    if (result.success) {
+                        // Save token
+                        if (result.token) {
+                            setAuthToken(result.token);
+                        }
+                        alert('✅ Account created successfully!');
+                        window.location.href = 'login.html';
+                    } else {
+                        alert('❌ Registration failed: ' + (result.error || result.message));
+                    }
+                } catch (error) {
+                    console.error('Registration error:', error);
+                    alert('❌ Error: ' + error.message);
+                }
+            });
+        }
+
+        // 3. When a Lawyer signs up:
+        const lawyerRegisterBtn = document.getElementById('lawyerRegisterAction');
+        if (lawyerRegisterBtn) {
+            lawyerRegisterBtn.addEventListener('click', async function(e) {
+                e.preventDefault();
+                
+                // Final validation check before submitting
+                if (!checkLawyerReg()) {
+                    alert('Please fill all required fields');
+                    return;
+                }
+
+                // Collect form data
+                const signupData = {
+                    name: document.getElementById('lawyerFullName').value.trim(),
+                    email: document.getElementById('lawyerEmail').value.trim(),
+                    password: document.getElementById('lawyerPass').value,
+                    role: 'lawyer',
+                    cnic: document.getElementById('lawyerCnic').value.trim(),
+                    phone: document.getElementById('lawyerPhone').value.trim(),
+                    district: document.querySelector('#lawyerDistrictWrapper .search-input').value.trim(),
+                    barCouncilEnrollmentNo: document.getElementById('lawyerBarNo').value.trim(),
+                    username: document.getElementById('lawyerUsername').value.trim(),
+                    securityQuestion: 'Security Question',
+                    securityAnswer: document.getElementById('lawyerSecA').value.trim()
+                };
+
+                try {
+                    // Call API
+                    const result = await apiCall('/auth/signup', 'POST', signupData);
+                    
+                    if (result.success) {
+                        // Save token
+                        if (result.token) {
+                            setAuthToken(result.token);
+                        }
+                        alert('✅ Account created successfully!');
+                        window.location.href = 'login.html';
+                    } else {
+                        alert('❌ Registration failed: ' + (result.error || result.message));
+                    }
+                } catch (error) {
+                    console.error('Registration error:', error);
+                    alert('❌ Error: ' + error.message);
+                }
+            });
+        }
 function toggleSettingsMenu(event) {
   event.stopPropagation(); // Click event ko bubble hone se rokta hai
   const dropdown = document.getElementById('settingsDropdown');
