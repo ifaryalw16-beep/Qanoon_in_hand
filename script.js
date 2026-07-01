@@ -2,7 +2,7 @@
 // 1. API CONFIGURATION (Top of file)
 // ============================================
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://qanoon-in-hand-backend.onrender.com/api';
 
 // ============================================
 // 2. HELPER FUNCTIONS
