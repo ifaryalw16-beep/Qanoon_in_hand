@@ -1008,8 +1008,7 @@
         <p class="article-excerpt">The principle of shubha — doubt that averts hadd punishment — plays a central role in Pakistan's Hudood jurisprudence. This article traces its classical fiqh origins and examines how superior courts have applied the doctrine in contemporary cases.</p>
         <div class="card-footer">
           <div class="interactions">
-            <button id="like-btn-${article._id}" onclick="toggleLike(this)">❤️ Like</button>
-<span id="like-count-${article._id}">${article.likes ? article.likes.length : 0}</span>
+                        <button class="action-btn" onclick="toggleLike(this)"><i class="fa-regular fa-heart"></i><span class="count">0</span></button>
             <button class="action-btn" onclick="toggleCommentPanel(this)"><i class="fa-regular fa-comment"></i><span class="comment-count">0</span></button>
             <button class="btn-extra" onclick="toggleSave(this)"><i class="fa-regular fa-bookmark"></i> Save</button>
             <button class="btn-extra" onclick="reportArticle(this)"><i class="fa-regular fa-flag"></i> Report</button>
