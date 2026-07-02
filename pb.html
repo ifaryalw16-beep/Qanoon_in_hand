@@ -13093,8 +13093,40 @@
                 alert('Please enter the current Diyat value first.');
             }
         }
+        <div class="profile-section">
+    <h2>Edit Profile</h2>
+    <form onsubmit="updateProfile(event)">
+        <input type="text" id="editName" placeholder="Naya Naam" required>
+        <input type="text" id="editPhone" placeholder="Naya Phone">
+        <input type="text" id="editDistrict" placeholder="Naya District">
+        <button type="submit">Save Changes</button>
+    </form>
+</div>
 
-    </script>
+
+<div class="profile-section" style="margin-top: 30px;">
+    <h2>Add Another Account</h2>
+    <form onsubmit="addAccount(event)">
+        <input type="text" id="newAccName" placeholder="Name" required>
+        <input type="email" id="newAccEmail" placeholder="Email" required>
+        <input type="password" id="newAccPassword" placeholder="Password" required>
+        <select id="newAccRole">
+            <option value="client">Client</option>
+            <option value="lawyer">Lawyer</option>
+        </select>
+        <button type="submit">Add Account</button>
+    </form>
+</div>
+
+<div class="profile-section" style="margin-top: 30px; border-top: 1px solid red; padding-top: 20px;">
+    <h2>Danger Zone</h2>
+    <p style="color: red;">Account delete karne se aapka saara data khatam ho jayega.</p>
+    <button onclick="deleteAccount()" style="background-color: red; color: white; padding: 10px 20px; border: none; cursor: pointer;">
+        Delete My Account
+    </button>
+</div>
+
+    <script src="script.js"></script>
 </body>
 
 </html>

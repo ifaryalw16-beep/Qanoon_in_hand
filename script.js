@@ -505,3 +505,42 @@ window.submitComment = submitComment;
 window.submitRating = submitRating;
 window.displayArticles = displayArticles;
 window.loadCategoriesDropdown = loadCategoriesDropdown;
+
+
+
+
+// 1. Log Out Function
+function logoutUser() {
+    localStorage.removeItem('token');
+    alert('You have been logged out.');
+    window.location.href = 'login.html'; // Logout ke baad login page par bhejen
+}
+
+// 2. Delete Account Function
+async function deleteAccount() {
+    const confirmation = confirm("Kya aap waqai apna account hamesha ke liye delete karna chahte hain?");
+    if (!confirmation) return;
+
+    const token = localStorage.getItem('token');
+
+    try {
+        const response = await fetch('http://localhost:5000/api/auth/profile/delete', {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+            alert('Your account has been deleted successfully.');
+            localStorage.removeItem('token'); 
+            window.location.href = 'register.html'; 
+        } else {
+            alert('Error: ' + data.error);
+        }
+    } catch (error) {
+        console.error('Delete account connection error:', error);
+    }
+}

@@ -1044,7 +1044,7 @@
                 
                 filtered.forEach(item => {
                     const option = document.createElement('div');
-                    option.className = 'search-option';
+                    option.className = 'search-option';S
                     option.textContent = item;
                     option.onclick = () => {
                         input.value = item;
@@ -1310,259 +1310,169 @@
         });
 
         // ============================================
-        // 🆕 REGISTRATION HANDLERS - API INTEGRATION
-        // ============================================
-        
-        // PUBLIC REGISTRATION
-        document.getElementById('pubRegisterAction').addEventListener('click', async function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('pubEmail').value.trim();
-            const password = document.getElementById('pubRegPass').value;
-            
-            // Validate
-            if (!validateEmail(email)) {
-                alert('⚠️ Please enter a valid email address (.com)');
-                return;
-            }
-            
-            if (!validatePassword(password)) {
-                alert('⚠️ Password must be 8+ chars, with 1 Capital, 1 Number, and 1 Special character');
-                return;
-            }
-            
-            if (password !== document.getElementById('pubConfirmPass').value) {
-                alert('⚠️ Passwords do not match');
-                return;
-            }
-            
-            const userData = {
-                fullName: document.getElementById('pubFullName').value.trim(),
-                cnic: document.getElementById('pubCnic').value.trim(),
-                phoneNumber: document.getElementById('pubPhone').value.trim(),
-                email: email,
-                district: document.getElementById('pubDistrict').value,
-                occupation: document.getElementById('pubOccupation').value.trim(),
-                username: document.getElementById('pubUsername').value.trim(),
-                securityQuestion: document.getElementById('pubSecQ').value,
-                securityAnswer: document.getElementById('pubSecA').value.trim(),
-                password: password,
-                role: 'public',
-                // Optional fields
-                qualification: document.getElementById('pubQualification').value.trim(),
-                dateOfBirth: document.getElementById('pubDob').value,
-                gender: document.getElementById('pubGender').value,
-                maritalStatus: document.getElementById('pubMaritalStatus').value
-            };
-            
-            const btn = this;
-            const originalText = btn.textContent;
-            btn.textContent = 'Creating Account...';
-            btn.disabled = true;
-            
-            try {
-                const result = await signupUser(userData);
-                if (result && result.success) {
-                    alert('✅ Registration successful! Please login.');
-                    window.location.href = 'login.html';
-                } else {
-                    alert('❌ ' + (result?.error || 'Registration failed. Please try again.'));
-                }
-            } catch (error) {
-                console.error('Registration Error:', error);
-                alert('❌ Error connecting to server. Please try again.');
-            } finally {
-                btn.textContent = originalText;
-                btn.disabled = false;
-            }
-        });
-        
-        // STUDENT REGISTRATION
-        document.getElementById('studentRegisterAction').addEventListener('click', async function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('studentEmail').value.trim();
-            const password = document.getElementById('studentPass').value;
-            
-            if (!validateEmail(email)) {
-                alert('⚠️ Please enter a valid email address (.com)');
-                return;
-            }
-            
-            if (!validatePassword(password)) {
-                alert('⚠️ Password must be 8+ chars, with 1 Capital, 1 Number, and 1 Special character');
-                return;
-            }
-            
-            if (password !== document.getElementById('studentConfirmPass').value) {
-                alert('⚠️ Passwords do not match');
-                return;
-            }
-            
-            const userData = {
-                fullName: document.getElementById('studentFullName').value.trim(),
-                cnic: document.getElementById('studentCnic').value.trim(),
-                phoneNumber: document.getElementById('studentPhone').value.trim(),
-                email: email,
-                district: document.getElementById('studentDistrict').value,
-                username: document.getElementById('studentUsername').value.trim(),
-                securityQuestion: document.getElementById('studentSecQ').value,
-                securityAnswer: document.getElementById('studentSecA').value.trim(),
-                password: password,
-                role: 'law_student',
-                universityName: document.getElementById('studentUni').value,
-                universityRegNo: document.getElementById('studentRegNo').value.trim()
-            };
-            
-            const btn = this;
-            const originalText = btn.textContent;
-            btn.textContent = 'Creating Account...';
-            btn.disabled = true;
-            
-            try {
-                const result = await signupUser(userData);
-                if (result && result.success) {
-                    alert('✅ Registration successful! Please login.');
-                    window.location.href = 'login.html';
-                } else {
-                    alert('❌ ' + (result?.error || 'Registration failed. Please try again.'));
-                }
-            } catch (error) {
-                console.error('Registration Error:', error);
-                alert('❌ Error connecting to server. Please try again.');
-            } finally {
-                btn.textContent = originalText;
-                btn.disabled = false;
-            }
-        });
-        
-        // LAWYER REGISTRATION
-        document.getElementById('lawyerRegisterAction').addEventListener('click', async function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('lawyerEmail').value.trim();
-            const password = document.getElementById('lawyerPass').value;
-            
-            if (!validateEmail(email)) {
-                alert('⚠️ Please enter a valid email address (.com)');
-                return;
-            }
-            
-            if (!validatePassword(password)) {
-                alert('⚠️ Password must be 8+ chars, with 1 Capital, 1 Number, and 1 Special character');
-                return;
-            }
-            
-            if (password !== document.getElementById('lawyerConfirmPass').value) {
-                alert('⚠️ Passwords do not match');
-                return;
-            }
-            
-            const userData = {
-                fullName: document.getElementById('lawyerFullName').value.trim(),
-                cnic: document.getElementById('lawyerCnic').value.trim(),
-                phoneNumber: document.getElementById('lawyerPhone').value.trim(),
-                email: email,
-                district: document.getElementById('lawyerDistrict').value,
-                username: document.getElementById('lawyerUsername').value.trim(),
-                securityQuestion: document.getElementById('lawyerSecQ').value,
-                securityAnswer: document.getElementById('lawyerSecA').value.trim(),
-                password: password,
-                role: 'lawyer',
-                barCouncilEnrollmentNo: document.getElementById('lawyerBarNo').value.trim()
-            };
-            
-            const btn = this;
-            const originalText = btn.textContent;
-            btn.textContent = 'Creating Account...';
-            btn.disabled = true;
-            
-            try {
-                const result = await signupUser(userData);
-                if (result && result.success) {
-                    alert('✅ Registration successful! Please login.');
-                    window.location.href = 'login.html';
-                } else {
-                    alert('❌ ' + (result?.error || 'Registration failed. Please try again.'));
-                }
-            } catch (error) {
-                console.error('Registration Error:', error);
-                alert('❌ Error connecting to server. Please try again.');
-            } finally {
-                btn.textContent = originalText;
-                btn.disabled = false;
-            }
-        });
+        // 🆕 REGISTRATION & UI HANDLERS - INTEGRATED & OPTIMIZED
+// ============================================================
 
-        // ============================================
-        // SWITCH ACCOUNT TYPE (Back buttons)
-        // ============================================
-        document.getElementById('switchPublicType')?.addEventListener('click', () => {
+// 1. DYNAMIC REGISTRATION HANDLER (Combined for Public, Student, & Lawyer)
+const rolesConfig = {
+    'pubRegisterAction': { prefix: 'pub', role: 'public' },
+    'studentRegisterAction': { prefix: 'student', role: 'law_student' },
+    'lawyerRegisterAction': { prefix: 'lawyer', role: 'lawyer' }
+};
+
+Object.keys(rolesConfig).forEach(btnId => {
+    const btnElement = document.getElementById(btnId);
+    if (!btnElement) return;
+
+    btnElement.addEventListener('click', async function(e) {
+        e.preventDefault();
+        
+        const config = rolesConfig[btnId];
+        const prefix = config.prefix;
+
+        // Dynamic Elements Selection
+        const emailEl = document.getElementById(`${prefix}Email`);
+        const passEl = document.getElementById(`${prefix}Pass` || `${prefix}RegPass`); // Handles 'pubRegPass' anomaly
+        const confirmPassEl = document.getElementById(`${prefix}ConfirmPass`);
+
+        if (!emailEl || !passEl || !confirmPassEl) {
+            console.error(`❌ Required elements for prefix "${prefix}" not found.`);
+            return;
+        }
+
+        const email = emailEl.value.trim();
+        const password = passEl.value;
+
+        // Form Validations
+        if (!validateEmail(email)) {
+            alert('⚠️ Please enter a valid email address (.com)');
+            return;
+        }
+        
+        if (!validatePassword(password)) {
+            alert('⚠️ Password must be 8+ chars, with 1 Capital, 1 Number, and 1 Special character');
+            return;
+        }
+        
+        if (password !== confirmPassEl.value) {
+            alert('⚠️ Passwords do not match');
+            return;
+        }
+
+        // Base Data Mapping (Common to all roles)
+        const userData = {
+            fullName: document.getElementById(`${prefix}FullName`)?.value.trim() || '',
+            cnic: document.getElementById(`${prefix}Cnic`)?.value.trim() || '',
+            phoneNumber: document.getElementById(`${prefix}Phone`)?.value.trim() || '',
+            email: email,
+            district: document.getElementById(`${prefix}District`)?.value || '',
+            username: document.getElementById(`${prefix}Username`)?.value.trim() || '',
+            securityQuestion: document.getElementById(`${prefix}SecQ`)?.value || '',
+            securityAnswer: document.getElementById(`${prefix}SecA`)?.value.trim() || '',
+            password: password,
+            role: config.role
+        };
+
+        // Role-Specific Extra Fields Mapping
+        if (config.role === 'public') {
+            userData.occupation = document.getElementById('pubOccupation')?.value.trim() || '';
+            userData.qualification = document.getElementById('pubQualification')?.value.trim() || '';
+            userData.dateOfBirth = document.getElementById('pubDob')?.value || '';
+            userData.gender = document.getElementById('pubGender')?.value || '';
+            userData.maritalStatus = document.getElementById('pubMaritalStatus')?.value || '';
+        } else if (config.role === 'law_student') {
+            userData.universityName = document.getElementById('studentUni')?.value || '';
+            userData.universityRegNo = document.getElementById('studentRegNo')?.value.trim() || '';
+        } else if (config.role === 'lawyer') {
+            userData.barCouncilEnrollmentNo = document.getElementById('lawyerBarNo')?.value.trim() || '';
+        }
+
+        // UI State: Loading State On
+        const originalText = this.textContent;
+        this.textContent = 'Creating Account...';
+        this.disabled = true;
+        
+        try {
+            const result = await signupUser(userData);
+            if (result && result.success) {
+                alert('✅ Registration successful! Please login.');
+                window.location.href = 'login.html';
+            } else {
+                alert('❌ ' + (result?.error || 'Registration failed. Please try again.'));
+            }
+        } catch (error) {
+            console.error('Registration Error:', error);
+            alert('❌ Error connecting to server. Please try again.');
+        } finally {
+            // UI State: Loading State Off
+            this.textContent = originalText;
+            this.disabled = false;
+        }
+    });
+});
+
+// ============================================
+// 2. SWITCH ACCOUNT TYPE (Back buttons)
+// ============================================
+['switchPublicType', 'switchStudentType', 'switchLawyerType'].forEach(id => {
+    document.getElementById(id)?.addEventListener('click', () => {
+        if (typeof selectionScreen !== 'undefined' && typeof mainFormsWrapper !== 'undefined') {
             selectionScreen.style.display = 'block';
             mainFormsWrapper.style.display = 'none';
-        });
-        
-        document.getElementById('switchStudentType')?.addEventListener('click', () => {
-            selectionScreen.style.display = 'block';
-            mainFormsWrapper.style.display = 'none';
-        });
-        
-        document.getElementById('switchLawyerType')?.addEventListener('click', () => {
-            selectionScreen.style.display = 'block';
-            mainFormsWrapper.style.display = 'none';
-        });
+        }
+    });
+});
 
-        // ============================================
-        // INITIALIZE
-        // ============================================
-        attachValidation();
-        console.log('✅ register.html Loaded Successfully!');
-        console.log('🔑 API Base URL:', 'http://localhost:5000/api');
+// ============================================
+// 3. SETTINGS MENU & MODAL UI HANDLERS
+// ============================================
 
-  // Dropdown menu ko open aur close karne ka function
+// Dropdown toggle function
 function toggleSettingsMenu(event) {
-  event.stopPropagation(); // Click event ko bubble hone se rokta hai
-  const dropdown = document.getElementById('settingsDropdown');
-  dropdown.classList.toggle('show');
+    event.stopPropagation();
+    const dropdown = document.getElementById('settingsDropdown');
+    if (dropdown) dropdown.classList.toggle('show');
 }
 
-// Modals open karne ke liye
+// Modal open karne ke liye
 function openModal(modalId) {
-  // Dropdown ko automatic close karne ke liye jab modal khule
-  document.getElementById('settingsDropdown').classList.remove('show');
-  
-  const modal = document.getElementById(modalId);
-  if (modal) {
-    modal.classList.add('active');
-  }
+    const dropdown = document.getElementById('settingsDropdown');
+    if (dropdown) dropdown.classList.remove('show');
+    
+    const modal = document.getElementById(modalId);
+    if (modal) modal.classList.add('active');
 }
 
-// Modals close karne ke liye
+// Modal close karne ke liye
 function closeModal(modalId) {
-  const modal = document.getElementById(modalId);
-  if (modal) {
-    modal.classList.remove('active');
-  }
+    const modal = document.getElementById(modalId);
+    if (modal) modal.classList.remove('active');
 }
 
-// Agar user window screen par kahin bhi bahar click kare to elements automatically close ho jayen
-window.onclick = function(event) {
-  // Close dropdown if clicked outside
-  if (!event.target.matches('.settings-trigger')) {
-    const dropdowns = document.getElementsByClassName("settings-dropdown");
-    for (let i = 0; i < dropdowns.length; i++) {
-      let openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
+// Global window click handler for closing elements
+window.addEventListener('click', function(event) {
+    // Close dropdown if clicked outside trigger
+    if (!event.target.matches('.settings-trigger')) {
+        const dropdowns = document.getElementsByClassName("settings-dropdown");
+        for (let dropdown of dropdowns) {
+            if (dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show');
+            }
+        }
     }
-  }
 
-  // Close modals if background/overlay is clicked
-  if (event.target.classList.contains('modal-overlay')) {
-    event.target.classList.remove('active');
-  }
-}
+    // Close modals if background/overlay is clicked
+    if (event.target.classList.contains('modal-overlay') || event.target.classList.contains('modal')) {
+        event.target.classList.remove('active');
+    }
+});
+
+// ============================================
+// INITIALIZE
+// ============================================
+if (typeof attachValidation === 'function') attachValidation();
+console.log('✅ register.html Loaded Successfully!');
+console.log('🔑 API Base URL:', 'http://localhost:5000/api');
 
     </script>
 </body>
