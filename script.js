@@ -2,7 +2,7 @@
 // 1. API CONFIGURATION (Top of file)
 // ============================================
 
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://qanoon-in-hand-backend.onrender.com/api';
 
 // ============================================
 // 2. HELPER FUNCTIONS
@@ -66,81 +66,11 @@ async function apiCall(endpoint, method = 'GET', data = null, token = null) {
 // 3. AUTHENTICATION FUNCTIONS
 // ============================================
 
-// Login
-async function loginUser(email, password) {
-    try {
-        const result = await apiCall('/auth/login', 'POST', { email, password });
-        if (result.token) {
-            setAuthToken(result.token);
-            localStorage.setItem('user', JSON.stringify(result.user));
-            
-            // Redirect based on role
-            const user = result.user;
-            if (user.role === 'admin') {
-                window.location.href = 'admin-dashboard.html';
-            } else if (user.role === 'lawyer') {
-                window.location.href = 'lp.html';
-            } else if (user.role === 'law_student') {
-                window.location.href = 'lsp.html';
-            } else {
-                window.location.href = 'pb.html';
-            }
-            
-            return { success: true, user: result.user };
-        }
-        return result;
-    } catch (error) {
-        console.error('Login error:', error);
-        alert('Login failed: ' + error.message);
-        return { success: false, error: error.message };
-    }
-}
-
-// Signup
-async function signupUser(userData) {
-    try {
-        const result = await apiCall('/auth/signup', 'POST', userData);
-        if (result.success) {
-            alert('Signup successful! Please login.');
-            window.location.href = 'login.html';
-            return { success: true };
-        }
-        return result;
-    } catch (error) {
-        console.error('Signup error:', error);
-        alert('Signup failed: ' + error.message);
-        return { success: false, error: error.message };
-    }
-}
 
 // ============================================
 // 4. ARTICLES FUNCTIONS
 // ============================================
 
-// Publish Article
-async function publishArticle(articleData) {
-    try {
-        const result = await apiCall('/articles/publish', 'POST', articleData);
-        if (result.success) {
-            alert('✅ Article published successfully!');
-            return result;
-        }
-    } catch (error) {
-        console.error('Error publishing article:', error);
-        alert('❌ Failed to publish article: ' + error.message);
-    }
-}
-
-// Get Featured Articles
-async function getFeaturedArticles() {
-    try {
-        const result = await apiCall('/articles/featured', 'GET');
-        return result.articles || [];
-    } catch (error) {
-        console.error('Error fetching featured articles:', error);
-        return [];
-    }
-}
 
 // Get All Articles (with optional category filter)
 async function getAllArticles(category = '') {

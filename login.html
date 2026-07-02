@@ -722,92 +722,281 @@
 
     <script src="script.js"></script>
     <script>
-        function validateEmail(e) { return /^[^\s@]+@[^\s@]+\.com$/i.test(e) }
-        function showModal() { const resetEmail = document.getElementById('resetEmail'); const modal = document.getElementById('forgotPasswordModal'); const modalMsg = document.getElementById('modalMessage'); resetEmail.value = ''; modalMsg.className = 'modal-message'; modalMsg.style.display = 'none'; modal.classList.add('show') }
-        function hideModal() { document.getElementById('forgotPasswordModal').classList.remove('show') }
-        // ============================================
-        // HELPER FUNCTION - Get Current User
-        // ============================================
-        function getCurrentUser() {
-            try {
-                const user = localStorage.getItem('user');
-                return user ? JSON.parse(user) : null;
-            } catch (error) {
-                console.error('Error getting user:', error);
-                return null;
+    document.addEventListener("DOMContentLoaded", function () {
+    
+        // ==========================================
+        // 1. PASSWORD SHOW/HIDE FUNCTIONALITY
+        // ==========================================
+        const toggleButtons = document.querySelectorAll('.password-toggle-btn');
+        
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const targetId = this.getAttribute('data-target');
+                const passwordInput = document.getElementById(targetId);
+                const icon = this.querySelector('i');
+                
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    icon.classList.remove('far', 'fa-eye-slash');
+                    icon.classList.add('fas', 'fa-eye');
+                } else {
+                    passwordInput.type = 'password';
+                    icon.classList.remove('fas', 'fa-eye');
+                    icon.classList.add('far', 'fa-eye-slash');
+                }
+            });
+        });
+
+        // ==========================================
+        // 2. ACCOUNT TYPE SELECTION
+        // ==========================================
+        function showMainForms(userType) {
+            document.getElementById('selectionScreen').style.display = 'none';
+            document.getElementById('mainFormsWrapper').style.display = 'block';
+            // Hide all panels
+            ['public', 'lawstudent', 'lawyer'].forEach(type => {
+                const panel = document.getElementById(type + 'Panel');
+                if (panel) panel.style.display = 'none';
+            });
+            // Show selected panel
+            const selectedPanel = document.getElementById(userType + 'Panel');
+            if (selectedPanel) selectedPanel.style.display = 'block';
+        }
+
+        // Option cards click handler
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function () {
+                const userType = this.getAttribute('data-type');
+                showMainForms(userType);
+            });
+        });
+
+        // Back to home button
+        const backToHomeBtn = document.getElementById('backToHomeBtn');
+        if (backToHomeBtn) {
+            backToHomeBtn.addEventListener('click', function () {
+                document.getElementById('selectionScreen').style.display = 'block';
+                document.getElementById('mainFormsWrapper').style.display = 'none';
+            });
+        }
+
+        // ==========================================
+        // 3. LOGIN BUTTON HANDLERS
+        // ==========================================
+        
+        // Public Login
+        const pubLoginBtn = document.getElementById('pubLoginBtn');
+        if (pubLoginBtn) {
+            pubLoginBtn.addEventListener('click', async function () {
+                const email = document.getElementById('pubLoginUser').value.trim();
+                const password = document.getElementById('pubLoginPass').value.trim();
+                
+                if (!email || !password) {
+                    alert("Please fill all fields for Public Login!");
+                    return;
+                }
+                
+                try {
+                    // Call login API
+                    const result = await apiCall('/auth/login', 'POST', { email, password });
+                    
+                    if (result.success) {
+                        // Save token
+                        if (result.token) {
+                            setAuthToken(result.token);
+                        }
+                        // Save user info
+                        localStorage.setItem('user', JSON.stringify(result.user));
+                        
+                        alert('✅ Login successful!');
+                        console.log("Public user logging in, redirecting...");
+                        window.location.href = "pb.html"; 
+                    } else {
+                        alert('❌ Login failed: ' + (result.error || result.message));
+                    }
+                } catch (error) {
+                    console.error('Login error:', error);
+                    alert('❌ Error: ' + error.message);
+                }
+            });
+        }
+
+        // Law Student Login
+        const studentLoginBtn = document.getElementById('studentLoginBtn');
+        if (studentLoginBtn) {
+            studentLoginBtn.addEventListener('click', async function () {
+                const email = document.getElementById('studentLoginUser').value.trim();
+                const password = document.getElementById('studentLoginPass').value.trim();
+                
+                if (!email || !password) {
+                    alert("Please fill all fields for Student Login!");
+                    return;
+                }
+                
+                try {
+                    // Call login API
+                    const result = await apiCall('/auth/login', 'POST', { email, password });
+                    
+                    if (result.success) {
+                        // Save token
+                        if (result.token) {
+                            setAuthToken(result.token);
+                        }
+                        // Save user info
+                        localStorage.setItem('user', JSON.stringify(result.user));
+                        
+                        alert('✅ Login successful!');
+                        console.log("Student user logging in, redirecting...");
+                        window.location.href = "lsp.html"; 
+                    } else {
+                        alert('❌ Login failed: ' + (result.error || result.message));
+                    }
+                } catch (error) {
+                    console.error('Login error:', error);
+                    alert('❌ Error: ' + error.message);
+                }
+            });
+        }
+
+        // Lawyer Login
+        const lawyerLoginBtn = document.getElementById('lawyerLoginBtn');
+        if (lawyerLoginBtn) {
+            lawyerLoginBtn.addEventListener('click', async function () {
+                const email = document.getElementById('lawyerLoginUser').value.trim();
+                const password = document.getElementById('lawyerLoginPass').value.trim();
+                
+                if (!email || !password) {
+                    alert("Please fill all fields for Lawyer Login!");
+                    return;
+                }
+                
+                try {
+                    // Call login API
+                    const result = await apiCall('/auth/login', 'POST', { email, password });
+                    
+                    if (result.success) {
+                        // Save token
+                        if (result.token) {
+                            setAuthToken(result.token);
+                        }
+                        // Save user info
+                        localStorage.setItem('user', JSON.stringify(result.user));
+                        
+                        alert('✅ Login successful!');
+                        console.log("Lawyer user logging in, redirecting...");
+                        window.location.href = "lp.html"; 
+                    } else {
+                        alert('❌ Login failed: ' + (result.error || result.message));
+                    }
+                } catch (error) {
+                    console.error('Login error:', error);
+                    alert('❌ Error: ' + error.message);
+                }
+            });
+        }
+
+        // ==========================================
+        // 4. FORGOT PASSWORD MODAL FUNCTIONS
+        // ==========================================
+        function showModal() {
+            const modal = document.getElementById('forgotPasswordModal');
+            if (modal) {
+                modal.classList.add('show');
+                document.getElementById('resetEmail').value = '';
+                const modalMsg = document.getElementById('modalMessage');
+                if (modalMsg) modalMsg.style.display = 'none';
             }
         }
-        // ============================================
-        // 🆕 FORGOT PASSWORD - API INTEGRATION
-        // ============================================
 
-        // Forgot Password API Call Function
-        async function forgotUserPassword(email) {
-            try {
-                const result = await apiCall('/auth/forgot-password', 'POST', { email });
-                return result;
-            } catch (error) {
-                console.error('Forgot password error:', error);
-                return { success: false, error: error.message };
+        function hideModal() {
+            const modal = document.getElementById('forgotPasswordModal');
+            if (modal) {
+                modal.classList.remove('show');
             }
-        }
-
-        // Send Reset Code Button Handler
-        document.getElementById('sendResetCodeBtn').addEventListener('click', async function () {
-            const email = document.getElementById('resetEmail').value.trim();
             const modalMsg = document.getElementById('modalMessage');
+            if (modalMsg) modalMsg.style.display = 'none';
+        }
 
-            // Validation
-            if (!email) {
-                modalMsg.className = 'modal-message error';
-                modalMsg.style.display = 'block';
-                modalMsg.textContent = '⚠️ Please enter your email';
-                return;
-            }
+        // Forgot password button handlers
+        const forgotPasswordBtn = document.getElementById('forgotPasswordBtn');
+        if (forgotPasswordBtn) {
+            forgotPasswordBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                showModal();
+            });
+        }
 
-            if (!email.includes('@') || !email.includes('.')) {
-                modalMsg.className = 'modal-message error';
-                modalMsg.style.display = 'block';
-                modalMsg.textContent = '⚠️ Please enter a valid email address';
-                return;
-            }
+        const forgotPasswordStudentBtn = document.getElementById('forgotPasswordStudentBtn');
+        if (forgotPasswordStudentBtn) {
+            forgotPasswordStudentBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                showModal();
+            });
+        }
 
-            // Disable button and show loading
-            const btn = this;
-            const originalText = btn.textContent;
-            btn.textContent = 'Sending...';
-            btn.disabled = true;
+        const forgotPasswordLawyerBtn = document.getElementById('forgotPasswordLawyerBtn');
+        if (forgotPasswordLawyerBtn) {
+            forgotPasswordLawyerBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                showModal();
+            });
+        }
 
-            // API Call
-            const result = await forgotUserPassword(email);
+        // Send reset code button
+        const sendResetCodeBtn = document.getElementById('sendResetCodeBtn');
+        if (sendResetCodeBtn) {
+            sendResetCodeBtn.addEventListener('click', function () {
+                const email = document.getElementById('resetEmail').value.trim();
+                const modalMsg = document.getElementById('modalMessage');
 
-            // Enable button
-            btn.textContent = originalText;
-            btn.disabled = false;
+                if (!email) {
+                    if (modalMsg) {
+                        modalMsg.className = 'modal-message error';
+                        modalMsg.style.display = 'block';
+                        modalMsg.textContent = '⚠️ Please enter your email';
+                    }
+                    return;
+                }
 
-            // Show result
-            if (result.success) {
-                modalMsg.className = 'modal-message success';
-                modalMsg.style.display = 'block';
-                modalMsg.textContent = '✅ Password reset link sent to your email!';
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    if (modalMsg) {
+                        modalMsg.className = 'modal-message error';
+                        modalMsg.style.display = 'block';
+                        modalMsg.textContent = '⚠️ Please enter a valid email address';
+                    }
+                    return;
+                }
 
-                // Auto close modal after 3 seconds
+                // Disable button
+                const btn = this;
+                const originalText = btn.textContent;
+                btn.textContent = 'Sending...';
+                btn.disabled = true;
+
+                // Simulate sending (replace with API call later)
                 setTimeout(() => {
-                    document.getElementById('forgotPasswordModal').classList.remove('show');
-                    modalMsg.style.display = 'none';
-                }, 3000);
-            } else {
-                modalMsg.className = 'modal-message error';
-                modalMsg.style.display = 'block';
-                modalMsg.textContent = '❌ ' + (result.error || 'Failed to send reset link. Please try again.');
-            }
-        });
+                    if (modalMsg) {
+                        modalMsg.className = 'modal-message success';
+                        modalMsg.style.display = 'block';
+                        modalMsg.textContent = '✅ Password reset link sent to your email!';
+                    }
+                    btn.textContent = originalText;
+                    btn.disabled = false;
 
-        // Close Modal Button
-        document.getElementById('closeModalBtn').addEventListener('click', function () {
-            document.getElementById('forgotPasswordModal').classList.remove('show');
-            document.getElementById('modalMessage').style.display = 'none';
-        });
+                    // Auto close modal after 3 seconds
+                    setTimeout(() => {
+                        hideModal();
+                    }, 3000);
+                }, 1000);
+            });
+        }
+
+        // Close modal button
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        if (closeModalBtn) {
+            closeModalBtn.addEventListener('click', hideModal);
+        }
 
         // Close modal when clicking outside
         document.getElementById('forgotPasswordModal').addEventListener('click', function (e) {
@@ -845,43 +1034,52 @@
             dropdown.classList.toggle('show');
         }
 
-        // Modals open karne ke liye
-        function openModal(modalId) {
-            // Dropdown ko automatic close karne ke liye jab modal khule
-            document.getElementById('settingsDropdown').classList.remove('show');
+        // ==========================================
+        // 5. SETTINGS MENU FUNCTIONALITY
+        // ==========================================
+        window.toggleSettingsMenu = function (event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById('settingsDropdown');
+            if (dropdown) {
+                dropdown.classList.toggle('show');
+            }
+        };
 
+        window.openModal = function (modalId) {
+            const dropdown = document.getElementById('settingsDropdown');
+            if (dropdown) {
+                dropdown.classList.remove('show');
+            }
             const modal = document.getElementById(modalId);
             if (modal) {
                 modal.classList.add('active');
             }
-        }
+        };
 
-        // Modals close karne ke liye
-        function closeModal(modalId) {
+        window.closeModal = function (modalId) {
             const modal = document.getElementById(modalId);
             if (modal) {
                 modal.classList.remove('active');
             }
-        }
+        };
 
-        // Agar user window screen par kahin bhi bahar click kare to elements automatically close ho jayen
-        window.onclick = function (event) {
-            // Close dropdown if clicked outside
+        // Close dropdown/modals when clicking outside
+        window.addEventListener('click', function (event) {
             if (!event.target.matches('.settings-trigger')) {
-                const dropdowns = document.getElementsByClassName("settings-dropdown");
-                for (let i = 0; i < dropdowns.length; i++) {
-                    let openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
+                const dropdowns = document.querySelectorAll('.settings-dropdown');
+                dropdowns.forEach(dropdown => {
+                    if (dropdown.classList.contains('show')) {
+                        dropdown.classList.remove('show');
                     }
-                }
+                });
             }
 
-            // Close modals if background/overlay is clicked
             if (event.target.classList.contains('modal-overlay')) {
                 event.target.classList.remove('active');
             }
-        }
+        });
+
+    }); // End of DOMContentLoaded
     </script>
 </body>
 
