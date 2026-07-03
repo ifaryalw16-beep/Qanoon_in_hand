@@ -647,11 +647,11 @@
 
             <button class="hamburger" aria-label="Menu"
                 onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
-                 
+
     </div>
         </div>
     </header>
-   
+
     <div class="app-container">
         <div id="selectionScreen" class="selection-screen">
             <h1>Create Your Account</h1>
@@ -925,7 +925,7 @@
         // DATA - Districts & Universities
         // ============================================
         const pakistanDistricts = ["Attock", "Bahawalnagar", "Bahawalpur", "Bhakkar", "Chakwal", "Chiniot", "Dera Ghazi Khan", "Faisalabad", "Gujranwala", "Gujrat", "Hafizabad", "Jhang", "Jhelum", "Kasur", "Khanewal", "Khushab", "Lahore", "Layyah", "Lodhran", "Mandi Bahauddin", "Mianwali", "Multan", "Muzaffargarh", "Narowal", "Nankana Sahib", "Okara", "Pakpattan", "Rahim Yar Khan", "Rajanpur", "Rawalpindi", "Sahiwal", "Sargodha", "Sheikhupura", "Sialkot", "Toba Tek Singh", "Vehari", "Talagang", "Murree", "Karachi Central", "Karachi East", "Karachi South", "Karachi West", "Karachi Korangi", "Karachi Malir", "Karachi Keamari", "Hyderabad", "Sukkur", "Larkana", "Mirpur Khas", "Nawabshah", "Dadu", "Ghotki", "Jacobabad", "Jamshoro", "Kashmore", "Khairpur", "Matiari", "Naushahro Feroze", "Qambar Shahdadkot", "Sanghar", "Shikarpur", "Tando Allahyar", "Tando Muhammad Khan", "Tharparkar", "Thatta", "Umerkot", "Sujawal", "Badin", "Abbottabad", "Bannu", "Battagram", "Buner", "Charsadda", "Chitral", "Dera Ismail Khan", "Hangu", "Haripur", "Karak", "Kohat", "Kohistan", "Lakki Marwat", "Lower Dir", "Malakand", "Mansehra", "Mardan", "Nowshera", "Peshawar", "Shangla", "Swabi", "Swat", "Tank", "Torghar", "Upper Dir", "Awaran", "Barkhan", "Chagai", "Dera Bugti", "Gwadar", "Harnai", "Jafarabad", "Jhal Magsi", "Kalat", "Kech (Turbat)", "Kharan", "Khuzdar", "Kohlu", "Lasbela", "Loralai", "Mastung", "Musakhel", "Nasirabad", "Nushki", "Panjgur", "Pishin", "Quetta", "Qilla Abdullah", "Qilla Saifullah", "Sherani", "Sibi", "Washuk", "Zhob", "Ziarat", "Islamabad", "Muzaffarabad", "Bagh", "Bhimber", "Hattian Bala", "Haveli", "Kotli", "Mirpur", "Neelum", "Poonch", "Sudhnoti", "Gilgit", "Skardu", "Diamer", "Ghizer", "Ghanche", "Astore", "Hunza", "Nagar", "Shigar", "Kharmang"];
-        
+
         const lawUniversities = ["Quaid-i-Azam University, Islamabad", "International Islamic University, Islamabad", "National University of Sciences & Technology (NUST), Islamabad", "Bahria University, Islamabad", "Riphah International University, Islamabad", "University of the Punjab (Punjab University Law College), Lahore", "Lahore University of Management Sciences (LUMS) - SAHSOL, Lahore", "University of Management & Technology (UMT) - School of Law & Policy, Lahore", "University of Karachi, Karachi", "Shaheed Zulfiqar Ali Bhutto University of Law (SZABUL), Karachi", "Bahauddin Zakariya University (BZU), Multan", "University of Peshawar (Khyber Law College), Peshawar", "University of Balochistan (University Law College), Quetta"];
 
         // ============================================
@@ -934,20 +934,20 @@
         function createSearchSelect(wrapperId, hiddenId, data, errorId, callback) {
             const wrapper = document.getElementById(wrapperId);
             if (!wrapper) return;
-            
+
             const input = wrapper.querySelector('.search-input');
             const dropdown = wrapper.querySelector('.search-dropdown');
             const hidden = document.getElementById(hiddenId);
-            
+
             if (!input || !dropdown) return;
-            
+
             function renderOptions(filter = '') {
-                const filtered = data.filter(item => 
+                const filtered = data.filter(item =>
                     item.toLowerCase().includes(filter.toLowerCase())
                 );
-                
+
                 dropdown.innerHTML = '';
-                
+
                 if (filtered.length === 0) {
                     const noResult = document.createElement('div');
                     noResult.className = 'no-results';
@@ -955,7 +955,7 @@
                     dropdown.appendChild(noResult);
                     return;
                 }
-                
+
                 filtered.forEach(item => {
                     const option = document.createElement('div');
                     option.className = 'search-option';
@@ -972,23 +972,23 @@
                     dropdown.appendChild(option);
                 });
             }
-            
+
             input.addEventListener('input', (e) => {
                 renderOptions(e.target.value);
                 dropdown.classList.add('show');
             });
-            
+
             input.addEventListener('click', () => {
                 renderOptions(input.value);
                 dropdown.classList.add('show');
             });
-            
+
             document.addEventListener('click', (e) => {
                 if (!wrapper.contains(e.target)) {
                     dropdown.classList.remove('show');
                 }
             });
-            
+
             renderOptions('');
         }
 
@@ -998,15 +998,15 @@
         function validateEmail(email) {
             return /^[^\s@]+@[^\s@]+\.com$/i.test(email);
         }
-        
+
         function validatePassword(password) {
             return /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password);
         }
-        
+
         function validateCNIC(cnic) {
             return /^[\d\-]+$/.test(cnic);
         }
-        
+
         function validatePhone(phone) {
             return /^\d+$/.test(phone);
         }
@@ -1015,10 +1015,10 @@
         // CHECK REGISTRATION FORM COMPLETION
         // ============================================
         function checkPublicReg() {
-            const fields = ['pubFullName', 'pubCnic', 'pubPhone', 'pubEmail', 'pubOccupation', 
-                           'pubQualification', 'pubDob', 'pubGender', 'pubMaritalStatus', 
-                           'pubUsername', 'pubSecA', 'pubRegPass', 'pubConfirmPass'];
-            
+            const fields = ['pubFullName', 'pubCnic', 'pubPhone', 'pubEmail', 'pubOccupation',
+                'pubQualification', 'pubDob', 'pubGender', 'pubMaritalStatus',
+                'pubUsername', 'pubSecA', 'pubRegPass', 'pubConfirmPass'];
+
             let allFilled = fields.every(id => {
                 const el = document.getElementById(id);
                 if (!el) {
@@ -1027,7 +1027,7 @@
                 }
                 return el.value.trim() !== '';
             });
-            
+
             // Check district - look for value in wrapper input or hidden field
             const districtWrapper = document.getElementById('pubDistrictWrapper');
             if (districtWrapper) {
@@ -1036,7 +1036,7 @@
                     allFilled = false;
                 }
             }
-            
+
             const btn = document.getElementById('pubRegisterAction');
             if (btn) {
                 btn.disabled = !allFilled;
@@ -1044,12 +1044,12 @@
             }
             return allFilled;
         }
-        
+
         function checkStudentReg() {
-            const fields = ['studentFullName', 'studentCnic', 'studentPhone', 'studentEmail', 
-                           'studentRegNo', 'studentUsername', 'studentSecA', 'studentPass', 
-                           'studentConfirmPass'];
-            
+            const fields = ['studentFullName', 'studentCnic', 'studentPhone', 'studentEmail',
+                'studentRegNo', 'studentUsername', 'studentSecA', 'studentPass',
+                'studentConfirmPass'];
+
             let allFilled = fields.every(id => {
                 const el = document.getElementById(id);
                 if (!el) {
@@ -1058,7 +1058,7 @@
                 }
                 return el.value.trim() !== '';
             });
-            
+
             // Check district
             const districtWrapper = document.getElementById('studentDistrictWrapper');
             if (districtWrapper) {
@@ -1067,7 +1067,7 @@
                     allFilled = false;
                 }
             }
-            
+
             // Check university
             const uniWrapper = document.getElementById('studentUniversityWrapper');
             if (uniWrapper) {
@@ -1076,7 +1076,7 @@
                     allFilled = false;
                 }
             }
-            
+
             const btn = document.getElementById('studentRegisterAction');
             if (btn) {
                 btn.disabled = !allFilled;
@@ -1084,12 +1084,12 @@
             }
             return allFilled;
         }
-        
+
         function checkLawyerReg() {
-            const fields = ['lawyerFullName', 'lawyerCnic', 'lawyerPhone', 'lawyerEmail', 
-                           'lawyerBarNo', 'lawyerUsername', 'lawyerSecA', 'lawyerPass', 
-                           'lawyerConfirmPass'];
-            
+            const fields = ['lawyerFullName', 'lawyerCnic', 'lawyerPhone', 'lawyerEmail',
+                'lawyerBarNo', 'lawyerUsername', 'lawyerSecA', 'lawyerPass',
+                'lawyerConfirmPass'];
+
             let allFilled = fields.every(id => {
                 const el = document.getElementById(id);
                 if (!el) {
@@ -1098,7 +1098,7 @@
                 }
                 return el.value.trim() !== '';
             });
-            
+
             // Check district
             const districtWrapper = document.getElementById('lawyerDistrictWrapper');
             if (districtWrapper) {
@@ -1107,7 +1107,7 @@
                     allFilled = false;
                 }
             }
-            
+
             const btn = document.getElementById('lawyerRegisterAction');
             if (btn) {
                 btn.disabled = !allFilled;
@@ -1121,74 +1121,74 @@
         // ============================================
         function attachValidation() {
             // Public fields - attach to all required fields
-            ['pubFullName', 'pubCnic', 'pubPhone', 'pubEmail', 'pubOccupation', 
-             'pubQualification', 'pubUsername', 'pubSecA', 'pubRegPass', 
-             'pubConfirmPass', 'pubDob', 'pubGender', 'pubMaritalStatus'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) {
-                    el.addEventListener('input', checkPublicReg);
-                    el.addEventListener('change', checkPublicReg);
-                }
-            });
-            
+            ['pubFullName', 'pubCnic', 'pubPhone', 'pubEmail', 'pubOccupation',
+                'pubQualification', 'pubUsername', 'pubSecA', 'pubRegPass',
+                'pubConfirmPass', 'pubDob', 'pubGender', 'pubMaritalStatus'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        el.addEventListener('input', checkPublicReg);
+                        el.addEventListener('change', checkPublicReg);
+                    }
+                });
+
             // Public search select input
             const pubDistrictInput = document.querySelector('#pubDistrictWrapper .search-input');
             if (pubDistrictInput) {
                 pubDistrictInput.addEventListener('input', checkPublicReg);
                 pubDistrictInput.addEventListener('change', checkPublicReg);
             }
-            
+
             // Student fields - attach to all required fields
-            ['studentFullName', 'studentCnic', 'studentPhone', 'studentEmail', 
-             'studentRegNo', 'studentUsername', 'studentSecA', 'studentPass', 
-             'studentConfirmPass'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) {
-                    el.addEventListener('input', checkStudentReg);
-                    el.addEventListener('change', checkStudentReg);
-                }
-            });
-            
+            ['studentFullName', 'studentCnic', 'studentPhone', 'studentEmail',
+                'studentRegNo', 'studentUsername', 'studentSecA', 'studentPass',
+                'studentConfirmPass'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        el.addEventListener('input', checkStudentReg);
+                        el.addEventListener('change', checkStudentReg);
+                    }
+                });
+
             // Student search select inputs
             const studentDistrictInput = document.querySelector('#studentDistrictWrapper .search-input');
             if (studentDistrictInput) {
                 studentDistrictInput.addEventListener('input', checkStudentReg);
                 studentDistrictInput.addEventListener('change', checkStudentReg);
             }
-            
+
             const studentUniInput = document.querySelector('#studentUniversityWrapper .search-input');
             if (studentUniInput) {
                 studentUniInput.addEventListener('input', checkStudentReg);
                 studentUniInput.addEventListener('change', checkStudentReg);
             }
-            
+
             // Lawyer fields - attach to all required fields
-            ['lawyerFullName', 'lawyerCnic', 'lawyerPhone', 'lawyerEmail', 
-             'lawyerBarNo', 'lawyerUsername', 'lawyerSecA', 'lawyerPass', 
-             'lawyerConfirmPass'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) {
-                    el.addEventListener('input', checkLawyerReg);
-                    el.addEventListener('change', checkLawyerReg);
-                }
-            });
-            
+            ['lawyerFullName', 'lawyerCnic', 'lawyerPhone', 'lawyerEmail',
+                'lawyerBarNo', 'lawyerUsername', 'lawyerSecA', 'lawyerPass',
+                'lawyerConfirmPass'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                        el.addEventListener('input', checkLawyerReg);
+                        el.addEventListener('change', checkLawyerReg);
+                    }
+                });
+
             // Lawyer search select input
             const lawyerDistrictInput = document.querySelector('#lawyerDistrictWrapper .search-input');
             if (lawyerDistrictInput) {
                 lawyerDistrictInput.addEventListener('input', checkLawyerReg);
                 lawyerDistrictInput.addEventListener('change', checkLawyerReg);
             }
-            
+
             // Search selects with callbacks to trigger validation
             createSearchSelect('pubDistrictWrapper', 'pubDistrict', pakistanDistricts, 'pubDistrictError', checkPublicReg);
             createSearchSelect('studentDistrictWrapper', 'studentDistrict', pakistanDistricts, 'studentDistrictError', checkStudentReg);
             createSearchSelect('studentUniversityWrapper', 'studentUni', lawUniversities, 'studentUniError', checkStudentReg);
             createSearchSelect('lawyerDistrictWrapper', 'lawyerDistrict', pakistanDistricts, 'lawyerDistrictError', checkLawyerReg);
-            
+
             // Password toggle
             document.querySelectorAll('.reg-toggle-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     const targetId = this.getAttribute('data-target');
                     const input = document.getElementById(targetId);
                     if (input) {
@@ -1207,12 +1207,12 @@
                     }
                 });
             });
-            
+
             // Initial check to set button states
             checkPublicReg();
             checkStudentReg();
             checkLawyerReg();
-            
+
             // Periodic check (every 500ms) to catch any changes
             setInterval(() => {
                 checkPublicReg();
@@ -1228,15 +1228,15 @@
         const mainFormsWrapper = document.getElementById('mainFormsWrapper');
         const backBtn = document.getElementById('backToHomeBtn');
         const optionCards = document.querySelectorAll('.option-card');
-        
+
         function showMainForms(role) {
             selectionScreen.style.display = 'none';
             mainFormsWrapper.style.display = 'block';
-            
+
             document.getElementById('publicPanel').style.display = 'none';
             document.getElementById('lawstudentPanel').style.display = 'none';
             document.getElementById('lawyerPanel').style.display = 'none';
-            
+
             if (role === 'public') {
                 document.getElementById('publicPanel').style.display = 'block';
             } else if (role === 'lawstudent') {
@@ -1244,16 +1244,16 @@
             } else if (role === 'lawyer') {
                 document.getElementById('lawyerPanel').style.display = 'block';
             }
-            
+
             attachValidation();
         }
-        
+
         optionCards.forEach(card => {
             card.addEventListener('click', () => {
                 showMainForms(card.getAttribute('data-type'));
             });
         });
-        
+
         backBtn.addEventListener('click', () => {
             selectionScreen.style.display = 'block';
             mainFormsWrapper.style.display = 'none';
@@ -1265,18 +1265,18 @@
         const modal = document.getElementById('forgotPasswordModal');
         const resetEmail = document.getElementById('resetEmail');
         const modalMsg = document.getElementById('modalMessage');
-        
+
         function showModal() {
             resetEmail.value = '';
             modalMsg.className = 'modal-message';
             modalMsg.style.display = 'none';
             modal.classList.add('show');
         }
-        
+
         function hideModal() {
             modal.classList.remove('show');
         }
-        
+
         function sendCode() {
             const email = resetEmail.value.trim();
             if (!email) {
@@ -1299,12 +1299,131 @@
                 hideModal();
             }, 3000);
         }
-        
+
         document.getElementById('closeModalBtn')?.addEventListener('click', hideModal);
         document.getElementById('sendResetCodeBtn')?.addEventListener('click', sendCode);
         modal?.addEventListener('click', (e) => {
             if (e.target === modal) hideModal();
+        }); HEAD
+        // ============================================
+        // 🆕 REGISTRATION & UI HANDLERS - INTEGRATED & OPTIMIZED
+        // ============================================================
+
+        // 1. DYNAMIC REGISTRATION HANDLER (Combined for Public, Student, & Lawyer)
+        const rolesConfig = {
+            'pubRegisterAction': { prefix: 'pub', role: 'public' },
+            'studentRegisterAction': { prefix: 'student', role: 'law_student' },
+            'lawyerRegisterAction': { prefix: 'lawyer', role: 'lawyer' }
+        };
+
+        Object.keys(rolesConfig).forEach(btnId => {
+            const btnElement = document.getElementById(btnId);
+            if (!btnElement) return;
+
+            btnElement.addEventListener('click', async function (e) {
+                e.preventDefault();
+
+                const config = rolesConfig[btnId];
+                const prefix = config.prefix;
+
+                // Dynamic Elements Selection
+                const emailEl = document.getElementById(`${prefix}Email`);
+                const passEl = document.getElementById(`${prefix}Pass` || `${prefix}RegPass`); // Handles 'pubRegPass' anomaly
+                const confirmPassEl = document.getElementById(`${prefix}ConfirmPass`);
+
+                if (!emailEl || !passEl || !confirmPassEl) {
+                    console.error(`❌ Required elements for prefix "${prefix}" not found.`);
+                    return;
+                }
+
+                const email = emailEl.value.trim();
+                const password = passEl.value;
+
+                // Form Validations
+                if (!validateEmail(email)) {
+                    alert('⚠️ Please enter a valid email address (.com)');
+                    return;
+                }
+
+                if (!validatePassword(password)) {
+                    alert('⚠️ Password must be 8+ chars, with 1 Capital, 1 Number, and 1 Special character');
+                    return;
+                }
+
+                if (password !== confirmPassEl.value) {
+                    alert('⚠️ Passwords do not match');
+                    return;
+                }
+
+                // Base Data Mapping (Common to all roles)
+                const userData = {
+                    fullName: document.getElementById(`${prefix}FullName`)?.value.trim() || '',
+                    cnic: document.getElementById(`${prefix}Cnic`)?.value.trim() || '',
+                    phoneNumber: document.getElementById(`${prefix}Phone`)?.value.trim() || '',
+                    email: email,
+                    district: document.getElementById(`${prefix}District`)?.value || '',
+                    username: document.getElementById(`${prefix}Username`)?.value.trim() || '',
+                    securityQuestion: document.getElementById(`${prefix}SecQ`)?.value || '',
+                    securityAnswer: document.getElementById(`${prefix}SecA`)?.value.trim() || '',
+                    password: password,
+                    role: config.role
+                };
+
+                // Role-Specific Extra Fields Mapping
+                if (config.role === 'public') {
+                    userData.occupation = document.getElementById('pubOccupation')?.value.trim() || '';
+                    userData.qualification = document.getElementById('pubQualification')?.value.trim() || '';
+                    userData.dateOfBirth = document.getElementById('pubDob')?.value || '';
+                    userData.gender = document.getElementById('pubGender')?.value || '';
+                    userData.maritalStatus = document.getElementById('pubMaritalStatus')?.value || '';
+                } else if (config.role === 'law_student') {
+                    userData.universityName = document.getElementById('studentUni')?.value || '';
+                    userData.universityRegNo = document.getElementById('studentRegNo')?.value.trim() || '';
+                } else if (config.role === 'lawyer') {
+                    userData.barCouncilEnrollmentNo = document.getElementById('lawyerBarNo')?.value.trim() || '';
+                }
+
+                // UI State: Loading State On
+                const originalText = this.textContent;
+                this.textContent = 'Creating Account...';
+                this.disabled = true;
+
+                try {
+                    const result = await signupUser(userData);
+                    if (result && result.success) {
+                        alert('✅ Registration successful! Please login.');
+                        window.location.href = 'login.html';
+                    } else {
+                        alert('❌ ' + (result?.error || 'Registration failed. Please try again.'));
+                    }
+                } catch (error) {
+                    console.error('Registration Error:', error);
+                    alert('❌ Error connecting to server. Please try again.');
+                } finally {
+                    // UI State: Loading State Off
+                    this.textContent = originalText;
+                    this.disabled = false;
+                }
+            });
         });
+
+        // ============================================
+        // 2. SWITCH ACCOUNT TYPE (Back buttons)
+        // ============================================
+        ['switchPublicType', 'switchStudentType', 'switchLawyerType'].forEach(id => {
+            document.getElementById(id)?.addEventListener('click', () => {
+                if (typeof selectionScreen !== 'undefined' && typeof mainFormsWrapper !== 'undefined') {
+                    selectionScreen.style.display = 'block';
+                    mainFormsWrapper.style.display = 'none';
+                }
+            });
+        });
+
+        // ============================================
+        // 3. SETTINGS MENU & MODAL UI HANDLERS
+        // ============================================
+
+        // Dropdown toggle function
 
         // ==========================================
         // BUTTON CLICK EVENT HANDLERS
@@ -1313,9 +1432,9 @@
         // 1. When a Public user signs up:
         const pubRegisterBtn = document.getElementById('pubRegisterAction');
         if (pubRegisterBtn) {
-            pubRegisterBtn.addEventListener('click', async function(e) {
+            pubRegisterBtn.addEventListener('click', async function (e) {
                 e.preventDefault();
-                
+
                 // Final validation check before submitting
                 if (!checkPublicReg()) {
                     alert('Please fill all required fields');
@@ -1344,7 +1463,7 @@
                 try {
                     // Call API
                     const result = await apiCall('/auth/signup', 'POST', signupData);
-                    
+
                     if (result.success) {
                         // Save token
                         if (result.token) {
@@ -1365,9 +1484,9 @@
         // 2. When a Law Student signs up:
         const studentRegisterBtn = document.getElementById('studentRegisterAction');
         if (studentRegisterBtn) {
-            studentRegisterBtn.addEventListener('click', async function(e) {
+            studentRegisterBtn.addEventListener('click', async function (e) {
                 e.preventDefault();
-                
+
                 // Final validation check before submitting
                 if (!checkStudentReg()) {
                     alert('Please fill all required fields');
@@ -1393,7 +1512,7 @@
                 try {
                     // Call API
                     const result = await apiCall('/auth/signup', 'POST', signupData);
-                    
+
                     if (result.success) {
                         // Save token
                         if (result.token) {
@@ -1414,9 +1533,9 @@
         // 3. When a Lawyer signs up:
         const lawyerRegisterBtn = document.getElementById('lawyerRegisterAction');
         if (lawyerRegisterBtn) {
-            lawyerRegisterBtn.addEventListener('click', async function(e) {
+            lawyerRegisterBtn.addEventListener('click', async function (e) {
                 e.preventDefault();
-                
+
                 // Final validation check before submitting
                 if (!checkLawyerReg()) {
                     alert('Please fill all required fields');
@@ -1441,7 +1560,7 @@
                 try {
                     // Call API
                     const result = await apiCall('/auth/signup', 'POST', signupData);
-                    
+
                     if (result.success) {
                         // Save token
                         if (result.token) {
@@ -1457,8 +1576,15 @@
                     alert('❌ Error: ' + error.message);
                 }
             });
+
         }
-       
+        // ============================================
+        // INITIALIZE
+        // ============================================
+        if (typeof attachValidation === 'function') attachValidation();
+        console.log('✅ register.html Loaded Successfully!');
+        console.log('🔑 API Base URL:', 'http://localhost:5000/api');
+
     </script>
 </body>
 </html>

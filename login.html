@@ -442,7 +442,7 @@
                             </div>
                             <div class="login-options-row"><label class="checkbox-label"><input type="checkbox">
                                     Remember me</label><a class="forgot-link" id="forgotPasswordBtn">Forgot
-                                    password?</a></div><button class="login-btn" id="pubLoginBtn">Login</button>
+                                    password?</a></div><button type="button" class="login-btn" id="pubLoginBtn">Login</button>
                             <div class="register-link">Don't have an account? <a href="forms.html">Register here</a>
                             </div>
                         </div>
@@ -466,7 +466,7 @@
                             </div>
                             <div class="login-options-row"><label class="checkbox-label"><input type="checkbox">
                                     Remember me</label><a class="forgot-link" id="forgotPasswordStudentBtn">Forgot
-                                    password?</a></div><button class="login-btn" id="studentLoginBtn">Login</button>
+                                    password?</a></div><button type="button" class="login-btn" id="studentLoginBtn">Login</button>
                             <div class="register-link">Don't have an account? <a href="forms.html">Register here</a>
                             </div>
                         </div>
@@ -490,7 +490,7 @@
                             </div>
                             <div class="login-options-row"><label class="checkbox-label"><input type="checkbox">
                                     Remember me</label><a class="forgot-link" id="forgotPasswordLawyerBtn">Forgot
-                                    password?</a></div><button class="login-btn" id="lawyerLoginBtn">Login</button>
+                                    password?</a></div><button type="button" class="login-btn" id="lawyerLoginBtn">Login</button>
                             <div class="register-link">Don't have an account? <a href="forms.html">Register here</a>
                             </div>
                         </div>
@@ -791,13 +791,39 @@
         }
 
         // Close modal when clicking outside
-        const forgotPasswordModal = document.getElementById('forgotPasswordModal');
-        if (forgotPasswordModal) {
-            forgotPasswordModal.addEventListener('click', function (e) {
-                if (e.target === this) {
-                    hideModal();
+        document.getElementById('forgotPasswordModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                this.classList.remove('show');
+                document.getElementById('modalMessage').style.display = 'none';
+            }
+        });
+        function showMainForms(r) { document.getElementById('selectionScreen').style.display = 'none'; document.getElementById('mainFormsWrapper').style.display = 'block';['publicPanel', 'lawstudentPanel', 'lawyerPanel'].forEach(id => document.getElementById(id).style.display = 'none'); document.getElementById(r + 'Panel').style.display = 'block'; }
+        document.querySelectorAll('.option-card').forEach(c => c.addEventListener('click', () => showMainForms(c.getAttribute('data-type'))));
+        document.getElementById('backToHomeBtn').addEventListener('click', () => { document.getElementById('selectionScreen').style.display = 'block'; document.getElementById('mainFormsWrapper').style.display = 'none'; });
+        document.getElementById('forgotPasswordBtn').addEventListener('click', e => { e.preventDefault(); showModal() });
+        document.getElementById('forgotPasswordStudentBtn').addEventListener('click', e => { e.preventDefault(); showModal() });
+        document.getElementById('forgotPasswordLawyerBtn').addEventListener('click', e => { e.preventDefault(); showModal() });
+        document.getElementById('closeModalBtn').addEventListener('click', hideModal);
+
+        function setupLogin(buttonId, userId, passId) {
+            document.getElementById(buttonId).addEventListener('click', async () => {
+                const email = document.getElementById(userId).value.trim();
+                const password = document.getElementById(passId).value;
+                if (!email || !password) {
+                    alert('Please enter email and password');
+                    return;
                 }
+                await loginUser(email, password);
             });
+        }
+        setupLogin('pubLoginBtn', 'pubLoginUser', 'pubLoginPass');
+        setupLogin('studentLoginBtn', 'studentLoginUser', 'studentLoginPass');
+        setupLogin('lawyerLoginBtn', 'lawyerLoginUser', 'lawyerLoginPass');
+        // Dropdown menu ko open aur close karne ka function
+        function toggleSettingsMenu(event) {
+            event.stopPropagation(); // Click event ko bubble hone se rokta hai
+            const dropdown = document.getElementById('settingsDropdown');
+            dropdown.classList.toggle('show');
         }
 
        
